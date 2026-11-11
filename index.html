@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>GIST 광주과학기술원 | 홈페이지 D안 시안</title><meta name="description" content="광주과학기술원(GIST) 대표 홈페이지 D안 시안 — 4개 단과대학·13개 학과와 AI정책전략대학원, 연구·입학·소식을 한 화면에서."><meta property="og:type" content="website"><meta property="og:site_name" content="GIST 광주과학기술원"><meta property="og:title" content="GIST 광주과학기술원 — 홈페이지 D안 시안"><meta property="og:description" content="4개 단과대학·13개 학과와 AI정책전략대학원, 연구·입학·소식을 한 화면에서."><meta property="og:image" content="https://yhju-gist.github.io/gist-homepage-d/img/hx_a.jpg"><meta property="og:url" content="https://yhju-gist.github.io/gist-homepage-d/"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://yhju-gist.github.io/gist-homepage-d/"><style>[hidden]{display:none!important}</style></head><body>
-<title>GIST 홈페이지 D안 v103</title>
+<title>GIST 홈페이지 D안 v104</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -4683,6 +4683,33 @@ if(/^#d-/.test(location.hash||""))setTimeout(route,0);
   '<h3 class="p-h3">바로가기</h3>'+cards([["원서접수·서류제출 확인","대학원 입학 홈페이지","https://www.gist.ac.kr/gadm/","원서"],["International Graduate Admissions","외국인 대학원 입학","https://www.gist.ac.kr/iadm/main.html","Global"],["International Undergraduate Admissions","외국인 학사 입학","https://www.gist.ac.kr/iuadm/","Global"],["오픈랩·입학설명회","연구실 미리 보기","https://www.gist.ac.kr/gadm/","행사"]])+
   skContact("입학팀",/대학원|팀장/,"대학원 입시 담당")+src("GIST 대학원 입학 홈페이지 공지·Quick Link");
  PBODY["전형 안내"]=PBODY["외국인 입학"]=gr;
+})();
+
+/* v104 세부 화면 고도화 2차 — 창업 지원·안전 안내·감사·규정·경영공시 (현행 홈페이지 직원검색 업무 원문, 2026.11.11. 확인) */
+(function(){
+ const EXT2=EXT,src=t=>'<p class="note">출처: '+t+' (2026.11.11. 확인)</p>';
+ const tl=e=>"062-715-"+String(e).split(/[\/, ]/)[0];
+ const card=(x)=>'<a class="sk-card" href="'+esc(x[2])+'"'+(/^http/.test(x[2])?EXT2:'')+'><span class="sk-k">'+esc(x[3]||"")+'</span><b>'+esc(x[0])+'</b><p>'+esc(x[1])+'</p><span class="sk-go">'+(/^http/.test(x[2])?'바로가기 ↗':/^tel:/.test(x[2])?'전화 걸기':'보기 →')+'</span></a>';
+ const cards=a=>'<div class="sk-cards">'+a.map(card).join("")+'</div>';
+ const lnk=(h,t)=>'<div class="sk-addr"><div><span class="eyebrow">LINK</span><b>'+esc(t)+'</b></div><div class="sk-addr-b">'+h.map(x=>'<a class="pill'+(x[2]?' red':'')+'" href="'+esc(x[1])+'"'+EXT2+'>'+esc(x[0])+' ↗</a>').join("")+'</div></div>';
+ PBODY["창업 지원"]=()=>'<p class="p-lead">GIST의 창업과 기술사업화는 창업혁신진흥원이 맡습니다. 아이디어 단계의 학생 창업부터 교원 기술의 이전·출자까지 한 곳에서 이어집니다.</p>'+
+  '<div class="kpi k3 sk-k3"><div><span class="eyebrow">창업혁신진흥원</span><b class="num">3</b><span>개 센터 · 창업혁신전략·창업진흥·기술사업화</span></div><div><span class="eyebrow">기술이전 누적 계약액</span><b class="num">621</b><span>억 원 · 숫자로 보는 GIST</span></div><div><span class="eyebrow">창업성과 부문</span><b class="num">1</b><span>위 · 2023 대한민국 창업우수대학</span></div></div>'+
+  '<h3 class="p-h3">창업진흥센터 프로그램 <small>직원검색 담당 업무에 적힌 이름 그대로</small></h3>'+cards([["GIST 모의창업 프로그램(GSS)","집중창업캠프·원포인트 창업 멘토링과 함께 운영","tel:062-715-6302","T.6302"],["GIST 엑설러레이팅 프로그램","공공기술기반 시장연계 창업탐색 지원사업","tel:062-715-6305","T.6305"],["학생 창업서포터즈·창업동아리","창업미니스쿨, 장비 활용 교육·시제품 제작 멘토링","tel:062-715-6303","T.6303"],["복합창업공간(CSG)","스타트업나이트·창업런치토크","tel:062-715-6303","T.6303"],["창업 아이디어 경진대회","GIST-호남권대학·특성화대학 공동, AI&IoT 메이커톤","tel:062-715-6302","T.6302"],["창업보육","선도 대학프로그램","tel:062-715-2597","T.2597"]])+
+  '<h3 class="p-h3">기술사업화센터</h3>'+cards([["기술이전","IT(기계·정보·고등광·융합) · NT(신소재·지구환경·물리·화학)·실용화사업","tel:062-715-3077","T.3077·3095"],["특허 관리","특허관리·발명시스템, 특허교육","tel:062-715-3479","T.3479·3076"],["출자기업·연구소기업","출자기업·산학협력연구관, 연구소기업","tel:062-715-3074","T.3074·3086"],["TLO 혁신 사업","기술이전 전담조직 혁신 사업","tel:062-715-3073","T.3073"]])+
+  lnk([["창업혁신진흥원(GTI)","https://gti.gist.ac.kr/",1],["GIST홀딩스","https://gistholdings.com/"]],"창업·기술사업화 사이트")+
+  window.skContact("창업진흥센터",/총괄|기획/,"창업진흥센터")+window.skContact("기술사업화센터",/센터장|기술이전/,"기술사업화센터")+src("현행 GIST 홈페이지 직원검색(창업혁신진흥원 부서 담당 업무) · 숫자로 보는 GIST");
+ PBODY["안전 안내"]=()=>'<p class="p-lead">연구실·방사선·생물 안전부터 보건, 보안·경비, 예비군·민방위까지 캠퍼스 안전은 안전팀이 맡습니다. 사고·위험을 보면 먼저 아래 담당에게 알려 주세요.</p>'+
+  cards([["연구실안전 · 안전체험교육장","연구실 안전관리와 안전교육","tel:062-715-5502","T.5502·5505"],["산업안전 · 재난안전","산업재해 예방, 재난 대응","tel:062-715-5503","T.5503"],["방사선안전","방사선 안전관리","tel:062-715-5506","T.5506"],["생물안전","생물 안전관리","tel:062-715-5504","T.5504"],["보건 · 의무실 · 건강진단","의무실 운영과 건강진단","tel:062-715-2107","T.2107"],["보안 · 경비","캠퍼스 보안과 경비","tel:062-715-5508","T.5508"],["예비군 · 민방위 · 비상계획","예비군 대대","tel:062-715-2105","T.2105·5510"]])+
+  lnk([["GIST 안전 사이트","http://safety.gist.ac.kr/ushm/main/home.do",1]],"연구실 안전관리 시스템")+window.skContact("안전팀",/팀장/,"안전팀")+src("현행 GIST 홈페이지 직원검색(안전팀) · 홈페이지 하단 ‘안전’ 바로가기");
+ PBODY["감사"]=()=>'<p class="p-lead">감사는 이사회 소속이며, 감사부가 일반·특별·회계 감사와 청렴(청탁방지·행동강령) 업무를 맡습니다.</p>'+
+  cards([["감사 총괄","감사부장 · 청탁방지담당관 · 행동강령책임관","tel:062-715-2007","T.2007"],["일반·특별·회계 감사","대·내외 감사현황 보고","tel:062-715-2185","T.2185·2008"],["신문고 민원 · 대외기관 업무","감사 관련 대·내외 기관 업무","tel:062-715-2009","T.2009"],["경영정보 공개(ALIO)","공공기관 경영정보 공개시스템의 GIST 화면","https://alio.go.kr/organ/organDisclosureDtl.do?apbaId=C0018","공개"]])+
+  window.skContact("감사부",null,"감사부")+src("현행 GIST 홈페이지 조직도·직원검색(감사·감사부)");
+ PBODY["규정"]=()=>'<p class="p-lead">GIST의 규정·규칙·지침 전문과 개정 이력은 원규 시스템에서 찾습니다. 규정 관리는 기획팀, 연구비 관련 규정은 연구관리팀이 맡습니다.</p>'+
+  lnk([["GIST 원규 시스템","https://law.gist.ac.kr/lmxsrv/main/main.do",1]],"규정·규칙·지침 전문")+
+  cards([["규정 관리","이사회·기획위·평의원회·규정 — 기획팀","tel:062-715-2974","T.2974"],["연구 관련 규정","연구관리제도·규정·전산화 — 연구관리팀","tel:062-715-2033","T.2033"],["법무 상담","소송·법률자문 상담 — 법무실","tel:062-715-6802","T.6802"],["GIST Compass","학칙·학사 규정을 쉬운 말로 정리한 길잡이","#tutorial","학사"]])+src("현행 GIST 홈페이지 직원검색(기획팀·연구관리팀·법무실)");
+ PBODY["경영공시"]=()=>'<p class="p-lead">공공기관 경영정보는 ALIO, 대학 정보는 대학알리미에 공개합니다. 공시 업무는 경영혁신팀이 맡습니다.</p>'+
+  cards([["ALIO 경영정보 공개","공공기관 경영정보 공개시스템의 GIST 화면","https://alio.go.kr/organ/organDisclosureDtl.do?apbaId=C0018","경영"],["대학알리미","대학 정보공시 GIST 화면","https://www.academyinfo.go.kr/popup/pubinfo1690/list.do?schlId=0000381","대학"],["정보공개 청구","정보공개포털","http://www.open.go.kr/com/login/memberLogin.do","청구"],["정보공개 안내","현행 GIST 홈페이지 정보공개 메뉴","https://www.gist.ac.kr/kr/html/sub08/080101.html","안내"]])+
+  window.skContact("경영혁신팀",/공시|팀장/,"경영혁신팀 (국내대학평가·공시)")+src("현행 GIST 홈페이지 정보공개 메뉴·직원검색(경영혁신팀)");
 })();
 
 /* 학과 홈페이지 바로가기(실제 주소) */
