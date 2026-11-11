@@ -1,4 +1,4 @@
-<title>GIST 홈페이지 D안 v99</title>
+<title>GIST 홈페이지 D안 v100</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -2378,6 +2378,30 @@ body.hxdone .hx-dots{opacity:0;pointer-events:none}
 html.od-lock{overflow:hidden}
 @media (max-width:760px){.od-rep{margin-left:0;align-items:flex-start}.od-in input{font-size:16px}.od-pn{top:auto;width:100vw;height:88vh;border-radius:22px 22px 0 0;transform:translateY(100%)}.od-rows li{grid-template-columns:minmax(0,1fr) auto;}.od-rows li .od-cp{display:none}.od-g{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.od-c{min-height:132px;padding:16px 14px 12px}.od-c>b{font-size:16px}}
 @media (prefers-reduced-motion:reduce){.od-pn,.od-dim,.od-c{transition:none}}
+
+/* v100 GIST NOW · 화면 정보 띠 */
+.gnow{padding:clamp(48px,6vw,88px) 0;background:#F6F4F3}
+.gnow-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}.gnow-hd h2{font-size:clamp(26px,3vw,40px);font-weight:900;letter-spacing:-.035em;margin:6px 0 8px}.gnow-hd p{margin:0;color:var(--gray);max-width:640px}
+.gnow-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.gn-c{display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:20px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none;min-height:190px;transition:transform .18s,box-shadow .18s}
+.gn-c:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(17,20,24,.1)}.gn-c:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.gn-c.big{grid-column:span 2;grid-row:span 2;background:#15181C;color:#fff;border-color:#15181C;padding:28px;justify-content:flex-end;background-image:radial-gradient(circle at 85% 15%,rgba(220,39,21,.55),transparent 55%)}
+.gn-c.big b{font-size:clamp(22px,2.2vw,32px);line-height:1.3}.gn-c.big .gn-w,.gn-c.big .gn-o{color:rgba(255,255,255,.8)}.gn-c.big .gn-k{background:rgba(255,255,255,.14);color:#fff}
+.gn-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.gn-k{font-size:12.5px;font-weight:800;padding:3px 10px;border-radius:999px;background:#F6F4F3;color:var(--ink)}
+.gn-st{font-family:var(--f-num);font-size:13px;font-weight:800;padding:3px 10px;border-radius:999px}.gn-st.up{background:var(--red);color:#fff}.gn-st.on{background:#1D7A4E;color:#fff}.gn-st.past{background:#E9E6E5;color:#4A5056}
+.gn-c b{font-size:17px;font-weight:800;letter-spacing:-.02em;line-height:1.42;flex:1}
+.gn-w{display:flex;gap:6px;align-items:center;font-size:14px;color:var(--gray);font-weight:700}.gn-w i{display:inline-flex}.gn-w svg{width:16px;height:16px}
+.gn-o{font-size:12.5px;color:var(--gray)}
+.gn-c.is-past{background:#FBFAFA}.gn-c.is-past b{color:#3A4047}
+.vstrip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:8px;margin-bottom:48px}
+.vstrip>div{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fff;display:flex;flex-direction:column;gap:4px}
+.vstrip span{font-size:12.5px;color:var(--gray);font-weight:700}.vstrip b{font-size:15px}
+.vs-t{display:flex;flex-wrap:wrap;gap:4px 10px}.vs-t a{color:var(--red-tx);font-weight:800;text-decoration:none;font-size:13.5px}.vs-t a:hover{text-decoration:underline}
+@media (max-width:1000px){.gnow-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.gnow-g{grid-template-columns:minmax(0,1fr)}.gn-c.big{grid-column:auto;grid-row:auto;min-height:240px}.vstrip{grid-template-columns:minmax(0,1fr)}}
+.gn-more{grid-column:1/-1;list-style:none;margin:4px 0 0;padding:0;border-top:1px solid var(--line)}
+.gn-more a{display:flex;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;flex-wrap:wrap}.gn-more a:hover b{color:var(--red-tx)}.gn-more b{font-weight:800;flex:1;min-width:200px}.gn-mk{font-size:12.5px;font-weight:800;color:var(--gray)}.gn-mw{font-size:13.5px;color:var(--gray)}
 </style>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -2467,6 +2491,12 @@ html.od-lock{overflow:hidden}
     <div class="myq-list" id="myq"></div>
     <div class="myq-pool" id="myqpool" hidden></div>
   </div></div></section>
+  <!-- v100 GIST NOW: 행사·사업 소식 (이사장님 지적 ④) -->
+  <section class="gnow" aria-labelledby="gnow-h"><div class="wrap">
+    <div class="gnow-hd"><div><span class="eyebrow">GIST NOW</span><h2 id="gnow-h">지금 GIST에서 열리는 행사·사업</h2><p>부서가 알리고 싶은 행사·협력·사업 소식을 첫 화면 가까이에 둡니다. 날짜가 지나면 ‘지난 소식’으로 저절로 내려갑니다.</p></div><a class="more" href="https://www.gist.ac.kr/kr/html/sub07/070103.html" target="_blank" rel="noopener noreferrer">미디어센터 Events 전체 ↗</a></div>
+    <div class="gnow-g" id="gnowg"></div>
+    <p class="note">출처: 현행 GIST 홈페이지 미디어센터 ‘Events’ 게시글 (2026.11.11. 확인). 행사 날짜는 게시글 본문 기준. [시안] 구축 때는 부서 담당자가 관리자 모드에서 직접 올리고, 대외홍보팀(대표행사·홍보물 T.2068)이 확인합니다.</p>
+  </div></section>
   <!-- ===== v15 포스텍 문법 ===== -->
   <!-- A. 한눈에 보는 주요 소식 -->
   <section class="p-sec p-main" aria-labelledby="p-h-main">
@@ -2853,9 +2883,9 @@ html.od-lock{overflow:hidden}
         <li><div class="rb-q"><span class="rb-n">2</span><h3>GIST가 언론이나 다른 곳에 잘 드러나지(노출되지) 않는다</h3><small>회의 06:02~07:57</small></div>
           <div class="rb-a"><h4>D안 해소</h4><ul><li>소식·학과·세부 화면마다 <b>고유 주소와 주소 복사</b>(공유) 버튼, GIST Insight <b>RSS</b>, 공식 SNS 최근 글을 첫 화면에 연결.</li><li>검색엔진이 기관·학과를 정확히 알아보도록 <b>구조화 데이터(schema.org)</b>를 넣었습니다. 현행 홈페이지에는 없습니다(0건, 2026.11.11. 확인).</li><li>영문 화면(ENG)을 같은 디자인으로 두어 해외 방문자도 같은 인상을 받습니다.</li></ul><a class="rp-go" href="#story" data-go="story|#scat">그 화면으로 →</a></div></li>
         <li><div class="rb-q"><span class="rb-n">3</span><h3>구축한 지 오래되어 지금 GIST의 상황을 반영하지 못한다</h3><small>회의 06:02~07:57</small></div>
-          <div class="rb-a"><h4>D안 해소</h4><ul><li>현행 자료를 2026.11.10.~11. 다시 확인해 넣었습니다: 학과 14곳 소개·연락처, 직원검색 686건(부서·내선·업무), 공지·학사일정, 숫자로 보는 GIST.</li><li>화면마다 <b>출처와 확인일</b>을 적어, 언제 기준 정보인지 바로 압니다.</li><li>첫 화면은 현행 가을 사진 대신 정문 G·I·S·T 기둥과 캠퍼스 야경으로 새 인상을 줍니다.</li></ul><a class="rp-go" href="#search" data-go="search|#res">그 화면으로 →</a></div></li>
+          <div class="rb-a"><h4>D안 해소</h4><ul><li>현행 자료를 2026.11.10.~11. 다시 확인해 넣었습니다: 학과 14곳 소개·연락처, 직원검색 686건(부서·내선·업무), 공지·학사일정, 숫자로 보는 GIST.</li><li>화면마다 아래에 <b>담당 부서(내선)·자료·확인일</b> 띠를 같은 모양으로 붙여, 언제 기준 정보이고 누구에게 물으면 되는지 바로 압니다.</li><li>첫 화면은 현행 가을 사진 대신 정문 G·I·S·T 기둥과 캠퍼스 야경으로 새 인상을 줍니다.</li></ul><a class="rp-go" href="#search" data-go="search|#res">그 화면으로 →</a></div></li>
         <li><div class="rb-q"><span class="rb-n">4</span><h3>기관 조직·행사·확장되는 사업, 부서가 강조할 내용이 빠르게 홍보되어야 한다</h3><small>회의 06:57</small></div>
-          <div class="rb-a"><h4>D안 해소</h4><ul><li><b>관리자 모드</b>: 편집 권한이 있는 직원이 첫 화면 사진·문구, 띠 공지, 팝업존, 공지·학사일정, 세부 화면을 <b>업체 요청 없이</b> 고치고 저장하면 모든 방문자 화면에 바로 반영됩니다.</li><li>GIST Insight: 보도자료·연구성과·사람·캠퍼스·영상 분류, 기간·주제 검색으로 부서 소식이 묻히지 않습니다.</li></ul><a class="rp-go" href="#home" data-go="home|#noticeList">그 화면으로 →</a></div></li>
+          <div class="rb-a"><h4>D안 해소</h4><ul><li><b>관리자 모드</b>: 편집 권한이 있는 직원이 첫 화면 사진·문구, 띠 공지, 팝업존, 공지·학사일정, 세부 화면을 <b>업체 요청 없이</b> 고치고 저장하면 모든 방문자 화면에 바로 반영됩니다.</li><li>첫 화면 <b>GIST NOW</b>: 미디어센터 Events의 행사·협력·사업을 날짜순으로 두고, 다가오는 행사는 D-day, 진행 중·지난 소식을 저절로 나눕니다.</li><li>GIST Insight: 보도자료·연구성과·사람·캠퍼스·영상 분류, 기간·주제 검색으로 부서 소식이 묻히지 않습니다.</li></ul><a class="rp-go" href="#home" data-go="home|#gnowg">그 화면으로 →</a></div></li>
       </ol>
     </section>
     <section class="rp-sum" aria-labelledby="rp-sum-h"><h2 id="rp-sum-h">한눈에 보기</h2>
@@ -4554,6 +4584,29 @@ function renderDept(n){const D0=DEPT[n],ci=deptCol(n),C=COLLEGES[ci];const host=
 {const _r2=route;route=function(){const m=(location.hash||"").match(/^#d-([a-z0-9]+)$/);const n=m&&deptByCode(m[1]);if(n){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));$$(".gnb a").forEach(a=>a.classList.toggle("on",+a.dataset.m===1));renderDept(n);scrollTo({top:0});heroState&&heroState();return;}_r2();};}
 addEventListener("hashchange",()=>{if(/^#d-/.test(location.hash||""))route();});
 if(/^#d-/.test(location.hash||""))setTimeout(route,0);
+
+/* v100 GIST NOW 행사·사업 (현행 미디어센터 Events, 2026.11.11. 확인) + 화면별 담당·확인일 띠 */
+{const EV=[
+ {k:"행사",t:"GIST 한국문화기술연구소, AI·문화기술 융합 포럼",d0:"2026-12-02",d1:"2026-12-02",w:"12.2.(수) 10:20~17:30 · 서울",o:"한국문화기술연구소",no:224645,p:"2026.11.11."},
+ {k:"전시",t:"GIST 오룡아트홀 신도원 작가 초대전 《아직 경험하지 못한 감각의 순간들》",d0:"2026-11-02",d1:"2026-12-30",w:"11.2.(월)~12.30. · 오룡아트홀",o:"GIST 오룡아트홀",no:224546,p:"2026.11.03."},
+ {k:"축제",t:"시민과 함께하는 ‘2026 과학기술문화 페스타’",d0:"2026-11-05",d1:"2026-11-26",w:"11.5.(목)~11.26.(목) · GIST 캠퍼스",o:"GIST",no:224454,p:"2026.10.28."},
+ {k:"사업",t:"‘빅스포(BIXPO) 2026’서 ‘전남광주 에너지 이노베이션 컨퍼런스’ 개최",d0:"2026-11-05",d1:"2026-11-05",w:"11.5.(목) · 김대중컨벤션센터",o:"GIST",no:224601,p:"2026.11.06."},
+ {k:"행사",t:"‘첨단분석과학 심포지엄’ — 차세대 배터리·소재 분석기술 교류",d0:"2026-11-04",d1:"2026-11-04",w:"11.4.(수) · 중앙기기연구소 208호",o:"중앙기기연구소",no:224582,p:"2026.11.05."},
+ {k:"협력",t:"고등광기술연구원, 스위스 베른대에 공동연구사무소 개소",d0:"2026-10-23",d1:"2026-10-23",w:"10.23.(금, 현지) · 스위스 베른대",o:"고등광기술연구원",no:224442,p:"2026.10.28."},
+ {k:"행사",t:"제65회 GIST아카데미 조찬포럼",d0:"2026-10-26",d1:"2026-10-26",w:"10.26.(월)",o:"GIST아카데미",no:224441,p:"2026.10.28."}];
+ const g=$("#gnowg");if(g){const T=new Date();T.setHours(0,0,0,0);const dd=x=>new Date(x+"T00:00:00");
+  const st=e=>{const a=dd(e.d0),b=dd(e.d1);if(T<a)return ["up",Math.round((a-T)/864e5)];if(T<=b)return ["on",0];return ["past",0];};
+  const L=EV.map(e=>({e,s:st(e)})).sort((x,y)=>{const o={on:0,up:1,past:2};return o[x.s[0]]-o[y.s[0]]||(x.s[0]==="past"?dd(y.e.d1)-dd(x.e.d1):dd(x.e.d0)-dd(y.e.d0));});
+  const lab=s=>s[0]==="up"?'<span class="gn-st up">D-'+s[1]+'</span>':s[0]==="on"?'<span class="gn-st on">진행 중</span>':'<span class="gn-st past">지난 소식</span>';
+  const cardH=({e,s},i)=>'<a class="gn-c'+(i===0?' big':'')+(s[0]==="past"?' is-past':'')+'" href="https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no='+e.no+'"'+EXT+'><span class="gn-top"><span class="gn-k">'+esc(e.k)+'</span>'+lab(s)+'</span><b>'+esc(e.t)+'</b><span class="gn-w"><i aria-hidden="true">'+'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>'+'</i>'+esc(e.w)+'</span><span class="gn-o">'+esc(e.o)+' · 게시 '+esc(e.p)+' ↗</span></a>';
+  g.innerHTML=L.slice(0,5).map(cardH).join("")+(L.length>5?'<ul class="gn-more">'+L.slice(5).map(({e,s})=>'<li><a href="https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no='+e.no+'"'+EXT+'>'+lab(s)+'<span class="gn-mk">'+esc(e.k)+'</span><b>'+esc(e.t)+'</b><span class="gn-mw">'+esc(e.w)+'</span></a></li>').join("")+'</ul>':'');}}
+{const VS={
+ tutorial:[["학적팀",[["교과과정·증명서","2053"],["대학 학적","2057"],["대학원 학적","2052"]]],"GIST 학사공지 원문 (2026.11.5. 수집)"],
+ story:[["대외홍보팀",[["국내 언론홍보","2062"],["온라인 홍보·홈페이지","2063"]]],"GIST 미디어센터 게시판·언론 보도 원문 (2026.11.11. 확인)"],
+ search:[["정보운영팀",[["통합홈페이지","2071"]]],"현행 홈페이지 직원검색 686건·학과 홈페이지 교수진 (2026.11.11. 확인)"],
+ colleges:[["각 학과 사무실",[]],"현행 홈페이지 ‘대학·학과’ 원문 (2026.11.11. 확인)"]};
+ Object.keys(VS).forEach(v=>{const host=$("#v-"+v);if(!host||host.querySelector(".vstrip"))return;const [d,tels]=VS[v][0];const el=document.createElement("div");el.className="wrap vstrip";el.setAttribute("role","note");el.setAttribute("aria-label","이 화면 정보");
+  el.innerHTML='<div><span>담당 부서</span><b>'+esc(d)+'</b>'+(tels.length?'<span class="vs-t">'+tels.map(t=>'<a class="num" href="tel:062-715-'+t[1]+'">'+esc(t[0])+' T.'+t[1]+'</a>').join("")+'</span>':'<span class="vs-t"><a href="#colleges">학과 화면마다 전화번호</a></span>')+'</div><div><span>자료·확인일</span><b>'+esc(VS[v][1])+'</b></div><div><span>정보가 틀렸다면</span><b>담당 부서로 알려 주세요</b><span class="vs-t">구축 때는 관리자 모드에서 바로 고칩니다</span></div>';host.appendChild(el);});}
 /* 학과 홈페이지 바로가기(실제 주소) */
 Object.keys(DEPT).forEach(n=>{const D0=DEPT[n];IDX.push({s:"dept",site:n+" 홈페이지",t:n+" 홈페이지",p:D0.hp.replace(/^https:\/\//,"").replace(/\/$/,"")+" · 학과 사무실 "+(D0.tel||""),k:n+" "+(D0.e||"")+" 학과 홈페이지 "+D0.code,u:D0.hp});});
 /* 검색·명령창에 학과 소개 넣기 */
