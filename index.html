@@ -3033,7 +3033,7 @@ $("#tourbtn").addEventListener("click",()=>{
 
 /* ===== v6 ===== */
 /* 글자 크기 */
-let fz=1;try{fz=+localStorage.getItem("d6fz")||1}catch(_){}
+let fz=1;try{fz=+localStorage.getItem("d6fz")||1}catch(_){}if(fz<1){fz=1;try{localStorage.removeItem("d6fz")}catch(_){}}
 function setFz(v){fz=Math.max(.9,Math.min(1.3,Math.round(v*10)/10));document.body.style.zoom=fz===1?"":fz;try{localStorage.setItem("d6fz",fz)}catch(_){}if(window.ScrollTrigger)setTimeout(()=>ScrollTrigger.refresh(),60);}
 $("#fzm").addEventListener("click",()=>setFz(fz-.1));$("#fz0").addEventListener("click",()=>setFz(1));$("#fzp").addEventListener("click",()=>setFz(fz+.1));setFz(fz);
 
