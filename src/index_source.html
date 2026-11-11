@@ -1,4 +1,4 @@
-<title>GIST 홈페이지 D안 v98</title>
+<title>GIST 홈페이지 D안 v99</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -2337,6 +2337,47 @@ body.hxdone .hx-dots{opacity:0;pointer-events:none}
 .rb-k{margin:4px 0 0;font-size:14px;color:var(--gray)}.rb-k b{color:var(--ink);font-size:18px}
 .rb-a .rp-go{align-self:flex-start;margin-top:4px}
 @media (max-width:760px){.rp-bl>li{grid-template-columns:minmax(0,1fr)}}
+/* v99 부서별 업무·연락처 */
+.od{display:flex;flex-direction:column;gap:22px}
+.od-top{background:#15181C;color:#fff;border-radius:24px;padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden}
+.od-top:after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(220,39,21,.45),transparent 70%);pointer-events:none}
+.od-kpi{display:flex;flex-wrap:wrap;gap:12px 34px;align-items:flex-end;position:relative;z-index:1}
+.od-kpi div{display:flex;align-items:baseline;gap:8px}.od-kpi div b{font-size:clamp(34px,4vw,52px);font-weight:800;line-height:1;letter-spacing:-.03em}.od-kpi div span{color:rgba(255,255,255,.75);font-weight:700}
+.od-rep{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:10px 16px}.od-rep span{font-size:12.5px;color:rgba(255,255,255,.75)}.od-rep b{font-size:20px}.od-rep:hover{border-color:#fff}
+.od-s{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.od-sc{display:flex;flex-wrap:wrap;gap:6px}.od-sc button{all:unset;cursor:pointer;padding:7px 14px;border-radius:999px;font-size:14px;font-weight:700;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.28)}.od-sc button[aria-pressed="true"]{background:#fff;color:#15181C;border-color:#fff}.od-sc button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.od-in{display:flex;align-items:center;gap:10px;background:#fff;border-radius:16px;padding:0 18px;min-height:62px;color:var(--ink)}.od-in svg{width:22px;height:22px;color:var(--red)}.od-in input{flex:1;min-width:0;border:0;outline:0;font-size:18px;font-weight:600;background:transparent;color:var(--ink)}.od-in:focus-within{box-shadow:0 0 0 3px rgba(220,39,21,.45)}.od-in #odn{font-size:14px;color:var(--gray);white-space:nowrap}
+.od-ch{display:flex;flex-wrap:wrap;gap:6px;align-items:center;position:relative;z-index:1}.od-ch>span{font-size:13px;color:rgba(255,255,255,.7);margin-right:4px}.od-ch .chip{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.22)}.od-ch .chip:hover{background:rgba(255,255,255,.18)}
+.od-tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px}.od-tabs button{all:unset;cursor:pointer;padding:9px 16px;border-radius:12px;font-weight:800;font-size:15px;color:var(--gray)}.od-tabs button small{font-weight:700;color:var(--mute);margin-left:2px}.od-tabs button[aria-pressed="true"]{background:var(--ink);color:#fff}.od-tabs button[aria-pressed="true"] small{color:rgba(255,255,255,.75)}.od-tabs button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.od-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.od-c{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:18px 18px 14px;border:1px solid var(--line);border-radius:18px;background:#fff;min-height:146px;transition:transform .18s,box-shadow .18s,border-color .18s;position:relative}
+.od-c:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(17,20,24,.1);border-color:#D9D4D2}.od-c:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.od-c:before{content:"";position:absolute;left:18px;top:0;width:28px;height:3px;background:var(--red);border-radius:0 0 3px 3px}
+.od-ct{font-size:12px;font-weight:800;color:var(--red-tx);letter-spacing:.02em}
+.od-c>b{font-size:18px;font-weight:900;letter-spacing:-.02em;color:var(--ink)}
+.od-kw{font-size:13.5px;color:var(--gray);line-height:1.5;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.od-cf{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);padding-top:10px;font-size:13.5px;color:var(--gray)}.od-cf>.num{font-weight:800;color:var(--ink)}.od-cf b{color:var(--ink)}.od-cf svg{width:15px;height:15px;vertical-align:-3px}
+.od-res{display:flex;flex-direction:column;gap:14px}
+.od-grp{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.od-grp header button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 18px;background:#F6F4F3}.od-grp header b{font-size:17px;font-weight:900}.od-grp header span{font-size:13.5px;color:var(--gray);font-weight:700}.od-grp header button:hover span{color:var(--red-tx)}.od-grp header button:focus-visible{outline:3px solid var(--red);outline-offset:-3px}
+.od-rows{list-style:none;margin:0;padding:0}
+.od-rows li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:12px 18px;border-top:1px solid var(--line)}.od-grp .od-rows li:first-child{border-top:0}
+.od-rd{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:baseline;line-height:1.5;font-size:15px}
+.od-ti{font-size:12.5px;font-weight:800;color:#fff;background:var(--ink);border-radius:6px;padding:1px 8px}
+.od-rows mark{background:#FFE2DD;color:inherit;border-radius:3px;padding:0 1px}
+.od-tel{font-weight:800;color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;font-size:14.5px}.od-tel:hover{border-color:var(--red);color:var(--red-tx)}
+.od-cp{all:unset;cursor:pointer;width:34px;height:34px;border-radius:999px;display:grid;place-items:center;color:var(--gray)}.od-cp svg{width:16px;height:16px}.od-cp:hover,.od-cp.ok{background:#F6F4F3;color:var(--red-tx)}.od-cp:focus-visible{outline:2px solid var(--red)}
+.od-none{border:1px dashed var(--line);border-radius:18px;padding:28px;text-align:center}.od-none p{color:var(--gray);margin:6px 0 0}
+.od-dl{position:fixed;inset:0;z-index:300;pointer-events:none}.od-dl.on{pointer-events:auto}
+.od-dim{position:absolute;inset:0;background:rgba(10,12,14,.5);opacity:0;transition:opacity .25s}.od-dl.on .od-dim{opacity:1}
+.od-pn{position:absolute;top:0;right:0;bottom:0;width:min(560px,100vw);background:#fff;transform:translateX(100%);transition:transform .32s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;overflow:auto;outline:0;box-shadow:-20px 0 60px rgba(0,0,0,.2)}.od-dl.on .od-pn{transform:none}
+.od-ph{display:flex;justify-content:space-between;gap:12px;padding:26px 24px 18px;background:#15181C;color:#fff;position:sticky;top:0;z-index:1}.od-ph .od-ct{color:#FF8A7A}.od-ph h2{margin:4px 0 6px;font-size:26px;font-weight:900;letter-spacing:-.03em}.od-ph p{margin:0;color:rgba(255,255,255,.8);font-size:14.5px}
+.od-x{all:unset;cursor:pointer;width:42px;height:42px;border-radius:999px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.35);flex:none}.od-x:focus-visible{outline:2px solid #fff}
+.od-pa{display:flex;gap:8px;flex-wrap:wrap;padding:16px 24px;border-bottom:1px solid var(--line)}.od-pa .pill{display:inline-flex;gap:6px;align-items:center}.od-pa svg{width:16px;height:16px}
+.od-all li{padding:13px 24px}.od-pn .note{padding:0 24px 24px}
+html.od-lock{overflow:hidden}
+@media (max-width:760px){.od-rep{margin-left:0;align-items:flex-start}.od-in input{font-size:16px}.od-pn{top:auto;width:100vw;height:88vh;border-radius:22px 22px 0 0;transform:translateY(100%)}.od-rows li{grid-template-columns:minmax(0,1fr) auto;}.od-rows li .od-cp{display:none}.od-g{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.od-c{min-height:132px;padding:16px 14px 12px}.od-c>b{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.od-pn,.od-dim,.od-c{transition:none}}
 </style>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -4286,6 +4327,54 @@ Object.assign(PLINK,{
 "공동연구 문의":["공동연구·연구수탁은 연구관리팀, 장비 공동활용은 중앙기기연구소에 문의합니다.",[["연구관리팀","연구수탁 담당 · T.2033","tel:0627152033","phone"],["중앙기기연구소","공동 연구장비 예약·이용","https://gaia.gist.ac.kr/","monitor"],["창업혁신진흥원","창업혁신전략센터·창업진흥센터·기술사업화센터","https://www.gist.ac.kr/kr/html/sub01/010602.html?post_dvs_cd=0603","rocket"]]]
 });
 ["감사","부서별 업무·연락처","부속기관","공동연구 문의"].forEach(n=>{PBODY[n]=()=>hubHTML(n);});
+/* v99 부서별 업무·연락처 (소속 구분 없이 부서 87곳 · 담당 업무 686건, 현행 직원검색 자료) */
+(function(){
+ const OD_T=[["all","전체"],["head","이사회·총장·부총장실"],["adm","행정 부서"],["col","대학·학과·교육"],["res","연구소·센터"]];
+ const odType=n=>/^(이사회|감사|총장|.+부총장실)$/.test(n)?"head":/(대학|학과|학부|대학원|학제전공|언어교육원)$/.test(n)?"col":/(연구소|연구원|센터|진흥원|본부)$/.test(n)?"res":"adm";
+ const DEPTS=[];const IDXD={};ORGDIR.forEach(r=>{let d=IDXD[r[0]];if(!d){d=IDXD[r[0]]={n:r[0],t:odType(r[0]),rows:[]};DEPTS.push(d);}d.rows.push(r);});
+ const STOP=/^(및|등|업무|관리|운영|지원|담당|총괄|관련|기타|대한|위한|각종|외|ㆍ|·)$/;
+ DEPTS.forEach(d=>{const c={};d.rows.forEach(r=>String(r[2]||"").split(/[\s,\/·ㆍ()\[\]]+/).forEach(w=>{w=w.replace(/(의|및)$/,"");if(w.length<2||STOP.test(w)||/장$|교수|직원|선생/.test(w))return;c[w]=(c[w]||0)+1;}));d.kw=Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,3).map(x=>x[0]);d.ext=String(d.rows[0][1]).split(/[\/, ]/)[0];});
+ const tel=e=>"062-715-"+String(e).split(/[\/, ]/)[0];
+ const split=t=>{t=String(t||"");let m=t.match(/^([^\/,]{1,12}?(?:장|관|원장|교수|팀장|부장|실장|센터장|대학장|학과장|원장|처장))\s*[\/,]\s*(.+)$/);if(m)return [m[1],m[2]];m=t.match(/^((?:교수|.{1,8}장))\/(.+)$/);if(m)return [m[1],m[2]];return ["",t];};
+ const hl=(t,q)=>{t=esc(t);if(!q)return t;const re=new RegExp("("+q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").split("").join("\\s*")+")","gi");return t.replace(re,"<mark>$1</mark>");};
+ window.__od={DEPTS,type:"all",scope:"all"};
+ const cnt=t=>t==="all"?DEPTS.length:DEPTS.filter(d=>d.t===t).length;
+ window.odHTML=function(mode){const CH=["연구비","연구과제","인사","교원","입학","창업","안전","시설","예산","채용","출장","홍보","국제","기술이전","도서","기숙사","증명서"];
+  return '<div class="od" data-mode="'+(mode||"dept")+'"><div class="od-top"><div class="od-kpi"><div><b class="num">'+DEPTS.length+'</b><span>부서</span></div><div><b class="num">'+ORGDIR.length+'</b><span>담당 업무</span></div><a class="od-rep" href="tel:062-715-2114"><span>대표전화</span><b class="num">062-715-2114</b></a></div>'+
+  '<form class="od-s" role="search" onsubmit="return false"><div class="od-sc" role="group" aria-label="찾는 범위">'+[["all","전체"],["duty","담당 업무"],["dept","부서 이름"],["ext","내선번호"]].map((x,i)=>'<button type="button" data-osc="'+x[0]+'" aria-pressed="'+(i===0)+'">'+x[1]+'</button>').join("")+'</div><label class="sr" for="odq">부서·업무·내선 찾기</label><div class="od-in"><i data-lucide="search"></i><input id="odq" type="search" autocomplete="off" placeholder="'+(mode==="duty"?"하고 싶은 일로 찾기 — 예: 증명서, 출장, 장학금":"부서·업무·내선으로 찾기 — 예: 학적팀, 증명서, 2836")+'"><span class="num" id="odn" role="status"></span></div></form>'+
+  '<div class="od-ch" aria-label="자주 찾는 업무"><span>자주 찾는 업무</span>'+CH.map(c=>'<button type="button" class="chip" data-odq="'+esc(c)+'">'+esc(c)+'</button>').join("")+'</div></div>'+
+  '<div class="od-tabs" role="group" aria-label="부서 종류">'+OD_T.map((x,i)=>'<button type="button" data-ot="'+x[0]+'" aria-pressed="'+(i===0)+'">'+x[1]+' <small class="num">'+cnt(x[0])+'</small></button>').join("")+'</div>'+
+  '<div id="odb" class="od-b"></div>'+
+  '<p class="note">출처: 현행 GIST 홈페이지 ‘조직/직원안내 › 직원검색’ 부서·내선·담당업무 '+ORGDIR.length+'건 (2026.11.11. 확인). 현행처럼 직원 이름은 싣지 않습니다. 부서 종류는 부서 이름으로 나눈 것이며, 구축 때 담당 부서가 관리자 모드에서 고칩니다. <a href="https://www.gist.ac.kr/kr/html/sub01/010602.html"'+EXT+'>현행 직원검색 ↗</a></p></div>';};
+ function card(d){return '<button type="button" class="od-c" data-od="'+esc(d.n)+'"><span class="od-ct">'+esc(OD_T.find(x=>x[0]===d.t)[1])+'</span><b>'+esc(d.n)+'</b><span class="od-kw">'+d.kw.map(esc).join(" · ")+'</span><span class="od-cf"><span class="num">T.'+esc(d.ext)+'</span><span>업무 <b class="num">'+d.rows.length+'</b>건 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span></span></button>';}
+ function rowHTML(r,q,showDept){const [ti,du]=split(r[2]);return '<li><div class="od-rd">'+(ti?'<span class="od-ti">'+hl(ti,q)+'</span>':'')+'<span>'+hl(du||"(업무 미기재)",q)+'</span>'+(showDept?'<button type="button" class="od-rdep" data-od="'+esc(r[0])+'">'+hl(r[0],q)+' ›</button>':'')+'</div><a class="od-tel num" href="tel:'+tel(r[1])+'" aria-label="'+esc(r[0])+' 내선 '+esc(r[1])+' 전화 걸기">T.'+hl(String(r[1]),q)+'</a><button type="button" class="od-cp" data-cp="'+tel(r[1])+'" aria-label="'+tel(r[1])+' 번호 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></li>';}
+ window.odRender=function(){const B=$("#odb");if(!B)return;const S=window.__od;const q=($("#odq").value||"").trim();const qn=q.replace(/\s+/g,"");const inT=d=>S.type==="all"||d.t===S.type;
+  if(!qn){B.innerHTML='<div class="od-g">'+DEPTS.filter(inT).map(card).join("")+'</div>';$("#odn").textContent=DEPTS.filter(inT).length+"곳";icons();return;}
+  const m=r=>{const s=S.scope;const D=r[0].replace(/\s+/g,""),U=String(r[2]||"").replace(/\s+/g,""),E=String(r[1]);return (s==="all"&&(D+U+E).includes(qn))||(s==="duty"&&U.includes(qn))||(s==="dept"&&D.includes(qn))||(s==="ext"&&E.includes(qn));};
+  const G=DEPTS.filter(inT).map(d=>[d,d.rows.filter(m)]).filter(x=>x[1].length);const tot=G.reduce((a,x)=>a+x[1].length,0);
+  $("#odn").textContent=tot+"건 · "+G.length+"개 부서";
+  B.innerHTML=tot?'<div class="od-res">'+G.map(([d,R])=>'<section class="od-grp"><header><button type="button" data-od="'+esc(d.n)+'"><b>'+hl(d.n,qn)+'</b><span>'+esc(OD_T.find(x=>x[0]===d.t)[1])+' · 업무 '+d.rows.length+'건 모두 보기 ›</span></button></header><ul class="od-rows">'+R.slice(0,12).map(r=>rowHTML(r,qn,false)).join("")+'</ul></section>').join("")+'</div>':'<div class="od-none"><b>맞는 업무가 없습니다.</b><p>다른 낱말로 찾거나, 대표전화 <a class="num" href="tel:062-715-2114">062-715-2114</a>로 문의해 주세요.</p></div>';icons();};
+ let lastF=null;
+ window.odOpen=function(n){const d=IDXD[n];if(!d)return;let dl=$("#oddl");if(!dl){dl=document.createElement("div");dl.id="oddl";dl.className="od-dl";dl.innerHTML='<div class="od-dim" data-odx="1"></div><section class="od-pn" role="dialog" aria-modal="true" aria-labelledby="odpt" tabindex="-1"></section>';document.body.appendChild(dl);}
+  lastF=document.activeElement;const P=dl.querySelector(".od-pn");
+  P.innerHTML='<header class="od-ph"><div><span class="od-ct">'+esc(OD_T.find(x=>x[0]===d.t)[1])+'</span><h2 id="odpt">'+esc(d.n)+'</h2><p>담당 업무 <b class="num">'+d.rows.length+'</b>건 · 대표 내선 <b class="num">'+esc(d.ext)+'</b></p></div><button type="button" class="od-x" data-odx="1" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header><div class="od-pa"><a class="pill red" href="tel:'+tel(d.ext)+'"><i data-lucide="phone"></i>'+tel(d.ext)+' 전화</a><button type="button" class="pill" data-cp="'+tel(d.ext)+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>번호 복사</button></div><ul class="od-rows od-all">'+d.rows.map(r=>rowHTML(r,"",false)).join("")+'</ul><p class="note">출처: 현행 GIST 홈페이지 직원검색 (2026.11.11. 확인)</p>';
+  dl.classList.add("on");document.documentElement.classList.add("od-lock");icons();setTimeout(()=>P.focus(),30);};
+ window.odClose=function(){const dl=$("#oddl");if(!dl)return;dl.classList.remove("on");document.documentElement.classList.remove("od-lock");if(lastF&&lastF.focus)lastF.focus();};
+ document.addEventListener("click",e=>{let t;
+  if((t=e.target.closest("[data-odx]"))){odClose();return;}
+  if((t=e.target.closest("[data-od]"))){odOpen(t.dataset.od);return;}
+  if((t=e.target.closest("[data-ot]"))){window.__od.type=t.dataset.ot;$$("[data-ot]").forEach(b=>b.setAttribute("aria-pressed",b===t));odRender();return;}
+  if((t=e.target.closest("[data-osc]"))){window.__od.scope=t.dataset.osc;$$("[data-osc]").forEach(b=>b.setAttribute("aria-pressed",b===t));odRender();return;}
+  if((t=e.target.closest("[data-odq]"))){const i=$("#odq");if(i){i.value=t.dataset.odq;window.__od.scope="all";$$("[data-osc]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.osc==="all"));odRender();}return;}
+  if((t=e.target.closest("[data-cp]"))){const v=t.dataset.cp;try{navigator.clipboard.writeText(v);}catch(_){}const o=t.getAttribute("aria-label");t.classList.add("ok");t.setAttribute("aria-label","복사됨: "+v);setTimeout(()=>{t.classList.remove("ok");t.setAttribute("aria-label",o||"");},1400);return;}
+ });
+ document.addEventListener("keydown",e=>{const dl=$("#oddl");if(!dl||!dl.classList.contains("on"))return;if(e.key==="Escape"){odClose();return;}if(e.key==="Tab"){const f=[...dl.querySelectorAll("a,button")];if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}});
+ document.addEventListener("input",e=>{if(e.target.id==="odq")odRender();});
+ addEventListener("hashchange",()=>odClose());
+ new MutationObserver(()=>{const B=$("#odb");if(B&&!B.dataset.r){B.dataset.r=1;window.__od.type="all";window.__od.scope="all";odRender();}}).observe(document.body,{childList:true,subtree:true});
+ PBODY["부서별 업무·연락처"]=()=>odHTML("dept");PBODY["업무별 담당부서"]=()=>odHTML("duty");
+})();
+
 PBODY["행사"]=()=>{const ev=NOTICES.filter(n=>n.k==="행사");return '<p class="p-lead">캠퍼스 행사와 주요 학사일정을 한곳에서 봅니다.</p><div class="calist ev2"><h3>다가오는 학사일정</h3><ul>'+EVENTS.map(e=>'<li><b>'+esc(e.t)+'</b><span class="num">2026.'+esc(e.d)+'. '+esc(e.w)+'</span></li>').join("")+'</ul></div><h3 class="p-h3">행사 공지</h3><ul class="nbd">'+(ev.length?ev.map(n=>'<li><a href="'+(n.u||NURL)+'"'+EXT+'><span class="bd-k">'+esc(n.k)+'</span><b>'+esc(n.t)+'</b><span class="bd-d num">2026.'+esc(n.d)+'</span><i data-lucide="arrow-up-right"></i></a></li>').join(""):'<li class="bd-none">등록된 행사 공지가 없습니다.</li>')+'</ul><p class="note">첫 화면 공지·학사일정과 같은 자료를 씁니다. 관리자 모드에서 고치면 여기에도 바로 반영됩니다.</p>';};
 
 const BRO="https://www.gist.ac.kr/_prog/download/?site_dvs_cd=kr&func_gbn_cd=SMedia&d_type=1&filename=";
