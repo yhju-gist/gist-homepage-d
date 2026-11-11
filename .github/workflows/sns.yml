@@ -1,0 +1,26 @@
+name: SNS 최근 글 가져오기
+on:
+  schedule:
+    - cron: "7,37 * * * *"   # 30분마다
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency: sns
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 공식 경로로 가져오기 (유튜브 RSS · 인스타그램/페이스북 Graph API)
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: python3 scripts/sns_fetch.py
+      - name: 바뀐 글이 있을 때만 저장
+        run: |
+          git config user.name "gist-sns-bot"
+          git config user.email "gist-sns-bot@users.noreply.github.com"
+          git add data/sns.json
+          git diff --cached --quiet || (git commit -m "SNS 최근 글 갱신" && git push)
