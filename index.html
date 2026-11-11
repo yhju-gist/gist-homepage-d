@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}</style></head><body>
-<title>GIST 홈페이지 D안 v95</title>
+<title>GIST 홈페이지 D안 v96</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -2297,6 +2297,29 @@ footer .wrap.ft-act{display:flex!important;flex-direction:row!important;flex-wra
 body.hxdone .hx-dots{opacity:0;pointer-events:none}
 @media (max-width:760px){.hxpin{height:180vh;margin-top:-64px}.hx-rise .rise-ci{width:92vw}.hx-rise .rise-k{letter-spacing:.16em;font-size:11px;text-align:center;padding:0 16px}.hx-rise .rise-t{font-size:18px;text-align:center;padding:0 20px}}
 @media (prefers-reduced-motion:reduce){.hxpin{height:auto;margin-top:-77px}.hxpin>.hx{position:relative;height:auto;min-height:min(92vh,900px)}.hx-rise.hx-word{position:relative;opacity:1;min-height:60vh}.hx-rise .rise-ci{clip-path:none;transform:none}.hx-rise .rise-k,.hx-rise .rise-t{opacity:1;transform:none}.hx-scroll{display:none}.hxpin>.hx{flex-wrap:wrap}}
+
+/* v96 첫 화면: 정문 G·I·S·T 기둥 사진 3장 교차 · 글자 4개에 각각 다른 사진 */
+.hx2 .hx-bg picture.hxs{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease}
+.hx2 .hx-bg picture.hxs.on{opacity:1}
+.hx2 .hx-bg picture.hxs img{animation:hxkb 16s ease-out both}
+.hx2 .hx-bg picture.hxs:not(.on) img{animation:none}
+@keyframes hxkb{from{transform:scale(1.14)}to{transform:scale(1.02)}}
+.hx2.still .hx-bg picture.hxs img{animation:none;transform:scale(1.02)}
+.hx2 .hx-shade{background:linear-gradient(90deg,rgba(6,8,12,.78) 0%,rgba(6,8,12,.42) 42%,rgba(6,8,12,.05) 75%),linear-gradient(180deg,rgba(6,8,12,.55) 0%,rgba(6,8,12,0) 24%,rgba(6,8,12,0) 62%,rgba(6,8,12,.7) 100%)}
+.hx2 h1{font-size:clamp(34px,4vw,66px);line-height:1.12;letter-spacing:-.035em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hx-dots .hxd{width:8px;height:8px}
+.hx2 .hx-dots{z-index:6}
+.hx2 .hx-copy{max-width:min(1000px,72vw)}
+.hx-rise.hx-word{padding-top:84px}
+.ltw{position:relative;width:min(88vw,1560px);aspect-ratio:226/69;margin:0 auto}
+.hx-rise .ltw{clip-path:none!important;transform:none!important;will-change:auto}
+.ltw .lt{position:absolute;top:0;height:100%;background-size:cover;background-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;will-change:transform,opacity;filter:contrast(1.08) saturate(1.08)}
+.ltw .lt-g{left:0.0000%;width:34.3473%;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0.000 0 77.625 69' preserveAspectRatio='none'%3E%3Cpath transform='translate%280 -13.421%29 scale%284.3125%29' d='M8.7202 12.4499H11.4414V15.4043H8.1732C5.8713 15.4043 4.0054 13.4833 4.0054 11.1134C4.0054 8.74359 5.8713 6.82256 8.1732 6.82256H14.3139L18 3.112H7.7706C3.4792 3.112 0 6.69392 0 11.112C0 15.5301 3.4792 19.112 7.7706 19.112H15.3621V9.4068H11.7427L8.7189 12.4484L8.7202 12.4499Z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0.000 0 77.625 69' preserveAspectRatio='none'%3E%3Cpath transform='translate%280 -13.421%29 scale%284.3125%29' d='M8.7202 12.4499H11.4414V15.4043H8.1732C5.8713 15.4043 4.0054 13.4833 4.0054 11.1134C4.0054 8.74359 5.8713 6.82256 8.1732 6.82256H14.3139L18 3.112H7.7706C3.4792 3.112 0 6.69392 0 11.112C0 15.5301 3.4792 19.112 7.7706 19.112H15.3621V9.4068H11.7427L8.7189 12.4484L8.7202 12.4499Z'/%3E%3C/svg%3E")}
+.ltw .lt-i{left:34.6460%;width:7.8319%;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='78.300 0 17.700 69' preserveAspectRatio='none'%3E%3Cpath d='M79.43 68.91C78.97 68.82 78.65 68.60 78.50 68.27L78.37 68.02L78.37 42.93C78.37 20.08 78.38 17.81 78.47 17.50C78.64 16.95 78.97 16.46 79.71 15.72C81.01 14.41 93.79 1.89 94.16 1.56C94.97 0.85 95.43 0.81 95.71 1.43L95.84 1.72L95.86 34.69C95.87 58.42 95.86 67.75 95.81 67.99C95.73 68.39 95.48 68.69 95.11 68.85L94.84 68.97L87.31 68.98C81.57 68.99 79.70 68.97 79.43 68.91Z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='78.300 0 17.700 69' preserveAspectRatio='none'%3E%3Cpath d='M79.43 68.91C78.97 68.82 78.65 68.60 78.50 68.27L78.37 68.02L78.37 42.93C78.37 20.08 78.38 17.81 78.47 17.50C78.64 16.95 78.97 16.46 79.71 15.72C81.01 14.41 93.79 1.89 94.16 1.56C94.97 0.85 95.43 0.81 95.71 1.43L95.84 1.72L95.86 34.69C95.87 58.42 95.86 67.75 95.81 67.99C95.73 68.39 95.48 68.69 95.11 68.85L94.84 68.97L87.31 68.98C81.57 68.99 79.70 68.97 79.43 68.91Z'/%3E%3C/svg%3E")}
+.ltw .lt-s{left:46.8142%;width:25.6637%;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='105.800 0 58.000 69' preserveAspectRatio='none'%3E%3Cpath d='M107.00 68.94C106.47 68.83 106.17 68.54 106.06 68.02C106.02 67.82 106.00 65.41 106.01 60.78L106.03 53.84L106.15 53.62C106.30 53.33 106.43 53.20 106.66 53.07C106.83 52.98 108.23 52.97 124.06 52.93C143.30 52.90 141.60 52.94 142.64 52.45C143.98 51.82 144.73 51.11 145.36 49.84C145.77 49.04 145.83 48.80 145.86 47.90C145.89 46.91 145.78 46.42 145.31 45.50C144.50 43.94 143.45 43.15 141.64 42.74L141.03 42.60L133.44 42.56C125.11 42.51 125.68 42.54 123.11 42.10C121.77 41.87 121.38 41.76 119.72 41.14C116.23 39.84 112.99 37.48 110.60 34.47C109.69 33.33 108.50 31.43 108.06 30.42C107.95 30.17 107.71 29.63 107.53 29.21C107.22 28.51 106.97 27.70 106.43 25.62C106.02 24.00 105.87 20.31 106.15 18.41C106.37 16.90 107.14 14.09 107.58 13.22C107.65 13.08 107.82 12.69 107.96 12.34C108.27 11.59 109.15 10.05 109.80 9.13C112.00 5.98 115.14 3.37 118.49 1.89C120.17 1.15 120.07 1.18 122.80 0.47C124.57 0.00 122.97 0.04 143.03 0.02C161.45 -0.00 161.67 -0.00 162.00 0.24C162.50 0.61 162.36 0.95 161.34 1.94C160.93 2.33 159.98 3.26 159.22 4.00C158.46 4.75 156.16 7.00 154.09 9.01C152.03 11.02 149.72 13.27 148.96 14.01C147.52 15.42 147.20 15.68 146.66 15.90L146.34 16.03L137.34 16.07C127.14 16.11 127.98 16.06 126.78 16.65C125.63 17.21 124.85 17.93 124.32 18.93C123.72 20.07 123.64 21.99 124.15 23.25C124.67 24.52 126.02 25.74 127.30 26.09C128.46 26.41 128.08 26.39 136.19 26.44C141.37 26.47 143.95 26.51 144.31 26.56C146.10 26.80 147.87 27.14 148.43 27.33C150.25 27.98 151.00 28.28 151.85 28.71C157.10 31.37 160.90 35.88 162.76 41.66C163.22 43.10 163.65 46.45 163.60 48.19C163.55 49.91 163.07 52.89 162.66 54.06C160.69 59.64 157.61 63.47 152.88 66.22C152.13 66.65 151.63 66.89 149.92 67.63C149.54 67.80 148.96 67.97 146.68 68.57C145.07 68.99 146.68 68.96 125.94 68.98C115.64 68.98 107.12 68.97 107.00 68.94Z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='105.800 0 58.000 69' preserveAspectRatio='none'%3E%3Cpath d='M107.00 68.94C106.47 68.83 106.17 68.54 106.06 68.02C106.02 67.82 106.00 65.41 106.01 60.78L106.03 53.84L106.15 53.62C106.30 53.33 106.43 53.20 106.66 53.07C106.83 52.98 108.23 52.97 124.06 52.93C143.30 52.90 141.60 52.94 142.64 52.45C143.98 51.82 144.73 51.11 145.36 49.84C145.77 49.04 145.83 48.80 145.86 47.90C145.89 46.91 145.78 46.42 145.31 45.50C144.50 43.94 143.45 43.15 141.64 42.74L141.03 42.60L133.44 42.56C125.11 42.51 125.68 42.54 123.11 42.10C121.77 41.87 121.38 41.76 119.72 41.14C116.23 39.84 112.99 37.48 110.60 34.47C109.69 33.33 108.50 31.43 108.06 30.42C107.95 30.17 107.71 29.63 107.53 29.21C107.22 28.51 106.97 27.70 106.43 25.62C106.02 24.00 105.87 20.31 106.15 18.41C106.37 16.90 107.14 14.09 107.58 13.22C107.65 13.08 107.82 12.69 107.96 12.34C108.27 11.59 109.15 10.05 109.80 9.13C112.00 5.98 115.14 3.37 118.49 1.89C120.17 1.15 120.07 1.18 122.80 0.47C124.57 0.00 122.97 0.04 143.03 0.02C161.45 -0.00 161.67 -0.00 162.00 0.24C162.50 0.61 162.36 0.95 161.34 1.94C160.93 2.33 159.98 3.26 159.22 4.00C158.46 4.75 156.16 7.00 154.09 9.01C152.03 11.02 149.72 13.27 148.96 14.01C147.52 15.42 147.20 15.68 146.66 15.90L146.34 16.03L137.34 16.07C127.14 16.11 127.98 16.06 126.78 16.65C125.63 17.21 124.85 17.93 124.32 18.93C123.72 20.07 123.64 21.99 124.15 23.25C124.67 24.52 126.02 25.74 127.30 26.09C128.46 26.41 128.08 26.39 136.19 26.44C141.37 26.47 143.95 26.51 144.31 26.56C146.10 26.80 147.87 27.14 148.43 27.33C150.25 27.98 151.00 28.28 151.85 28.71C157.10 31.37 160.90 35.88 162.76 41.66C163.22 43.10 163.65 46.45 163.60 48.19C163.55 49.91 163.07 52.89 162.66 54.06C160.69 59.64 157.61 63.47 152.88 66.22C152.13 66.65 151.63 66.89 149.92 67.63C149.54 67.80 148.96 67.97 146.68 68.57C145.07 68.99 146.68 68.96 125.94 68.98C115.64 68.98 107.12 68.97 107.00 68.94Z'/%3E%3C/svg%3E")}
+.ltw .lt-t{left:72.5221%;width:27.5664%;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='163.900 0 62.300 69' preserveAspectRatio='none'%3E%3Cpath d='M186.92 68.91C186.56 68.81 186.29 68.57 186.16 68.22C186.07 68.00 186.06 65.22 186.05 42.56C186.03 15.27 186.05 17.00 185.73 16.54C185.66 16.44 185.48 16.30 185.32 16.23L185.03 16.09L174.88 16.06C167.12 16.04 164.68 16.01 164.55 15.96C164.12 15.76 164.02 15.43 164.26 14.99C164.37 14.79 174.36 4.96 178.01 1.45C179.15 0.36 179.43 0.17 180.07 0.06C180.35 0.02 186.93 0.00 202.78 0.01L225.09 0.03L225.35 0.17C225.67 0.34 225.85 0.58 225.93 0.94C225.97 1.12 226.00 3.65 226.00 8.04C226.00 15.48 226.01 15.29 225.64 15.64C225.20 16.06 226.07 16.03 214.75 16.06C206.66 16.09 204.49 16.11 204.35 16.17C204.03 16.32 203.81 16.51 203.67 16.77L203.53 17.03L203.50 42.56C203.47 66.12 203.46 68.11 203.37 68.28C203.23 68.54 203.08 68.66 202.72 68.83L202.41 68.97L194.81 68.98C188.74 68.99 187.16 68.98 186.92 68.91Z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='163.900 0 62.300 69' preserveAspectRatio='none'%3E%3Cpath d='M186.92 68.91C186.56 68.81 186.29 68.57 186.16 68.22C186.07 68.00 186.06 65.22 186.05 42.56C186.03 15.27 186.05 17.00 185.73 16.54C185.66 16.44 185.48 16.30 185.32 16.23L185.03 16.09L174.88 16.06C167.12 16.04 164.68 16.01 164.55 15.96C164.12 15.76 164.02 15.43 164.26 14.99C164.37 14.79 174.36 4.96 178.01 1.45C179.15 0.36 179.43 0.17 180.07 0.06C180.35 0.02 186.93 0.00 202.78 0.01L225.09 0.03L225.35 0.17C225.67 0.34 225.85 0.58 225.93 0.94C225.97 1.12 226.00 3.65 226.00 8.04C226.00 15.48 226.01 15.29 225.64 15.64C225.20 16.06 226.07 16.03 214.75 16.06C206.66 16.09 204.49 16.11 204.35 16.17C204.03 16.32 203.81 16.51 203.67 16.77L203.53 17.03L203.50 42.56C203.47 66.12 203.46 68.11 203.37 68.28C203.23 68.54 203.08 68.66 202.72 68.83L202.41 68.97L194.81 68.98C188.74 68.99 187.16 68.98 186.92 68.91Z'/%3E%3C/svg%3E")}
+@media (max-width:760px){.hx2 .hx-dots{bottom:auto;top:84px;left:auto;right:12px}.hx2 .hx-copy{max-width:none}.hx-rise.hx-word{padding-top:64px}.ltw{width:92vw}.hx2 h1{font-size:clamp(28px,8vw,40px)}}
+@media (prefers-reduced-motion:reduce){.ltw .lt{opacity:1!important;transform:none!important}.hx2 .hx-bg picture.hxs img{animation:none}}
 </style>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -2325,7 +2348,7 @@ body.hxdone .hx-dots{opacity:0;pointer-events:none}
   <!-- 1. 첫 화면: 전면 캠퍼스 사진 + 거대 GIST + 가운데 검색 -->
   <div class="hxpin" id="hxpin">
   <section class="hx hx2" aria-label="첫 화면">
-    <div class="hx-bg" aria-hidden="true"><picture><source media="(max-width:760px)" srcset="img/hvm2.jpg"><img id="hxImg" class="on" src="img/hv4.jpg" alt="" fetchpriority="high" decoding="async"></picture></div>
+    <div class="hx-bg" aria-hidden="true"><picture class="hxs on"><source media="(max-width:760px)" srcset="img/hxm_a.jpg"><img id="hxImg" src="img/hx_a.jpg" alt="" fetchpriority="high" decoding="async"></picture><picture class="hxs"><source media="(max-width:760px)" srcset="img/hxm_b2.jpg"><img src="img/hx_b.jpg" alt="" decoding="async"></picture><picture class="hxs"><source media="(max-width:760px)" srcset="img/hxm_c.jpg"><img src="img/hx_c.jpg" alt="" decoding="async"></picture></div>
     <div class="hx-shade" aria-hidden="true"></div>
     <div class="wrap hx-in">
       <div class="hx-copy">
@@ -2335,11 +2358,11 @@ body.hxdone .hx-dots{opacity:0;pointer-events:none}
         <a class="p-pill red hx-cta" href="https://www.gist.ac.kr/kr/html/sub01/010301.html" target="_blank" rel="noopener noreferrer">GIST 소개 <i data-lucide="arrow-right"></i></a>
       </div>
     </div>
-    <div class="hx-dots" id="hxdots"><button type="button" class="hx-pz" id="hxpz" aria-label="배경 움직임 멈춤" aria-pressed="false"><i data-lucide="pause"></i></button></div>
-    <span class="hx-cr">사진 © GIST</span>
+    <div class="hx-dots" id="hxdots"><button type="button" class="hxd" aria-label="첫 화면 사진 1: 하늘로 솟은 정문 G·I 기둥" aria-current="true"></button><button type="button" class="hxd" aria-label="첫 화면 사진 2: 밤의 정문 G·I·S·T 기둥" aria-current="false"></button><button type="button" class="hxd" aria-label="첫 화면 사진 3: 캠퍼스 야경" aria-current="false"></button><button type="button" class="hx-pz" id="hxpz" aria-label="배경 움직임 멈춤" aria-pressed="false"><i data-lucide="pause"></i></button></div>
+    <span class="hx-cr">사진 © GIST 미디어센터 갤러리 (정문 사진 공모전 수상작 · 2025.7. 전경)</span>
     <div class="hx-rise hx-word" id="hxrise" aria-hidden="true">
       <p class="rise-k">Gwangju Institute of Science and Technology</p>
-      <div class="hx-giant hx-ci rise-ci" style="background-image:url(img/p_night.jpg)"></div>
+      <div class="rise-ci ltw" role="img" aria-label="GIST"><span class="lt lt-g" style="background-image:url(img/lt_g.jpg)"></span><span class="lt lt-i" style="background-image:url(img/lt_i.jpg)"></span><span class="lt lt-s" style="background-image:url(img/lt_s.jpg)"></span><span class="lt lt-t" style="background-image:url(img/lt_t.jpg)"></span></div>
       <ul class="rise-v" aria-label="GIST 핵심가치">
         <li><b>G</b><span>Global asset</span><small>글로벌 지식자산의 창출</small></li>
         <li><b>I</b><span>Insight innovation</span><small>글로벌 과학기술 인재</small></li>
@@ -2347,7 +2370,7 @@ body.hxdone .hx-dots{opacity:0;pointer-events:none}
         <li><b>T</b><span>Tolerance for trust</span><small>배려와 신뢰의 조직문화</small></li>
       </ul>
       <p class="rise-t">보다 나은 미래를 만들기 위하여, 우리 함께 <b>지스트</b></p>
-      <span class="rise-cr">핵심가치 출처: GIST 홈페이지 VISION · 글자 속 사진: GIST 미디어센터 갤러리(2025.7. 전경)</span>
+      <span class="rise-cr">핵심가치 출처: GIST 홈페이지 VISION · 글자 속 사진: GIST 미디어센터 갤러리(정문 사진 공모전 수상작 · 2025.6. 전경)</span>
     </div>
     <span class="hx-scroll" id="hxscroll" aria-hidden="true">스크롤<i></i></span>
   </section>
@@ -2450,8 +2473,8 @@ body.hxdone .hx-dots{opacity:0;pointer-events:none}
   <section class="p-sec p-gal" aria-labelledby="p-h-gal"><div class="wrap">
     <h2 class="p-tit" id="p-h-gal">사진으로 보는 GIST</h2>
     <p class="p-sub">GIST 미디어센터 갤러리에 올라온 캠퍼스 사진입니다. 누르면 갤러리에서 더 볼 수 있습니다.</p>
-    <div class="gal5"><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/p_night.jpg" alt="불 밝힌 중앙 연못과 본관" loading="lazy" decoding="async"><span><b>밤</b>불 밝힌 중앙 연못과 본관</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/p_spring.jpg" alt="벚꽃 핀 캠퍼스 길" loading="lazy" decoding="async"><span><b>봄</b>벚꽃 핀 캠퍼스 길</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/p_bldg.jpg" alt="파란 하늘 아래 연구동" loading="lazy" decoding="async"><span><b>여름</b>파란 하늘 아래 연구동</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/p_gate_autumn.jpg" alt="단풍 든 정문과 첨단기둥" loading="lazy" decoding="async"><span><b>가을</b>단풍 든 정문과 첨단기둥</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/p_winter_air.jpg" alt="눈 덮인 캠퍼스 전경" loading="lazy" decoding="async"><span><b>겨울</b>눈 덮인 캠퍼스 전경</span></a></div>
-    <p class="note">사진 © GIST 미디어센터 갤러리(2024~2025년 게시). 구축 때 대외홍보팀이 관리자 화면에서 바꿉니다.</p>
+    <div class="gal5"><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/gal_night.jpg" alt="불 밝힌 중앙 연못과 본관" loading="lazy" decoding="async"><span><b>밤</b>불 밝힌 중앙 연못과 본관</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/p_spring.jpg" alt="벚꽃 핀 캠퍼스 길" loading="lazy" decoding="async"><span><b>봄</b>벚꽃 핀 캠퍼스 길</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/p_bldg.jpg" alt="파란 하늘 아래 연구동" loading="lazy" decoding="async"><span><b>여름</b>파란 하늘 아래 연구동</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/gal_gate.jpg" alt="구름 아래 정문 G·I·S·T 기둥" loading="lazy" decoding="async"><span><b>정문</b>구름 아래 G·I·S·T 기둥</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="img/p_winter_air.jpg" alt="눈 덮인 캠퍼스 전경" loading="lazy" decoding="async"><span><b>겨울</b>눈 덮인 캠퍼스 전경</span></a></div>
+    <p class="note">사진 © GIST 미디어센터 갤러리(2024~2025년 게시, 정문 사진 공모전 수상작 포함). 구축 때 대외홍보팀이 관리자 화면에서 바꿉니다.</p>
   </div></section>
 
   <!-- H. SNS -->
@@ -2731,7 +2754,7 @@ body.hxdone .hx-dots{opacity:0;pointer-events:none}
 
 <!-- ============ 반영표 ============ -->
 <div class="view" id="v-en" lang="en">
-  <section class="en-hero" aria-labelledby="en-h1"><img src="img/hv4.jpg" alt="Autumn road on the GIST campus" loading="lazy" decoding="async"><div class="wrap"><p class="en-k">Gwangju Institute of Science and Technology</p><h1 id="en-h1">Creating limitless possibilities through research and education</h1><div class="en-cta"><a class="p-pill red" href="#en-col">Colleges &amp; Departments</a><a class="p-pill" href="https://www.gist.ac.kr/en/main.html" target="_blank" rel="noopener noreferrer">Official English site ↗</a></div></div></section>
+  <section class="en-hero" aria-labelledby="en-h1"><img src="img/hx_c.jpg" alt="GIST campus at night, seen from above" loading="lazy" decoding="async"><div class="wrap"><p class="en-k">Gwangju Institute of Science and Technology</p><h1 id="en-h1">Creating limitless possibilities through research and education</h1><div class="en-cta"><a class="p-pill red" href="#en-col">Colleges &amp; Departments</a><a class="p-pill" href="https://www.gist.ac.kr/en/main.html" target="_blank" rel="noopener noreferrer">Official English site ↗</a></div></div></section>
   <section class="p-sec en-sec" aria-labelledby="en-h-v"><div class="wrap"><h2 class="p-tit" id="en-h-v">Our Values<span class="p-ko">G · I · S · T</span></h2>
     <ul class="en-val"><li><b>G</b><span>Global asset</span><small>Creating global knowledge assets</small></li><li><b>I</b><span>Insight innovation</span><small>Educating global science and technology talent</small></li><li><b>S</b><span>Solution 4 securities</span><small>Solutions to the nation’s four great challenges</small></li><li><b>T</b><span>Tolerance for trust</span><small>A culture of care and trust</small></li></ul></div></section>
   <section class="p-sec en-sec en-num" aria-labelledby="en-h-n"><div class="wrap"><h2 class="p-tit" id="en-h-n">By the Numbers<span class="p-ko">Facts drawn from the Korean D-plan pages and their sources</span></h2>
@@ -3758,6 +3781,7 @@ const MGI=[["p_night2.jpg","About GIST"],["p_gate_autumn.jpg","Colleges"],["hero
 
 /* ===== v15: 포스텍 문법 첫 화면 ===== */
 const CEN={"연구성과":"Research","사람":"People","보도자료":"In the Media","영상":"Video","캠퍼스":"Campus","공지":"Notice"};
+function cen(s){return /^언론 보도/.test(s.s||"")?"Press":CEN[s.c];}
 const ICO_AR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
 /* v72 GIST Insight 표지 그래픽: 실제 사진이 없는 글은 캠퍼스 자료 사진 대신 주제 그래픽 표지를 그림 */
@@ -3874,7 +3898,7 @@ setTimeout(()=>{const h=document.getElementById("encols");if(!h||typeof COLLEGES
    const a=ease(cl(p/0.45));bg.style.opacity=(1-a).toFixed(3);bg.style.transform="scale("+(1+0.12*a).toFixed(4)+")";
    if(cp){cp.style.opacity=(1-cl(p/0.25)).toFixed(3);cp.style.transform="translateY("+(-60*cl(p/0.3)).toFixed(1)+"px)";}
    rise.style.opacity=cl((p-0.12)/0.25).toFixed(3);
-   const g=ease(cl((p-0.22)/0.4));ci.style.clipPath="inset("+(100-100*g).toFixed(2)+"% 0 0 0)";ci.style.transform="translateY("+(18*(1-g)).toFixed(2)+"%)";
+   ci.querySelectorAll(".lt").forEach((l,j)=>{const v=ease(cl((p-0.2-j*0.06)/0.32));l.style.opacity=cl(v*1.4).toFixed(3);l.style.transform="translateY("+(40*(1-v)).toFixed(2)+"%) scale("+(1.18-0.18*v).toFixed(4)+")";l.style.backgroundPosition="50% "+(50+18*(1-v)).toFixed(1)+"%";});
    const kk=cl((p-0.5)/0.2);k.style.opacity=kk.toFixed(3);rise.querySelectorAll(".rise-v li").forEach((li,j)=>{const v=ease(cl((p-0.55-j*0.05)/0.2));li.style.opacity=v.toFixed(3);li.style.transform="translateY("+(14*(1-v)).toFixed(1)+"px)";});const tt=ease(cl((p-0.62)/0.25));t.style.opacity=tt.toFixed(3);t.style.transform="translateY("+(16*(1-tt)).toFixed(1)+"px)";
    if(sc)sc.style.opacity=(1-cl(p/0.1)).toFixed(2);document.body.classList.toggle("hxdone",p>0.3);};
   addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(run);},{passive:true});addEventListener("resize",run);addEventListener("hashchange",()=>setTimeout(run,60));run();}}
@@ -3893,7 +3917,7 @@ function exTag(e){return e?'<span class="p-ex">캠퍼스 자료 사진</span>':'
 let pmSw=null;
 function renderMain(){
  const L=STORIES.slice().sort((a,b)=>sImg(a).ex-sImg(b).ex).slice(0,7);
- $("#pmain").innerHTML=L.map(s=>{const im=sImg(s);return '<div class="swiper-slide"><a class="mc" href="'+stH(s)+'"><img src="'+im.u+'" alt="" loading="lazy">'+exTag(im.ex)+'<span class="mc-tx"><span class="mc-k">'+esc(CEN[s.c]||s.c)+'</span><b>'+esc(s.t)+'</b><small>'+esc(s.s)+'</small><time class="num">'+esc(s.d)+'</time></span><span class="notch" aria-hidden="true"><i>'+ICO_AR+'</i></span></a></div>';}).join("");
+ $("#pmain").innerHTML=L.map(s=>{const im=sImg(s);return '<div class="swiper-slide"><a class="mc" href="'+stH(s)+'"><img src="'+im.u+'" alt="" loading="lazy">'+exTag(im.ex)+'<span class="mc-tx"><span class="mc-k">'+esc(cen(s)||s.c)+'</span><b>'+esc(s.t)+'</b><small>'+esc(s.s)+'</small><time class="num">'+esc(s.d)+'</time></span><span class="notch" aria-hidden="true"><i>'+ICO_AR+'</i></span></a></div>';}).join("");
  $("#pmdots").innerHTML=L.map((_,i)=>'<button type="button" aria-label="'+(i+1)+'번째 소식" aria-current="'+(i===0)+'"></button>').join("");
  if(window.Swiper){if(pmSw)pmSw.destroy(true,true);
   pmSw=new Swiper("#pmsw",{slidesPerView:"auto",spaceBetween:18,grabCursor:true,keyboard:{enabled:true},a11y:{prevSlideMessage:"이전 소식",nextSlideMessage:"다음 소식"},autoplay:RM?false:{delay:5000,disableOnInteraction:false,pauseOnMouseEnter:true},
@@ -3907,7 +3931,7 @@ $("#pmstop").addEventListener("click",e=>{const b=e.currentTarget;if(!pmSw||!pmS
 let pnAll=false;
 function renderNews(){
  const L=STORIES.slice().sort((a,b)=>(b.d||b.m).replace(/\D/g,"").padEnd(8,"0").localeCompare((a.d||a.m).replace(/\D/g,"").padEnd(8,"0"))).slice(0,pnAll?STORIES.length:8);
- $("#pnews").innerHTML=L.map(s=>{const im=sImg(s);return '<a class="nc2" href="'+stH(s)+'"><span class="ph"><img src="'+im.u+'" alt="" loading="lazy">'+exTag(im.ex)+'<span class="tabcut'+(s.c==="연구성과"?' r':'')+'">'+esc(CEN[s.c]||s.c)+'</span></span><span class="bd"><b>'+esc(s.t)+'</b><time class="num">'+esc(s.d)+'</time></span></a>';}).join("");
+ $("#pnews").innerHTML=L.map(s=>{const im=sImg(s);return '<a class="nc2" href="'+stH(s)+'"><span class="ph"><img src="'+im.u+'" alt="" loading="lazy">'+exTag(im.ex)+'<span class="tabcut'+(s.c==="연구성과"?' r':'')+'">'+esc(cen(s)||s.c)+'</span></span><span class="bd"><b>'+esc(s.t)+'</b><time class="num">'+esc(s.d)+'</time></span></a>';}).join("");
  $("#pnews").classList.toggle("all",pnAll);
  const m=$("#pnmore");m.hidden=STORIES.length<=8&&innerWidth>760;m.setAttribute("aria-expanded",pnAll);m.setAttribute("aria-label",pnAll?"소식 접기":"소식 더 보기");m.innerHTML='<i data-lucide="'+(pnAll?"minus":"plus")+'"></i>';icons();
 }
@@ -3922,7 +3946,7 @@ function renderWords(){
 function renderPStory(){
  const pick=STORIES.filter(s=>s.c==="사람"||s.c==="영상"||s.c==="보도자료").slice(0,4);
  const L=pick.length>=4?pick:pick.concat(STORIES.filter(s=>!pick.includes(s))).slice(0,4);
- $("#pstory").innerHTML=L.map(s=>{const im=sImg(s);return '<a class="sc2" href="'+stH(s)+'"><span class="ph"><img src="'+im.u+'" alt="" loading="lazy">'+exTag(im.ex)+'<span class="tabcut">'+esc(CEN[s.c]||s.c)+'</span></span><b>'+esc(s.t)+'</b><small>'+esc(s.s)+' · '+esc(s.d)+'</small></a>';}).join("");
+ $("#pstory").innerHTML=L.map(s=>{const im=sImg(s);return '<a class="sc2" href="'+stH(s)+'"><span class="ph"><img src="'+im.u+'" alt="" loading="lazy">'+exTag(im.ex)+'<span class="tabcut">'+esc(cen(s)||s.c)+'</span></span><b>'+esc(s.t)+'</b><small>'+esc(s.s)+' · '+esc(s.d)+'</small></a>';}).join("");
 }
 /* H SNS */
 function renderPSns(){
@@ -3973,7 +3997,11 @@ document.addEventListener("click",e=>{const b=e.target.closest(".pbar .tools but
 {const hx=$(".hx2"),b=$("#hxpz");if(RM){hx.classList.add("still");b.setAttribute("aria-pressed","true");}
  b.onclick=()=>{const st=hx.classList.toggle("still");b.setAttribute("aria-pressed",st);b.setAttribute("aria-label",st?"배경 움직임 재생":"배경 움직임 멈춤");b.innerHTML='<i data-lucide="'+(st?"play":"pause")+'"></i>';icons();};
  const HMOB=$(".hx-bg source").getAttribute("srcset");
- setHeroImg=function(u){const s0=u||HERO0;$("#hxImg").src=s0;$(".hx-bg source").setAttribute("srcset",u||HMOB);};}
+ let hxCustom=false;setHeroImg=function(u){const s0=u||HERO0;hxCustom=!!u;$("#hxImg").src=s0;$(".hx-bg source").setAttribute("srcset",u||HMOB);if(u)hxGo(0);};
+ const HS=$$(".hx-bg picture.hxs"),HD=$$("#hxdots .hxd");let hxI=0,hxT=0;
+ function hxGo(n){hxI=(n+HS.length)%HS.length;HS.forEach((x,k)=>x.classList.toggle("on",k===hxI));HD.forEach((x,k)=>x.setAttribute("aria-current",k===hxI));HD.forEach(x=>x.hidden=hxCustom);}
+ function hxTick(){clearTimeout(hxT);hxT=setTimeout(()=>{if(!hx.classList.contains("still")&&!hxCustom&&!document.hidden&&!document.body.classList.contains("hxdone"))hxGo(hxI+1);hxTick();},7000);}
+ HD.forEach((x,k)=>x.addEventListener("click",()=>{hxGo(k);hxTick();}));hxTick();}
 
 /* 학과 상징 그림 (직접 그린 SVG) */
 var DART=(function(){
@@ -4026,7 +4054,7 @@ document.querySelectorAll(".page-h.pv").forEach(h=>{const en=h.querySelector(".p
 
 /* v19 GIST Insight 목록 카드도 접힌 꼬리표 */
 storyCard=function(s,big){const im=sImg(s);
- return '<a class="nc2 gcard'+(big?' big':'')+'" href="'+stH(s)+'"><span class="ph"><img src="'+im.u+'" alt="" loading="lazy">'+exTag(im.ex)+'<span class="tabcut'+(s.c==="연구성과"?' r':'')+'">'+esc(CEN[s.c]||s.c)+'</span></span><span class="bd"><span class="gk">'+esc(s.c)+'</span><b>'+esc(s.t)+'</b>'+(big&&s.sum&&s.sum[0]?'<p class="gsum">'+esc(s.sum[0])+'</p>':'')+'<small>'+esc(s.s)+'</small><time class="num">'+esc(s.d)+((window.__RT||[])[STORIES.indexOf(s)]?' · 원문 약 '+window.__RT[STORIES.indexOf(s)]+'분':'')+'</time></span></a>';};
+ return '<a class="nc2 gcard'+(big?' big':'')+'" href="'+stH(s)+'"><span class="ph"><img src="'+im.u+'" alt="" loading="lazy">'+exTag(im.ex)+'<span class="tabcut'+(s.c==="연구성과"?' r':'')+'">'+esc(cen(s)||s.c)+'</span></span><span class="bd"><span class="gk">'+esc(s.c)+'</span><b>'+esc(s.t)+'</b>'+(big&&s.sum&&s.sum[0]?'<p class="gsum">'+esc(s.sum[0])+'</p>':'')+'<small>'+esc(s.s)+'</small><time class="num">'+esc(s.d)+((window.__RT||[])[STORIES.indexOf(s)]?' · 원문 약 '+window.__RT[STORIES.indexOf(s)]+'분':'')+'</time></span></a>';};
 renderStory();
 addEventListener("lazylibs",()=>{try{
  if(window.tippy)tippy(".rail [data-tip]",{content:r=>r.dataset.tip,placement:"left",theme:"gist"});
@@ -4278,7 +4306,7 @@ function renderStoryDetail(n){const S0=STORIES[n];const host=$("#v-page");if(!S0
  const same=STORIES.map((x,i)=>[x,i]).filter(([x,i])=>i!==n&&x.c===S0.c).slice(0,3);const more=same.length<3?STORIES.map((x,i)=>[x,i]).filter(([x,i])=>i!==n&&x.c!==S0.c).slice(0,3-same.length):[];
  const prev=n>0?n-1:null,next=n<STORIES.length-1?n+1:null;
  const sum=(S0.sum&&S0.sum.length)?S0.sum.map(t=>'<p>'+esc(t)+'</p>').join(""):'<div class="slot sm"><b>본문</b><p>[시안] 이 글의 본문은 구축 때 원문(보도자료 전문)을 글자로 올립니다. 지금은 제목·부제·날짜만 실었습니다.</p></div>';
- host.innerHTML='<div class="page-h stpv"><div class="wrap"><span class="crumb"><a href="#home">홈</a> › <a href="#story">GIST Insight</a> › '+esc(S0.c)+'</span><span class="st-cat c'+((({"연구성과":1,"사람":3,"보도자료":2,"영상":4,"캠퍼스":5})[S0.c])||1)+'">'+esc(S0.c)+' <em>'+esc(CEN[S0.c]||"")+'</em></span><h1 class="st-h1">'+esc(S0.t)+'</h1><p class="st-sub">'+esc(S0.s)+'</p><div class="st-meta"><span class="num">'+esc(S0.d||S0.m)+'</span>'+(S0.src?'<span>출처 '+esc(S0.src)+'</span>':'')+(sImg(S0).gen?'':'<span>'+esc(S0.cr)+'</span>')+(window.__RT[n]?'<span title="원문 기사 본문 글자 수(공백 제외) ÷ 분당 500자">원문 기사 약 '+window.__RT[n]+'분 읽기</span>':'')+(typeof gTopic==="function"&&gTopic(S0)[2]?'<span class="st-tp">#'+esc(gTopic(S0)[1])+'</span>':'')+'<button type="button" class="st-copy">이 글 주소 복사</button></div></div></div>'+
+ host.innerHTML='<div class="page-h stpv"><div class="wrap"><span class="crumb"><a href="#home">홈</a> › <a href="#story">GIST Insight</a> › '+esc(S0.c)+'</span><span class="st-cat c'+((({"연구성과":1,"사람":3,"보도자료":2,"영상":4,"캠퍼스":5})[S0.c])||1)+'">'+esc(S0.c)+' <em>'+esc(cen(S0)||"")+'</em></span><h1 class="st-h1">'+esc(S0.t)+'</h1><p class="st-sub">'+esc(S0.s)+'</p><div class="st-meta"><span class="num">'+esc(S0.d||S0.m)+'</span>'+(S0.src?'<span>출처 '+esc(S0.src)+'</span>':'')+(sImg(S0).gen?'':'<span>'+esc(S0.cr)+'</span>')+(window.__RT[n]?'<span title="원문 기사 본문 글자 수(공백 제외) ÷ 분당 500자">원문 기사 약 '+window.__RT[n]+'분 읽기</span>':'')+(typeof gTopic==="function"&&gTopic(S0)[2]?'<span class="st-tp">#'+esc(gTopic(S0)[1])+'</span>':'')+'<button type="button" class="st-copy">이 글 주소 복사</button></div></div></div>'+
  '<div class="wrap st-wrap"><article class="st-art"><div class="st-thumb thumb"><img loading="lazy" src="'+(typeof sImg==="function"?sImg(S0).u:"")+'" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="cr">'+(sImg(S0).gen?'표지 그래픽 · 이 글에 맞는 사진은 구축 때 담당 부서가 올림':esc(S0.cr))+'</span></div><div class="st-body">'+sum+'</div>'+
  (S0.g?'<a class="st-src" href="'+esc(S0.g)+'"'+EXT+'><span><small>GIST 미디어센터 원문</small><b>현행 GIST 홈페이지에서 보도자료 전문 읽기</b></span><i data-lucide="arrow-up-right"></i></a>':'')+(S0.u&&S0.u!==S0.g?'<a class="st-src alt" href="'+esc(S0.u)+'"'+EXT+'><span><small>관련 기사</small><b>'+esc(S0.src||"원문")+'에서 기사 읽기</b></span><i data-lucide="arrow-up-right"></i></a>':'')+
  '<p class="note">'+(S0.g&&S0.u===S0.g?'요약은 GIST 미디어센터 원문을 옮겼습니다.':S0.g?'요약은 GIST 미디어센터 원문과 연결한 기사 내용을 옮겼습니다. 기사 전문 저작권은 해당 언론사에 있습니다.':S0.u&&/인스타그램/.test(S0.src||'')?'요약은 GIST 공식 인스타그램 게시글을 옮겼습니다.':S0.u?'요약은 연결한 기사 내용을 옮겼습니다. 기사 전문 저작권은 해당 언론사에 있습니다.':'D안 시안 — 제목·부제·날짜는 GIST 보도자료·공식 채널 기준입니다.')+' 구축 때는 담당 부서가 관리자 화면에서 본문·사진을 직접 올립니다.</p>'+
