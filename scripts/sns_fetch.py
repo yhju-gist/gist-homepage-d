@@ -28,27 +28,47 @@ def yt_api():
         out.append({"p": "yt", "id": vid, "t": sn.get("title", ""), "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": d.isoformat() if d else ""})
     return out
 def yt_page():
-    import re, html as H
-    h = get("https://www.youtube.com/channel/%s/videos?hl=ko" % YT_CH).decode("utf-8", "ignore")
-    out, seen = [], set()
-    for m in re.finditer(r'"videoId":"([A-Za-z0-9_-]{11})".{0,1500}?"title":\{"runs":\[\{"text":"((?:[^"\\]|\\.)*)"', h, re.S):
-        vid, t = m.group(1), m.group(2)
-        if vid in seen: continue
-        seen.add(vid)
-        try: t = json.loads('"' + t + '"')
-        except Exception: pass
-        out.append({"p": "yt", "id": vid, "t": H.unescape(t), "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": ""})
-        if len(out) >= 12: break
+    """채널 공개 영상 목록 화면의 ytInitialData에서 최근 영상(제목·주소·올린 지 며칠)을 읽음"""
+    import re
+    h = get("https://www.youtube.com/channel/%s/videos?hl=ko&gl=KR" % YT_CH).decode("utf-8", "ignore")
+    m = re.search(r"var ytInitialData = (\{.*?\});</script>", h, re.S) or re.search(r'ytInitialData"\] = (\{.*?\});', h, re.S)
+    if not m: return []
+    data = json.loads(m.group(1)); out, seen = [], set()
+    now = dt.datetime.now(KST)
+    def rel(txt):
+        mm = re.search(r"(\d+)\s*(초|분|시간|일|주|개월|년)", txt or "")
+        if not mm: return ""
+        n, u = int(mm.group(1)), mm.group(2)
+        days = {"초": 0, "분": 0, "시간": 0, "일": n, "주": n * 7, "개월": n * 30, "년": n * 365}[u]
+        return (now - dt.timedelta(days=days)).isoformat(timespec="minutes")
+    def walk(o):
+        if len(out) >= 12: return
+        if isinstance(o, dict):
+            L = o.get("lockupViewModel"); V = o.get("videoRenderer")
+            if L and L.get("contentId") and L["contentId"] not in seen:
+                md = L.get("metadata", {}).get("lockupMetadataViewModel", {})
+                t = md.get("title", {}).get("content", "")
+                parts = [p.get("text", {}).get("content", "") for r in md.get("metadata", {}).get("contentMetadataViewModel", {}).get("metadataRows", []) for p in r.get("metadataParts", [])]
+                vid = L["contentId"]; seen.add(vid)
+                out.append({"p": "yt", "id": vid, "t": t, "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": rel(" ".join(parts))})
+            elif V and V.get("videoId") and V["videoId"] not in seen:
+                vid = V["videoId"]; seen.add(vid)
+                t = "".join(r.get("text", "") for r in V.get("title", {}).get("runs", []))
+                out.append({"p": "yt", "id": vid, "t": t, "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": rel(V.get("publishedTimeText", {}).get("simpleText", ""))})
+            for v in o.values(): walk(v)
+        elif isinstance(o, list):
+            for v in o: walk(v)
+    walk(data)
     return out
 def yt():
     r = yt_api()
     if r: return r
     try:
-        return yt_rss()
-    except Exception:
-        r = yt_page()
+        r = yt_rss()
         if r: return r
-        raise
+    except Exception:
+        pass
+    return yt_page()
 def yt_rss():
     ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015", "m": "http://search.yahoo.com/mrss/"}
     last = None
