@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """GIST 공식 SNS 최근 글을 공식 경로로 가져와 data/sns.json에 저장한다.
-- 유튜브: 채널 공개 RSS(열쇠 필요 없음)
+- 유튜브: YouTube Data API(Secrets: YT_API_KEY 있으면) → 채널 공개 RSS → 채널 공개 영상 목록 순서로 시도
 - 인스타그램: Instagram Graph API (GitHub 저장소 Secrets: IG_TOKEN, IG_USER_ID 가 있을 때만)
 - 페이스북: Graph API 페이지 글 (Secrets: FB_TOKEN, FB_PAGE_ID 가 있을 때만)
 가져오는 것: 제목/설명 첫 줄·썸네일·주소·날짜만. 댓글·팔로워 같은 개인정보는 가져오지 않는다.
@@ -16,7 +16,40 @@ def get(url):
 def kd(s):
     try: return dt.datetime.fromisoformat(s.replace("Z", "+00:00")).astimezone(KST)
     except Exception: return None
+def yt_api():
+    key = os.environ.get("YT_API_KEY")
+    if not key: return None
+    q = urllib.parse.urlencode({"part": "snippet", "channelId": YT_CH, "order": "date", "maxResults": 12, "type": "video", "key": key})
+    js = json.loads(get("https://www.googleapis.com/youtube/v3/search?" + q)); out = []
+    for it in js.get("items", []):
+        vid = it["id"].get("videoId"); sn = it.get("snippet", {})
+        if not vid: continue
+        d = kd(sn.get("publishedAt", ""))
+        out.append({"p": "yt", "id": vid, "t": sn.get("title", ""), "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": d.isoformat() if d else ""})
+    return out
+def yt_page():
+    import re, html as H
+    h = get("https://www.youtube.com/channel/%s/videos?hl=ko" % YT_CH).decode("utf-8", "ignore")
+    out, seen = [], set()
+    for m in re.finditer(r'"videoId":"([A-Za-z0-9_-]{11})".{0,1500}?"title":\{"runs":\[\{"text":"((?:[^"\\]|\\.)*)"', h, re.S):
+        vid, t = m.group(1), m.group(2)
+        if vid in seen: continue
+        seen.add(vid)
+        try: t = json.loads('"' + t + '"')
+        except Exception: pass
+        out.append({"p": "yt", "id": vid, "t": H.unescape(t), "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": ""})
+        if len(out) >= 12: break
+    return out
 def yt():
+    r = yt_api()
+    if r: return r
+    try:
+        return yt_rss()
+    except Exception:
+        r = yt_page()
+        if r: return r
+        raise
+def yt_rss():
     ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015", "m": "http://search.yahoo.com/mrss/"}
     last = None
     for u in ["https://www.youtube.com/feeds/videos.xml?channel_id=" + YT_CH, "https://www.youtube.com/feeds/videos.xml?playlist_id=UU" + YT_CH[2:]]:
