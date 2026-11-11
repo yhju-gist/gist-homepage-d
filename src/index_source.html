@@ -1,4 +1,4 @@
-<title>GIST 홈페이지 D안 v107</title>
+<title>GIST 홈페이지 D안 v108</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -2432,6 +2432,7 @@ html.od-lock{overflow:hidden}
 .og-l1>.og-g>.og-row>.og-n.p{background:var(--red);color:#fff;border-color:var(--red)}.og-l1>.og-g>.og-row>.og-n.p span{color:#fff}
 .sk-tl li.past{opacity:1}.sk-tl li.past b{color:#4A5056}.sk-tl span{color:#4A5056}
 .sk-eq{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin:6px 0 18px}.sk-eq>div{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff}.sk-eq p{margin:0;display:flex;flex-wrap:wrap;gap:5px}.sk-eq p span{font-size:13px;font-weight:700;background:#F6F4F3;border-radius:6px;padding:2px 7px}.sk-eq a{font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap}.sk-eq a:hover{color:var(--red-tx)}
+@media (max-width:760px){#scope{flex-wrap:wrap!important;overflow:visible!important}#scope button{flex:1 1 auto}#sfrom,#sto{font-size:12.5px!important;padding-left:8px!important;padding-right:4px!important;min-width:0}}
 </style>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -4738,6 +4739,11 @@ Object.assign(PDEPD,{"창업 지원":"창업혁신진흥원 (창업진흥센터�
  Object.assign(PDEPD,{"공동 연구장비":"중앙기기연구소 (첨단분석센터)","공동연구 문의":"연구관리팀","기술이전":"기술사업화센터","행사":"대외홍보팀 (대표행사)"});
 })();
 
+
+/* v108 기존 세부 화면에 담당 연락처 붙이기 (직원검색, 2026.11.11. 확인) */
+{const ADDC=[["장학 제도","학적팀",/장학|납입금/,"학적팀 (장학금·납입금)"],["등록금","학적팀",/장학|납입금/,"학적팀 (장학금·납입금)"],["생활관","학생팀",/기숙사|기혼자/,"학생팀 (기숙사)"],["수강신청","학적팀",/수강|교과과정|학적/,"학적팀 (수강·학적)"],["증명서 발급","학적팀",/증명서/,"학적팀 (증명서 발급)"],["상담센터","상담센터",null,"상담센터"],["오룡관 예약","GIST아카데미",/오룡관/,"GIST아카데미 (오룡관 관리)"],["캠퍼스 투어","대외홍보팀",/견학/,"대외홍보팀 (견학)"],["학사일정","학적팀",/학적|교과과정/,"학적팀 (학사)"],["홍보 영상","대외홍보팀",/영상|온라인/,"대외홍보팀 (사진·영상)"],["브로슈어","대외홍보팀",/홍보물/,"대외홍보팀 (홍보물)"],["유튜브","대외홍보팀",/영상|온라인/,"대외홍보팀 (온라인 홍보)"],["인스타그램","대외홍보팀",/온라인/,"대외홍보팀 (온라인 홍보)"],["공지","대외홍보팀",/온라인/,"대외홍보팀 (홈페이지)"]];
+ ADDC.forEach(([n,d,re,t])=>{const f=PBODY[n]||(PLINK[n]?(()=>hubHTML(n)):null);if(!f)return;PBODY[n]=()=>f()+window.skContact(d,re,t);});
+ Object.assign(PDEPD,{"장학 제도":"학적팀 (장학금·납입금)","등록금":"학적팀 (장학금·납입금)","수강신청":"학적팀","학사일정":"학적팀","오룡관 예약":"GIST아카데미 (오룡관 관리)","홍보 영상":"대외홍보팀","브로슈어":"대외홍보팀","유튜브":"대외홍보팀","인스타그램":"대외홍보팀"});}
 /* 학과 홈페이지 바로가기(실제 주소) */
 Object.keys(DEPT).forEach(n=>{const D0=DEPT[n];IDX.push({s:"dept",site:n+" 홈페이지",t:n+" 홈페이지",p:D0.hp.replace(/^https:\/\//,"").replace(/\/$/,"")+" · 학과 사무실 "+(D0.tel||""),k:n+" "+(D0.e||"")+" 학과 홈페이지 "+D0.code,u:D0.hp});});
 /* 검색·명령창에 학과 소개 넣기 */
