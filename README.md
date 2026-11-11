@@ -28,6 +28,27 @@
 - `DEPT` 학과 소개 · `PBODY` 세부페이지 본문 · `MEGA` 전체 메뉴 · `TOP` 튜토리얼 · `QA` AI 안내 답
 - `SIMG` 소식별 사진 · `DPH` 학과별 머리 사진 · `:root` 색·글꼴 값
 
+
+## 특화 서비스 이름 (v77)
+| 이름 | 하는 일 | 주소 끝 |
+|---|---|---|
+| **GIST Insight** | 소식 매거진(보도자료·연구성과·사람·캠퍼스·영상) | `#story` |
+| **GIST Compass** | 학사 길잡이(튜토리얼 7주제) | `#tutorial` |
+| **Ask GIST** | 통합검색·AI 안내 (범위: 대표·학과 홈페이지·사람·업무·규정·SNS) | `#search` · 사람 찾기 `#search-people` |
+
+## SNS 자동 연동 (30분마다)
+- `.github/workflows/sns.yml` → `scripts/sns_fetch.py` → `data/sns.json` → 화면이 열 때와 10분마다 다시 읽음
+- 유튜브: YouTube Data API(`YT_API_KEY`가 있으면) → 공개 RSS → 공개 영상 목록 순서로 시도
+- 인스타그램·페이스북: 공식 Graph API. 저장소 **Settings › Secrets and variables › Actions**에 아래를 넣으면 바로 켜짐(대외홍보팀 공식 계정 열쇠)
+  - `IG_TOKEN`, `IG_USER_ID` (인스타그램 비즈니스 계정)
+  - `FB_TOKEN`, `FB_PAGE_ID` (페이스북 페이지)
+  - `YT_API_KEY` (선택)
+- 가져오는 것: 글 제목·첫 줄·썸네일·주소·날짜만. 댓글·팔로워 등 개인정보는 가져오지 않음. 실패하면 마지막 저장 글을 그대로 보여 줌
+- 수동 실행: Actions › SNS 최근 글 가져오기 › Run workflow
+
+## 사람·업무 검색 자료
+- 현행 GIST 홈페이지 '조직/직원안내 › 직원검색'의 부서별 담당업무(2026.11.11. 수집, 68개 부서·358개 업무). 화면에는 부서·업무만, 이름·내선은 현행 직원검색으로 연결
+
 ## 알아둘 점
 - 화면 안 '관리자' 편집·저장 기능은 Claude 아티팩트 판에서만 동작합니다. 이 저장소(GitHub Pages)는 **보기 전용**입니다.
 - 공개 라이브러리는 버전을 고정해 jsdelivr에서 불러옵니다 (gsap 3.12.5, swiper 11.1.14, fuse.js 7.0.0, lucide 0.453.0, echarts 5.5.1 등).
