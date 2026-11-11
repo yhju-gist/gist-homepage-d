@@ -1,4 +1,4 @@
-<title>GIST 홈페이지 D안 v116</title>
+<title>GIST 홈페이지 D안 v117</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -4069,7 +4069,8 @@ $("#pmstop").addEventListener("click",e=>{const b=e.currentTarget;if(!pmSw||!pmS
 /* B 소식 격자 */
 let pnAll=false;
 function renderNews(){
- const L=STORIES.slice().sort((a,b)=>(b.d||b.m).replace(/\D/g,"").padEnd(8,"0").localeCompare((a.d||a.m).replace(/\D/g,"").padEnd(8,"0"))).slice(0,pnAll?STORIES.length:8);
+ const MS=new Set(STORIES.slice().sort((a,b)=>sImg(a).ex-sImg(b).ex).slice(0,7));
+ const L=STORIES.slice().filter(x=>pnAll||!MS.has(x)).sort((a,b)=>(b.d||b.m).replace(/\D/g,"").padEnd(8,"0").localeCompare((a.d||a.m).replace(/\D/g,"").padEnd(8,"0"))).slice(0,pnAll?STORIES.length:8);
  $("#pnews").innerHTML=L.map(s=>{const im=sImg(s);return '<a class="nc2" href="'+stH(s)+'"><span class="ph"><img src="'+im.u+'" alt="" loading="lazy">'+exTag(im.ex)+'<span class="tabcut'+(s.c==="연구성과"?' r':'')+'">'+esc(cen(s)||s.c)+'</span></span><span class="bd"><b>'+esc(s.t)+'</b><time class="num">'+esc(s.d)+'</time></span></a>';}).join("");
  $("#pnews").classList.toggle("all",pnAll);
  const m=$("#pnmore");m.hidden=STORIES.length<=8&&innerWidth>760;m.setAttribute("aria-expanded",pnAll);m.setAttribute("aria-label",pnAll?"소식 접기":"소식 더 보기");m.innerHTML='<i data-lucide="'+(pnAll?"minus":"plus")+'"></i>';icons();
