@@ -1,4 +1,4 @@
-<title>GIST 홈페이지 D안 v106</title>
+<title>GIST 홈페이지 D안 v107</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -2431,6 +2431,7 @@ html.od-lock{overflow:hidden}
 .og-row>i{font-style:normal;font-size:12px;font-weight:800;color:#4A5056;background:#F1EFEE;border-radius:999px;padding:2px 8px}
 .og-l1>.og-g>.og-row>.og-n.p{background:var(--red);color:#fff;border-color:var(--red)}.og-l1>.og-g>.og-row>.og-n.p span{color:#fff}
 .sk-tl li.past{opacity:1}.sk-tl li.past b{color:#4A5056}.sk-tl span{color:#4A5056}
+.sk-eq{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin:6px 0 18px}.sk-eq>div{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff}.sk-eq p{margin:0;display:flex;flex-wrap:wrap;gap:5px}.sk-eq p span{font-size:13px;font-weight:700;background:#F6F4F3;border-radius:6px;padding:2px 7px}.sk-eq a{font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap}.sk-eq a:hover{color:var(--red-tx)}
 </style>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -4717,6 +4718,26 @@ Object.assign(PDEPD,{"창업 지원":"창업혁신진흥원 (창업진흥센터�
 {const _sg=PBODY["학생기구"];if(_sg)PBODY["학생기구"]=()=>_sg()+window.skContact("학생팀",/팀장|학생|동아리|자치/,"학생팀 (학생 자치·동아리 지원)");
  PBODY["포털·ZEUS"]=()=>hubHTML("포털·ZEUS")+window.skContact("정보운영팀",null,"정보운영팀 (포털·그룹웨어·메일·통합정보시스템)");
  const _ld=PBODY["부설 연구소"];PBODY["부설 연구소"]=()=>'<div class="kpi k3 sk-k3"><div><span class="eyebrow">연구소·센터</span><b class="num">8</b><span>곳 · 현행 ‘연구소 및 센터’ 목록</span></div><div><span class="eyebrow">고등광기술연구원</span><b class="num">4</b><span>개 연구부·본부 + 경영지원실 · 조직도</span></div><div><span class="eyebrow">창업혁신진흥원</span><b class="num">3</b><span>개 센터 · 조직도</span></div></div>'+_ld();}
+/* v107 세부 화면 고도화 4차 — 공동 연구장비·공동연구 문의·기술이전·행사 (직원검색 업무 원문, 2026.11.11. 확인) */
+(function(){
+ const src=t=>'<p class="note">출처: '+t+' (2026.11.11. 확인)</p>';
+ const card=(x)=>'<a class="sk-card" href="'+esc(x[2])+'"'+(/^http/.test(x[2])?EXT:'')+'><span class="sk-k">'+esc(x[3]||"")+'</span><b>'+esc(x[0])+'</b><p>'+esc(x[1])+'</p><span class="sk-go">'+(/^http/.test(x[2])?'바로가기 ↗':/^tel:/.test(x[2])?'전화 걸기':'보기 →')+'</span></a>';
+ const cards=a=>'<div class="sk-cards">'+a.map(card).join("")+'</div>';
+ PBODY["공동 연구장비"]=()=>{const R=ORGDIR.filter(r=>r[0]==="첨단분석센터"&&/분석\(/.test(r[2]));const G={};R.forEach(r=>{const m=r[2].match(/([가-힣]+실|[가-힣]+부 총괄)[^(]*\(([^)]+)\)/)||r[2].match(/(분석)\(([^)]+)\)/);const k=(r[2].match(/(전자현미경실|바이오분광분석실|질량분석실|표면물성분석실|물성분석부|이미지분석부)/)||["","기타"])[1];(G[k]=G[k]||[]).push([((r[2].match(/분석\(([^)]+)\)/)||["",""])[1]),r[1]]);});
+  const ks=Object.keys(G);const n=R.reduce((a,r)=>a+((r[2].match(/분석\(([^)]+)\)/)||["",""])[1].split(",").length),0);
+  return '<p class="p-lead">중앙기기연구소(GAIA) 첨단분석센터의 공동 연구장비 분석은 교내·외부 모두 시험분석료를 정산해 이용합니다. 장비별 담당자에게 바로 연락하세요.</p>'+
+  '<div class="kpi k3 sk-k3"><div><span class="eyebrow">분석실</span><b class="num">'+ks.length+'</b><span>곳 · 직원검색 업무 기준</span></div><div><span class="eyebrow">담당자가 적힌 장비·분석</span><b class="num">'+n+'</b><span>종 · 이름 그대로</span></div><div><span class="eyebrow">시험분석료 정산</span><b class="num">2</b><span>창구 · 내부 T.5236 · 외부 T.5238</span></div></div>'+
+  ks.map(k=>'<h3 class="p-h3">'+esc(k)+'</h3><div class="sk-eq">'+G[k].map(x=>'<div><p>'+x[0].split(",").map(t=>'<span>'+esc(t.trim())+'</span>').join("")+'</p><a class="num" href="tel:062-715-'+x[1]+'">T.'+esc(x[1])+'</a></div>').join("")+'</div>').join("")+
+  '<div class="sk-addr"><div><span class="eyebrow">LINK</span><b>장비 예약·이용 — 중앙기기연구소 GAIA</b></div><div class="sk-addr-b"><a class="pill red" href="https://gaia.gist.ac.kr/"'+EXT+'>gaia.gist.ac.kr ↗</a><button type="button" class="pill" data-od="첨단분석센터">첨단분석센터 업무 모두 보기</button></div></div>'+window.skContact("중앙기기연구소",null,"중앙기기연구소")+src("현행 GIST 홈페이지 직원검색(중앙기기연구소·첨단분석센터)");};
+ PBODY["공동연구 문의"]=()=>'<p class="p-lead">공동연구·연구수탁은 연구관리팀이 지원 부처별로 나눠 맡습니다. 해당 부처 담당에게 먼저 연락하세요.</p>'+
+  cards([["과기부 개인·집단연구·기반구축","리더·핵심, 세종과학펠로우십, 집단연구, 용역","tel:062-715-2032","T.2032"],["과기부 신진연구","외부참여연구자 기관장 확인서, 학생인건비 풀링 지원","tel:062-715-2036","T.2036"],["과기부 원천·탄소중립·국제협력 등","미래유망원천, 원자력진흥, 국외수탁, 통합 Ezbaro","tel:062-715-2037","T.2037"],["과기정통부(ICT)·교육부·문체부","연구비카드","tel:062-715-2034","T.2034"],["산업부·중기부·기후부·복지부 등","통합 RCMS","tel:062-715-2038","T.2038"],["국토부·해수부·국방부·식약처","공공수탁, e나라도움(보탬e)","tel:062-715-2035","T.2035"],["GIST연구개발사업·민간수탁","기술자문 포함, R&D Academy","tel:062-715-2028","T.2028"],["연구관리제도·규정","연구비 결산·통계·감사, 연구시설장비비 풀링","tel:062-715-2033","T.2033"]])+
+  '<h3 class="p-h3">함께 찾는 곳</h3>'+cards([["GIST-MIT 공동연구","연구지원팀 · 연구보안·생명윤리","tel:062-715-2933","T.2933"],["공동 연구장비","중앙기기연구소 첨단분석센터","#p-3-1-1","장비"],["기술이전","기술사업화센터","#p-3-2-0","사업화"]])+
+  window.skContact("연구관리팀",/팀장/,"연구관리팀")+src("현행 GIST 홈페이지 직원검색(연구관리팀·연구지원팀)");
+ const _tt=PBODY["기술이전"];PBODY["기술이전"]=()=>(_tt?_tt():"")+window.skContact("기술사업화센터",/기술이전|특허|센터장/,"기술사업화센터 (기술이전·특허)");
+ PBODY["행사"]=()=>{const g=document.getElementById("gnowg");return '<p class="p-lead">GIST에서 열리는 행사·전시·협력 소식입니다. 다가오는 행사는 남은 날짜, 진행 중인 행사는 크게 보입니다.</p><div class="gnow-g">'+(g?g.innerHTML:"")+'</div>'+src("현행 GIST 홈페이지 미디어센터 ‘Events’");};
+ Object.assign(PDEPD,{"공동 연구장비":"중앙기기연구소 (첨단분석센터)","공동연구 문의":"연구관리팀","기술이전":"기술사업화센터","행사":"대외홍보팀 (대표행사)"});
+})();
+
 /* 학과 홈페이지 바로가기(실제 주소) */
 Object.keys(DEPT).forEach(n=>{const D0=DEPT[n];IDX.push({s:"dept",site:n+" 홈페이지",t:n+" 홈페이지",p:D0.hp.replace(/^https:\/\//,"").replace(/\/$/,"")+" · 학과 사무실 "+(D0.tel||""),k:n+" "+(D0.e||"")+" 학과 홈페이지 "+D0.code,u:D0.hp});});
 /* 검색·명령창에 학과 소개 넣기 */
