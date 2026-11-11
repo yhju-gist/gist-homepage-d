@@ -1,4 +1,4 @@
-<title>GIST 홈페이지 D안 v109</title>
+<title>GIST 홈페이지 D안 v110</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -4744,6 +4744,14 @@ Object.assign(PDEPD,{"창업 지원":"창업혁신진흥원 (창업진흥센터�
 {const ADDC=[["장학 제도","학적팀",/장학|납입금/,"학적팀 (장학금·납입금)"],["등록금","학적팀",/장학|납입금/,"학적팀 (장학금·납입금)"],["생활관","학생팀",/기숙사|기혼자/,"학생팀 (기숙사)"],["수강신청","학적팀",/수강|교과과정|학적/,"학적팀 (수강·학적)"],["증명서 발급","학적팀",/증명서/,"학적팀 (증명서 발급)"],["상담센터","상담센터",null,"상담센터"],["오룡관 예약","GIST아카데미",/오룡관/,"GIST아카데미 (오룡관 관리)"],["캠퍼스 투어","대외홍보팀",/견학/,"대외홍보팀 (견학)"],["학사일정","학적팀",/학적|교과과정/,"학적팀 (학사)"],["홍보 영상","대외홍보팀",/영상|온라인/,"대외홍보팀 (사진·영상)"],["브로슈어","대외홍보팀",/홍보물/,"대외홍보팀 (홍보물)"],["유튜브","대외홍보팀",/영상|온라인/,"대외홍보팀 (온라인 홍보)"],["인스타그램","대외홍보팀",/온라인/,"대외홍보팀 (온라인 홍보)"],["공지","대외홍보팀",/온라인/,"대외홍보팀 (홈페이지)"]];
  ADDC.forEach(([n,d,re,t])=>{const f=PBODY[n]||(PLINK[n]?(()=>hubHTML(n)):null);if(!f)return;PBODY[n]=()=>f()+window.skContact(d,re,t);});
  Object.assign(PDEPD,{"장학 제도":"학적팀 (장학금·납입금)","등록금":"학적팀 (장학금·납입금)","수강신청":"학적팀","학사일정":"학적팀","오룡관 예약":"GIST아카데미 (오룡관 관리)","홍보 영상":"대외홍보팀","브로슈어":"대외홍보팀","유튜브":"대외홍보팀","인스타그램":"대외홍보팀"});}
+
+/* v110 부속기관·3D 캠퍼스맵 고도화 (현행 링크 + 직원검색 연락처, 2026.11.11. 확인) */
+{const _bs=PLINK["부속기관"]?(()=>hubHTML("부속기관")):PBODY["부속기관"];
+ PBODY["부속기관"]=()=>'<p class="p-lead">GIST에는 연구원·도서관·교육기관 등 부속기관이 있습니다. 기관 홈페이지로 바로 가고, 기관 업무·내선은 아래에서 찾으세요.</p>'+(_bs?_bs().replace(/^<p class="p-lead">[^<]*<\/p>/,""):"")+
+  '<h3 class="p-h3">부속기관 연락처 <small>현행 직원검색</small></h3><div class="sk-cards">'+[["고등광기술연구원","고등광기술연구원"],["학술정보팀","중앙도서관 (학술정보팀)"],["언어교육원","언어교육원"],["기술경영전문대학원","기술경영전문대학원"],["상담센터","상담센터"]].map(([d,t])=>{const R=ORGDIR.filter(r=>r[0]===d||r[0].indexOf(d+" ")===0);if(!R.length)return "";const h=R.find(r=>/(원장|센터장|팀장|원장)/.test(r[2]))||R[0];return '<button type="button" class="sk-card" data-od="'+esc(R[0][0])+'"><span class="sk-k">업무 '+R.length+'건</span><b>'+esc(t)+'</b><p>'+esc(h[2])+' · T.'+esc(h[1])+'</p><span class="sk-go">업무·내선 모두 보기 →</span></button>';}).join("")+'</div><p class="note">출처: 현행 GIST 홈페이지 부속기관 바로가기·직원검색 (2026.11.11. 확인)</p>';
+ const _3d=PLINK["3D 캠퍼스맵"]?(()=>hubHTML("3D 캠퍼스맵")):PBODY["3D 캠퍼스맵"];
+ PBODY["3D 캠퍼스맵"]=()=>(_3d?_3d():"")+'<div class="sk-addr"><div><span class="eyebrow">ADDRESS</span><b>(61005) 전남광주통합특별시 북구 첨단과기로 123 (오룡동)</b><span>대표전화 <a class="num" href="tel:062-715-2114">062-715-2114</a></span></div><div class="sk-addr-b"><a class="pill red" href="#p-0-3-0">찾아오시는 길 →</a><a class="pill" href="#p-2-3-0">캠퍼스 투어 →</a></div></div>';
+ Object.assign(PDEPD,{"부속기관":"각 부속기관 (아래 연락처)"});}
 /* 학과 홈페이지 바로가기(실제 주소) */
 Object.keys(DEPT).forEach(n=>{const D0=DEPT[n];IDX.push({s:"dept",site:n+" 홈페이지",t:n+" 홈페이지",p:D0.hp.replace(/^https:\/\//,"").replace(/\/$/,"")+" · 학과 사무실 "+(D0.tel||""),k:n+" "+(D0.e||"")+" 학과 홈페이지 "+D0.code,u:D0.hp});});
 /* 검색·명령창에 학과 소개 넣기 */
