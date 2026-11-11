@@ -1,4 +1,4 @@
-<title>GIST 홈페이지 D안 v101</title>
+<title>GIST 홈페이지 D안 v102</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -558,12 +558,12 @@ body.en-mode .mega,body.en-mode .mg{display:none!important}
 body.en-mode .gnb a{white-space:nowrap}
 
 /* v87 검색 화면: 큰 머리 사진 없이 결과가 바로 보이게 (스탠퍼드 검색 화면 방식) */
-#v-search .page-h.pv{min-height:0!important;height:auto!important;padding:28px 0 8px!important;background:none!important;margin:0!important;border-radius:0!important}
-#v-search .page-h.pv .pv-bg,#v-search .page-h.pv .pv-en,#v-search .page-h.pv::after,#v-search .page-h.pv::before{display:none!important}
-#v-search .page-h.pv,#v-search .page-h.pv *{color:var(--ink)!important;text-shadow:none!important}#v-search .page-h.pv .tg-sub{color:#fff!important}
+#v-search .page-h.pv{min-height:0!important;height:auto!important;padding:34px 0 26px!important;margin:6px clamp(8px,1vw,20px) 0!important;border-radius:22px!important;overflow:hidden;position:relative}
+#v-search .page-h.pv .pv-en{display:none!important}
+#v-search .page-h.pv,#v-search .page-h.pv *{color:#fff!important}#v-search .page-h.pv .tg-sub{color:#fff!important}
 #v-search .page-h.pv .wrap{text-align:left!important;align-items:flex-start!important;min-height:0!important;padding-block:8px 4px!important;gap:6px!important}
 #v-search .page-h.pv h1{font-size:clamp(26px,2.6vw,36px)!important}
-#v-search .page-h.pv p{color:var(--mute)!important;max-width:70ch}
+#v-search .page-h.pv p{color:rgba(255,255,255,.86)!important;max-width:70ch}
 #res .dtbl{display:block;padding:8px 0 16px}#res .dtbl .tbl{width:100%;min-width:0!important;table-layout:fixed}#res .dtbl .tbl th:last-child{width:5.5em}#res .dtbl th,#res .dtbl td{text-align:left!important;padding:10px 12px!important;font-size:15px}#res .dtbl td.num{white-space:nowrap;width:6em;font-weight:700}#res .dsrc{font-size:13px;color:var(--mute);margin:8px 0 0}
 h1,h2,h3{text-wrap:balance}
 #v-en .p-tit{opacity:1!important;transform:none!important;visibility:visible!important}
@@ -3867,7 +3867,7 @@ function okUrl(u){return !u||/^https:\/\//.test(u)||/^\/_blob\//.test(u)||/^#/.t
 $("#ftcols").innerHTML=COLLEGES.map(c=>'<div><h3>'+esc(c.n)+'</h3><ul>'+c.d.map(d=>'<li><a href="'+dhref(d)+'"'+EXT+'>'+esc(d)+'<small>'+(DURL[d]||"")+'.gist.ac.kr</small></a></li>').join("")+'</ul></div>').join("");
 
 /* 하위 화면 머리: 캠퍼스 사진 + 영문 외곽선 (포스텍·유니스트 서브 비주얼) */
-const PV={tutorial:["p_bldg.jpg","COMPASS","GIST Tutorial"],story:["p_aerial_day.jpg","INSIGHT","News & Stories"],search:["p_curve.jpg","ASK GIST","Search & AI"],colleges:["hx_c.jpg","COLLEGES","Colleges & Departments"]};
+const PV={tutorial:["pv_tut.jpg","COMPASS","GIST Tutorial"],story:["pv_story.jpg","INSIGHT","News & Stories"],search:["pv_search.jpg","ASK GIST","Search & AI"],colleges:["hx_c.jpg","COLLEGES","Colleges & Departments"]};
 Object.entries(PV).forEach(([v,[im,en,eye]])=>{const h=document.querySelector("#v-"+v+" .page-h");if(!h)return;h.classList.add("pv");
  h.insertAdjacentHTML("afterbegin",'<div class="pv-bg" aria-hidden="true"><img src="'+IMG(im)+'" alt="" loading="lazy" decoding="async"></div><span class="pv-en" aria-hidden="true">'+en+'</span>');
  const c=h.querySelector(".crumb");if(c)c.insertAdjacentHTML("afterend",'<span class="pv-eye">'+eye+'</span>');});
@@ -3882,7 +3882,7 @@ renderStory();
 {const d=document.querySelector(".demo");if(d){const t=document.createElement("button");t.type="button";t.className="demo-tg";t.setAttribute("aria-expanded","false");t.textContent="시안 메뉴";t.onclick=()=>{const o=d.classList.toggle("open");t.setAttribute("aria-expanded",o);t.textContent=o?"접기 ×":"시안 메뉴";};d.prepend(t);}}
 
 /* 메가메뉴: 왼쪽에 캠퍼스 사진 카드 (포스텍·유니스트 전체메뉴 방식) */
-const MGI=[["p_night2.jpg","About GIST"],["gal_gate.jpg","Colleges"],["gal_night.jpg","Admission"],["r_quantum.jpg","Research"],["p_bldg.jpg","Campus Life"],["p_spring.jpg","News"]];
+const MGI=[["hx_b.jpg","About GIST"],["gal_gate.jpg","Colleges"],["mg_adm.jpg","Admission"],["mg_res.jpg","Research"],["mg_campus.jpg","Campus Life"],["pv_story.jpg","News"]];
 {const _om=openMega;openMega=function(i){_om(i);const l=$("#megaw .lead");if(l&&MGI[i]){l.classList.add("ph");l.insertAdjacentHTML("afterbegin",'<img loading="lazy" src="'+IMG(MGI[i][0])+'" alt="" decoding="async">');l.insertAdjacentHTML("afterbegin",'<i>'+MGI[i][1]+'</i>');}};}
 
 /* ===== v15: 포스텍 문법 첫 화면 ===== */
@@ -4201,7 +4201,7 @@ runSearch=function(){
   const POP=["장학","증명서","생활관","수강신청","재수강료","복수전공","통합경비","오룡관","기술이전","연구 분야"];
   const cnt=k=>IDX.filter(r=>r.s===k).length;
   html='<li class="sxe"><div class="sxe-b"><h3>많이 찾는 말</h3><div class="sxe-c">'+POP.map(w=>'<button type="button" data-sq="'+esc(w)+'">'+esc(w)+'</button>').join("")+'</div></div>'+
-   '<div class="sxe-b"><h3>찾는 범위</h3><div class="sxe-g">'+[["main","대표 홈페이지","세부페이지·학과 소개·GIST Insight"],["dept","학과 홈페이지","13개 학과·1개 대학원 홈페이지 바로가기"],["people","사람·업무","조직도 68개 부서 담당업무(업무만)"],["rule","규정·안내","튜토리얼 7주제"],["sns","SNS","공식 유튜브·인스타그램 글"]].map(x=>'<div><b class="num">'+cnt(x[0])+'</b><span>'+x[1]+'</span><small>'+x[2]+'</small></div>').join("")+'</div></div>'+
+   '<div class="sxe-b"><h3>찾는 범위</h3><div class="sxe-g">'+[["main","대표 홈페이지","세부페이지·학과 소개·GIST Insight"],["dept","학과 홈페이지","13개 학과·1개 대학원 홈페이지 바로가기"],["people","사람·업무","직원검색 "+new Set(ORGDIR.map(r=>r[0])).size+"개 부서 업무·내선 "+ORGDIR.length+"건 + 교수 "+PROFDIR.length+"명"],["rule","규정·안내","튜토리얼 7주제"],["sns","SNS","공식 유튜브·인스타그램 글"]].map(x=>'<div><b class="num">'+cnt(x[0])+'</b><span>'+x[1]+'</span><small>'+x[2]+'</small></div>').join("")+'</div></div>'+
    '<div class="sxe-b"><h3>최근 GIST Insight</h3>'+STORIES.map((x,i)=>[x,i]).sort((a,b)=>(b[0].d||b[0].m).replace(/\D/g,"").padEnd(8,"0").localeCompare((a[0].d||a[0].m).replace(/\D/g,"").padEnd(8,"0"))).slice(0,4).map(([x,i])=>'<a class="sxe-n" href="#st-'+i+'"><span>'+esc(x.c)+' · <span class="num">'+esc(x.d||x.m)+'</span></span><b>'+esc(x.t)+'</b></a>').join("")+'</div></li>';}
  $("#res").innerHTML=html||'<li class="ri"><b>결과가 없습니다.</b><p>범위를 "전체"로 바꾸거나 오른쪽 AI 안내에 물어보세요.</p></li>';
 };
@@ -4257,7 +4257,7 @@ icons();
 
 /* ===== v27: 모든 메뉴 세부 화면 (포스텍 서브페이지 문법) ===== */
 const PEN=["ABOUT GIST","COLLEGES","ADMISSION","RESEARCH","CAMPUS LIFE","NEWS"];
-const PIMG=["p_night2.jpg","gal_gate.jpg","gal_night.jpg","r_quantum.jpg","p_bldg.jpg","p_spring.jpg"];
+const PIMG=["hx_b.jpg","gal_gate.jpg","mg_adm.jpg","mg_res.jpg","mg_campus.jpg","pv_story.jpg"];
 const GS="https://www.gist.ac.kr/kr/html/";
 /* 현행 GIST 홈페이지에서 확인한 실제 주소(2026.11.10.) */
 const PURL={"창업 지원":"https://gti.gist.ac.kr/","홍보 영상":"https://www.gist.ac.kr/kr/html/sub01/010309.html","GIST 상징":"https://www.gist.ac.kr/kr/html/sub01/01030301.html","찾아오시는 길":GS+"sub01/010305.html","캠퍼스 투어":GS+"sub01/010503.html","오룡관 예약":GS+"sub05/050301.html","학사일정":GS+"sub05/0501.html","증명서 발급":GS+"sub05/050204.html","부설 연구소":GS+"sub04/0406.html","연구센터":GS+"sub04/0406.html","공지":GS+"sub06/060101.html","입학 전형":"https://www.gist.ac.kr/uadm/main.html","모집 요강":"https://www.gist.ac.kr/uadm/main.html","입학 상담":"https://www.gist.ac.kr/uadm/main.html","전형 안내":"https://www.gist.ac.kr/gadm/","외국인 입학":"https://www.gist.ac.kr/gadm/","포털·ZEUS":"https://portal.gist.ac.kr/","유튜브":"https://www.youtube.com/c/GIST_YOUTUBE","인스타그램":"https://www.instagram.com/gist.ac.kr/","비전·연혁":GS+"sub01/0102.html","총장 인사말":GS+"sub01/010401.html","학생기구":GS+"sub05/05040101.html","생활관":GS+"sub05/05030401.html","장학 제도":GS+"sub05/05020603.html","등록금":GS+"sub05/05020603.html","수강신청":GS+"sub05/050209.html","상담센터":"https://gccdc.gist.ac.kr/","조직도":GS+"sub01/010601.html","연구 분야":GS+"sub04/040301.html","기술이전":GS+"sub04/040301.html","업무별 담당부서":GS+"sub05/050502.html","공동 연구장비":"https://gaia.gist.ac.kr/"};
