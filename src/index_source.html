@@ -1,4 +1,4 @@
-<title>GIST 홈페이지 D안 v131</title>
+<title>GIST 홈페이지 D안 v132</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap">
 <style>
@@ -4775,8 +4775,9 @@ addEventListener("hashchange",fit);fit();})();
 /* v131 영문 화면에서는 하단 바·바닥글도 영어로 (다른 화면으로 가면 원래대로) */
 (function(){const M=[["홈","Home"],["대학·학과","Colleges"],["광주과학기술원","Gwangju Institute of Science and Technology"],["대표전화","Tel."],["팩스","Fax"],["찾아오시는 길 →","Directions →"],["교내 주요사이트","Campus Sites"],["GIST 포털","GIST Portal"],["그룹웨어","Groupware"],["웹메일","Webmail"],["대학 입학","Undergraduate Admissions"],["대학원 입학","Graduate Admissions"]];
  const nodes=()=>{const o=[];[".tabbar","footer .ft-brand","footer .ft-site"].forEach(sel=>{const r=document.querySelector(sel);if(!r)return;const w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode()))o.push(n);});return o;};
- let on=false;function ap(){const en=location.hash==="#en";if(en===on)return;on=en;document.documentElement.lang=en?"en":"ko";nodes().forEach(n=>{const t=n.nodeValue.trim();if(!t)return;const m=M.find(x=>x[en?0:1]===t);if(m)n.nodeValue=n.nodeValue.replace(t,m[en?1:0]);});const fc=document.getElementById("ftcols");if(fc)fc.hidden=en;const tb=document.querySelector(".tabbar");if(tb)tb.setAttribute("aria-label",en?"Mobile menu":"휴대폰 메뉴");}
- addEventListener("hashchange",ap);ap();})();
+ let on=false;function ap(){const en=location.hash==="#en";if(en===on)return;on=en;document.documentElement.lang=en?"en":"ko";nodes().forEach(n=>{const t=n.nodeValue.trim();if(!t)return;const m=M.find(x=>x[en?0:1]===t);if(m)n.nodeValue=n.nodeValue.replace(t,m[en?1:0]);});const fc=document.getElementById("ftcols");if(fc)fc.hidden=en;const tb=document.querySelector(".tabbar");if(tb)tb.setAttribute("aria-label",en?"Mobile menu":"휴대폰 메뉴");[[".hd .logo","GIST 광주과학기술원 홈","GIST home"],["#cmdbtn","검색 Ctrl K","Search (Ctrl K) — Korean site search"],["#mmenu","전체 메뉴 열기","Open full menu (Korean)"]].forEach(([q,k,e2])=>{const el=document.querySelector(q);if(el)el.setAttribute("aria-label",en?e2:k);});}
+ addEventListener("hashchange",ap);ap();
+ document.addEventListener("click",e=>{if(location.hash!=="#en")return;const a=e.target.closest('.tabbar a[href="#colleges"]');if(!a)return;const t=document.getElementById("en-col");if(!t)return;e.preventDefault();e.stopPropagation();t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});const h=t.querySelector("h2");if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true});}},true);})();
 /* v124 없는 주소 안내 */
 (function(){function chk(){setTimeout(()=>{const h=location.hash.slice(1);const o=document.getElementById("nf-toast");const hide=()=>{if(o)o.classList.remove("on")};if(!h||h==="home")return hide();const hv=document.querySelector("#v-home");if(!hv||!hv.classList.contains("on"))return hide();if(document.getElementById(h))return hide();let t=document.getElementById("nf-toast");if(!t){t=document.createElement("div");t.id="nf-toast";t.setAttribute("role","status");document.body.appendChild(t);}t.innerHTML='찾는 화면(<b>#'+esc(h.slice(0,24))+'</b>)이 없어 첫 화면을 보여 드립니다. <a href="#search">검색으로 찾기 →</a>';t.classList.add("on");clearTimeout(t._x);t._x=setTimeout(()=>t.classList.remove("on"),6000);},350);}
 addEventListener("hashchange",chk);chk();})();
