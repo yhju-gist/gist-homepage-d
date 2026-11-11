@@ -3886,7 +3886,7 @@ function rpRender(){var k=$("#rpkpi");if(!k)return;var tot=REF.length,done=REF.f
 function goTo(spec){var h=spec.split("|")[0],sel=spec.split("|").slice(1).join("|");
  var same=(location.hash||"#home").slice(1)===h; if(!same) location.hash=h; else window.scrollTo({top:0});
  setTimeout(function(){var el=sel?document.querySelector(sel):null;
-  if(el&&el.offsetParent!==null){var y=el.getBoundingClientRect().top+scrollY-130;window.scrollTo({top:Math.max(0,y),behavior:"smooth"});
+  if(el&&el.offsetParent!==null){el.style.scrollMarginTop="140px";el.scrollIntoView({behavior:"auto",block:"start"});
    el.classList.remove("goflash");void el.offsetWidth;el.classList.add("goflash");setTimeout(function(){el.classList.remove("goflash")},4000);}
  },same?60:750);}
 document.addEventListener("click",function(e){var a=e.target.closest("a[data-go]");if(!a)return;e.preventDefault();e.stopPropagation();goTo(a.getAttribute("data-go"));},true);
