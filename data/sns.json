@@ -1,10 +1,10 @@
 {
- "checked": "2026-11-11T16:12+09:00",
+ "checked": "2026-11-11T16:19+09:00",
  "src": {
   "yt": {
-   "ok": false,
-   "why": "가져오기 실패: HTTP Error 404: Not Found",
-   "at": "2026-11-10"
+   "ok": true,
+   "at": "2026-11-11T16:19+09:00",
+   "n": 12
   },
   "ig": {
    "ok": false,
@@ -20,67 +20,99 @@
  "items": [
   {
    "p": "yt",
+   "id": "NNe4xQmqt0c",
    "t": "어느 과학기술원 철학 교수의 치열했던 2026년 여름, in Paris",
    "u": "https://www.youtube.com/watch?v=NNe4xQmqt0c",
-   "img": "",
-   "at": "",
-   "d": "11.2."
+   "img": "https://i.ytimg.com/vi/NNe4xQmqt0c/hqdefault.jpg",
+   "at": "2026-11-02T16:19+09:00"
   },
   {
    "p": "yt",
-   "t": "11월 5일(목), 해리안·윤소안이 GIST에 찾아옵니다! (쇼츠)",
-   "u": "https://www.youtube.com/shorts/-atqdlLQgJU",
-   "img": "",
-   "at": "",
-   "d": "10.31."
-  },
-  {
-   "p": "yt",
+   "id": "Bnl29z7cpgo",
    "t": "가을이 살랑이는 자리, 잠시 머물다 | G금 이 순간",
    "u": "https://www.youtube.com/watch?v=Bnl29z7cpgo",
-   "img": "",
-   "at": "",
-   "d": "10.30."
+   "img": "https://i.ytimg.com/vi/Bnl29z7cpgo/hqdefault.jpg",
+   "at": "2026-10-30T16:19+09:00"
   },
   {
    "p": "yt",
+   "id": "0nsRSqaYsuA",
    "t": "Here at GIST #2｜이곳, 지스트에서",
    "u": "https://www.youtube.com/watch?v=0nsRSqaYsuA",
-   "img": "",
-   "at": "",
-   "d": "10.29."
+   "img": "https://i.ytimg.com/vi/0nsRSqaYsuA/hqdefault.jpg",
+   "at": "2026-10-29T16:19+09:00"
   },
   {
    "p": "yt",
-   "t": "“연구를 넘어, 더 큰 도전을 시작했어요” | 짙터뷰 EP.02",
-   "u": "https://www.youtube.com/shorts/WL1jr5hjHGc",
-   "img": "",
-   "at": "",
-   "d": "10.23."
-  },
-  {
-   "p": "yt",
-   "t": "자율주행 AI가 사람을 도로로 착각한다고? AI 허점 찾아내는 신기술 ‘LSAA’",
+   "id": "dz2TRiqef2k",
+   "t": "자율주행 AI가 사람을 도로로 착각한다고? 🚗💥 AI 허점 찾아내는 신기술 'LSAA'",
    "u": "https://www.youtube.com/watch?v=dz2TRiqef2k",
-   "img": "",
-   "at": "",
-   "d": "10.21."
+   "img": "https://i.ytimg.com/vi/dz2TRiqef2k/hqdefault.jpg",
+   "at": "2026-10-28T16:19+09:00"
   },
   {
    "p": "yt",
+   "id": "arUQ8rLUkSA",
+   "t": "[광주MBC 라디오칼럼] 유치와 영구치가 준 교훈",
+   "u": "https://www.youtube.com/watch?v=arUQ8rLUkSA",
+   "img": "https://i.ytimg.com/vi/arUQ8rLUkSA/hqdefault.jpg",
+   "at": "2026-10-21T16:19+09:00"
+  },
+  {
+   "p": "yt",
+   "id": "IYq4PgT6Klo",
+   "t": "[광주MBC 라디오칼럼] 다시 일어나는 힘, 회복탄력성",
+   "u": "https://www.youtube.com/watch?v=IYq4PgT6Klo",
+   "img": "https://i.ytimg.com/vi/IYq4PgT6Klo/hqdefault.jpg",
+   "at": "2026-10-21T16:19+09:00"
+  },
+  {
+   "p": "yt",
+   "id": "UzUFgumTbck",
    "t": "[GGUN-log] GIST 학생이 보스턴에 가면 생기는 일 | 보스턴 대학교 여름학기 브이로그",
    "u": "https://www.youtube.com/watch?v=UzUFgumTbck",
-   "img": "",
-   "at": "",
-   "d": "10.13."
+   "img": "https://i.ytimg.com/vi/UzUFgumTbck/hqdefault.jpg",
+   "at": "2026-10-14T16:19+09:00"
   },
   {
    "p": "yt",
+   "id": "JELho8aJBfs",
+   "t": "[GGUN] 지스티안의 방학일기⛱️ | 다들 방학에 뭐 했어? 갓생러 지스티안의 하루 들여다보기!",
+   "u": "https://www.youtube.com/watch?v=JELho8aJBfs",
+   "img": "https://i.ytimg.com/vi/JELho8aJBfs/hqdefault.jpg",
+   "at": "2026-10-12T16:19+09:00"
+  },
+  {
+   "p": "yt",
+   "id": "QPWfteRXGvY",
+   "t": "잠시 멈춘 시선, 더 오래 머무는 순간 | G금 이 순간",
+   "u": "https://www.youtube.com/watch?v=QPWfteRXGvY",
+   "img": "https://i.ytimg.com/vi/QPWfteRXGvY/hqdefault.jpg",
+   "at": "2026-10-12T16:19+09:00"
+  },
+  {
+   "p": "yt",
+   "id": "CwaRSCpNWto",
    "t": "GIST와 함께하는 ‘2026 찾아가는 과학캠프’｜해남산이중학교",
    "u": "https://www.youtube.com/watch?v=CwaRSCpNWto",
-   "img": "",
-   "at": "",
-   "d": "9.21."
+   "img": "https://i.ytimg.com/vi/CwaRSCpNWto/hqdefault.jpg",
+   "at": "2026-10-12T16:19+09:00"
+  },
+  {
+   "p": "yt",
+   "id": "sI3SaGS8Jmo",
+   "t": "[GGUN] SF 영화 리뷰 EP.2 | 앤트맨의 핌 입자는 사실 유해물질이다? 점점 깊어지는 '앤트맨' 리뷰... 그 끝은?",
+   "u": "https://www.youtube.com/watch?v=sI3SaGS8Jmo",
+   "img": "https://i.ytimg.com/vi/sI3SaGS8Jmo/hqdefault.jpg",
+   "at": "2026-10-12T16:19+09:00"
+  },
+  {
+   "p": "yt",
+   "id": "l_KdaLPS3u0",
+   "t": "[GGUN] SF 영화 리뷰 EP.1 | GIST 학생들은 영화 볼 때 어떤 생각을 할까? 학부생들이 몰래 떠들어본 '앤트맨' 리뷰!",
+   "u": "https://www.youtube.com/watch?v=l_KdaLPS3u0",
+   "img": "https://i.ytimg.com/vi/l_KdaLPS3u0/hqdefault.jpg",
+   "at": "2026-10-12T16:19+09:00"
   },
   {
    "p": "ig",
