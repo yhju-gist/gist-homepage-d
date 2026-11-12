@@ -5348,12 +5348,21 @@ function nxLabOpen(a){const li=a.closest("li");const old=li.querySelector(".nxl-
  li.classList.add("open");li.insertAdjacentHTML("beforeend",'<div class="nxl-x"><dl><div><dt>교수</dt><dd>'+esc(nxBase(p[0]))+(nxRole(p[0])?' <small>'+esc(nxRole(p[0]))+'</small>':'')+'</dd></div><div><dt>학과</dt><dd><a href="#d-'+DURL[p[1]]+'">'+esc(p[1])+'</a> <small>'+esc(COLLEGES[nxDeptCol(p[1])].n)+'</small></dd></div>'+(ext?'<div><dt>내선</dt><dd><a class="num" href="tel:062-715-'+esc(ext)+'">062-715-'+esc(ext)+'</a></dd></div>':'')+(ts.length?'<div><dt>이어진 주제</dt><dd class="c">'+ts.map(t=>'<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+'</a>').join("")+'</dd></div>':'')+'</dl><div class="nxl-b"><a href="#apply-ga-openlab" data-appre="'+pre+'"><i data-lucide="door-open"></i>오픈랩 신청</a><a href="#apply-ga-intern" data-appre="'+pre+'"><i data-lucide="briefcase"></i>인턴십 신청</a><a href="#d-'+DURL[p[1]]+'"><i data-lucide="building-2"></i>학과 화면</a><a href="#search" data-nxq="'+esc(nm)+'" data-go="1"><i data-lucide="search"></i>Ask GIST에서 더 찾기</a></div><small>이름·연구실·내선은 현행 학과 홈페이지 교수진 공개 화면 기준입니다. 연구실 홈페이지 주소는 구축 때 학과 자료와 연결합니다.</small></div>');icons();}
 /* 학과 화면 위쪽 단추 줄에서 연구실 목록으로 바로 */
 document.addEventListener("click",e=>{const j=e.target.closest("[data-jump]");if(!j)return;e.preventDefault();const t=document.querySelector(j.dataset.jump);if(t){const y=t.getBoundingClientRect().top+scrollY-110;(typeof lenis!=="undefined"&&lenis)?lenis.scrollTo(y):scrollTo({top:y,behavior:"smooth"});}});
+
+/* v190 끊김 없이: 휴대폰 아래 탭이 지금 위치를 알려 줌 / 통합검색의 교수 결과에서 학과 화면 연구실로 바로 */
+function tabSync(){const h=location.hash||"#home";const k=/^#(d-|nexus|colleges)/.test(h)?"#colleges":/^#st-|^#story/.test(h)?"#story":/^#search/.test(h)?"#search":/^#tutorial/.test(h)?"#tutorial":(h==="#home"||h==="#")?"#home":"";$$(".tabbar a").forEach(a=>{const on=a.getAttribute("href")===k;a.classList.toggle("on",on);on?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current");});}
+addEventListener("hashchange",()=>setTimeout(tabSync,40));setTimeout(tabSync,60);
+{const _rs2=runSearch;runSearch=function(){_rs2();try{$$("#res li.ri").forEach(li=>{if(li.querySelector(".ri-nx"))return;const b=li.querySelector("b");if(!b)return;const m=b.textContent.match(/^(.+?) 교수/);if(!m)return;const p=PROFDIR.find(x=>nxBase(x[0])===m[1].trim()&&DURL[x[1]]&&li.textContent.includes(x[1]));if(!p)return;const ts=nxThemesOfLab(p);
+ li.insertAdjacentHTML("beforeend",'<div class="ri-nx"><a href="#d-'+DURL[p[1]]+'" data-nxopen="'+esc(nxBase(p[0]))+'"><i data-lucide="building-2"></i>'+esc(p[1])+' 화면에서 연구실 보기</a>'+ts.map(t=>'<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+'</a>').join("")+'</div>');});icons();}catch(e){}};}
+document.addEventListener("click",e=>{const a=e.target.closest("[data-nxopen]");if(a)window.__nxOpen=a.dataset.nxopen;});
+addEventListener("hashchange",()=>{if(!window.__nxOpen||!/^#d-/.test(location.hash||""))return;const nm=window.__nxOpen;window.__nxOpen=null;setTimeout(()=>{const t=[...document.querySelectorAll(".nxd-l li>a[data-nxq]")].find(x=>x.dataset.nxq===nm);if(t){nxLabOpen(t);const y=t.getBoundingClientRect().top+scrollY-140;scrollTo({top:y});}},420);});
 route();heroState();requestAnimationFrame(()=>{drawBanner();drawThumbs();heroState();});
 })();
 
 /* ===== v69 위원장 보고: 정확히 그 자리로 가기 ===== */
 (function(){var $=function(q){return document.querySelector(q)};var esc=function(t){return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};var REF=window.REF||window.__REF||[];
 var RAFTER=[
+ ["검색한 교수에서 학과 연구실·주제로 바로 (v190)","통합검색의 교수 결과 아래에 ‘학과 화면에서 연구실 보기’와 이어진 주제 단추를 두고, 누르면 학과 화면에서 그 연구실이 펼쳐진 채로 열림. 휴대폰 아래 탭은 학과·Nexus·소식 글에서도 지금 위치를 표시","search|#res"],
  ["이사회 지적 2 ‘노출’: 학과가 검색에 따로 잡히게 (v189)","학과 14곳을 주소가 따로 있는 글 화면(dept/학과코드.html)과 sitemap.xml·robots.txt로도 내보냄. 검색 최적화 자동 검사 D안 100점(현행 92점)","quality|.ql-k"],
  ["연구실을 누르면 그 자리에서 (v188)","GIST Nexus·학과 화면의 연구실을 누르면 화면을 옮기지 않고 그 자리에서 교수·학과·내선·이어진 주제와 오픈랩·인턴십 신청 단추가 펼쳐짐","nexus|.nx-labs"],
  ["학과에서 다른 단과대학 학과로 바로 (v187)","학과 화면에 ‘같은 주제를 함께 연구하는 다른 학과’를 주제별로 두어 단과대학을 넘어 바로 옮겨 감. 모든 화면 아래 ‘방금 본 화면’ 줄로 왔던 길을 한 번에 되돌아감","d-env1|.nxp"],
@@ -5656,4 +5665,8 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 .nxd-l .nxl-x dd.c a{display:inline-flex;flex-direction:row;align-items:center;min-height:0;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:#fff}
 .nxd-l .nxl-b a{flex-direction:row;min-height:0;display:inline-flex;align-items:center;justify-content:flex-start;padding:9px 14px;border-radius:999px;background:var(--ink);border:0;color:#fff}
 .nxd-l .nxl-b a:nth-child(n+3){background:#fff;color:var(--ink);border:1px solid var(--line)}
+</style>
+<style>/* v190 */
+.ri-nx{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}.ri-nx a{display:inline-flex!important;align-items:center;gap:6px;width:auto!important;padding:7px 13px!important;border:1px solid var(--line)!important;border-radius:999px!important;background:#fff!important;font-size:13.5px;font-weight:700;color:var(--ink)!important;text-decoration:none}
+.ri-nx a svg{width:14px;height:14px;color:var(--red)}.ri-nx a:first-child{background:var(--ink)!important;border-color:var(--ink)!important;color:#fff!important}.ri-nx a:first-child svg{color:#fff}.ri-nx a:hover{border-color:var(--red)!important}
 </style>
