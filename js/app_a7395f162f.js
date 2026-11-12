@@ -2169,11 +2169,14 @@ const TEN=[
  ["검색 로봇","기계가 읽는 정보와 화면 목록을 둔다","schema.org · sitemap","반영","기관·소식·위치 정보(JSON-LD), sitemap.xml, 학과 글 화면 14개 · 소식 글 화면 25개","quality"],
  ["없는 주소","없는 주소는 안내하고 검색으로 잇는다","W3C 주소 관리","반영","없는 화면 안내 + 404 화면","search"],
  ["고쳐 가며 쓰기","크게 갈아엎지 않고 계속 고친다","GOV.UK 디자인 원칙 5","결정 필요","직원이 직접 고치는 관리자 모드 시안은 있습니다. 운영 조직·주기는 TF가 정해야 합니다.","reflect"]];
+const CORP=[["위 메뉴 개수 (가운데 값)","8개","5개","6개"],["본문 글자 크기","16px가 38곳","16px가 20곳","16~17.5px"],["첫 화면 내려받는 양 (가운데 값)","9.3MB","2.4MB","1.4MB"],["검색을 둔 곳","49곳 (54%)","22곳 (76%)","있음"],["언어 전환을 둔 곳","83곳 (91%)","12곳 (41%)","있음"],["본문 건너뛰기 링크","33곳 (36%)","15곳 (52%)","있음"],["휴대폰 좌우 넘침","3곳에서 생김","2곳에서 생김","0 (124개 화면)"],["본문 글꼴","Pretendard 계열 31곳","회사 전용 글꼴","Pretendard GIST"]];
 function renderFuture(){const n=k=>TEN.filter(r=>r[3]===k).length;
  $("#v-page").innerHTML=dHero("DECADE","10년 기준 점검표","세계 대학과 공공 홈페이지의 운영 기준에 D안을 대어 보았습니다.")+
  '<div class="wrap" style="padding-block:44px 90px"><div class="pg-main" style="max-width:none">'+
  '<div class="fu-k"><div><b class="num">'+TEN.length+'</b><span>점검한 기준</span></div><div class="ok"><b class="num">'+n("반영")+'</b><span>반영</span></div><div><b class="num">'+n("부분")+'</b><span>부분 · 구축 때</span></div><div><b class="num">'+n("결정 필요")+'</b><span>TF 결정 필요</span></div></div>'+
  '<div class="fu-l">'+TEN.map(r=>'<a class="fu-r" href="#'+r[5]+'"><span class="fu-c">'+esc(r[0])+'</span><span class="fu-m"><b>'+esc(r[1])+'</b><small>'+esc(r[2])+'</small></span><span class="fu-d">'+esc(r[4])+'</span><em class="fu-s '+(r[3]==="반영"?"ok":r[3]==="부분"?"pt":"td")+'">'+esc(r[3])+'</em></a>').join("")+'</div>'+
+ '<h2 class="pg-t" style="margin-top:64px">대기업 120곳과 대어 보기 <small style="font-size:.5em;color:var(--mute);font-weight:600">시가총액 상위 국내 91곳 · 세계 29곳, 2026.11.12. 실측</small></h2>'+
+ '<div class="tbl-w" tabindex="0" role="region" aria-label="대기업 홈페이지와 대어 본 표"><table class="tbl fu-t"><thead><tr><th scope="col">항목</th><th scope="col">국내 대기업</th><th scope="col">세계 대기업</th><th scope="col">D안</th></tr></thead><tbody>'+CORP.map(r=>'<tr><th scope="row">'+esc(r[0])+'</th><td>'+esc(r[1])+'</td><td>'+esc(r[2])+'</td><td class="me">'+esc(r[3])+'</td></tr>').join("")+'</tbody></table></div>'+
  '<nav class="dway" aria-label="함께 보기"><span class="eyebrow">함께 보기</span><div><a href="#quality"><i data-lucide="gauge"></i>품질 성적표</a><a href="#rfp"><i data-lucide="list-checks"></i>제안요청서 대조표</a><a href="#guide"><i data-lucide="palette"></i>디자인 규칙</a><a href="#reflect"><i data-lucide="message-square-text"></i>회의 반영 보고</a></div></nav></div></div>';
  document.title="10년 기준 점검표 | GIST 홈페이지 D안";icons();}
 {const _rf=route;route=function(){if((LH()||"")==="#future"){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));renderFuture();scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_rf();};}
@@ -2191,6 +2194,7 @@ route();heroState();requestAnimationFrame(()=>{drawBanner();drawThumbs();heroSta
 /* ===== v69 위원장 보고: 정확히 그 자리로 가기 ===== */
 (function(){var $=function(q){return document.querySelector(q)};var esc=function(t){return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};var REF=window.REF||window.__REF||[];
 var RAFTER=[
+ ["대기업 120곳과 대어 보기 (v199)","시가총액 상위 대기업 홈페이지 120곳(국내 91·세계 29)을 직접 재서 메뉴 개수·글자 크기·무게·검색·언어 전환·건너뛰기 링크를 D안과 나란히 놓았습니다. 10년 기준 점검표 아래에 있습니다.","future|.fu-t"],
  ["소식 글마다 따로 있는 주소·내용 파일 (v198)","소식 글 25건을 글마다 제목·요약이 따로 있는 가벼운 글 화면(news/글번호.html)으로도 만들어 검색 로봇과 SNS 미리보기가 그 글을 읽게 했습니다. 소식·화면 이름·학과 정보는 모양 없이 내용만 담은 파일(data/content.json)로도 냅니다.","story|#scat"],
  ["10년 기준 점검표 (v197)","세계 대학(MIT·Stanford·ETH)과 공공 홈페이지(GOV.UK·W3C) 운영 기준 15가지에 D안을 대어 보고, 반영·부분·TF 결정 필요로 나눠 한 화면에 모았습니다. 소식 글·세부 화면마다 검색 로봇이 읽는 정보도 넣었습니다.","future|.fu-l"],
  ["바뀌지 않는 주소 (v196)","화면 주소를 메뉴 위치 번호(#p-2-2-0)·글 순번(#st-3) 대신 이름(#p/scholarships)·글번호(#news/224635)로 바꿨습니다. 메뉴를 옮기거나 새 글이 올라와도 예전에 공유한 주소가 그대로 열립니다. 소식 구독(feed.xml), 디자인 값 파일(tokens.json), 없는 주소 안내(404.html)도 함께 둡니다.","p/scholarships|.pg-t"],
