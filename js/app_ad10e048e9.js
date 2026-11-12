@@ -2126,6 +2126,7 @@ route();heroState();requestAnimationFrame(()=>{drawBanner();drawThumbs();heroSta
 /* ===== v69 위원장 보고: 정확히 그 자리로 가기 ===== */
 (function(){var $=function(q){return document.querySelector(q)};var esc=function(t){return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};var REF=window.REF||window.__REF||[];
 var RAFTER=[
+ ["이사회 지적 2 ‘노출’: 학과가 검색에 따로 잡히게 (v189)","학과 14곳을 주소가 따로 있는 글 화면(dept/학과코드.html)과 sitemap.xml·robots.txt로도 내보냄. 검색 최적화 자동 검사 D안 100점(현행 92점)","quality|.ql-k"],
  ["연구실을 누르면 그 자리에서 (v188)","GIST Nexus·학과 화면의 연구실을 누르면 화면을 옮기지 않고 그 자리에서 교수·학과·내선·이어진 주제와 오픈랩·인턴십 신청 단추가 펼쳐짐","nexus|.nx-labs"],
  ["학과에서 다른 단과대학 학과로 바로 (v187)","학과 화면에 ‘같은 주제를 함께 연구하는 다른 학과’를 주제별로 두어 단과대학을 넘어 바로 옮겨 감. 모든 화면 아래 ‘방금 본 화면’ 줄로 왔던 길을 한 번에 되돌아감","d-env1|.nxp"],
  ["이사장님 가장 큰 주문 ‘끊김 없이’를 연구실까지 (v186)","GIST Nexus를 첫 화면 단과대학 바로 아래·맨 위 띠·검색창 아래·전체 메뉴(교육·연구)·대학·학과 화면 맨 위로 꺼냄. 첫 화면 → 단과대학 → 학과 → 연구실 → 같은 주제의 다른 학과 → 소식 → 입학·오픈랩 신청까지 밖으로 나가지 않고 이어짐","home|#pnexus"],

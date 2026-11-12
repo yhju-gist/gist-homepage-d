@@ -68,3 +68,35 @@ head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
         '<style>[hidden]{display:none!important}</style></head><body>\n')
 io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n' + LATE + '\n</body></html>')
 print('index.html 만들었습니다 (글꼴 %d개, webp %d장)' % (len(keep), len(webp)))
+
+# 5) 검색에 잘 잡히게(이사회 지적 2 ‘노출’): 학과 14곳을 주소가 따로 있는 가벼운 글 화면으로도 만들고 sitemap.xml·robots.txt를 둡니다.
+#    (본 화면은 주소 끝 #d-코드 방식이라 검색 로봇이 학과별로 따로 읽지 못합니다. 구축 때는 서버가 화면마다 주소를 줍니다.)
+import json, html, datetime
+try:
+    DEP = json.load(io.open('src/dept.json', encoding='utf-8'))
+    os.makedirs('dept', exist_ok=True)
+    e = html.escape; today = datetime.date.today().isoformat(); urls = [U]
+    for name, d in DEP.items():
+        code = d.get('code'); 
+        if not code: continue
+        intro = ' '.join(d.get('intro') or []) ; desc = (intro or name + ' 소개')[:150]
+        areas = ''.join('<section><h3>%s%s</h3>%s%s</section>' % (e(a[0]), (' <small>%s</small>' % e(a[1])) if len(a) > 1 and a[1] else '', ('<p>%s</p>' % e(a[2])) if len(a) > 2 and a[2] else '', ('<ul>%s</ul>' % ''.join('<li>%s</li>' % e(x) for x in a[3])) if len(a) > 3 and a[3] else '') for a in (d.get('areas') or []))
+        pts = ''.join('<li>%s</li>' % e(x) for x in (d.get('pts') or []))
+        ld = json.dumps({"@context": "https://schema.org", "@type": "EducationalOrganization", "name": "GIST " + name, "alternateName": d.get('e', ''), "url": d.get('hp', ''), "email": d.get('mail', ''), "telephone": d.get('tel', ''), "parentOrganization": {"@type": "CollegeOrUniversity", "name": "광주과학기술원 (GIST)", "url": "https://www.gist.ac.kr/"}}, ensure_ascii=False)
+        page = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>%s | GIST 홈페이지 D안</title><meta name="description" content="%s">'
+                '<link rel="canonical" href="%sdept/%s.html"><meta property="og:title" content="GIST %s"><meta property="og:description" content="%s"><meta property="og:image" content="%sdocs/화면_PC_첫화면.png"><link rel="icon" href="../img/favicon.png">'
+                '<script type="application/ld+json">%s</script>'
+                '<style>body{margin:0;font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif;color:#111418;line-height:1.8;background:#F4F5F6}header{background:#111418;color:#fff;padding:28px 20px}header a{color:#fff;text-decoration:none;font-weight:800}main{max-width:820px;margin:0 auto;padding:28px 20px 60px}h1{font-size:34px;margin:8px 0 4px;letter-spacing:-.03em}h1 small{display:block;font-size:15px;font-weight:600;color:#5A636B}h2{font-size:21px;margin:34px 0 10px}section{background:#fff;border:1px solid #E1E4E7;border-radius:16px;padding:16px 20px;margin:10px 0}h3{margin:0 0 4px;font-size:17px}h3 small{font-weight:600;color:#C11D0E;font-size:13px}ul{margin:6px 0;padding-left:20px}.go{display:inline-block;margin:18px 8px 0 0;background:#DC2715;color:#fff;border-radius:999px;padding:13px 22px;font-weight:800;text-decoration:none}.go.g{background:#111418}footer{color:#5A636B;font-size:13px;margin-top:30px}</style></head><body>'
+                '<header><a href="../">GIST 홈페이지 D안 (시안)</a></header><main><p style="margin:0;color:#C11D0E;font-weight:800">대학·학과</p><h1>%s<small>%s</small></h1>'
+                '<a class="go" href="../#d-%s">이 학과 화면 열기 (연구실·소식·신청까지)</a><a class="go g" href="%s">학과 홈페이지</a>'
+                '%s%s%s<h2>학과 사무실</h2><section><p>전화 %s%s · 이메일 %s</p></section>'
+                '<footer>학과 소개·연구 분야·연락처는 현행 GIST 홈페이지 ‘대학·학과’ 원문을 옮겼습니다(2026.11.11. 확인). 이 화면은 검색에 학과가 따로 잡히도록 만든 글 화면이고, 본 화면은 위 빨간 단추로 엽니다.</footer></main></body></html>') % (
+                e(name), e(desc), U, code, e(name), e(desc), U, ld, e(name), e(d.get('e', '')), code, e(d.get('hp', '')),
+                ('<h2>학과 소개</h2><section><p>%s</p></section>' % e(intro)) if intro else '', ('<h2>특징</h2><section><ul>%s</ul></section>' % pts) if pts else '', ('<h2>연구 분야</h2>' + areas) if areas else '',
+                e(d.get('tel', '')), (' · 팩스 ' + e(d['fax'])) if d.get('fax') else '', e(d.get('mail', '')))
+        io.open('dept/%s.html' % code, 'w', encoding='utf-8').write(page); urls.append(U + 'dept/%s.html' % code)
+    io.open('sitemap.xml', 'w', encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (u, today) for u in urls) + '</urlset>\n')
+    io.open('robots.txt', 'w', encoding='utf-8').write('User-agent: *\nAllow: /\nSitemap: ' + U + 'sitemap.xml\n')
+    print('학과 글 화면 %d개, sitemap.xml, robots.txt 만들었습니다' % (len(urls) - 1))
+except Exception as ex:
+    print('학과 글 화면은 건너뜀:', ex)
