@@ -2640,7 +2640,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
 
 <div class="progress" id="progress" aria-hidden="true"></div>
 <a class="skip" href="#main-c">본문 바로가기</a>
-<div class="topbar" id="topbar"><div class="wrap"><span id="topbarT">2026 GIST 과학기술문화페스타 — 특별강연·공연 일정은 공지에서 확인하세요</span><a id="topbarL" href="https://www.gist.ac.kr/kr/html/sub06/060101.html" target="_blank" rel="noopener noreferrer">자세히 보기</a><button type="button" id="topbarX">오늘 하루 닫기 ×</button></div></div>
+<div class="topbar" id="topbar"><div class="wrap"><span id="topbarT">2026 GIST 과학기술문화페스타 — 특별강연·공연 일정은 공지에서 확인하세요</span><a id="topbarL" href="https://www.gist.ac.kr/kr/html/sub06/060101.html" target="_blank" rel="noopener noreferrer">공지 자세히 보기</a><button type="button" id="topbarX">오늘 하루 닫기 ×</button></div></div>
 <div class="util"><div class="wrap">
   <nav class="sp-links" aria-label="특화 페이지"><a href="#tutorial">GIST Compass</a><a href="#story">GIST Insight</a><a href="#colleges">대학·학과 바로가기</a></nav>
   <nav aria-label="언어·시스템"><a href="https://portal.gist.ac.kr/" target="_blank" rel="noopener noreferrer">포털</a><a href="https://zeus.gist.ac.kr/" target="_blank" rel="noopener noreferrer">ZEUS</a><a href="https://ngw.gist.ac.kr/" target="_blank" rel="noopener noreferrer">그룹웨어</a><a href="https://mail.gist.ac.kr/" target="_blank" rel="noopener noreferrer">웹메일</a><a href="#en" lang="en">ENG</a><span class="a11y" role="group" aria-label="글자 크기"><button type="button" id="fzm">가−</button><button type="button" id="fz0">가</button><button type="button" id="fzp">가+</button></span></nav>
@@ -4417,7 +4417,7 @@ addEventListener("lazylibs",()=>{try{
   var go=function(){var b=$('.who button[data-who="'+a.dataset.aud+'"]');if(b)b.click();var t=$("#aud");if(t){t.style.scrollMarginTop="140px";t.scrollIntoView({block:"start"});}};
   if((location.hash||"#home")!=="#home"){location.hash="home";setTimeout(go,750);}else go();},true);
  /* 바닥글 '바로 하기' (스탠퍼드 Action) */
- var ft=$("footer .ft-top");if(ft&&!$(".ft-act")){ft.insertAdjacentHTML("afterend",'<div class="wrap ft-act"><b>바로 하기</b><a href="https://www.gist.ac.kr/uadm/main.html" target="_blank" rel="noopener noreferrer">대학 입학 지원 ↗</a><a href="https://www.gist.ac.kr/gadm/" target="_blank" rel="noopener noreferrer">대학원 입학 지원 ↗</a><a href="https://www.gist.ac.kr/kr/html/sub01/010305.html" target="_blank" rel="noopener noreferrer">찾아오시는 길 ↗</a><a href="https://www.youtube.com/c/GIST_YOUTUBE" target="_blank" rel="noopener noreferrer">유튜브 ↗</a><a href="https://www.instagram.com/gist.ac.kr/" target="_blank" rel="noopener noreferrer">인스타그램 ↗</a></div>');}
+ var ft=$("footer .ft-top");if(ft&&!$(".ft-act")){ft.insertAdjacentHTML("afterend",'<div class="wrap ft-act"><b>바로 하기</b><a href="#apply">온라인 신청 센터</a><a href="#nexus">연구 연결 지도</a><a href="https://www.gist.ac.kr/uadm/main.html" target="_blank" rel="noopener noreferrer">대학 입학 지원 ↗</a><a href="https://www.gist.ac.kr/gadm/" target="_blank" rel="noopener noreferrer">대학원 입학 지원 ↗</a><a href="https://www.gist.ac.kr/kr/html/sub01/010305.html" target="_blank" rel="noopener noreferrer">찾아오시는 길 ↗</a><a href="https://www.youtube.com/c/GIST_YOUTUBE" target="_blank" rel="noopener noreferrer">유튜브 ↗</a><a href="https://www.instagram.com/gist.ac.kr/" target="_blank" rel="noopener noreferrer">인스타그램 ↗</a></div>');}
 })();
 
 
@@ -4718,7 +4718,7 @@ function renderStoryDetail(n){const S0=STORIES[n];const host=$("#v-page");if(!S0
  const prev=n>0?n-1:null,next=n<STORIES.length-1?n+1:null;
  const sum=(S0.sum&&S0.sum.length)?S0.sum.map(t=>'<p>'+esc(t)+'</p>').join(""):'<div class="slot sm"><b>본문</b><p>[시안] 이 글의 본문은 구축 때 원문(보도자료 전문)을 글자로 올립니다. 지금은 제목·부제·날짜만 실었습니다.</p></div>';
  host.innerHTML='<div class="page-h stpv"><div class="wrap"><span class="crumb"><a href="#home">홈</a> › <a href="#story">GIST Insight</a> › '+esc(S0.c)+'</span><span class="st-cat c'+((({"연구성과":1,"사람":3,"보도자료":2,"영상":4,"캠퍼스":5})[S0.c])||1)+'">'+esc(S0.c)+' <em>'+esc(cen(S0)||"")+'</em></span><h1 class="st-h1">'+esc(S0.t)+'</h1><p class="st-sub">'+esc(S0.s)+'</p><div class="st-meta"><span class="num">'+esc(S0.d||S0.m)+'</span>'+(S0.src?'<span>출처 '+esc(S0.src)+'</span>':'')+(sImg(S0).gen?'':'<span>'+esc(S0.cr)+'</span>')+(window.__RT[n]?'<span title="원문 기사 본문 글자 수(공백 제외) ÷ 분당 500자">원문 기사 약 '+window.__RT[n]+'분 읽기</span>':'')+(typeof gTopic==="function"&&gTopic(S0)[2]?'<span class="st-tp">#'+esc(gTopic(S0)[1])+'</span>':'')+'<button type="button" class="st-copy">이 글 주소 복사</button></div></div></div>'+
- '<div class="wrap st-wrap"><article class="st-art"><div class="st-thumb thumb"><img loading="lazy" src="'+(typeof sImg==="function"?sImg(S0).u:"")+'" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="cr">'+(sImg(S0).gen?'표지 그래픽 · 이 글에 맞는 사진은 구축 때 담당 부서가 올림':esc(S0.cr))+'</span></div><div class="st-body">'+sum+'</div>'+nxStoryRel(S0)+
+ '<div class="wrap st-wrap"><article class="st-art"><div class="st-thumb thumb"><img loading="lazy" src="'+(typeof sImg==="function"?sImg(S0).u:"")+'" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="cr">'+(sImg(S0).gen?'표지 그래픽 · 이 글에 맞는 사진은 구축 때 담당 부서가 올림':esc(S0.cr))+'</span></div><div class="st-body">'+sum+'</div>'+nxStoryRel(S0)+nxShare(S0.t)+
  (S0.g?'<a class="st-src" href="'+esc(S0.g)+'"'+EXT+'><span><small>GIST 미디어센터 원문</small><b>현행 GIST 홈페이지에서 보도자료 전문 읽기</b></span><i data-lucide="arrow-up-right"></i></a>':'')+(S0.u&&S0.u!==S0.g?'<a class="st-src alt" href="'+esc(S0.u)+'"'+EXT+'><span><small>관련 기사</small><b>'+esc(S0.src||"원문")+'에서 기사 읽기</b></span><i data-lucide="arrow-up-right"></i></a>':'')+
  '<p class="note">'+(S0.g&&S0.u===S0.g?'요약은 GIST 미디어센터 원문을 옮겼습니다.':S0.g?'요약은 GIST 미디어센터 원문과 연결한 기사 내용을 옮겼습니다. 기사 전문 저작권은 해당 언론사에 있습니다.':S0.u&&/인스타그램/.test(S0.src||'')?'요약은 GIST 공식 인스타그램 게시글을 옮겼습니다.':S0.u?'요약은 연결한 기사 내용을 옮겼습니다. 기사 전문 저작권은 해당 언론사에 있습니다.':'D안 시안 — 제목·부제·날짜는 GIST 보도자료·공식 채널 기준입니다.')+' 구축 때는 담당 부서가 관리자 화면에서 본문·사진을 직접 올립니다.</p>'+
  '<nav class="st-pn" aria-label="이전·다음 글">'+(prev!==null?'<a href="#st-'+prev+'"><small>이전 글</small><b>'+esc(STORIES[prev].t)+'</b></a>':'<span></span>')+(next!==null?'<a class="nx" href="#st-'+next+'"><small>다음 글</small><b>'+esc(STORIES[next].t)+'</b></a>':'<span></span>')+'</nav>'+
@@ -4840,7 +4840,7 @@ function renderDept(n){const D0=DEPT[n],ci=deptCol(n),C=COLLEGES[ci];const host=
  const sat='<section class="psat" aria-label="페이지 만족도"><b>이 화면의 정보가 도움이 되었나요?</b><div class="psat-b" role="group" aria-label="만족도 고르기">'+["매우 만족","만족","보통","불만족"].map(v=>'<button type="button" data-sat="'+v+'">'+v+'</button>').join("")+'</div><p class="psat-m" role="status">[시안] 고른 결과는 저장하지 않습니다. 구축 때 담당 부서 집계로 연결합니다.</p></section>';
  host.innerHTML='<div class="page-h dhero2 c'+ci+'">'+dphoto(D0.code,ci,'dh2-bg')+'<div class="wrap dh2-in"><span class="dh2-col">'+esc(CEN2[ci])+'</span><span class="dh2-w" aria-hidden="true">'+esc(DWD[D0.code]||"")+'</span><h1>'+esc(n)+'</h1><p class="dh2-e">'+esc(D0.e||C.n)+'</p>'+(D0.slo?'<p class="dh2-s">'+esc(D0.slo)+'</p>':'')+(D0.areas.length?'<div class="dh2-ch">'+D0.areas.slice(0,5).map(x=>'<span>'+esc(x[0])+'</span>').join("")+'</div>':'')+'</div><span class="dh2-cr">'+(/^d_/.test(DPH[D0.code]||'')?'사진 © '+esc(n)+' 홈페이지':'사진 © GIST')+'</span></div>'+
   '<nav class="pbar" aria-label="현재 위치"><div class="wrap"><a class="home" href="#home" aria-label="홈으로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg></a><ol><li><a class="dd" style="padding:8px 6px" href="#colleges">대학·학과</a></li>'+dd("pdc",C.n,colItems)+dd("pdd",n,sibItems)+'</ol><span class="tools"><span class="pb-st" role="status"></span><button type="button" class="cp" aria-label="이 화면 주소 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button><button type="button" class="pr" aria-label="이 화면 인쇄"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6h-2"/><rect x="6" y="14" width="12" height="7"/></svg></button></span></div></nav>'+
-  '<div class="wrap"><div class="lnbw">'+lnb+'<div class="lnb-main pg-main"><div class="dhd"><div><span class="eyebrow">'+esc(C.n)+'</span><h2 class="pg-t" style="margin:4px 0 0">'+esc(n)+'</h2>'+(D0.e?'<p class="den">'+esc(D0.e)+'</p>':'')+'</div></div>'+(D0.slo?'<p class="dslo">'+esc(D0.slo)+'</p>':'')+(intro?'<div class="dint">'+intro+'</div>':'<div class="slot sm"><b>학과 소개</b><p>현행 GIST 홈페이지 학과 소개 화면에 소개글이 없어 비워 두었습니다. 학과 홈페이지에서 확인해 주세요.</p></div>')+act+areas+nxDept(n)+dnews(n)+contact+offc+src+sat+sibs+'</div></div></div>';
+  '<div class="wrap"><div class="lnbw">'+lnb+'<div class="lnb-main pg-main"><div class="dhd"><div><span class="eyebrow">'+esc(C.n)+'</span><h2 class="pg-t" style="margin:4px 0 0">'+esc(n)+'</h2>'+(D0.e?'<p class="den">'+esc(D0.e)+'</p>':'')+'</div></div>'+(D0.slo?'<p class="dslo">'+esc(D0.slo)+'</p>':'')+(intro?'<div class="dint">'+intro+'</div>':'<div class="slot sm"><b>학과 소개</b><p>현행 GIST 홈페이지 학과 소개 화면에 소개글이 없어 비워 두었습니다. 학과 홈페이지에서 확인해 주세요.</p></div>')+act+areas+nxDept(n)+apDeptBtns(n)+dnews(n)+contact+offc+src+sat+sibs+'</div></div></div>';
  document.title=n+" | GIST 홈페이지 D안";icons();}
 {const _r2=route;route=function(){const m=(location.hash||"").match(/^#d-([a-z0-9]+)$/);const n=m&&deptByCode(m[1]);if(n){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));$$(".gnb a").forEach(a=>a.classList.toggle("on",+a.dataset.m===1));renderDept(n);scrollTo({top:0});heroState&&heroState();return;}_r2();};}
 addEventListener("hashchange",()=>{if(/^#d-/.test(location.hash||""))route();});
@@ -5133,12 +5133,207 @@ function nxTeaser(){const all=new Set();NX.forEach(t=>nxLabs(t).forEach(p=>all.a
  r.insertAdjacentHTML("afterbegin",T.map(t=>{const L=nxLabs(t);return '<li class="ri nxr"><a href="#nexus-'+t.k+'"><span class="src"><span>GIST Nexus</span>연구 연결 지도</span><b><i data-lucide="'+t.ic+'"></i> ‘'+esc(t.n)+'’ 주제로 이어 보기</b><p>이 주제를 연구하는 학과 '+new Set(L.map(p=>p[1])).size+'개 · 연구실 '+L.length+'곳 · 연구소 · 최근 소식 '+nxStories(t).length+'건을 한 화면에서 봅니다.</p></a></li>'}).join(""));icons();}catch(e){}};}
 {const _rf=PBODY["연구 분야"];if(_rf)PBODY["연구 분야"]=()=>_rf()+'<div class="nxh" style="margin-top:34px">'+nxTeaser()+'</div>';}
 
+
+/* ===== v182 온라인 신청 센터 — 제안요청서 SFR-006~009의 신청형 기능을 양식 하나의 틀로 (시안: 이 기기에만 저장) ===== */
+const AP_NOTE="[시안] 입력한 내용은 이 기기(브라우저)에만 저장되고 어디에도 보내지 않습니다. 실제 개인정보 대신 예시를 넣어 보세요.";
+const AP_ST=["접수","확정","완료","취소"];
+const apDeptOpts=()=>Object.keys(DURL);
+const AP_COMMON=[["nm","신청자 이름","text",null,1],["em","이메일","email",null,1],["ph","연락처","tel",null,0]];
+const AP=[
+ {id:"ua-mat",g:"대학 입학",n:"입시자료 신청",ic:"package",own:"입학팀",pf:"UM",d:"모집요강·학교 안내 책자를 우편이나 방문으로 받습니다.",f:[["kind","자료 종류","select",["모집요강","학교 안내 책자","학과 안내 자료"],1],["qty","수량","number",[1,30],1],["recv","받는 방법","radio",["우편","방문 수령"],1],["addr","받을 주소 (우편일 때)","text",null,0]],st:["접수","발송","완료","취소"]},
+ {id:"ua-visit",g:"대학 입학",n:"대학 방문 참가 신청",ic:"map-pinned",own:"입학팀",pf:"UV",d:"캠퍼스 방문 프로그램에 참가를 신청합니다. 날짜별 정원을 넘으면 마감됩니다.",cap:40,capKey:["day","prog"],f:[["day","방문 희망일","date",null,1],["prog","프로그램","select",["캠퍼스 투어","입학 설명","연구실 견학"],1],["cnt","참가 인원","number",[1,40],1],["org","소속 (학교·단체)","text",null,0]]},
+ {id:"ua-consult",g:"대학 입학",n:"입학 상담 신청",ic:"messages-square",own:"입학팀",pf:"UC",d:"방문·전화·온라인 가운데 편한 방법으로 상담을 신청합니다.",f:[["area","상담 분야","select",["수시 전형","정시 전형","장학·등록금","학교생활","기타"],1],["when","희망 일시","datetime-local",null,1],["how","상담 방법","radio",["방문","전화","온라인"],1],["msg","상담 내용","textarea",null,1]]},
+ {id:"ua-hs",g:"대학 입학",n:"고교 방문 입학설명회 신청",ic:"school",own:"입학팀",pf:"UH",d:"고등학교로 찾아가는 입학설명회를 신청합니다.",f:[["hs","고등학교 이름","text",null,1],["when","희망 일시","datetime-local",null,1],["cnt","참석 예상 인원","number",[1,1000],1],["msg","요청 사항","textarea",null,0]]},
+ {id:"ga-info",g:"대학원 입학",n:"대학원 입학설명회 신청",ic:"presentation",own:"대학원 입학 담당 부서",pf:"GI",d:"온라인·오프라인 입학설명회 참가를 신청합니다.",f:[["sch","출신(재학) 학교","text",null,1],["term","지원 예정 학기","select",["2027년 봄학기","2027년 가을학기","미정"],1],["dept","지원 예정 학과","dept",null,1],["mode","참가 방식","radio",["오프라인","온라인"],1]]},
+ {id:"ga-intern",g:"대학원 입학",n:"인턴십 신청",ic:"briefcase",own:"대학원 입학 담당 부서",pf:"GN",d:"학과와 연구실을 골라 인턴십을 신청합니다. 연구실 목록은 GIST Nexus와 같은 자료입니다.",f:[["dept","희망 학과","dept",null,1],["lab","희망 연구실","lab",null,0],["sch","소속 학교·학년","text",null,1],["msg","지원 동기","textarea",null,1],["file","이력서 파일 이름 (시안: 파일은 올리지 않음)","text",null,0]],st:["접수","심사","선발","취소"]},
+ {id:"ga-openlab",g:"대학원 입학",n:"오픈랩 참가 신청",ic:"door-open",own:"대학원 입학 담당 부서",pf:"GO",d:"연구실을 직접 둘러보는 오픈랩에 참가를 신청합니다. 연구실별 정원을 넘으면 마감됩니다.",cap:15,capKey:["dept","lab","day"],f:[["dept","참가 학과","dept",null,1],["lab","참가 연구실","lab",null,0],["day","참가 희망일","date",null,1],["cnt","참가 인원","number",[1,15],1]]},
+ {id:"ipa-app",g:"International",n:"Exchange · Global Internship · Consultation",ic:"globe-2",own:"글로벌협력실 (IPA)",pf:"IP",en:1,d:"One form for exchange students, global internships and consultations.",f:[["type","Program","select",["Exchange student (inbound)","Exchange student (outbound)","Global internship","Consultation"],1],["home","Home university","text",null,1],["term","Preferred term","select",["Spring 2027","Fall 2027","Undecided"],1],["dept","Department of interest","dept",null,0],["msg","Message","textarea",null,0]],st:["Received","Confirmed","Completed","Cancelled"]},
+ {id:"df-pledge",g:"발전기금",n:"온라인 기부 약정",ic:"heart-handshake",own:"발전기금 담당 부서",pf:"DF",d:"약정 유형과 금액을 정해 기부를 약정합니다. 결제 정보는 받지 않습니다.",f:[["kind","약정 유형","radio",["일시 기부","정기 기부"],1],["amt","약정 금액 (원)","number",[1000,1000000000],1],["term","기간 (정기일 때, 개월)","number",[1,120],0],["use","기부 목적","select",["GIST에 일임","장학","연구","시설"],1],["open","기부자 명단 공개","radio",["공개","비공개"],1]]}
+];
+let apMem=null;
+function apLoad(){if(apMem)return apMem;try{apMem=JSON.parse(localStorage.getItem("gistd-apply")||"[]")}catch(e){apMem=[]}if(!Array.isArray(apMem))apMem=[];return apMem;}
+function apSave(){try{localStorage.setItem("gistd-apply",JSON.stringify(apMem))}catch(e){}}
+const apF=id=>AP.find(x=>x.id===id);
+const apSt=(F,i)=>(F.st||AP_ST)[i];
+function apUsed(F,v){if(!F.cap)return 0;return apLoad().filter(r=>r.f===F.id&&r.s!==3&&F.capKey.every(k=>(r.v[k]||"")===(v[k]||""))).reduce((a,r)=>a+(+r.v.cnt||1),0);}
+function apField(F,x){const [k,lab,tp,op,req]=x;const id="ap-"+k;const L=F.en?{sel:"Select",opt:"optional"}:{sel:"고르세요",opt:"선택"};let c="";
+ const rq=req?' required aria-required="true"':'';
+ if(tp==="select")c='<select id="'+id+'" name="'+k+'"'+rq+'><option value="">'+L.sel+'</option>'+op.map(o=>'<option>'+esc(o)+'</option>').join("")+'</select>';
+ else if(tp==="dept")c='<select id="'+id+'" name="'+k+'"'+rq+' data-apdept><option value="">'+L.sel+'</option>'+COLLEGES.map(C=>'<optgroup label="'+esc(C.n)+'">'+C.d.map(o=>'<option>'+esc(o)+'</option>').join("")+'</optgroup>').join("")+'</select>';
+ else if(tp==="lab")c='<select id="'+id+'" name="'+k+'" data-aplab><option value="">'+(F.en?"Any lab":"학과를 먼저 고르세요 (정하지 않아도 됩니다)")+'</option></select>';
+ else if(tp==="radio")return '<fieldset class="ap-f"><legend>'+esc(lab)+(req?' <em aria-hidden="true">*</em>':'')+'</legend><div class="ap-r">'+op.map((o,i)=>'<label><input type="radio" name="'+k+'" value="'+esc(o)+'"'+(req&&!i?' required':'')+'><span>'+esc(o)+'</span></label>').join("")+'</div><p class="ap-e" data-e="'+k+'" role="alert"></p></fieldset>';
+ else if(tp==="textarea")c='<textarea id="'+id+'" name="'+k+'" rows="4" maxlength="1000"'+rq+'></textarea>';
+ else if(tp==="number")c='<input id="'+id+'" name="'+k+'" type="number" inputmode="numeric" min="'+op[0]+'" max="'+op[1]+'"'+rq+'>';
+ else c='<input id="'+id+'" name="'+k+'" type="'+tp+'"'+(tp==="email"?' autocomplete="email" placeholder="name@example.com"':tp==="tel"?' autocomplete="tel" placeholder="010-0000-0000"':tp==="date"?' min="'+new Date().toISOString().slice(0,10)+'"':'')+' maxlength="120"'+rq+'>';
+ return '<div class="ap-f'+(tp==="textarea"||k==="addr"||k==="file"?' w':'')+'"><label for="'+id+'">'+esc(lab)+(req?' <em aria-hidden="true">*</em>':' <small>('+L.opt+')</small>')+'</label>'+c+'<p class="ap-e" data-e="'+k+'" role="alert"></p></div>';}
+function apHead(en,t,p){return '<div class="page-h pv"><div class="pv-bg" aria-hidden="true"><img loading="lazy" src="'+IMG("mg_adm.jpg")+'" alt="" decoding="async"></div><div class="wrap"><span class="pv-en" aria-hidden="true">'+en+'</span><h1>'+t+'</h1><p>'+p+'</p></div></div>';}
+function apNav(cur){return '<nav class="ap-nav" aria-label="신청 센터 메뉴"><a href="#apply"'+(cur==="hub"?' aria-current="page"':'')+'><i data-lucide="layout-grid"></i>신청 양식</a><a href="#apply-my"'+(cur==="my"?' aria-current="page"':'')+'><i data-lucide="clipboard-list"></i>내 신청 내역 <b class="num">'+apLoad().length+'</b></a><a href="#apply-admin"'+(cur==="admin"?' aria-current="page"':'')+'><i data-lucide="shield-check"></i>담당자 화면 (미리보기)</a></nav><p class="ap-note"><i data-lucide="info"></i>'+AP_NOTE+'</p>';}
+function renderApplyHub(){const gs=[...new Set(AP.map(x=>x.g))];
+ $("#v-page").innerHTML=apHead("APPLY","온라인 신청 센터","입시자료·방문·상담·설명회·인턴십·오픈랩·국제교류·기부 약정까지, 신청은 한곳에서 하고 접수번호로 진행 상황을 확인합니다.")+
+ '<div class="wrap ap" style="padding-block:36px 90px">'+apNav("hub")+
+ '<div class="rp-kpi" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><div class="r"><b class="num">'+AP.length+'</b><span>신청 양식</span></div><div><b class="num">'+gs.length+'</b><span>홈페이지 영역</span></div><div><b class="num">1</b><span>같은 틀 (접수번호·조회·취소·담당자 관리)</span></div><div><b class="num">'+apLoad().length+'</b><span>이 기기에서 넣은 신청</span></div></div>'+
+ gs.map(g=>'<h2 class="ap-g">'+esc(g)+'</h2><div class="ap-cards">'+AP.filter(x=>x.g===g).map(F=>'<a class="ap-c" href="#apply-'+F.id+'"'+(F.en?' lang="en"':'')+'><i data-lucide="'+F.ic+'"></i><b>'+esc(F.n)+'</b><span>'+esc(F.d)+'</span><em>'+(F.en?"Apply":"신청하기")+' <i data-lucide="arrow-right"></i></em></a>').join("")+'</div>').join("")+
+ '<p class="note" style="margin-top:26px">양식 항목은 「GIST 홈페이지 통합 재구축 제안요청서」 기능 요구사항(대학 입학 SFR-006, 대학원 입학 SFR-007, 국제교류협력 SFR-008, 발전기금 SFR-009)에 적힌 신청·조회·관리 항목을 그대로 옮겼습니다. [시안] 실제 일정·정원·담당 부서 이름은 구축 때 담당 부서가 정합니다. <a href="#rfp">제안요청서 대조표 보기</a></p></div>';
+ document.title="온라인 신청 센터 | GIST 홈페이지 D안";icons();}
+function renderApplyForm(F){const pre=window.__apPre||{};window.__apPre=null;const T=F.en?{b:"Submit application",c:"I agree to the collection and use of personal information (required)",ci:"Items: name, e-mail, phone · Purpose: handling this application · Retention: until processing is complete",own:"Office in charge"}:{b:"신청하기",c:"개인정보 수집·이용에 동의합니다 (필수)",ci:"수집 항목: 이름·이메일·연락처 · 목적: 신청 접수와 안내 · 보유: 처리 끝날 때까지",own:"담당 부서"};
+ $("#v-page").innerHTML=apHead("APPLY",esc(F.n),esc(F.d))+'<div class="wrap ap" style="padding-block:36px 90px">'+apNav("")+
+ '<div class="ap-fw"><form class="ap-form" id="apform" novalidate data-f="'+F.id+'"'+(F.en?' lang="en"':'')+'><div class="ap-sum" id="apsum" role="alert" tabindex="-1" hidden></div><div class="ap-grid">'+F.f.concat(F.en?[["nm","Name","text",null,1],["em","E-mail","email",null,1],["ph","Phone","tel",null,0]]:AP_COMMON).map(x=>apField(F,x)).join("")+'</div>'+
+ (F.cap?'<p class="ap-cap" id="apcap" aria-live="polite"></p>':'')+
+ '<label class="ap-agree"><input type="checkbox" name="agree" required><span><b>'+T.c+'</b><small>'+T.ci+'</small></span></label><p class="ap-e" data-e="agree" role="alert"></p>'+
+ '<div class="ap-act"><button type="submit" class="ap-b">'+T.b+' <i data-lucide="arrow-right"></i></button><a href="#apply">'+(F.en?"Back to all forms":"다른 양식 보기")+'</a></div></form>'+
+ '<aside class="ap-side"><span class="eyebrow">'+T.own+'</span><b>'+esc(F.own)+'</b><ol><li>'+(F.en?"Fill in and submit":"양식을 써서 신청")+'</li><li>'+(F.en?"Get a receipt number":"접수번호 받기")+'</li><li>'+(F.en?"Track status in “My applications”":"‘내 신청 내역’에서 진행 상황 확인")+'</li><li>'+(F.en?"Cancel anytime before confirmation":"확정 전에는 직접 취소")+'</li></ol><p>'+(F.en?"Status":"진행 단계")+': '+(F.st||AP_ST).slice(0,3).map(esc).join(" → ")+'</p></aside></div></div>';
+ Object.keys(pre).forEach(k=>{const el=$('#apform [name="'+k+'"]');if(el){el.value=pre[k];if(el.hasAttribute("data-apdept"))apLabs(el);}});if(pre.lab){const l=$('#apform [name="lab"]');if(l)l.value=pre.lab;}
+ document.title=F.n+" | 온라인 신청 센터";icons();apCap();}
+function apLabs(sel){const l=$("#apform [data-aplab]");if(!l)return;const P=PROFDIR.filter(p=>p[1]===sel.value&&p[3]);l.innerHTML='<option value="">'+(sel.value?(P.length?"정하지 않음 (학과에 맡김)":"공개된 연구실 이름이 없습니다"):"학과를 먼저 고르세요")+'</option>'+P.map(p=>'<option value="'+esc(p[3])+'">'+esc(p[3])+' · '+esc(nxBase(p[0]))+' 교수</option>').join("");}
+function apVals(){const fm=$("#apform");const v={};new FormData(fm).forEach((val,k)=>{v[k]=String(val).trim()});return v;}
+function apCap(){const fm=$("#apform"),c=$("#apcap");if(!fm||!c)return;const F=apF(fm.dataset.f);const v=apVals();if(!F.capKey.filter(k=>k!=="lab").every(k=>v[k])){c.textContent="날짜"+(F.capKey.includes("dept")?"·학과":"·프로그램")+"를 고르면 남은 자리를 보여 줍니다. (시안 정원 "+F.cap+"명)";c.className="ap-cap";return;}const u=apUsed(F,v);const left=F.cap-u;c.innerHTML=left>0?'남은 자리 <b class="num">'+left+'</b>명 / 정원 '+F.cap+'명 (시안 값)':'<b>마감되었습니다.</b> 다른 날짜를 골라 주세요. (정원 '+F.cap+'명)';c.className="ap-cap"+(left>0?"":" full");}
+document.addEventListener("change",e=>{if(e.target.matches&&e.target.matches("#apform [data-apdept]"))apLabs(e.target);if(e.target.closest&&e.target.closest("#apform"))apCap();});
+document.addEventListener("submit",e=>{const fm=e.target;if(fm.id!=="apform")return;e.preventDefault();const F=apF(fm.dataset.f);const v=apVals();const errs=[];const en=F.en;
+ const all=F.f.concat(en?[["nm","Name","text",null,1],["em","E-mail","email",null,1],["ph","Phone","tel",null,0]]:AP_COMMON);
+ $$("#apform .ap-e").forEach(p=>p.textContent="");$$("#apform [aria-invalid]").forEach(x=>x.removeAttribute("aria-invalid"));
+ const bad=(k,m)=>{errs.push([k,m]);const p=$('#apform .ap-e[data-e="'+k+'"]');if(p)p.textContent=m;const el=$('#apform [name="'+k+'"]');el&&el.setAttribute("aria-invalid","true");};
+ all.forEach(([k,lab,tp,op,req])=>{const x=v[k]||"";if(req&&!x){bad(k,en?lab+" is required.":"‘"+lab+"’을(를) 넣어 주세요.");return;}if(!x)return;
+  if(tp==="email"&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(x))bad(k,en?"Check the e-mail address.":"이메일 주소 모양을 확인해 주세요. 예: name@example.com");
+  if(tp==="tel"&&!/^[0-9+\-\s()]{8,20}$/.test(x))bad(k,en?"Check the phone number.":"연락처는 숫자와 - 만 넣어 주세요.");
+  if(tp==="number"&&(+x<op[0]||+x>op[1]||!/^\d+$/.test(x)))bad(k,(en?"Enter a number between ":"")+op[0].toLocaleString()+"~"+op[1].toLocaleString()+(en?".":" 사이 숫자를 넣어 주세요."));
+  if((tp==="date"||tp==="datetime-local")&&new Date(x)<new Date(new Date().toDateString()))bad(k,en?"Choose a future date.":"오늘 이후 날짜를 골라 주세요.");});
+ if(F.id==="ua-mat"&&v.recv==="우편"&&!v.addr)bad("addr","우편으로 받으려면 주소를 넣어 주세요.");
+ if(!v.agree)bad("agree",en?"Please agree to continue.":"개인정보 수집·이용에 동의해야 신청할 수 있습니다.");
+ if(F.cap&&!errs.length&&apUsed(F,v)+(+v.cnt||1)>F.cap)bad("cnt","남은 자리("+Math.max(0,F.cap-apUsed(F,v))+"명)보다 많습니다. 인원을 줄이거나 다른 날짜를 골라 주세요.");
+ if(errs.length){const s=$("#apsum");s.hidden=false;s.innerHTML='<b>'+(en?"Please fix "+errs.length+" item(s).":"고칠 곳이 "+errs.length+"군데 있습니다.")+'</b><ul>'+errs.map(x=>'<li><a href="#" data-apgo="'+x[0]+'">'+esc(x[1])+'</a></li>').join("")+'</ul>';s.focus();return;}
+ delete v.agree;const d=new Date();const ymd=d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0");const L=apLoad();const no=F.pf+"-"+ymd+"-"+String(L.filter(r=>r.f===F.id).length+1).padStart(4,"0");
+ L.unshift({no,f:F.id,v,s:0,t:d.toISOString()});apSave();
+ $("#v-page").innerHTML=apHead("APPLY",en?"Application received":"신청이 접수되었습니다",esc(F.n))+'<div class="wrap ap" style="padding-block:36px 90px"><div class="ap-done"><i data-lucide="check-circle-2"></i><span class="eyebrow">'+(en?"Receipt number":"접수번호")+'</span><b class="num">'+no+'</b><p>'+(en?"Keep this number. You can check the status or cancel in “My applications”.":"이 번호로 진행 상황을 확인합니다. ‘내 신청 내역’에서 상태를 보거나 확정 전에 취소할 수 있습니다.")+'</p><div><a class="ap-b" href="#apply-my">'+(en?"My applications":"내 신청 내역 보기")+' <i data-lucide="arrow-right"></i></a><a href="#apply">'+(en?"All forms":"다른 신청 하기")+'</a></div><small>'+AP_NOTE+'</small></div></div>';icons();scrollTo({top:0});});
+document.addEventListener("click",e=>{const g=e.target.closest("[data-apgo]");if(g){e.preventDefault();const el=$('#apform [name="'+g.dataset.apgo+'"]');el&&el.focus();return;}
+ const c=e.target.closest("[data-apcancel]");if(c){const r=apLoad().find(x=>x.no===c.dataset.apcancel);if(r&&r.s===0){r.s=3;apSave();renderApplyMy();}return;}
+ const s=e.target.closest("[data-apnext]");if(s){const r=apLoad().find(x=>x.no===s.dataset.apnext);if(r&&r.s<2){r.s++;apSave();renderApplyAdmin();}return;}
+ if(e.target.closest("#apcsv")){const L=apLoad();const keys=[...new Set(L.flatMap(r=>Object.keys(r.v)))];const q=x=>'"'+String(x==null?"":x).replace(/"/g,'""')+'"';const csv="﻿"+[["접수번호","양식","상태","접수일시"].concat(keys).map(q).join(",")].concat(L.map(r=>[r.no,apF(r.f).n,apSt(apF(r.f),r.s),r.t.slice(0,16).replace("T"," ")].concat(keys.map(k=>r.v[k])).map(q).join(","))).join("\r\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="GIST_신청내역_"+new Date().toISOString().slice(0,10)+".csv";document.body.appendChild(a);a.click();a.remove();return;}
+ if(e.target.closest("#apclr")){apMem=[];apSave();renderApplyAdmin();return;}
+ const pl=e.target.closest("[data-appre]");if(pl){try{window.__apPre=JSON.parse(pl.dataset.appre)}catch(_){}}
+});
+const apMask=(k,x)=>k==="em"?String(x).replace(/^(.).*(@.*)$/,"$1***$2"):k==="ph"?String(x).replace(/\d(?=\d{0,3}$)/g,"*"):k==="nm"?String(x).slice(0,1)+"*".repeat(Math.max(1,String(x).length-1)):x;
+function renderApplyMy(){const L=apLoad();
+ $("#v-page").innerHTML=apHead("MY APPLICATIONS","내 신청 내역","이 기기에서 넣은 신청의 접수번호와 진행 상황입니다.")+'<div class="wrap ap" style="padding-block:36px 90px">'+apNav("my")+
+ (L.length?'<ul class="ap-my">'+L.map(r=>{const F=apF(r.f);const lab=k=>(F.f.concat(AP_COMMON).find(x=>x[0]===k)||[k,k])[1];return '<li class="s'+r.s+'"><div class="ap-my-h"><span class="ap-st s'+r.s+'">'+esc(apSt(F,r.s))+'</span><b>'+esc(F.n)+'</b><span class="num">'+esc(r.no)+'</span><time class="num">'+esc(r.t.slice(0,16).replace("T"," "))+'</time></div><div class="ap-steps" aria-label="진행 단계">'+(F.st||AP_ST).slice(0,3).map((s,i)=>'<span class="'+(r.s===3?"x":i<=r.s?"on":"")+'">'+esc(s)+'</span>').join("")+'</div><dl>'+Object.keys(r.v).filter(k=>r.v[k]).map(k=>'<div><dt>'+esc(lab(k))+'</dt><dd>'+esc(r.v[k])+'</dd></div>').join("")+'</dl>'+(r.s===0?'<button type="button" class="ap-x" data-apcancel="'+esc(r.no)+'">신청 취소</button>':'')+'</li>'}).join("")+'</ul>':'<div class="ap-empty"><i data-lucide="inbox"></i><b>아직 넣은 신청이 없습니다.</b><a class="ap-b" href="#apply">신청 양식 보기 <i data-lucide="arrow-right"></i></a></div>')+'</div>';
+ document.title="내 신청 내역 | GIST 홈페이지 D안";icons();}
+function renderApplyAdmin(){const L=apLoad();const by={};L.forEach(r=>by[r.f]=(by[r.f]||0)+1);
+ $("#v-page").innerHTML=apHead("STAFF VIEW","담당자 화면 (미리보기)","담당 부서가 보는 화면입니다. 접수 건을 확인하고 상태를 바꾸고, 엑셀로 내려받습니다.")+'<div class="wrap ap" style="padding-block:36px 90px">'+apNav("admin")+
+ '<div class="rp-kpi" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr))"><div class="r"><b class="num">'+L.length+'</b><span>전체 신청</span></div>'+[0,1,2,3].map(i=>'<div><b class="num">'+L.filter(r=>r.s===i).length+'</b><span>'+AP_ST[i]+'</span></div>').join("")+'</div>'+
+ '<div class="ap-bar">'+AP.filter(F=>by[F.id]).map(F=>'<span><b class="num">'+by[F.id]+'</b>'+esc(F.n)+'</span>').join("")+'<span class="ap-sp"></span><button type="button" class="pill" id="apcsv"><i data-lucide="download"></i> 엑셀(CSV)로 내려받기</button><button type="button" class="pill" id="apclr">시안 자료 모두 지우기</button></div>'+
+ (L.length?'<div class="tbl-w" tabindex="0" role="region" aria-label="신청 목록 표"><table class="tbl ap-t"><thead><tr><th scope="col">접수번호</th><th scope="col">양식</th><th scope="col">신청자 (가림)</th><th scope="col">주요 내용</th><th scope="col">접수</th><th scope="col">상태</th><th scope="col">처리</th></tr></thead><tbody>'+L.map(r=>{const F=apF(r.f);const main=F.f.slice(0,3).map(x=>r.v[x[0]]).filter(Boolean).join(" · ");return '<tr><td class="num">'+esc(r.no)+'</td><td>'+esc(F.n)+'<small>'+esc(F.own)+'</small></td><td>'+esc(apMask("nm",r.v.nm||""))+'<small>'+esc(apMask("em",r.v.em||""))+'</small></td><td>'+esc(main)+'</td><td class="num">'+esc(r.t.slice(5,16).replace("T"," "))+'</td><td><span class="ap-st s'+r.s+'">'+esc(apSt(F,r.s))+'</span></td><td>'+(r.s<2?'<button type="button" class="pill" data-apnext="'+esc(r.no)+'">'+esc(apSt(F,r.s+1))+'(으)로</button>':'–')+'</td></tr>'}).join("")+'</tbody></table></div>':'<div class="ap-empty"><i data-lucide="inbox"></i><b>접수된 신청이 없습니다.</b><a class="ap-b" href="#apply">양식에서 시험 신청 넣어 보기 <i data-lucide="arrow-right"></i></a></div>')+
+ '<p class="note" style="margin-top:18px">[시안] 이 화면은 같은 기기에 저장된 시험 자료만 보여 줍니다. 구축 때는 통합관리시스템(CMS) 권한(부서별·양식별)으로 로그인한 담당자만 보고, 이름·이메일은 개인정보취급자에게만 풀어서 보여 주며, 열람·수정 기록을 남깁니다(제안요청서 SFR-003).</p></div>';
+ document.title="담당자 화면 | 온라인 신청 센터";icons();}
+{const _ra=route;route=function(){const m=(location.hash||"").match(/^#apply(?:-([a-z\-]+))?$/);if(m){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));$$(".gnb a").forEach(a=>a.classList.toggle("on",+a.dataset.m===2));const k=m[1];if(k==="my")renderApplyMy();else if(k==="admin")renderApplyAdmin();else if(k&&apF(k))renderApplyForm(apF(k));else renderApplyHub();scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_ra();};}
+addEventListener("hashchange",()=>{if(/^#apply/.test(location.hash||""))route();});
+/* 세부 화면에서 바로 신청으로 */
+function apStrip(ids,t){return '<div class="ap-strip"><span class="eyebrow">온라인 신청</span><b>'+esc(t)+'</b><div>'+ids.map(id=>{const F=apF(id);return '<a href="#apply-'+id+'"><i data-lucide="'+F.ic+'"></i>'+esc(F.n)+'</a>'}).join("")+'<a class="all" href="#apply">신청 센터 전체 <i data-lucide="arrow-right"></i></a></div></div>';}
+[["입학 전형",["ua-mat","ua-consult","ua-visit"],"입학을 준비한다면 여기서 바로 신청하세요"],["입학 상담",["ua-consult","ua-hs"],"상담과 설명회를 온라인으로 신청합니다"],["모집 요강",["ua-mat"],"모집요강 책자를 우편으로 받아 보세요"],["캠퍼스 투어",["ua-visit","ua-hs"],"방문 프로그램을 온라인으로 신청합니다"],["전형 안내",["ga-info","ga-openlab","ga-intern"],"대학원 진학을 준비한다면 여기서 바로 신청하세요"],["외국인 입학",["ipa-app"],"Exchange · Global Internship · Consultation"]].forEach(([p,ids,t])=>{const f=PBODY[p];if(f)PBODY[p]=()=>f()+apStrip(ids,t);});
+
+/* ===== v182 제안요청서(RFP) 기능 요구사항 대조표 · SNS 보내기 · 학사일정 캘린더 파일 ===== */
+const RFPS=["시안에서 동작","시안에 일부","구축 단계 몫"];
+const RFP=[
+ ["SFR-001","내·외부 환경 및 현황 분석","유사 기관·최신 웹 트렌드 벤치마킹 분석",0,"스탠퍼드·POSTECH 홈페이지를 직접 재서 100항목 비교, 못한 항목은 바로 고침","bench"],
+ ["SFR-001","내·외부 환경 및 현황 분석","현행 홈페이지 구성 현황·이관 대상 분석",1,"현행 메뉴·세부 화면 40여 개·68개 부서 업무 358건을 옮겨 와 화면마다 출처·확인일 표시. 전체 이관 목록 작성은 구축 몫","menu"],
+ ["SFR-002","공통 요구사항","표준 웹 스타일 가이드(색·서체·레이아웃 규정)",0,"디자인 규칙 화면과 PDF 7쪽(색·글꼴·모서리·세부페이지 틀 8단)","guide"],
+ ["SFR-002","공통 요구사항","다수 시안 구성, 선호도 조사(온라인 설문 병행)",1,"같은 내용으로 보기 2종(기본·스탠퍼드형)을 단추로 바꿔 보고, 투표 화면 미리보기 제공. 실제 설문 집계는 구축 몫","vote"],
+ ["SFR-002","공통 요구사항","메뉴 구조 3단계 이내, 직관적인 정보구조",0,"1단 6개 → 묶음 → 화면의 3단 구조, 메뉴 구조도 화면에서 겹치는 이름까지 점검","menu"],
+ ["SFR-002","공통 요구사항","메타데이터 활용, 외부 검색포털 검색 최적화",1,"제목·설명·공유 그림(OG)·기관 구조화 자료(JSON-LD)·RSS 제공. 화면별 주소 체계는 구축 때 서버 방식으로 전환","story"],
+ ["SFR-002","공통 요구사항","영문 홈페이지 기준 외국어 자동번역",1,"영문 첫 화면·영문 메뉴 시안 제공. 자동번역 연동은 구축 몫","en"],
+ ["SFR-002","공통 요구사항","전자정부 표준프레임워크, 시큐어 코딩, 대표 도메인 디렉토리 방식",2,"서버·개발 표준에 해당 — 시안 범위 밖",""],
+ ["SFR-003","CMS 관리기능","비전문 관리자도 웹에서 콘텐츠 편집·미리보기",0,"관리자 모드(아티팩트판)에서 첫 화면·공지·학사일정·소식·세부페이지를 직접 고치고 저장. 화면 캡처는 저장소 docs/admin","reflect"],
+ ["SFR-003","CMS 관리기능","팝업존·배너 관리",0,"관리자 모드에서 띠 공지·팝업존·연구 배너 편집(아티팩트판)","home"],
+ ["SFR-003","CMS 관리기능","콘텐츠별 만족도 조사, 모든 페이지에 담당 부서 표시",1,"모든 세부 화면에 담당 부서·수정일·원문 주소와 만족도 단추. 담당자 이름·전화 연동과 집계 저장은 구축 몫","p-2-0-0|.psat"],
+ ["SFR-003","CMS 관리기능","인쇄·스크랩 등 편의기능",0,"세부 화면마다 인쇄·공유 단추, 인쇄 때 메뉴·단추 숨김","p-4-0-2"],
+ ["SFR-003","CMS 관리기능","자료 통합검색(게시물·콘텐츠)",0,"Ask GIST 통합검색: 대표·학과 홈페이지·사람·업무·규정·SNS를 한 번에, 초성 검색 지원","search"],
+ ["SFR-003","CMS 관리기능","DB 자료 엑셀 출력",1,"신청 센터 담당자 화면에서 신청 내역을 엑셀(CSV)로 내려받기. 게시판 전체 출력은 구축 몫","apply-admin"],
+ ["SFR-003","CMS 관리기능","Open API(XML·JSON·RSS)",1,"소식 RSS(feed.xml), SNS 최근 글 JSON 제공","story"],
+ ["SFR-003","CMS 관리기능","권한 관리, 허가 IP, 2차 인증, 접속·수정 로그, 개인정보 이력, 방문 통계 대시보드",2,"서버·보안 기능 — 시안 범위 밖",""],
+ ["SFR-004","반응형 웹","PC·태블릿·스마트폰에 맞게 자동으로 바뀌는 한 벌의 화면, 모바일 우선",0,"한 파일로 PC·휴대폰 화면 제공, 휴대폰은 아래 탭 5개와 전체 메뉴","home"],
+ ["SFR-005","대표 홈페이지","관리자가 쉽게 바꾸는 메인 비주얼 영역",0,"관리자 모드에서 첫 화면 사진·문구 교체(아티팩트판)","home"],
+ ["SFR-005","대표 홈페이지","사용자 편의 중심의 메인 구성, 자주 찾는 메뉴 반영",0,"방문자 6유형별 메뉴, 나만의 바로가기, 첫 화면 검색창","home"],
+ ["SFR-005","대표 홈페이지","SNS 확산 기능",0,"공식 유튜브·인스타그램 글 30분마다 자동 반영, 소식 글 SNS 보내기","st-0|.nxsh"],
+ ["SFR-005","대표 홈페이지","입학 안내 바로가기(내국인·외국인 구분)",1,"대학 입학·대학원 입학·외국인 입학 화면으로 각각 연결","p-2-1-2"],
+ ["SFR-005","대표 홈페이지","한국형 웹콘텐츠 접근성 지침 2.2 준수, 접근성 품질마크",1,"자동 검사(Lighthouse) 접근성 100점. 전문가 심사와 품질마크 획득은 구축 몫","quality"],
+ ["SFR-005","대표 홈페이지","국문·영문 2식, 메인 시안 3개 이상",1,"D안은 국문 전체와 영문 첫 화면. 영문 전체 구축은 구축 몫","en"],
+ ["SFR-006","대학 입학 홈페이지","입시 자료 신청 관리(종류·수량·수령 방법, 접수번호, 처리 상태)",0,"신청 → 접수번호 → 내역 조회(접수·발송·완료) → 담당자 관리","apply-ua-mat"],
+ ["SFR-006","대학 입학 홈페이지","대학 방문 참가 신청(일정·프로그램·인원, 정원·마감, 취소)",0,"날짜·프로그램별 정원 계산과 마감, 본인 취소","apply-ua-visit"],
+ ["SFR-006","대학 입학 홈페이지","입학 상담 신청(분야·희망 일시·방법)",0,"방문·전화·온라인 선택, 접수번호와 상태 확인","apply-ua-consult"],
+ ["SFR-006","대학 입학 홈페이지","고교 방문 입학설명회 신청",0,"고교명·희망 일시·예상 인원·요청사항","apply-ua-hs"],
+ ["SFR-006","대학 입학 홈페이지","신청 데이터 관리(관리자)·통계",1,"담당자 화면에서 목록·상태 변경·엑셀. 시안은 기기 저장, 서버 저장·권한은 구축 몫","apply-admin"],
+ ["SFR-007","대학원 입학 홈페이지","입학 설명회 신청(출신학교·지원 예정 학기·학과)",0,"학과 목록은 대학·학과 자료와 같은 것을 씀","apply-ga-info"],
+ ["SFR-007","대학원 입학 홈페이지","e-멘토 학과정보(학과·계열별 검색·상세 조회)",1,"학과 14곳 소개·연구 분야·연구실, 주제로 찾는 GIST Nexus. 멘토 정보는 자료를 받아야 함","nexus"],
+ ["SFR-007","대학원 입학 홈페이지","인턴십 신청(과정·연구실 선택, 지원서)",0,"학과를 고르면 연구실 목록이 따라 바뀜. 파일 올리기는 구축 몫","apply-ga-intern"],
+ ["SFR-007","대학원 입학 홈페이지","오픈랩 신청(연구실·일정·인원, 정원·마감)",0,"연구실·날짜별 정원 계산, 학과 화면에서 바로 신청","apply-ga-openlab"],
+ ["SFR-008","국제교류협력 홈페이지","교환학생·글로벌 인턴십·상담 신청형 콘텐츠 통합 메뉴(영문)",0,"영문 양식 하나로 통합","apply-ipa-app"],
+ ["SFR-008","국제교류협력 홈페이지","영문 홈페이지 전체 재구축",2,"글로벌협력실 메뉴·콘텐츠가 필요 — 시안 범위 밖",""],
+ ["SFR-009","발전기금 홈페이지","온라인 약정(유형·금액·기간, 접수번호, 내역 조회)",1,"약정 신청과 조회까지. 전자서명·결제·기부 시스템 연계는 구축 몫","apply-df-pledge"],
+ ["SFR-009","발전기금 홈페이지","기부자 명단, 명예의 전당, 후원의 집 관리",2,"명단 자료가 필요 — 시안에 넣지 않음",""],
+ ["SFR-010","학사 시스템 연계","학사일정 연계",1,"학사일정 화면(달력·D-day)과 내 캘린더에 넣는 파일(.ics). 학사 시스템 실시간 연동은 구축 몫","p-4-0-0"],
+ ["SFR-010","학사 시스템 연계","조직 정보·교원 정보 연동",1,"부서별 업무 358건, 교수 180명·연구실을 검색과 학과 화면에 연결(수집 자료). 실시간 연동은 구축 몫","search-people"],
+ ["SFR-010","학사 시스템 연계","연구정보 연계(교육·연구 역량 홍보)",1,"연구 분야 통계와 GIST Nexus 연구 연결 지도. 교원별 실적 연동은 구축 몫","nexus"],
+ ["SFR-010","학사 시스템 연계","통합 로그인(단일 인증)",2,"학사 시스템 계정 연계 — 시안 범위 밖",""],
+ ["SFR-011","AI 기반 챗봇","플로팅 단추형 챗봇, PC·모바일 채팅 화면, 추천 질문",0,"AI 안내(Ask GIST) 단추와 추천 질문","home|#aibtn"],
+ ["SFR-011","AI 기반 챗봇","답에 원문 페이지 주소 제공, 못 답하면 담당 부서 안내",0,"답마다 출처 번호와 원문 연결","search"],
+ ["SFR-011","AI 기반 챗봇","홈페이지 전체 크롤링 학습, 자동 재학습, 멀티턴, 관리자 통계·금칙어",2,"생성형 AI 연결 자리(data/ai.json, 중계 서버 예시)만 준비 — 운영은 구축 몫",""],
+ ["SFR-012","3D 캠퍼스 투어","3D 캠퍼스 투어 고도화, 시설 촬영(200식 이내)",2,"3D 캠퍼스맵 화면에서 현행 서비스로 연결. 촬영·3D 제작은 구축 몫","p-0-3-1"],
+ ["SFR-013","SNS 연계","콘텐츠 페이지 ‘SNS 보내기’",0,"소식 글에서 X·페이스북·네이버·LINE·기기 공유·주소 복사","st-0|.nxsh"],
+ ["SFR-013","SNS 연계","기관 SNS 콘텐츠 끌어오기",0,"공식 유튜브·인스타그램 최근 글을 30분마다 자동으로 가져옴","home|#snsw"],
+ ["SFR-013","SNS 연계","SNS 간편 로그인(네이버·카카오·구글)",2,"로그인 연계 — 시안 범위 밖",""]
+];
+function renderRfp(){const cnt=[0,1,2].map(i=>RFP.filter(r=>r[3]===i).length);const ids=[...new Set(RFP.map(r=>r[0]))];
+ const rows=ids.map(id=>{const R=RFP.filter(r=>r[0]===id);return R.map((r,i)=>'<tr data-st="'+r[3]+'">'+(i?'':'<th scope="rowgroup" rowspan="'+R.length+'" class="rf-id"><span class="num">'+id+'</span>'+esc(r[1])+'</th>')+'<td>'+esc(r[2])+'</td><td><span class="rf-s s'+r[3]+'">'+RFPS[r[3]]+'</span></td><td>'+esc(r[4])+'</td><td>'+(r[5]?'<a class="rp-go" href="#'+esc(r[5].split("|")[0])+'">보기 →</a>':'')+'</td></tr>').join("")}).join("");
+ $("#v-page").innerHTML='<div class="page-h pv"><div class="pv-bg" aria-hidden="true"><img loading="lazy" src="'+IMG("p_night.jpg")+'" alt="" decoding="async"></div><div class="wrap"><span class="pv-en" aria-hidden="true">CHECKLIST</span><h1>제안요청서 대조표</h1><p>「GIST 홈페이지 통합 재구축 제안요청서」의 기능 요구사항(SFR-001~013)을 한 줄씩 놓고, D안 시안에서 지금 눌러 볼 수 있는 것과 구축 단계에서 해야 할 것을 나눴습니다.</p></div></div>'+
+ '<div class="wrap" style="padding-block:44px 90px"><div class="pg-main" style="max-width:none"><h2 class="pg-t">한눈에 보기</h2><div class="rp-kpi" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><div class="r"><b class="num">'+RFP.length+'</b><span>견준 요구 항목 (SFR 13개)</span></div>'+cnt.map((c,i)=>'<div><b class="num">'+c+'</b><span>'+RFPS[i]+'</span></div>').join("")+'</div>'+
+ '<div class="rf-leg"><span><i class="rf-s s0">시안에서 동작</i> 지금 이 홈페이지에서 직접 눌러 볼 수 있음</span><span><i class="rf-s s1">시안에 일부</i> 화면과 흐름은 있고, 서버 연동·운영 자료가 더 필요함</span><span><i class="rf-s s2">구축 단계 몫</i> 서버·보안·인증·촬영처럼 시안으로 대신할 수 없음</span></div>'+
+ '<div class="seg rf-f" role="group" aria-label="상태로 거르기"><button type="button" aria-pressed="true" data-f="">전체 '+RFP.length+'</button>'+cnt.map((c,i)=>'<button type="button" aria-pressed="false" data-f="'+i+'">'+RFPS[i]+' '+c+'</button>').join("")+'</div>'+
+ '<div class="tbl-w" tabindex="0" role="region" aria-label="제안요청서 대조표"><table class="tbl rf-t"><thead><tr><th scope="col">요구사항</th><th scope="col">제안요청서가 요구한 것</th><th scope="col">D안 상태</th><th scope="col">D안에서 한 것</th><th scope="col">화면</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+ '<p class="note" style="margin-top:18px">알아 둘 점: 이 표는 제안요청서 ‘기능 요구사항’ 13개만 견준 것입니다. 장비·성능·보안·데이터·품질·사업관리 요구사항(서버 도입, 시큐어 코딩, 웹 취약점, 접근성 품질마크, 자료 이관, 교육·하자보수 등)은 시안으로 대신할 수 없는 구축 사업의 몫입니다. 요구 문구는 제안요청서 원문을 줄여 옮겼고, D안 내용은 2026.11.12. 화면 기준입니다. ‘시안에서 동작’도 자료는 이 기기에만 저장하는 시연용입니다.</p></div></div>';
+ document.title="제안요청서 대조표 | GIST 홈페이지 D안";icons();}
+document.addEventListener("click",e=>{const b=e.target.closest(".rf-f button");if(!b)return;$$(".rf-f button").forEach(x=>x.setAttribute("aria-pressed",x===b));const f=b.dataset.f;const tb=$(".rf-t tbody");tb.classList.toggle("flt",!!f);$$(".rf-t tbody tr").forEach(tr=>{tr.hidden=!!f&&tr.dataset.st!==f;});});
+{const _rr=route;route=function(){if((location.hash||"")==="#rfp"){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));renderRfp();scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_rr();};}
+addEventListener("hashchange",()=>{if(location.hash==="#rfp")route();});
+/* SNS 보내기 */
+function nxShare(t){return '<div class="nxsh" role="group" aria-label="이 글 보내기"><span class="eyebrow">이 글 보내기</span>'+(navigator.share?'<button type="button" data-sh="native"><i data-lucide="share-2"></i>공유</button>':'')+[["x","X"],["fb","페이스북"],["nv","네이버"],["ln","LINE"]].map(x=>'<button type="button" data-sh="'+x[0]+'">'+x[1]+'</button>').join("")+'<button type="button" data-sh="copy"><i data-lucide="link"></i>주소 복사</button><span class="nxsh-m" role="status"></span></div>';}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-sh]");if(!b)return;const u=location.href,t=document.title.replace(/ \| .*/,"")||"GIST";const U=encodeURIComponent(u),T=encodeURIComponent(t);const k=b.dataset.sh;const m=b.parentNode.querySelector(".nxsh-m");
+ if(k==="native"){navigator.share({title:t,url:u}).catch(()=>{});return;}
+ if(k==="copy"){(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>{if(m)m.textContent="주소를 복사했습니다."}).catch(()=>{if(m)m.textContent=u});return;}
+ const L={x:"https://twitter.com/intent/tweet?text="+T+"&url="+U,fb:"https://www.facebook.com/sharer/sharer.php?u="+U,nv:"https://share.naver.com/web/shareView?url="+U+"&title="+T,ln:"https://social-plugins.line.me/lineit/share?url="+U}[k];if(L)window.open(L,"_blank","noopener,noreferrer,width=640,height=560");});
+/* 학사일정 → 내 캘린더(.ics) */
+function icsMake(){const Y=2026;const p=n=>String(n).padStart(2,"0");const d=(m,dd,add)=>{const x=new Date(Date.UTC(Y,m-1,dd+(add||0)));return x.getUTCFullYear()+p(x.getUTCMonth()+1)+p(x.getUTCDate())};const fold=s=>s.replace(/([,;\\])/g,"\\$1");
+ return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//GIST//D-an Academic Calendar//KO","CALSCALE:GREGORIAN","X-WR-CALNAME:GIST 학사일정"].concat(ACAL.flatMap((a,i)=>["BEGIN:VEVENT","UID:gist-acal-"+Y+"-"+i+"@gist.ac.kr","DTSTAMP:"+d(11,12)+"T000000Z","DTSTART;VALUE=DATE:"+d(a[0],a[1]),"DTEND;VALUE=DATE:"+d(a[2],a[3],1),"SUMMARY:"+fold(a[4]),"END:VEVENT"])).concat(["END:VCALENDAR"]).join("\r\n");}
+document.addEventListener("click",e=>{if(!e.target.closest("#icsbtn"))return;const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([icsMake()],{type:"text/calendar;charset=utf-8"}));a.download="GIST_학사일정_2026_11-12.ics";document.body.appendChild(a);a.click();a.remove();});
+{const f=PBODY["학사일정"];PBODY["학사일정"]=()=>f()+'<div class="ap-strip"><span class="eyebrow">내 캘린더</span><b>학사일정 '+ACAL.length+'건을 휴대폰·PC 캘린더에 넣으세요</b><div><button type="button" id="icsbtn"><i data-lucide="calendar-plus"></i>캘린더 파일(.ics) 받기</button></div></div>';}
+/* 학과 화면에서 바로 신청 */
+function apDeptBtns(n){return '<div class="ap-strip"><span class="eyebrow">온라인 신청</span><b>'+esc(n)+' 연구실을 직접 만나 보세요</b><div>'+[["ga-openlab","오픈랩 참가 신청"],["ga-intern","인턴십 신청"],["ga-info","대학원 입학설명회 신청"]].map(x=>'<a href="#apply-'+x[0]+'" data-appre="'+esc(JSON.stringify({dept:n}))+'"><i data-lucide="'+apF(x[0]).ic+'"></i>'+x[1]+'</a>').join("")+'</div></div>';}
+
+/* ===== v182 품질 성적표: 같은 도구(Lighthouse)로 현행 홈페이지와 D안을 잰 값 ===== */
+const QUAL={when:"2026.11.12. 18:25~18:35",tool:"Lighthouse 12.8.2 (크롬, 사무실 PC에서 1회씩)",
+ rows:[["현행 GIST 대표 홈페이지","www.gist.ac.kr/kr/main.html",[64,87,79,92,"4.1초","11.7초","48.0MB"],[70,85,81,92,"1.3초","18.1초","48.0MB"]],
+       ["D안 (고치기 전, v180)","",[43,100,96,73,"6.3초","12.2초","2.2MB"],[78,100,96,73,"1.3초","2.8초","3.1MB"]],
+       ["D안 (지금)","yhju-gist.github.io/gist-homepage-d",[63,100,100,92,"2.3초","4.3초","1.7MB"],[86,100,100,92,"0.9초","2.0초","1.8MB"]]]};
+function renderQuality(){const H=["성능","접근성","권장 사항","검색 최적화"];const tb=(mi,cap)=>'<h3 class="p-h3">'+cap+'</h3><div class="tbl-w" tabindex="0" role="region" aria-label="'+cap+' 점수 표"><table class="tbl ql-t"><thead><tr><th scope="col">홈페이지</th>'+H.map(h=>'<th scope="col">'+h+'</th>').join("")+'<th scope="col">첫 내용 표시</th><th scope="col">가장 큰 내용 표시</th><th scope="col">내려받는 양</th></tr></thead><tbody>'+QUAL.rows.map((r,ri)=>'<tr'+(ri===2?' class="me"':'')+'><th scope="row">'+esc(r[0])+(r[1]?'<small>'+esc(r[1])+'</small>':'')+'</th>'+r[mi].slice(0,4).map(v=>'<td><span class="ql-b"><i style="width:'+v+'%" class="'+(v>=90?"g":v>=50?"o":"r")+'"></i></span><b class="num">'+v+'</b></td>').join("")+r[mi].slice(4).map(v=>'<td class="num">'+v+'</td>').join("")+'</tr>').join("")+'</tbody></table></div>';
+ const G=QUAL.rows[0],D=QUAL.rows[2];
+ $("#v-page").innerHTML='<div class="page-h pv"><div class="pv-bg" aria-hidden="true"><img loading="lazy" src="'+IMG("p_night.jpg")+'" alt="" decoding="async"></div><div class="wrap"><span class="pv-en" aria-hidden="true">QUALITY</span><h1>품질 성적표</h1><p>말이 아니라 숫자로 봅니다. 구글이 만든 공개 검사 도구(Lighthouse)로 현행 GIST 홈페이지와 D안을 같은 날, 같은 컴퓨터에서 쟀습니다.</p></div></div>'+
+ '<div class="wrap" style="padding-block:44px 90px"><div class="pg-main" style="max-width:none"><h2 class="pg-t">한눈에 보기 <small style="font-size:.5em;color:var(--mute);font-weight:600">휴대폰 기준, 100점 만점</small></h2>'+
+ '<div class="ql-k">'+H.map((h,i)=>'<div><span class="eyebrow">'+h+'</span><p><b class="num">'+D[2][i]+'</b><em>D안</em></p><p class="g"><b class="num">'+G[2][i]+'</b><em>현행</em></p><span class="ql-d '+(D[2][i]>G[2][i]?"up":D[2][i]<G[2][i]?"dn":"")+'">'+(D[2][i]===G[2][i]?"같음":(D[2][i]>G[2][i]?"+":"")+(D[2][i]-G[2][i])+"점")+'</span></div>').join("")+'</div>'+
+ tb(2,"휴대폰 (느린 4G·보급형 기기 조건)")+tb(3,"PC")+
+ '<h3 class="p-h3">이번에 고친 것 (v181)</h3><ul class="ql-l"><li><b>글꼴을 따로 내려받게</b> — 화면 파일 안에 넣어 두었던 글꼴 8개를 파일로 빼서, 글자가 먼저 보이고 글꼴은 뒤따라 바뀝니다. 화면 파일 1.7MB → 0.9MB</li><li><b>사진 80장을 가벼운 형식(WebP)으로</b> — 16.6MB → 7.8MB, 휴대폰 첫 화면 사진은 더 작게</li><li><b>검색 로봇이 읽는 설명 추가</b> — 제목·설명·공유 그림·대표 주소, 파비콘</li><li><b>검색 로봇이 따라갈 수 없던 링크 42개</b>에 주소를 넣음</li></ul>'+
+ '<h3 class="p-h3">점수 읽는 법</h3><dl class="ql-dl"><div><dt>성능</dt><dd>화면이 얼마나 빨리 뜨고 바로 쓸 수 있는지. 휴대폰 점수는 일부러 느린 통신·느린 기기 조건으로 잽니다.</dd></div><div><dt>접근성</dt><dd>화면을 소리로 듣는 분, 키보드만 쓰는 분도 쓸 수 있는지 자동으로 검사한 점수. 사람이 하는 전문가 심사(접근성 품질마크)는 따로 받아야 합니다.</dd></div><div><dt>권장 사항</dt><dd>보안 연결, 오류 없는 화면, 최신 방식 사용 여부.</dd></div><div><dt>검색 최적화</dt><dd>네이버·구글 같은 검색 로봇이 내용을 읽기 좋게 만들었는지.</dd></div></dl>'+
+ '<p class="note" style="margin-top:18px">측정: '+QUAL.when+', '+QUAL.tool+'. 점수는 잴 때마다 통신 상태에 따라 몇 점씩 달라질 수 있습니다. D안은 시안이라 GitHub 서버에 올린 화면을, 현행 홈페이지는 운영 중인 첫 화면을 쟀습니다. D안의 휴대폰 성능 점수는 아직 더 올릴 수 있습니다(움직임 효과 스크립트 줄이기).</p></div></div>';
+ document.title="품질 성적표 | GIST 홈페이지 D안";icons();}
+{const _rq=route;route=function(){if((location.hash||"")==="#quality"){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));renderQuality();scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_rq();};}
+addEventListener("hashchange",()=>{if(location.hash==="#quality")route();});
+
 route();heroState();requestAnimationFrame(()=>{drawBanner();drawThumbs();heroState();});
 })();
 
 /* ===== v69 위원장 보고: 정확히 그 자리로 가기 ===== */
 (function(){var $=function(q){return document.querySelector(q)};var esc=function(t){return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};var REF=window.REF||window.__REF||[];
 var RAFTER=[
+ ["품질 성적표 (v182)","구글 공개 검사 도구(Lighthouse)로 현행 홈페이지와 D안을 같은 날 같은 PC에서 잰 점수·속도·용량을 나란히 표시. 글꼴 분리·사진 WebP로 화면 파일 1.7MB→0.9MB","quality|.ql-k"],
+ ["온라인 신청 센터 (v182)","제안요청서의 신청형 기능 9가지(입시자료·대학 방문·입학 상담·고교 설명회·대학원 설명회·인턴십·오픈랩·국제교류·기부 약정)를 양식 하나의 틀로: 접수번호 발급, 내 신청 조회·취소, 정원 마감, 담당자 화면(상태 변경·엑셀). 시안은 이 기기에만 저장","apply|.ap-cards"],
+ ["제안요청서 대조표 (v182)","제안요청서 기능 요구사항 SFR-001~013을 한 줄씩 놓고 ‘시안에서 동작 / 일부 / 구축 단계 몫’으로 나눠 화면과 연결","rfp|.rf-t"],
+ ["소식 글 SNS 보내기·학사일정 캘린더 파일 (v182)","소식 글에서 X·페이스북·네이버·LINE·기기 공유, 학사일정을 내 캘린더에 넣는 .ics 파일","p-4-0-0|#icsbtn"],
  ["GIST Nexus 연구 연결 지도 (v180)","연구 주제 8개 가운데 하나를 고르면 그 주제를 연구하는 학과·연구실·부설 연구소·최근 소식·진학/협력 메뉴가 한 화면에 이어짐. 주제×단과대학 융합 표 포함. 첫 화면·학과 화면·소식 글·통합검색·연구 분야 화면에서 들어감","nexus|.nx-tabs"],
  ["세부 화면 ‘이어서 하기’ (v180)","예비 학부생·대학원 지원자·재학생·기업·연구자·방문자 5개 길을 따라, 지금 화면이 몇 번째인지와 다음 화면을 보여 줌","p-2-0-0|.jr"],
  ["학과 화면에 연구실·교수와 이어진 연구 주제 (v180)","학과 화면마다 연구실 목록과 그 학과가 이어진 연구 주제를 보여 주고, 누르면 같은 주제의 다른 학과로 이어짐","d-env1|.nxd"],
@@ -5319,4 +5514,78 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 @media (max-width:1020px){.nx-g{grid-template-columns:minmax(0,1fr)}.nx-mapw{position:static}.nx-side{grid-template-columns:minmax(0,1fr)}.nx-leg{font-size:12px;gap:4px 12px}.nxh{grid-template-columns:1fr;padding:30px 24px}.nx-tabs{grid-template-columns:repeat(2,1fr)}.nxd-l{grid-template-columns:repeat(2,1fr)}.jr-r{grid-template-columns:1fr}}
 @media (max-width:640px){.nx-tabs{gap:8px}.nx-tabs button{padding:11px 12px;border-radius:16px;gap:8px}.nx-tabs button b{font-size:14px}.nx-tabs button em{display:none}.nx-dg ul{grid-template-columns:1fr}.nx-h2{font-size:25px}.nx-mapw{padding:8px 8px 14px;border-radius:20px}.nx-t{font-size:17px}.nx-c{font-size:17px}.nxh-r{grid-template-columns:repeat(2,1fr)}.nxh h3{font-size:25px}.nxd-l{grid-template-columns:1fr}.jr{padding:18px 16px 4px}.jr ol a,.jr ol span{font-size:13px;padding:5px 10px 5px 5px}.jr ol li+li:before{width:8px}.nx-dch{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.nx-dch button{white-space:nowrap;flex:none}}
 @media (prefers-reduced-motion:reduce){.nx-tabs button,.nxh-r a,.nxd-l a,.nxh-b{transition:none}}
+</style>
+<style>/* v182 온라인 신청 센터 · 제안요청서 대조표 · SNS 보내기 */
+.ap-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.ap-nav a{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:10px 16px;font-weight:800;font-size:14.5px;color:var(--ink);text-decoration:none;background:#fff}
+.ap-nav a svg{width:16px;height:16px;color:var(--red)}.ap-nav a b{background:var(--soft);border-radius:999px;padding:1px 8px;font-size:12.5px}
+.ap-nav a[aria-current],.ap-nav a:hover{background:var(--ink);border-color:var(--ink);color:#fff}.ap-nav a[aria-current] svg,.ap-nav a:hover svg{color:#fff}.ap-nav a[aria-current] b,.ap-nav a:hover b{background:rgba(255,255,255,.18);color:#fff}
+.ap-note{display:flex;gap:8px;align-items:flex-start;margin:0 0 24px;padding:12px 16px;border-radius:12px;background:var(--red-t,#FDECEA);color:var(--red-tx,#C11D0E);font-size:14px;font-weight:600;line-height:1.6}.ap-note svg{width:17px;height:17px;flex:none;margin-top:3px}
+.ap-g{margin:34px 0 12px;font-size:21px;font-weight:800;letter-spacing:-.02em}
+.ap-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.ap-c{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);border-radius:20px;padding:20px;background:#fff;color:var(--ink);text-decoration:none;transition:transform .2s,border-color .2s,box-shadow .2s}
+.ap-c>svg{width:26px;height:26px;color:var(--red)}.ap-c b{font-size:17.5px;font-weight:800;letter-spacing:-.02em;line-height:1.35}.ap-c span{font-size:14px;line-height:1.65;color:var(--mute);flex:1}
+.ap-c em{font-style:normal;display:inline-flex;align-items:center;gap:5px;font-weight:800;font-size:14px;color:var(--red-tx,#C11D0E)}.ap-c em svg{width:15px;height:15px}
+.ap-c:hover{transform:translateY(-3px);border-color:var(--ink);box-shadow:0 14px 30px rgba(17,20,24,.1)}
+.ap-fw{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
+.ap-form{border:1px solid var(--line);border-radius:24px;padding:28px;background:#fff}
+.ap-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.ap-f{margin:0;padding:0;border:0;min-width:0}.ap-f.w,fieldset.ap-f{grid-column:1/-1}
+.ap-f label,.ap-f legend{display:block;font-weight:800;font-size:14.5px;margin-bottom:7px;padding:0;color:var(--ink)}.ap-f em{color:var(--red);font-style:normal}.ap-f small{font-weight:600;color:var(--mute);font-size:12.5px}
+.ap-f input:not([type=radio]),.ap-f select,.ap-f textarea{width:100%;box-sizing:border-box;border:1.5px solid #C9CED3;border-radius:12px;padding:12px 14px;font:inherit;font-size:16px;background:#fff;color:var(--ink);min-height:48px}
+.ap-f textarea{resize:vertical;line-height:1.6}
+.ap-f input:focus,.ap-f select:focus,.ap-f textarea:focus{outline:3px solid rgba(220,39,21,.28);border-color:var(--red)}
+.ap-f [aria-invalid=true]{border-color:var(--red);background:#FFF7F6}
+.ap-r{display:flex;flex-wrap:wrap;gap:8px}.ap-r label{margin:0;cursor:pointer}.ap-r input{position:absolute;opacity:0}
+.ap-r span{display:inline-block;border:1.5px solid #C9CED3;border-radius:999px;padding:10px 18px;font-weight:700;font-size:15px}
+.ap-r input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}.ap-r input:focus-visible+span{outline:3px solid rgba(220,39,21,.4);outline-offset:2px}
+.ap-e{margin:6px 0 0;font-size:13.5px;font-weight:700;color:var(--red-tx,#C11D0E);min-height:0}.ap-e:empty{display:none}
+.ap-sum{border:2px solid var(--red);border-radius:12px;padding:14px 18px;margin-bottom:20px;background:#FFF7F6}.ap-sum b{display:block;margin-bottom:4px}.ap-sum ul{margin:0;padding-left:18px}.ap-sum a{color:var(--red-tx,#C11D0E);font-weight:700}
+.ap-cap{margin:18px 0 0;padding:12px 16px;border-radius:12px;background:var(--soft);font-size:14.5px;font-weight:600;color:var(--gray)}.ap-cap b{color:var(--red-tx,#C11D0E)}.ap-cap.full{background:var(--red-t,#FDECEA);color:var(--red-tx,#C11D0E)}
+.ap-agree{display:flex;gap:12px;align-items:flex-start;margin-top:22px;padding:16px 18px;border-radius:12px;background:var(--soft);cursor:pointer}
+.ap-agree input{width:22px;height:22px;flex:none;accent-color:var(--red);margin-top:2px}.ap-agree b{display:block;font-size:15px}.ap-agree small{display:block;margin-top:3px;font-size:13px;color:var(--mute);line-height:1.6}
+.ap-act{display:flex;align-items:center;gap:18px;margin-top:22px;flex-wrap:wrap}.ap-act a{font-weight:700;color:var(--gray)}
+.ap-b{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;border:0;border-radius:999px;padding:14px 26px;font:inherit;font-weight:800;font-size:16px;cursor:pointer;text-decoration:none}.ap-b svg{width:18px;height:18px}.ap-b:hover{background:var(--ink)}
+.ap-side{position:sticky;top:96px;background:var(--ink);color:#fff;border-radius:24px;padding:24px}.ap-side .eyebrow{color:#FF8A7D;display:block}.ap-side>b{display:block;font-size:20px;font-weight:800;margin:6px 0 16px}
+.ap-side ol{margin:0;padding:0;list-style:none;counter-reset:s}.ap-side li{counter-increment:s;display:flex;gap:10px;align-items:center;padding:10px 0;border-top:1px solid rgba(255,255,255,.14);font-size:14.5px;font-weight:600}
+.ap-side li:before{content:counter(s);display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.14);font-family:"Inter Tight",sans-serif;font-weight:800;font-size:12.5px;flex:none}
+.ap-side p{margin:14px 0 0;font-size:13px;color:rgba(255,255,255,.7)}
+.ap-done{max-width:620px;margin:20px auto;text-align:center;border:1px solid var(--line);border-radius:24px;padding:44px 28px;background:#fff}.ap-done>svg{width:54px;height:54px;color:#1E8E5A}
+.ap-done .eyebrow{display:block;margin-top:14px}.ap-done>b{display:block;font-size:38px;font-weight:800;letter-spacing:.02em;margin:6px 0 12px}.ap-done p{color:var(--gray);line-height:1.8;margin:0 0 22px}
+.ap-done div{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap}.ap-done div a:not(.ap-b){font-weight:700;color:var(--gray)}.ap-done small{display:block;margin-top:22px;color:var(--mute);font-size:12.5px}
+.ap-my{list-style:none;margin:0;padding:0;display:grid;gap:14px}.ap-my li{border:1px solid var(--line);border-radius:20px;padding:20px 22px;background:#fff}.ap-my li.s3{opacity:.62}
+.ap-my-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}.ap-my-h b{font-size:18px;font-weight:800}.ap-my-h .num{font-weight:800;color:var(--gray)}.ap-my-h time{margin-left:auto;font-size:13px;color:var(--mute)}
+.ap-st{display:inline-block;border-radius:999px;padding:4px 12px;font-size:12.5px;font-weight:800;background:var(--red-t,#FDECEA);color:var(--red-tx,#C11D0E);white-space:nowrap}.ap-st.s1{background:#E7F0FF;color:#1D4FB8}.ap-st.s2{background:#E3F4EA;color:#17693F}.ap-st.s3{background:var(--soft);color:var(--mute)}
+.ap-steps{display:flex;gap:4px;margin:14px 0}.ap-steps span{flex:1;text-align:center;font-size:12.5px;font-weight:800;padding:7px 4px;background:var(--soft);color:var(--mute);border-radius:4px}.ap-steps span:first-child{border-radius:999px 4px 4px 999px}.ap-steps span:last-child{border-radius:4px 999px 999px 4px}
+.ap-steps span.on{background:var(--ink);color:#fff}.ap-steps span.x{text-decoration:line-through}
+.ap-my dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px 18px;margin:0}.ap-my dt{font-size:12px;font-weight:700;color:var(--mute)}.ap-my dd{margin:0;font-size:14.5px;font-weight:600;word-break:break-word}
+.ap-x{margin-top:14px;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;font-size:13.5px;cursor:pointer;color:var(--gray)}.ap-x:hover{border-color:var(--red);color:var(--red-tx,#C11D0E)}
+.ap-empty{text-align:center;padding:60px 20px;border:1.5px dashed var(--line);border-radius:24px;display:flex;flex-direction:column;align-items:center;gap:14px}.ap-empty>svg{width:40px;height:40px;color:var(--mute)}
+.ap-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0 14px}.ap-bar>span{font-size:13.5px;font-weight:700;color:var(--gray);background:var(--soft);border-radius:999px;padding:6px 12px}.ap-bar>span b{margin-right:5px;color:var(--red-tx,#C11D0E)}.ap-bar .ap-sp{flex:1;background:none;padding:0;border:0}
+.ap-bar .pill{display:inline-flex;align-items:center;gap:6px;cursor:pointer}.ap-bar .pill svg{width:15px;height:15px}
+.ap-t td small{display:block;font-size:12px;color:var(--mute)}.ap-t .pill{cursor:pointer;white-space:nowrap}
+.ap-strip{margin:30px 0 6px;border-radius:20px;padding:20px 22px;background:var(--ink);color:#fff}.ap-strip .eyebrow{color:#FF8A7D;display:block}.ap-strip>b{display:block;font-size:18px;font-weight:800;margin:4px 0 12px;letter-spacing:-.02em}
+.ap-strip div{display:flex;flex-wrap:wrap;gap:8px}.ap-strip a,.ap-strip button{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 16px;color:#fff;font:inherit;font-weight:700;font-size:14.5px;text-decoration:none;cursor:pointer}
+.ap-strip a svg,.ap-strip button svg{width:16px;height:16px}.ap-strip a:hover,.ap-strip button:hover{background:var(--red);border-color:var(--red)}.ap-strip a.all{background:none;border-color:transparent;color:rgba(255,255,255,.8)}
+/* 대조표 */
+.rf-leg{display:flex;flex-direction:column;gap:8px;margin:22px 0 16px;font-size:14.5px;color:var(--gray)}.rf-leg i{font-style:normal;margin-right:8px}
+.rf-s{display:inline-block;border-radius:999px;padding:4px 12px;font-size:12.5px;font-weight:800;white-space:nowrap}.rf-s.s0{background:#E3F4EA;color:#17693F}.rf-s.s1{background:#FFF1D6;color:#7A4B00}.rf-s.s2{background:var(--soft);color:var(--mute)}
+.rf-f{margin-bottom:14px}.rf-t th.rf-id{vertical-align:top;font-weight:800;min-width:130px;background:var(--soft)}.rf-t th.rf-id .num{display:block;color:var(--red-tx,#C11D0E);font-size:13px;margin-bottom:2px}
+.rf-t td{vertical-align:top;line-height:1.65}.rf-t tbody.flt th.rf-id{display:none}.rf-t td:nth-child(2),.rf-t tbody.flt td:first-child{font-weight:700}
+/* SNS 보내기 */
+.nxsh{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0 6px}.nxsh .eyebrow{margin-right:4px}
+.nxsh button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 15px;font:inherit;font-weight:700;font-size:14px;color:var(--ink);cursor:pointer}.nxsh button svg{width:15px;height:15px}.nxsh button:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.nxsh-m{font-size:13px;font-weight:700;color:#17693F}
+@media (max-width:900px){.ap-fw{grid-template-columns:minmax(0,1fr)}.ap-side{position:static}.ap-grid{grid-template-columns:minmax(0,1fr)}.ap-form{padding:20px 16px;border-radius:20px}.ap-done>b{font-size:28px}.ap-my-h time{margin-left:0;flex-basis:100%}}
+</style>
+<style>/* v182 품질 성적표 */
+.ql-k{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 26px}.ql-k>div{position:relative;border:1px solid var(--line);border-radius:20px;padding:20px 22px;background:#fff}
+.ql-k p{display:flex;align-items:baseline;gap:8px;margin:6px 0 0}.ql-k p b{font-size:44px;font-weight:800;line-height:1.1;color:var(--red)}.ql-k p em{font-style:normal;font-weight:700;font-size:14px;color:var(--ink)}
+.ql-k p.g b{font-size:24px;color:var(--mute)}.ql-k p.g em{color:var(--mute)}
+.ql-d{position:absolute;right:16px;top:16px;border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:800;background:var(--soft);color:var(--mute)}.ql-d.up{background:#E3F4EA;color:#17693F}.ql-d.dn{background:var(--red-t,#FDECEA);color:var(--red-tx,#C11D0E)}
+.ql-t th small{display:block;font-weight:500;color:var(--mute);font-size:12px}.ql-t td{white-space:nowrap}.ql-t tr.me th,.ql-t tr.me td{background:#FFF7F6;font-weight:800}
+.ql-b{display:inline-block;width:64px;height:8px;border-radius:99px;background:var(--soft);vertical-align:middle;margin-right:8px;overflow:hidden}.ql-b i{display:block;height:100%;border-radius:99px}.ql-b i.g{background:#1E8E5A}.ql-b i.o{background:#E08A00}.ql-b i.r{background:var(--red)}
+.ql-l{margin:0;padding-left:20px;line-height:1.9;color:var(--gray)}.ql-l b{color:var(--ink)}
+.ql-dl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0}.ql-dl div{background:var(--soft);border-radius:12px;padding:14px 16px}.ql-dl dt{font-weight:800;margin-bottom:4px}.ql-dl dd{margin:0;font-size:14.5px;line-height:1.7;color:var(--gray)}
+@media (max-width:800px){.ql-k{grid-template-columns:1fr 1fr}.ql-dl{grid-template-columns:1fr}.ql-k p b{font-size:36px}}
 </style>
