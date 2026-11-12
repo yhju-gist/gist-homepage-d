@@ -5296,7 +5296,7 @@ document.addEventListener("click",e=>{const b=e.target.closest(".rf-f button");i
 addEventListener("hashchange",()=>{if(LH()==="#rfp")route();});
 /* SNS 보내기 */
 function nxShare(t){return '<div class="nxsh" role="group" aria-label="이 글 보내기"><span class="eyebrow">이 글 보내기</span>'+(navigator.share?'<button type="button" data-sh="native"><i data-lucide="share-2"></i>공유</button>':'')+[["x","X"],["fb","페이스북"],["nv","네이버"],["ln","LINE"]].map(x=>'<button type="button" data-sh="'+x[0]+'">'+x[1]+'</button>').join("")+'<button type="button" data-sh="copy"><i data-lucide="link"></i>주소 복사</button><span class="nxsh-m" role="status"></span></div>';}
-document.addEventListener("click",e=>{const b=e.target.closest("[data-sh]");if(!b)return;const u=location.href,t=document.title.replace(/ \| .*/,"")||"GIST";const U=encodeURIComponent(u),T=encodeURIComponent(t);const k=b.dataset.sh;const m=b.parentNode.querySelector(".nxsh-m");
+document.addEventListener("click",e=>{const b=e.target.closest("[data-sh]");if(!b)return;const u=location.href,t=document.title.replace(/ \| .*/,"")||"GIST";const k=b.dataset.sh;let su=u;try{const sm=(LH()||"").match(/^#st-(\d+)$/);if(sm&&STORIES[+sm[1]]&&/^https?:/.test(u))su=u.split("#")[0].replace(/index\.html$/,"")+"news/"+stId(STORIES[+sm[1]])+".html";}catch(_){}const U=encodeURIComponent(su),T=encodeURIComponent(t);const m=b.parentNode.querySelector(".nxsh-m");
  if(k==="native"){navigator.share({title:t,url:u}).catch(()=>{});return;}
  if(k==="copy"){(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>{if(m)m.textContent="주소를 복사했습니다."}).catch(()=>{if(m)m.textContent=u});return;}
  const L={x:"https://twitter.com/intent/tweet?text="+T+"&url="+U,fb:"https://www.facebook.com/sharer/sharer.php?u="+U,nv:"https://share.naver.com/web/shareView?url="+U+"&title="+T,ln:"https://social-plugins.line.me/lineit/share?url="+U}[k];if(L)window.open(L,"_blank","noopener,noreferrer,width=640,height=560");});
@@ -5389,14 +5389,14 @@ const TEN=[
  ["찾기","검색을 맨 앞에 둔다","MIT 첫 화면","반영","첫 화면 검색 · 초성·오타 · 교수 → 연구실","search"],
  ["대상별 길","누구에게 필요한 정보인지로 길을 낸다","Stanford ‘Information for’","반영","예비 학부생·대학원 지원자·학부모·재학생·교직원·기업·연구자 메뉴","home"],
  ["끊김 없는 연결","한 화면에서 다음에 볼 화면으로 이어 준다","이사회·TF 회의 의견","반영","소식 → 주제 → 학과 → 연구실 → 신청까지 한 줄로","nexus"],
- ["접근성","WCAG 2.2 AA를 지킨다","W3C WCAG 2.2","부분","자동 검사 100점. 사람이 하는 전문가 심사는 구축 때 받아야 합니다.","quality"],
+ ["접근성","WCAG 2.2 AA를 지킨다","W3C WCAG 2.2","부분","자동 검사 100점, 누르는 곳 크기 24px 이상(휴대폰 16개 화면 실측). 사람이 하는 전문가 심사는 구축 때 받아야 합니다.","quality"],
  ["가벼움","내려받는 양과 에너지를 줄인다","GOV.UK 디자인 원칙 11","반영","첫 화면 1.4MB (현행 48.0MB)","quality"],
  ["일관성","색·글꼴·간격을 한 곳에서 정한다","GOV.UK Design System","반영","디자인 규칙 화면 + 디자인 값 파일(tokens.json)","guide"],
- ["도구 독립","내용과 모양을 나눠, 제작 도구가 바뀌어도 내용이 남게 한다","대학 홈페이지 재구축 지침(API 우선)","부분","내용은 목록·파일로 분리. 구축 때 관리 도구(CMS)와 연결해야 합니다.","guide"],
+ ["도구 독립","내용과 모양을 나눠, 제작 도구가 바뀌어도 내용이 남게 한다","대학 홈페이지 재구축 지침(API 우선)","부분","내용만 담은 파일(data/content.json)을 따로 냅니다. 구축 때 관리 도구(CMS)와 연결해야 합니다.","guide"],
  ["구독","새 소식을 받아 볼 수 있게 한다","ETH Zürich RSS","반영","소식 구독 파일(feed.xml)","story"],
  ["언어","언어 전환을 같은 자리에 둔다","ETH Zürich","부분","영문 첫 화면. 세부 화면 영문은 구축 때 채워야 합니다.","en"],
  ["내용 수명","화면마다 담당 부서와 확인일을 밝힌다","GOV.UK 내용 보존·철회 기준","반영","세부 화면 아래 담당 부서 · 자료·확인일","p/scholarships"],
- ["검색 로봇","기계가 읽는 정보와 화면 목록을 둔다","schema.org · sitemap","반영","기관·소식·위치 정보(JSON-LD), sitemap.xml, 학과 글 화면 14개","quality"],
+ ["검색 로봇","기계가 읽는 정보와 화면 목록을 둔다","schema.org · sitemap","반영","기관·소식·위치 정보(JSON-LD), sitemap.xml, 학과 글 화면 14개 · 소식 글 화면 25개","quality"],
  ["없는 주소","없는 주소는 안내하고 검색으로 잇는다","W3C 주소 관리","반영","없는 화면 안내 + 404 화면","search"],
  ["고쳐 가며 쓰기","크게 갈아엎지 않고 계속 고친다","GOV.UK 디자인 원칙 5","결정 필요","직원이 직접 고치는 관리자 모드 시안은 있습니다. 운영 조직·주기는 TF가 정해야 합니다.","reflect"]];
 function renderFuture(){const n=k=>TEN.filter(r=>r[3]===k).length;
@@ -5421,6 +5421,7 @@ route();heroState();requestAnimationFrame(()=>{drawBanner();drawThumbs();heroSta
 /* ===== v69 위원장 보고: 정확히 그 자리로 가기 ===== */
 (function(){var $=function(q){return document.querySelector(q)};var esc=function(t){return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};var REF=window.REF||window.__REF||[];
 var RAFTER=[
+ ["소식 글마다 따로 있는 주소·내용 파일 (v198)","소식 글 25건을 글마다 제목·요약이 따로 있는 가벼운 글 화면(news/글번호.html)으로도 만들어 검색 로봇과 SNS 미리보기가 그 글을 읽게 했습니다. 소식·화면 이름·학과 정보는 모양 없이 내용만 담은 파일(data/content.json)로도 냅니다.","story|#scat"],
  ["10년 기준 점검표 (v197)","세계 대학(MIT·Stanford·ETH)과 공공 홈페이지(GOV.UK·W3C) 운영 기준 15가지에 D안을 대어 보고, 반영·부분·TF 결정 필요로 나눠 한 화면에 모았습니다. 소식 글·세부 화면마다 검색 로봇이 읽는 정보도 넣었습니다.","future|.fu-l"],
  ["바뀌지 않는 주소 (v196)","화면 주소를 메뉴 위치 번호(#p-2-2-0)·글 순번(#st-3) 대신 이름(#p/scholarships)·글번호(#news/224635)로 바꿨습니다. 메뉴를 옮기거나 새 글이 올라와도 예전에 공유한 주소가 그대로 열립니다. 소식 구독(feed.xml), 디자인 값 파일(tokens.json), 없는 주소 안내(404.html)도 함께 둡니다.","p/scholarships|.pg-t"],
  ["검색한 교수에서 학과 연구실·주제로 바로 (v190)","통합검색의 교수 결과 아래에 ‘학과 화면에서 연구실 보기’와 이어진 주제 단추를 두고, 누르면 학과 화면에서 그 연구실이 펼쳐진 채로 열림. 휴대폰 아래 탭은 학과·Nexus·소식 글에서도 지금 위치를 표시","search|#res"],
@@ -5812,4 +5813,13 @@ html,body{overflow-x:clip;max-width:100%}
 .fu-s{justify-self:end;font-style:normal;font-size:12.5px;font-weight:800;border-radius:999px;padding:5px 12px;white-space:nowrap}.fu-s.ok{background:#E3F4EA;color:#17693F}.fu-s.pt{background:#FFF1D6;color:#7A4A00}.fu-s.td{background:var(--red-t);color:var(--red-tx,#C11D0E)}
 @media (max-width:760px){.fu-k{grid-template-columns:1fr 1fr}.fu-k b{font-size:34px}.fu-k>div{padding:16px}.fu-r{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:16px 2px}.fu-c{grid-column:1}.fu-s{grid-column:2;grid-row:1}.fu-m,.fu-d{grid-column:1/-1}.fu-m b{font-size:16px}}
 @media (max-width:760px){html{scroll-padding-bottom:96px}}
+</style>
+<style>/* v198 WCAG 2.2 누르는 곳 크기(2.5.8, 24px 이상): 휴대폰 16개 화면을 재서 모자란 곳을 키움 */
+footer li>a,.ft-site li>a,#ftcols li>a{display:inline-block;padding-block:5px}
+.fl a,.fl button{display:inline-flex;align-items:center;min-height:28px}
+.nxhero-c a{display:inline-flex;align-items:center;justify-content:center;min-height:24px;min-width:24px}
+.vs-t a{display:inline-block;padding-block:2px}.ft a.orig{display:inline-block;padding-block:2px}
+label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-width:24px;flex:none}.nx-x a{min-height:26px;display:inline-flex;align-items:center}
+.hx-dots .hxd,.p-dots button{position:relative}.hx-dots .hxd::after,.p-dots button::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,24px);height:24px;transform:translate(-50%,-50%)}
+@media (max-width:760px){a.rp-go{display:inline-flex;align-items:center;min-height:28px}}
 </style>

@@ -1,0 +1,1206 @@
+{
+ "$description": "GIST 홈페이지 D안의 내용만 모은 파일입니다(모양 없음). 어떤 제작 도구(CMS)로 옮기더라도 이 파일에서 소식·화면 이름·학과 정보를 그대로 읽어 갈 수 있습니다. src/index_source.html 과 src/dept.json 에서 자동으로 만듭니다.",
+ "stories": [
+  {
+   "id": "224635",
+   "title": "GIST-성균관대, 심근경색 손상 심장에 약물 직접 전달하는 ‘붙이는 주사형 하이드로젤’ 개발",
+   "date": "2026.11.10.",
+   "category": "연구성과",
+   "byline": "의생명공학과 류동렬 교수 · 성균관대 공동연구",
+   "summary": [
+    "주사형 하이드로젤 ‘아이엔젤’로 약물(NR)을 손상된 심장에 직접 전달해, 생쥐 실험에서 심장 기능이 회복되고 효과가 28일 이어지는 것을 확인했습니다.",
+    "약효가 나는 원리(SIRT1)도 밝혔으며, 다음 단계로 대동물 실험을 추진합니다."
+   ],
+   "source": "뉴스핌",
+   "source_url": "https://www.newspim.com/news/view/20261110000071",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070102.html?mode=V&no=224635"
+  },
+  {
+   "id": "20261104-7zm5",
+   "title": "“센서 하나로 빛 정보 초정밀 복원” 다차원 분광 입력·복원 기술 개발",
+   "date": "2026.11.04.",
+   "category": "연구성과",
+   "byline": "반도체공학과 윤훈한 교수 · GIST·DGIST·경북대 공동연구",
+   "summary": [
+    "반도체공학과 윤훈한 교수 연구팀이 DGIST 에너지공학과 이종수 교수, 경북대 전자공학부 나현수 교수 연구팀과 함께 센서 하나로 여러 파장이 섞인 빛을 정밀하게 분석하는 기술을 개발했습니다.",
+    "분광 복원 오차를 95.6% 줄였습니다."
+   ],
+   "source": "전남일보",
+   "source_url": "https://www.jnilbo.com/news/articleView.html?idxno=90000079398",
+   "gist_url": ""
+  },
+  {
+   "id": "20261103-16yl",
+   "title": "“양자컴퓨터 실용화의 열쇠, 소재·공정에서 찾다” 초전도 양자컴퓨터 핵심 소자 발전 방향 제시",
+   "date": "2026.11.03.",
+   "category": "연구성과",
+   "byline": "반도체공학과 윤훈한 교수 · 고려대·UC 버클리 등",
+   "summary": [
+    "고려대·UC버클리와 함께 초전도 양자컴퓨터의 핵심 소자인 조셉슨 접합의 소재·제조 기술을 종합 분석해, 균일성 등 실용화를 위한 5대 과제를 제시했습니다.",
+    "연구 결과는 Advanced Science에 10월 28일 온라인 게재됐습니다."
+   ],
+   "source": "뉴스핌",
+   "source_url": "https://www.newspim.com/news/view/20261103000310",
+   "gist_url": ""
+  },
+  {
+   "id": "224519",
+   "title": "“신경을 다쳤을 뿐인데 통증은 왜 오래갈까?” 만성 통증 키우는 단백질 찾았다",
+   "date": "2026.11.02.",
+   "category": "연구성과",
+   "byline": "의생명공학과 정의헌 교수",
+   "summary": [
+    "신경이 다친 뒤 IGFBPL1 단백질이 늘어나 7일째 가장 많아지고, IGF1R·ERK·TRPV1 경로를 거쳐 통증을 키운다는 것을 밝혔습니다.",
+    "이 단백질을 siRNA로 억제하자 6주 동안 통증이 줄어, 새 치료 표적을 제시했습니다."
+   ],
+   "source": "뉴스핌",
+   "source_url": "https://www.newspim.com/news/view/20261102000023",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070102.html?mode=V&no=224519"
+  },
+  {
+   "id": "224617",
+   "title": "GIST, 풍력 연구 분야 국내 최초 ‘호라이즌 유럽’ 과제 선정",
+   "date": "2026.11.10.",
+   "category": "사람",
+   "byline": "기계로봇공학과 김태성 교수 연구팀",
+   "summary": [
+    "기계로봇공학과 김태성 교수(차세대에너지연구소 풍력연구센터장) 연구팀이 EU의 세계 최대 연구혁신 프로그램 ‘호라이즌 유럽’ 풍력 분야 과제에 국내 처음으로 선정됐습니다.",
+    "혹한기에 풍력발전기가 얼어붙는 문제를 푸는 과제로, 보도에 따르면 평가 15점 만점, 규모 78억 원입니다."
+   ],
+   "source": "베타뉴스",
+   "source_url": "https://www.betanews.net/article/view/beta202611100105",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no=224617"
+  },
+  {
+   "id": "20261030-2lbt",
+   "title": "“태양광·배터리, 과부하 없이 더 유연하게” 전력망 출력 조정 여력 계산 기술 개발",
+   "date": "2026.10.30.",
+   "category": "연구성과",
+   "byline": "전기전자컴퓨터공학과 김윤수 교수",
+   "summary": [
+    "태양광·에너지저장장치(ESS) 같은 분산에너지자원의 출력을 조정할 때 전력망이 감당할 수 있는 여력을 계산하는 기술입니다.",
+    "제주 실제 전력망에서 3.72초 만에 계산해 입증했고, 전압 이상·선로 과부하 발생률을 6.7%에서 0%로 낮췄습니다."
+   ],
+   "source": "베리타스알파",
+   "source_url": "https://www.veritas-a.com/news/articleView.html?idxno=634289",
+   "gist_url": ""
+  },
+  {
+   "id": "20261019-1jqs",
+   "title": "“학습하지 않은 약물도 반응 예측” 신약 후보물질 선별 돕는 AI 개발",
+   "date": "2026.10.19.",
+   "category": "연구성과",
+   "byline": "AI학과 이현주 교수",
+   "summary": [
+    "약물의 화학구조와 암세포 유전자 정보를 함께 분석해, 새로운 약물에 대한 암세포 반응을 예측하는 AI 모델 ‘인포-디알피(InFo-DRP)’를 개발했습니다.",
+    "학습하지 않은 신약 후보물질이나 구조가 낯선 약물에서도 예측 성능을 높였습니다."
+   ],
+   "source": "인공지능신문",
+   "source_url": "https://www.aitimes.kr/news/articleView.html?idxno=42336",
+   "gist_url": ""
+  },
+  {
+   "id": "20261006-qusx",
+   "title": "GIST 환경에너지공학과, ‘AI+X’ 융합인재 5인 국내외 대학 교수로 잇따라 임용",
+   "date": "2026.10.06.",
+   "category": "사람",
+   "byline": "환경·에너지공학과",
+   "summary": [
+    "환경·에너지공학과의 인공지능(AI) 융합 연구·교육을 바탕으로 박사 졸업생들이 최근 1년 사이 국내·외 대학 교수로 잇따라 임용됐다는 소식입니다."
+   ],
+   "source": "AI포스트",
+   "source_url": "https://www.aipostkorea.com/news/articleView.html?idxno=12865",
+   "gist_url": ""
+  },
+  {
+   "id": "224126",
+   "title": "GIST 성유경 학생, 이산화탄소 잡는 흡착제 오래 쓰는 원리 밝혀… 국제학회 우수상",
+   "date": "2026.10.15.",
+   "category": "사람",
+   "byline": "환경·에너지공학과",
+   "summary": [
+    "환경·에너지공학과 탄소에너지시스템 연구실(CnESL, 지도교수 박영준)의 성유경 석박통합과정생이 제13회 한-일 분리기술학회(ICSST26)에서 우수 구두발표상을 받았습니다."
+   ],
+   "source": "GIST 미디어센터",
+   "source_url": "https://www.gist.ac.kr/kr/html/sub07/070104.html?mode=V&no=224126",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070104.html?mode=V&no=224126"
+  },
+  {
+   "id": "20261105-1h7f",
+   "title": "[아시아경제] “반도체·이차전지 기술 고도화”… GIST, 첨단분석과학 심포지엄",
+   "date": "2026.11.05.",
+   "category": "보도자료",
+   "byline": "In The Media",
+   "summary": [
+    "반도체·이차전지·바이오 등 첨단 전략기술 분야의 연구 경쟁력을 높이기 위한 GIST 첨단분석과학 심포지엄 소식입니다."
+   ],
+   "source": "아시아경제",
+   "source_url": "https://view.asiae.co.kr/article/2026110516460288165",
+   "gist_url": ""
+  },
+  {
+   "id": "20261106-sfgz",
+   "title": "[연합뉴스] 기아, 전남광주서 PBV 모빌리티 생태계 조성 (GIST-광주특별시-기아-전남대 MOU)",
+   "date": "2026.11.06.",
+   "category": "보도자료",
+   "byline": "In The Media",
+   "summary": [
+    "기아가 6일 오토랜드 광주에서 전남광주통합특별시·전남대·GIST와 업무협약을 맺고, 전남광주를 중심으로 PBV(목적기반차량) 산업 생태계를 만든다는 보도입니다."
+   ],
+   "source": "연합뉴스",
+   "source_url": "https://www.yna.co.kr/view/AKR20261106070251003",
+   "gist_url": ""
+  },
+  {
+   "id": "20261021-lu3a",
+   "title": "자율주행 AI가 사람을 도로로 착각한다고? AI 허점 찾아내는 신기술 ‘LSAA’",
+   "date": "2026.10.21.",
+   "category": "영상",
+   "byline": "공식 유튜브 · AI학과 김승준 교수 연구팀",
+   "summary": [],
+   "source": "GIST 공식 유튜브",
+   "source_url": "https://www.youtube.com/watch?v=dz2TRiqef2k",
+   "gist_url": ""
+  },
+  {
+   "id": "20261104-4t8s",
+   "title": "GIST 박원영 연구교수, 국제학술대회 우수 포스터상 수상",
+   "date": "2026.11.04.",
+   "category": "사람",
+   "byline": "의생명공학과 박원영 연구교수",
+   "summary": [
+    "의생명공학과 박원영 연구교수가 11월 1~4일 호주 시드니 국제컨벤션센터(ICC Sydney)에서 열린 ‘ESA–SRB–NZSE 2026 연례학술대회’에서 우수 포스터상을 받았습니다."
+   ],
+   "source": "메디포뉴스",
+   "source_url": "https://www.medifonews.com/news/article.html?no=218420",
+   "gist_url": ""
+  },
+  {
+   "id": "20261110-7ztp",
+   "title": "[전자신문] 아이빔테크놀로지, 최진욱 GIST 교수 연구팀에 생체현미경 공급",
+   "date": "2026.11.10.",
+   "category": "보도자료",
+   "byline": "언론 보도 · 생명과학과",
+   "summary": [
+    "생체이미징 기업 아이빔테크놀로지가 생명과학과 최진욱 교수 연구팀과 4억6000만원 규모의 생체현미경 ‘IVM-CMS3’ 공급 계약을 맺었다는 보도입니다."
+   ],
+   "source": "전자신문",
+   "source_url": "https://www.etnews.com/20261110000365",
+   "gist_url": ""
+  },
+  {
+   "id": "20261110-1dso",
+   "title": "[간호사신문] 항암제가 듣지 않는 폐암, 원인은 무엇일까…국내 연구진 단서 찾아",
+   "date": "2026.11.10.",
+   "category": "보도자료",
+   "byline": "언론 보도 · 화순전남대병원·GIST 공동연구",
+   "summary": [
+    "화순전남대병원과 GIST 공동연구팀이 폐 편평상피세포암 환자 조직으로 오가노이드를 만들고, 항암제를 넣은 뒤 암세포가 어떻게 바뀌는지 관찰했다는 보도입니다."
+   ],
+   "source": "간호사신문",
+   "source_url": "https://www.nursenews.co.kr/news/articleView.html?idxno=46438",
+   "gist_url": ""
+  },
+  {
+   "id": "224433",
+   "title": "출처까지 알려 주는 역사 AI ‘AI 윤태호’ 개발… 5·18 체험 콘텐츠로 공개",
+   "date": "2026.10.27.",
+   "category": "연구성과",
+   "byline": "한국문화기술연구소 김혜선 책임연구원 연구팀",
+   "summary": [
+    "한국문화기술연구소 김혜선 책임연구원 연구팀이 역사자료를 바탕으로 질문에 답하고, 답의 근거가 된 자료의 출처를 함께 보여 주는 대화시스템 ‘AI 윤태호’를 개발했습니다.",
+    "11월 민주주의역사누리터에 설치될 예정입니다."
+   ],
+   "source": "뉴스핌",
+   "source_url": "https://www.newspim.com/news/view/20261027000191",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070102.html?mode=V&no=224433"
+  },
+  {
+   "id": "20261014-1a12",
+   "title": "[더리더스] GIST, KETI·미국 라보로AI 맞손… 인간중심 피지컬 AI 개발",
+   "date": "2026.10.14.",
+   "category": "보도자료",
+   "byline": "언론 보도",
+   "summary": [
+    "GIST가 한국전자기술연구원(KETI), 미국 로봇 AI 기업 라보로AI(Lavoro AI)와 손잡고 사람 중심의 피지컬 AI를 개발한다는 보도입니다."
+   ],
+   "source": "더리더스",
+   "source_url": "https://www.theleader.co.kr/news/articleView.html?idxno=9546",
+   "gist_url": ""
+  },
+  {
+   "id": "20261019-jnr5",
+   "title": "올해 1학기 GIST 학생 중 의·치대 진학 자퇴 ‘0명’",
+   "date": "2026.10.19.",
+   "category": "캠퍼스",
+   "byline": "학생 · 남도일보 보도",
+   "summary": [
+    "올해 1학기 GIST에서 의·치대 진학을 이유로 자퇴한 학생이 한 명도 없었다는 보도입니다. 국회 황정아 의원이 4대 과학기술원 자료를 공개한 내용입니다."
+   ],
+   "source": "남도일보",
+   "source_url": "https://www.namdonews.com/news/articleView.html?idxno=926606",
+   "gist_url": ""
+  },
+  {
+   "id": "20261028-7w02",
+   "title": "공연·영화·AI 체험을 한데… ‘2026 GIST 과학기술문화 페스타’ 3주간 열려",
+   "date": "2026.10.28.",
+   "category": "캠퍼스",
+   "byline": "11.5.~11.26. · GIST 캠퍼스",
+   "summary": [
+    "GIST가 11월 5일부터 26일까지 3주간 ‘2026 GIST 과학기술문화 페스타’를 엽니다. 올해로 7회째입니다.",
+    "AI·IoT 메이커톤, 시네마 콘서트, 명사 강연, 스타트업 나이트 등 공연·영화·AI 체험 프로그램을 시민과 함께합니다."
+   ],
+   "source": "서울신문",
+   "source_url": "https://www.seoul.co.kr/news/society/2026/10/29/20261029500124",
+   "gist_url": ""
+  },
+  {
+   "id": "20261103-3asz",
+   "title": "한스 짐머 영화음악 라이브와 <인터스텔라> 야외 상영… ‘GIST 시네마 콘서트’",
+   "date": "2026.11.03.",
+   "category": "캠퍼스",
+   "byline": "11.7.(토) · 기계로봇공학동 앞 잔디밭",
+   "summary": [
+    "2026 GIST 과학기술문화 페스타 프로그램으로, 11월 7일(토) 16:00~20:30 기계로봇공학동 앞 잔디밭에서 한스 짐머 영화음악을 피아노 5중주로 연주하고, 해가 질 무렵 영화 <인터스텔라>를 상영했습니다.",
+    "GIST 구성원과 시민 누구나 무료로 볼 수 있었고, 비가 오면 오룡관 2층 다산홀에서 진행하도록 안내했습니다."
+   ],
+   "source": "GIST 공식 인스타그램",
+   "source_url": "https://www.instagram.com/p/DfQwkabE3TR/",
+   "gist_url": ""
+  },
+  {
+   "id": "20261105-16mj",
+   "title": "GIST 오룡아트홀 2026년 제4회 초대전 《아직 경험하지 못한 감각의 순간들》",
+   "date": "2026.11.05.",
+   "category": "캠퍼스",
+   "byline": "11.2.~12.30. · 오룡관 로비 1·2층",
+   "summary": [
+    "회화와 미디어아트, AI와 데이터가 만나는 신도원 작가의 초대전이 11월 2일부터 12월 30일까지 오룡아트홀(오룡관 로비 1·2층)에서 열립니다.",
+    "관람 시간은 평일 09:00~18:00이며, 주말과 공휴일은 쉽니다."
+   ],
+   "source": "GIST 공식 인스타그램",
+   "source_url": "https://www.instagram.com/p/DfVlmNFk5my/",
+   "gist_url": ""
+  },
+  {
+   "id": "20261104-12kt",
+   "title": "“나는 자연인… 아니, 자연대인이다!” 2026 자연대인의 밤",
+   "date": "2026.11.04.",
+   "category": "캠퍼스",
+   "byline": "자연과학대학",
+   "summary": [
+    "가을밤, 자연과학대학 구성원이 함께 모인 ‘2026 자연대인의 밤’ 소식입니다."
+   ],
+   "source": "GIST 공식 인스타그램",
+   "source_url": "https://www.instagram.com/p/DfUDsiyE9i_/",
+   "gist_url": ""
+  },
+  {
+   "id": "20261027-1mo0",
+   "title": "서로 존중하는 연구실 문화… ‘GIST 인권친화 연구실 공모전 성과공유회’",
+   "date": "2026.10.27.",
+   "category": "캠퍼스",
+   "byline": "11.12.(목) 12:00 · 도서관 1층 소극장 · 인권센터",
+   "summary": [
+    "GIST 인권센터가 11월 12일(목) 낮 12시~1시 도서관 1층 소극장에서 인권친화 연구실 공모전 성과공유회를 엽니다(장소가 오룡관 101호에서 바뀜).",
+    "대상은 GIST 연구실 구성원과 인권친화 연구실 문화에 관심 있는 누구나이며, 사전 신청은 11월 4일(수) 오후 6시까지였습니다."
+   ],
+   "source": "GIST 공식 인스타그램",
+   "source_url": "https://www.instagram.com/p/DfGPuHAk_xs/",
+   "gist_url": ""
+  },
+  {
+   "id": "224200",
+   "title": "“빛과 AI로 육류 신선도 판별” GIST 이영주 박사후연구원, 세계식육과학기술학회 ‘젊은 과학자상’ 수상",
+   "date": "2026.10.16.",
+   "category": "사람",
+   "byline": "GIST-InnoCORE 연구단",
+   "summary": [
+    "지스트-이노코어(GIST-InnoCORE) 연구단 이영주 박사후연구원이 8월 9일부터 14일까지 대전에서 열린 ‘제72회 세계식육과학기술학회(ICoMST 2026)’에서 ‘젊은 과학자상(Meat Science Young Scientist Award)’을 받았습니다."
+   ],
+   "source": "GIST 미디어센터",
+   "source_url": "https://www.gist.ac.kr/kr/html/sub07/070104.html?mode=V&no=224200",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070104.html?mode=V&no=224200"
+  },
+  {
+   "id": "224455",
+   "title": "“눈으로는 구별하기 어려운 정보, 빛으로 새기고 읽는다” 빛의 회전 방향만으로 유기 소재 구조 제어… 정보 기록·판독 기술 개발",
+   "date": "2026.10.29.",
+   "category": "연구성과",
+   "byline": "화학과 임현섭 교수 연구팀",
+   "summary": [
+    "화학과 임현섭 교수 연구팀이 빛의 회전 방향에 따라 서로 반대되는 구조의 유기 소재를 골라 합성하고, 이를 이용해 하나의 필름에 눈으로는 구별하기 어려운 정보를 기록해 빛으로 읽어 내는 기술을 개발했습니다."
+   ],
+   "source": "GIST 미디어센터",
+   "source_url": "https://www.gist.ac.kr/kr/html/sub07/070102.html?mode=V&no=224455",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070102.html?mode=V&no=224455"
+  }
+ ],
+ "pages": [
+  {
+   "name": "총장 인사말",
+   "address": "#p/president"
+  },
+  {
+   "name": "비전·연혁",
+   "address": "#p/vision-history"
+  },
+  {
+   "name": "GIST 상징",
+   "address": "#p/identity"
+  },
+  {
+   "name": "조직도",
+   "address": "#p/organization"
+  },
+  {
+   "name": "부서별 업무·연락처",
+   "address": "#p/offices"
+  },
+  {
+   "name": "부속기관",
+   "address": "#p/affiliated-institutes"
+  },
+  {
+   "name": "경영공시",
+   "address": "#p/disclosure"
+  },
+  {
+   "name": "규정",
+   "address": "#p/regulations"
+  },
+  {
+   "name": "감사",
+   "address": "#p/audit"
+  },
+  {
+   "name": "찾아오시는 길",
+   "address": "#p/directions"
+  },
+  {
+   "name": "3D 캠퍼스맵",
+   "address": "#p/campus-map"
+  },
+  {
+   "name": "오룡관 예약",
+   "address": "#p/oryong-hall"
+  },
+  {
+   "name": "입학 전형",
+   "address": "#p/undergraduate-admissions"
+  },
+  {
+   "name": "모집 요강",
+   "address": "#p/admissions-guide"
+  },
+  {
+   "name": "입학 상담",
+   "address": "#p/admissions-counseling"
+  },
+  {
+   "name": "전형 안내",
+   "address": "#p/graduate-admissions"
+  },
+  {
+   "name": "외국인 입학",
+   "address": "#p/international-admissions"
+  },
+  {
+   "name": "장학 제도",
+   "address": "#p/scholarships"
+  },
+  {
+   "name": "등록금",
+   "address": "#p/tuition"
+  },
+  {
+   "name": "캠퍼스 투어",
+   "address": "#p/campus-tour"
+  },
+  {
+   "name": "부설 연구소",
+   "address": "#p/research-institutes"
+  },
+  {
+   "name": "연구센터",
+   "address": "#p/research-centers"
+  },
+  {
+   "name": "연구 분야",
+   "address": "#p/research-areas"
+  },
+  {
+   "name": "공동 연구장비",
+   "address": "#p/shared-equipment"
+  },
+  {
+   "name": "기술이전",
+   "address": "#p/technology-transfer"
+  },
+  {
+   "name": "창업 지원",
+   "address": "#p/startup-support"
+  },
+  {
+   "name": "공동연구 문의",
+   "address": "#p/joint-research"
+  },
+  {
+   "name": "학사일정",
+   "address": "#p/academic-calendar"
+  },
+  {
+   "name": "수강신청",
+   "address": "#p/course-registration"
+  },
+  {
+   "name": "증명서 발급",
+   "address": "#p/certificates"
+  },
+  {
+   "name": "생활관",
+   "address": "#p/housing"
+  },
+  {
+   "name": "상담센터",
+   "address": "#p/counseling-center"
+  },
+  {
+   "name": "학생기구",
+   "address": "#p/student-organizations"
+  },
+  {
+   "name": "포털·ZEUS",
+   "address": "#p/portal-zeus"
+  },
+  {
+   "name": "업무별 담당부서",
+   "address": "#p/offices-by-task"
+  },
+  {
+   "name": "안전 안내",
+   "address": "#p/safety"
+  },
+  {
+   "name": "통합경비",
+   "address": "#p/security"
+  },
+  {
+   "name": "공지",
+   "address": "#p/notices"
+  },
+  {
+   "name": "행사",
+   "address": "#p/events"
+  },
+  {
+   "name": "홍보 영상",
+   "address": "#p/videos"
+  },
+  {
+   "name": "브로슈어",
+   "address": "#p/brochures"
+  },
+  {
+   "name": "유튜브",
+   "address": "#p/youtube"
+  },
+  {
+   "name": "인스타그램",
+   "address": "#p/instagram"
+  }
+ ],
+ "departments": {
+  "전기전자컴퓨터공학과": {
+   "code": "eecs",
+   "pg": "03010101",
+   "e": "Department of Electrical Engineering and Computer Science",
+   "tel": "062)715-2202, 대학 6124~6125",
+   "fax": "062)715-2204",
+   "mail": "eecs@gist.ac.kr",
+   "hp": "https://eecs.gist.ac.kr/",
+   "slo": "",
+   "intro": [
+    "GIST 전기전자컴퓨터공학과는 미래사회에 대비하여 ICT 중심의 융합분야를 선도할 혁신 기술을 연구 및 창의적 글로벌 인재육성을 목표로 한다."
+   ],
+   "areas": []
+  },
+  "AI학과": {
+   "code": "ai",
+   "pg": "03010102",
+   "e": "Department of AI",
+   "tel": "062)715-6351, 대학 6121~6125",
+   "fax": "062)715-6359",
+   "mail": "ai@gist.ac.kr",
+   "hp": "https://ai.gist.ac.kr",
+   "slo": "",
+   "intro": [
+    "GIST AI학과는 AI 4대강국 도약을 위한 산업선도형 AI 실증인재 양성을 목표로 한다."
+   ],
+   "pts": [
+    "X+AI 기반 인공지능 핵심 기술을 선도하는 창의적인 융합 연구 및 실증 전문가 양성",
+    "국내 교육기관 유일의 Top500 등재 슈퍼컴퓨터를 포함한 꿈꾸는아이(AI) 실증 테스트베드 환경 제공",
+    "AI+경제/사회/환경 등 다양한 분야(X)에서 인간 중심의 AI로 더 나은 미래 사회 구현",
+    "GIST의 축적된 AI 인프라 바탕으로 국내외 경제적, 사회적, 기술적 변화에 대응하는 혁신적 인재 양성",
+    "국내 최초 TPO의 한계를 넘어서는 교육 체계 구축"
+   ],
+   "areas": []
+  },
+  "AX학과": {
+   "code": "ax",
+   "pg": "03010105",
+   "e": "Department of AX",
+   "tel": "062)715-6351",
+   "fax": "062)715-6359",
+   "mail": "ax@gist.ac.kr",
+   "hp": "https://ax.gist.ac.kr",
+   "slo": "",
+   "intro": [
+    "AI를 반도체·모빌리티·제조&로봇·바이오헬스케어·양자과학 등 실제 산업과 연구 현장에 적용하는 AX 융합 전문인력 양성"
+   ],
+   "pts": [
+    "공학·자연과학·생명과학·AI 분야의 전문성을 결합하여, 복잡한 현장 문제를 데이터와 AI로 분석하고 해결하는 교육·연구 수행",
+    "이론 학습부터 데이터 분석, 모델 개발, 시뮬레이션, 디지털트윈, 실증 프로젝트까지 연결하는 문제해결형 교육과정 운영",
+    "GIST의 AI 인프라와 첨단 연구시설을 기반으로 산업·연구 현장의 기술혁신을 주도할 석·박사급 AX 리더 양성"
+   ],
+   "areas": [
+    [
+     "AX 반도체/시스템",
+     "AI X Semiconductor X Computing",
+     "소재·소자·패키징부터 AI 가속 시스템까지 AI 기반 설계와 최적화",
+     [
+      "첨단 반도체 패키징 열관리·냉각설계 및 열·기계 신뢰성",
+      "AI 기반 열유체 해석·설계 최적화",
+      "메모리 중심 컴퓨팅·AI 가속 시스템",
+      "반도체·광반도체 소재·소자 및 이종·3차원 집적"
+     ]
+    ],
+    [
+     "AX 모빌리티",
+     "AI X Mobility X Autonomy",
+     "설계·시뮬레이션과 자율지능을 연결하여 모빌리티 시스템을 지능화",
+     [
+      "모빌리티 설계최적화",
+      "다중물리·구조·유체 해석",
+      "항공우주 및 추진 시스템",
+      "모빌리티AI 및 자율주행",
+      "자율지능 및 AI 제어",
+      "모빌리티 시스템 통합 최적화"
+     ]
+    ],
+    [
+     "AX 제조 & 로봇",
+     "AI X Manufacturing X Robotics",
+     "제조 데이터·디지털트윈·로봇 지능을 연결하여 자율제조를 구현",
+     [
+      "제조AI·예지보전",
+      "CAD/CAM·디지털트윈 기반 디지털 엔지니어링",
+      "첨단 나노제조·AI 광소자 설계",
+      "로봇 지능제어·다개체 협조·Sim-to-Real",
+      "3D 비전·검사·계측",
+      "인간-로봇 협업·작업자 지원 및 제조 지식그래프"
+     ]
+    ],
+    [
+     "AX 양자",
+     "AI X Quantum X Science",
+     "복잡한 과학 문제의 예측·계산·실험과정을 AI로 혁신",
+     [
+      "AI 양자물질·계산화학",
+      "AI 양자정보·기초물리",
+      "AI 첨단계측·물질분석",
+      "AI 계산물리·시뮬레이션",
+      "AI 자율과학·수리모델링"
+     ]
+    ],
+    [
+     "AX 바이오/헬스케어",
+     "AI X Life Science X Healthcare",
+     "유전체·오믹스·의료 데이터를 AI와 연결하여 생명현상과 질병을 이해",
+     [
+      "계산유전체학 및 다중오믹스",
+      "대사·구조 및 신약",
+      "생체·의료영상 및 광계측",
+      "NeuroAI 및 뇌공학",
+      "융합신경생리 및 중개뇌과학",
+      "화학·환경 기반 바이오센싱"
+     ]
+    ]
+   ]
+  },
+  "반도체공학과": {
+   "code": "semi",
+   "pg": "03010103",
+   "e": "Department of Semiconductor Engineering",
+   "tel": "062)715-3751~3",
+   "fax": "062)715-3759",
+   "mail": "semi@gist.ac.kr",
+   "hp": "https://semi.gist.ac.kr/",
+   "slo": "",
+   "intro": [
+    "GIST 반도체공학과는 반도체 핵심 및 융합기술 경쟁력 확보로 국가 반도체 산업 초격차를 선도할 세계적 수준의 산업 밀착형 반도체 고급인재 양성을 목표로 합니다."
+   ],
+   "areas": [
+    [
+     "반도체 소자 및 공정",
+     "",
+     "",
+     [
+      "차세대 나노 전자/광전소자",
+      "플렉서블 광전자",
+      "혁신전자소자 및 첨단나노소재",
+      "양자 물질 계면 및 나노 소자",
+      "반도체 발광소자",
+      "나노시스템",
+      "열-조절 광전자 및 포논 공학",
+      "반도체 소자 시뮬레이션"
+     ]
+    ],
+    [
+     "반도체시스템 및 집적회로",
+     "",
+     "",
+     [
+      "집적회로 및 시스템",
+      "아날로그 및 혼성모드신호 집적회로",
+      "응용광학",
+      "차세대 집적회로 설계"
+     ]
+    ]
+   ]
+  },
+  "AI정책전략대학원": {
+   "code": "aix",
+   "pg": "03010104",
+   "e": "",
+   "tel": "062)715-6592~3",
+   "fax": "",
+   "mail": "aix@gist.ac.kr",
+   "hp": "https://aix.gist.ac.kr/",
+   "slo": "",
+   "intro": [],
+   "areas": []
+  },
+  "물리·광과학과": {
+   "code": "physics",
+   "pg": "03010201",
+   "e": "Department of Physics and Photon Science",
+   "tel": "062)715-2884, 2226, 2225",
+   "fax": "062)715-2224",
+   "mail": "phys@gist.ac.kr",
+   "hp": "https://physics.gist.ac.kr/",
+   "slo": "물리학과 광과학 분야의 최고의 전문가로 양성!",
+   "intro": [
+    "물리·광과학과는 물리학과 광과학 분야의 첨단 과학기술을 교육하고 최고의 연구여건을 제공함으로써 학생들을 자기 분야 최고의 전문가로 양성하고자 한다. 특히 우리학과는 세계 최고 출력의 레이저를 보유하고 있는 고등광기술연구소와 기초과학연구원 연구단과 협력하여 대학원생들한테 광과학 분야의 다양한 연구기회를 제공하고 있다."
+   ],
+   "areas": [
+    [
+     "광학",
+     "",
+     "",
+     [
+      "초고속 비선형 광학",
+      "고출력 레이저 및 응용",
+      "아토초 과학",
+      "양자 집적 광학"
+     ]
+    ],
+    [
+     "플라즈마물리학",
+     "",
+     "",
+     [
+      "고출력 레이저와 물질/플라즈마 상호작용",
+      "레이저-플라즈마를 이용한 입자가속 및 X-ray 발생",
+      "고에너지밀도 물리",
+      "레이저 핵융합"
+     ]
+    ],
+    [
+     "응집물질물리학",
+     "",
+     "",
+     [
+      "X-ray를 이용한 나노물리",
+      "응집물리 광학",
+      "X-ray를 이용한 표면물리",
+      "나노 양자소자 물리",
+      "전산양자물리"
+     ]
+    ],
+    [
+     "입자물리학",
+     "",
+     "",
+     [
+      "장론 및 끈이론",
+      "장론과 중력이론의 쌍대성",
+      "강상호 작용계의 중력이론적 이해"
+     ]
+    ]
+   ]
+  },
+  "화학과": {
+   "code": "chem",
+   "pg": "03010202",
+   "e": "Department of Chemistry",
+   "tel": "062)715-2860, 2865",
+   "fax": "062)715-2866",
+   "mail": "chem@gist.ac.kr",
+   "hp": "https://chem.gist.ac.kr/chem/",
+   "slo": "",
+   "intro": [
+    "GIST 화학과에서는 생명과학(Biological Chemistry), 물리화학(Physical Chemistry), 유기화학(Organic Chemistry), 무기화학(Inorganic Chemistry), 분석화학(Analytical Chemistry) 5개 연구분야를 중심으로 고전적 화학의 경계를 넘어서는 새로운 화학과의 모델이 되고자 한다. 이를 위해 세계적 수준의 교수진을 구축하고, 전폭적인 연구지원을 통해 최첨단 연구시설을 갖추려고 한다."
+   ],
+   "areas": [
+    [
+     "물리화학",
+     "Physical Chemistry",
+     "",
+     [
+      "Chemical Imaging",
+      "Nanobio Imaging",
+      "Spin Chemistry",
+      "Time-resolved Spectroscopy & Reaction Dynamics"
+     ]
+    ],
+    [
+     "유기화학",
+     "Organic Chemistry",
+     "",
+     [
+      "Medicinal Chemistry",
+      "Natural Product Synthesis",
+      "Peptides and Peptidomimetics",
+      "Synthetic Methodology, Asymmetric Catalysis",
+      "Supramolecular Chemistry, Chemosenser"
+     ]
+    ],
+    [
+     "무기화학",
+     "Inorganic Chemistry",
+     "",
+     [
+      "Artificial Photosynthesis",
+      "Bioinorganic Chemistry",
+      "Chemical Modification of Solid Surface",
+      "Organometallic Catalysis"
+     ]
+    ],
+    [
+     "생명화학",
+     "Biological Chemistry",
+     "",
+     [
+      "Biosensors and Bio-Instruments",
+      "Biomolecular NMR Spectroscopy",
+      "Protein Crystallography",
+      "Structural Biochemistry"
+     ]
+    ],
+    [
+     "분석화학",
+     "Analytical Chemistry",
+     "",
+     [
+      "Surface Analytical Chemistry",
+      "Nanoscale Material Chemistry",
+      "Biosensors and Bio-Instruments",
+      "Electrochemistry"
+     ]
+    ]
+   ]
+  },
+  "수리과학과": {
+   "code": "math",
+   "pg": "03010203",
+   "e": "Department of Mathematical Sciences",
+   "tel": "062)715-3931, 3627",
+   "fax": "062)715-3939",
+   "mail": "math@gist.ac.kr",
+   "hp": "https://math.gist.ac.kr/",
+   "slo": "수학의 본질을 탐구하고, 미래 과학기술을 선도!",
+   "intro": [
+    "GIST 수리과학과는 수학의 이론적 깊이와 실용적 응용을 아우르는 연구와 교육을 통해, 과학기술 혁신을 선도할 창의적 인재를 양성합니다. 인공지능, 데이터 과학, 계산과학 등 다양한 분야와의 융합을 통해 수학의 가치를 확장하고, 국내외 연구자들과의 활발한 협력 속에서 세계 수준의 학문 공동체를 지향합니다. GIST 수리과학과는 과학기술의 미래를 선도하는 수리과학의 중심이 되고자 합니다."
+   ],
+   "areas": [
+    [
+     "정수론",
+     "",
+     "",
+     [
+      "해석적 정수론(Analytic Number Theory)"
+     ]
+    ],
+    [
+     "기하학",
+     "",
+     "",
+     [
+      "미분기하 (Differential Geometry)",
+      "기하해석 (Geometric Analysis)"
+     ]
+    ],
+    [
+     "이산수학 및 조합수학",
+     "",
+     "",
+     [
+      "그래프이론 (Graph Theory)",
+      "복잡계 네트워크 (Complex Networks)",
+      "극단적 조합수학 (Extremal Combinatorics)",
+      "위상적 조합수학 (Topological Combinatorics)",
+      "이산기하 (Discrete Geometry)"
+     ]
+    ],
+    [
+     "응용수학",
+     "",
+     "",
+     [
+      "수치해석 (Numerical Analysis)",
+      "과학계산 (Scientific Computing)",
+      "계산수학 (Computational Mathematics)",
+      "통계 (Statistics)",
+      "딥러닝 (Deep Learning)",
+      "기호 계산(Symbolic Computing)"
+     ]
+    ]
+   ]
+  },
+  "신소재공학과": {
+   "code": "mse",
+   "pg": "03010301",
+   "e": "Department of Materials Science and Engineering",
+   "tel": "062)715-2302~3",
+   "fax": "062)715-2304",
+   "mail": "mse@gist.ac.kr",
+   "hp": "https://mse.gist.ac.kr/",
+   "slo": "미래 산업을 선도하는 첨단소재 연구그룹!",
+   "intro": [
+    "산업의 발전에 따라 새로운 소재에 대한 관심과 수요는 빠른 속도로 증가하였으나, 최근의 신소재 개발속도는 수요를 충족시키지 못하고 있다. 따라서 나노과학기술 국제경쟁에서 뒤지지 않기 위해서는 신소재에 대한 더욱 깊은 연구가 있어야 한다. 광주과학기술원의 신소재공학과에서는 신소재분야의 주역을 담당할 인재를 양성하기 위하여 박사 및 석사과정을 운영하고 있다.",
+    "모든 교수는 서로 협력하여 공동연구를 수행할 뿐만 아니라, 대학원생을 지도하여 우리나라 첨단산업을 선도할 연구 인력의 양성에 주력하고 있다. 신소재공학과는 석·박사과정의 대학원생들에게 풍부한 연구경험을 쌓게 하기 위하여 연구에 필요한 최첨단 실험 장비를 확보하고 연구에 전념할 수 있도록 하였다."
+   ],
+   "areas": [
+    [
+     "광·반도체소재",
+     "",
+     "NT/IT 분야에서 디스플레이와 차세대반도체 사업과 연계된 연구 수행",
+     []
+    ],
+    [
+     "나노전자소재",
+     "",
+     "나노스케일의 소재 및 소자에서 일어나는 현상을 연구하고 이를 기반으로 신개념의 나노소재 및 소자 개발",
+     []
+    ],
+    [
+     "유기정보소재",
+     "",
+     "NT/IT 분야에서 디스플레이사업과의 연계를 중점적으로 추진, 유기물 트랜지스터 및 발광소자 기술 등을 산업체와 연계하여 실용적 연구 수행",
+     []
+    ],
+    [
+     "에너지소재",
+     "",
+     "인류가 당면한 에너지 문제를 해결하기 위하여 환경친화적인 수소전지, 연료전지 및 태양전지에 대한 연구 수행",
+     []
+    ],
+    [
+     "생체의료용소재",
+     "",
+     "BT/NT 분야에서 고분자 생체재료, 생체적합성 재료, 초분자집적체, 생분해성 고분자 및 수화젤을 이용하여, 조직공학, 생체기능성 나노소재, 약전달 시스템, 단백질 및 유전자 전달 시스템 등, 의료기술과 관련된 분야에 응용하는 연구가 진행",
+     []
+    ]
+   ]
+  },
+  "기계로봇공학과": {
+   "code": "me",
+   "pg": "03010302",
+   "e": "Department of Mechanical and Robotics Engineering",
+   "tel": "062)715-2383",
+   "fax": "",
+   "mail": "sme@gist.ac.kr",
+   "hp": "https://me.gist.ac.kr/me/",
+   "slo": "미래 인간생활의 질적 향상을 주도할 지능화시스템 창출의 선도 연구그룹!",
+   "intro": [
+    "미래사회가 과학기술 발전에 의해 현재와는 크게 다를 것임이 예고 되고 있는 가운데, 기계로봇공학은 제품의 설계·공정기술을 혁신하여 미래 인간생활의 질 향상을 주도할 학문분야로써, 수많은 공학·과학분야의 융합에 의한 반복적 상승작용으로 부분의 합보다 훨씬 큰 성과(정밀, 자동, 복합기능 등 기기의 지능화)를 창출할 것이다.",
+    "이에 따라, 본 학과에서는 다양한 배경(제어계측, 기계, 기계설계, 정밀기계, 산업 등)을 가진 학생들의 자유분방한 창의력을 Vision 있는 목표에 결집시키는 Team Approach를 통하여, 미래 핵심 원천 기술의 식별, 개발 및 이의 실용적 확산은 물론, 무한기술경쟁시대의 국가미래를 이끌어갈 과학기술 두뇌를 배출하고자 한다."
+   ],
+   "areas": [
+    [
+     "로봇 모빌리티",
+     "",
+     "",
+     []
+    ],
+    [
+     "우주항공 방산",
+     "",
+     "우주 탐사를 위한 항법 및 로봇 원천기술, 재사용 발사체 시스템 설계제어기술, 재진입 열보호 기술, 그리고 항공기 구조 설계에 이르기까지 다양한 우주항공 기술을 연구",
+     []
+    ],
+    [
+     "설계제조 지능화",
+     "",
+     "인공지능을 적극적으로 활용한 스마트 제조 기술을 통해 더 빠르고, 더 효율적이며, 더 지능적인 제조 기술을 연구하고 이를 실제 산업 현장에서 실현",
+     []
+    ],
+    [
+     "열유체 에너지 시스템",
+     "",
+     "열 및 에너지 효율을 극대화하고 환경 영향을 최소화하는 지속 가능한 에너지 솔루션을 위한 관련 연구를 수행",
+     []
+    ]
+   ]
+  },
+  "환경·에너지공학과": {
+   "code": "env1",
+   "pg": "03010303",
+   "e": "Department of Environment and Energy Engineering",
+   "tel": "062)715-2431~3",
+   "fax": "",
+   "mail": "env@gist.ac.kr",
+   "hp": "https://env1.gist.ac.kr",
+   "slo": "",
+   "intro": [
+    "환경에너지공학과는 기후변화 대응과 지속 가능한 발전을 목표로 대기, 물, 에너지 분야에서 첨단 환경 기술과 인재 양성에 주력하고 있다.",
+    "주요 연구 분야는 대기·생태·지구과학, 물과학 및 물공학, 지속 가능한 에너지로, 탄소중립 및 자원순환 기술 개발에 중점을 두고, 혁신적인 융합 연구를 통해 세계적 수준의 환경 전문가를 양성하며, 미래 환경 문제 해결에 기여하고자 한다."
+   ],
+   "areas": [
+    [
+     "기후변화·대기",
+     "Climate change and Atmosphere",
+     "",
+     [
+      "원격탐사 및 인공지능 기술을 활용한 지구 물순환 연구",
+      "대기오염물질 측정 기술 개발 및 멀티-플랫폼 활용 거동 특성 파악",
+      "에어로졸의 실시간 측정/분석을 통한 물리화학적 특성 규명",
+      "모델링과 원격 관측 기반 대기질 통합 모델링 시스템 활용",
+      "지구 기후 시스템의 변화양상이해 및 미래예측"
+     ]
+    ],
+    [
+     "지속가능 에너지",
+     "Sustainable Energy",
+     "",
+     [
+      "촉매화학공정 기반 가스 전환 및 친환경에너지 생산",
+      "물질의 열역학적 특성 기반 열에너지 저장 및 친환경 에너지 생산",
+      "촉매전기화학과 화학공정 기반 화학에너지의 생산/전환/활용",
+      "전기화학 반응 및 생물공정 기반 바이오에너지 생산 전환/활용",
+      "결정결함화학 및 전기화학 기반 에너지 환경소재 개발 및 공정연구"
+     ]
+    ],
+    [
+     "물·생태",
+     "Water and Ecology",
+     "",
+     [
+      "해양의 생물·자원·생태계에 대한 기후변화 영향 연구",
+      "기후변화에 따른 토양 및 지하수 물리화학적 특성평가 및 정화 기술 연구",
+      "환경유해물질의 형태변화/거동 및 영향 연구",
+      "환경시스템에 대한 이해와 빅데이터 및 모델링 연구",
+      "기후변화 외래/자생 식물 개체군의 생태환경 변화 연구",
+      "첨단 수처리 기술 및 센서 개발과 수환경 오염물질 거동 이해",
+      "질량분석 기반 환경유해인자 탐색 및 생체영향 평가",
+      "먹는물 수질 분석, 오염물질 거동/변환, 고도 수처리 기술 개발",
+      "환경나노기술 기반 환경오염 및 수자원 관련 기술 개발 및 활용",
+      "기후변화 환경매체 내 미량 무기오염물질 생지화학적 거동 이해 및 제거",
+      "미생물 활용 난분해성 유기물질 분해 및 나노물질 합성/활용",
+      "극한환경조건의 물질의 물리·화학적 특성 변화 이해와 환경 응용"
+     ]
+    ]
+   ]
+  },
+  "생명과학과": {
+   "code": "life",
+   "pg": "03010401",
+   "e": "Department of Life Sciences",
+   "tel": "062)715-2481~2",
+   "fax": "062)715-2484",
+   "mail": "life@gist.ac.kr",
+   "hp": "https://life.gist.ac.kr",
+   "slo": "",
+   "intro": [
+    "최첨단 연구기법과 기술개발을 통하여 생명현상의 이치를 탐구하고, 이를 통해 획득한 지식을 기반으로 각종 질병의 원인 규명, 차세대 의약품 개발, 유용한 생체재료 디자인 및 생산, 지속가능한 생물 및 환경자원 보존을 위한 원천기술 개발 수행"
+   ],
+   "pts": [
+    "생명과학의 학문적 영역 뿐만 아니라 융합학문의 창출 및 발전을 선도하는 신개념 연구중심 대학 구현"
+   ],
+   "areas": [
+    [
+     "세포/분자생물학",
+     "",
+     "",
+     [
+      "세포 다이나믹스 이미징, 로지스틱스",
+      "세포 노화 및 제거 연구",
+      "유전체학 및 후성유전체학",
+      "종양 대사 및 억제 연구",
+      "유전자 치료 및 신약 표적 연구",
+      "연골 퇴행제어"
+     ]
+    ],
+    [
+     "생화학/생물리학",
+     "",
+     "",
+     [
+      "단백질구조 및 기능 연구",
+      "기능의약 단백질체 연구",
+      "단일분자 생물학 및 세포다이나믹스",
+      "막단백질 조절제 및 신약 개발"
+     ]
+    ],
+    [
+     "신경/발생생물학",
+     "",
+     "",
+     [
+      "신경회로 활성 조절과 IT 제어",
+      "생식세포 관찰 및 유전자 발굴",
+      "뇌공학 및 뉴로디바이스",
+      "혈관내피세포 관찰 및 마커 개발",
+      "분자 뇌·신경생물학"
+     ]
+    ],
+    [
+     "면역학",
+     "",
+     "",
+     [
+      "면역 시냅스·세포치료 연구",
+      "암, 자가면역질환 연구",
+      "염증질환 제어 융합 연구",
+      "면역시스템과 성체줄기세포 상호작용 연구",
+      "조직 재생과 질병에 관한 연구"
+     ]
+    ]
+   ]
+  },
+  "의생명공학과": {
+   "code": "bmse",
+   "pg": "03010402",
+   "e": "Department of Biomedical Science and Engineering",
+   "tel": "062)715-5312",
+   "fax": "062)715-5309",
+   "mail": "bmse@gist.ac.kr",
+   "hp": "https://bmse.gist.ac.kr/",
+   "slo": "",
+   "intro": [
+    "광주과학기술원(GIST) 의생명공학과(BMSE : Department of Biomedical Science and Engineering)는 세계의료사업을 선도할 superelite 석사 및 PhD(Dual Degree Program 추진중) 양성을 목표로 2008년 1월에 정부의 지원을 받아 설립되었습니다.",
+    "BMSE는 의학계열(의학과, 치의학과, 한의학과 등)과 이공계열 학생을 대상으로 의료진단 및 치료기술 등과 관련하여 창의적으로 응용지향적인 융합교육을 시행합니다."
+   ],
+   "areas": [
+    [
+     "뇌신경과학 및 뇌공학",
+     "",
+     "",
+     [
+      "신경재활, 신경중재술",
+      "뇌영상 및 커넥토믹스",
+      "신경신호처리, 기계학습 (인공지능)",
+      "계산신경과학 및 모델링",
+      "뇌신경질환 (뇌졸중, 수면, 치매 등)"
+     ]
+    ],
+    [
+     "의광학 및 의공학",
+     "",
+     "",
+     [
+      "구조적 및 기능적 신경광자학 기술",
+      "차세대 현미경 및 내시경 기술",
+      "3차원 홀로그래피 기술",
+      "비침습적 신경조절 및 신진대사율 측정 기술",
+      "인공지능 기반 광영상 및 분광 빅 데이터 분석",
+      "저출력 광원 치료 기술"
+     ]
+    ],
+    [
+     "면역학 및 대사학",
+     "",
+     "",
+     [
+      "마이크로바이옴 진단 및 치료제 개발",
+      "암면역치료제 개발",
+      "대사질환 연구",
+      "정밀의료",
+      "면역 관련 유전자 조절",
+      "면역계 발달 및 활성 연구"
+     ]
+    ]
+   ]
+  },
+  "융합신경생리학과": {
+   "code": "intnscphys",
+   "pg": "03010403",
+   "e": "Department of Integrative Neuroscience & Physiology",
+   "tel": "062)715-3781",
+   "fax": "062)715-3789",
+   "mail": "intnscphys@gist.ac.kr",
+   "hp": "https://intnscphys.gist.ac.kr",
+   "slo": "",
+   "intro": [],
+   "pts": [
+    "뇌신경세포·신경회로 중심의 미시적 연구를 넘어, 뇌신경과학과 신체 생리를 통합적으로 연구하는 차별화된 학과",
+    "신경과학과 생리학을 융합한 차세대 글로벌 과학자 양성",
+    "뇌신경과 신체 생리에 특화된 통합적·개방적 교육 및 연구 수행"
+   ],
+   "areas": [
+    [
+     "신경과학",
+     "",
+     "",
+     [
+      "신경유전학",
+      "신경생리학",
+      "행동신경학"
+     ]
+    ],
+    [
+     "융합생리학",
+     "",
+     "",
+     [
+      "시스템 데이터 생리학",
+      "AI 디지털 생리학",
+      "뇌-장-미생물 축 생리학"
+     ]
+    ],
+    [
+     "신경생리 면역학",
+     "",
+     "",
+     [
+      "신경면역학",
+      "장면역학",
+      "미생물 면역학"
+     ]
+    ],
+    [
+     "신경생리 미생물학",
+     "",
+     "",
+     [
+      "신경미생물학",
+      "장내미생물학",
+      "디지털미생물학"
+     ]
+    ],
+    [
+     "시스템 생물학",
+     "",
+     "",
+     [
+      "AI기반 다중오믹스분석",
+      "AI기반 빅데이터 분석",
+      "AI기반 신약개발"
+     ]
+    ]
+   ]
+  }
+ }
+}

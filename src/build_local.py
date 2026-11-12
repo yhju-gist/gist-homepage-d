@@ -89,12 +89,15 @@ try:
             if h == 0: break
         return _r.sub(r'\D', '', d)[:8] + '-' + o[:4]
     a = SRC.find('const STORIES=['); z = SRC.find('\n];', a)
-    items = []
+    items = []; FULL = []
     for ln in SRC[a:z].split('\n'):
         if not ln.lstrip().startswith('{c:"'): continue
         f = lambda k: (_r.search(r'[{,]' + k + r':"((?:[^"\\]|\\.)*)"', ln) or [None, ''])[1]
         t, d, c, g, m = _js(f('t')), _js(f('d')), _js(f('c')), _js(f('g')), _js(f('m'))
         sm = _r.search(r'sum:\["((?:[^"\\]|\\.)*)"', ln)
+        sa = _r.search(r'sum:\[(.*?)\]\s*[,}]', ln)
+        sums = [_js(x) for x in _r.findall(r'"((?:[^"\\\\]|\\\\.)*)"', sa.group(1))] if sa else []
+        FULL.append({'id': _sid(t, d or m, g), 'title': t, 'date': d or m, 'category': c, 'byline': _js(f('s')), 'summary': sums, 'source': _js(f('src')), 'source_url': _js(f('u')), 'gist_url': g})
         items.append((t, d or m, c, _sid(t, d or m, g), _js(sm.group(1)) if sm else ''))
     def _rfc(d):
         n = _r.sub(r'\D', '', d)
@@ -117,6 +120,28 @@ try:
     io.open('tokens.json', 'w', encoding='utf-8').write(_j.dumps({'$description': 'GIST 홈페이지 D안 디자인 값(색·글꼴·간격). src/index_source.html 의 :root 에서 자동으로 뽑습니다. 어떤 제작 도구(CMS)로 옮겨도 이 파일만 읽으면 같은 모양이 됩니다.', 'gist': tok}, ensure_ascii=False, indent=1) + '\n')
     io.open('manifest.webmanifest', 'w', encoding='utf-8').write(_j.dumps({'name': 'GIST 광주과학기술원 (D안 시안)', 'short_name': 'GIST', 'lang': 'ko', 'start_url': './', 'display': 'standalone', 'background_color': '#FFFFFF', 'theme_color': '#DC2715', 'icons': [{'src': 'img/favicon.png', 'sizes': '192x192', 'type': 'image/png'}]}, ensure_ascii=False, indent=1) + '\n')
     io.open('404.html', 'w', encoding='utf-8').write('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>찾는 화면이 없습니다 | GIST</title><meta name="robots" content="noindex"><link rel="icon" href="' + U0 + 'img/favicon.png"><style>body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif;background:#111418;color:#fff;text-align:center;padding:24px}b{display:block;font-size:clamp(64px,18vw,140px);line-height:1;color:#DC2715;letter-spacing:-.04em}h1{font-size:clamp(20px,5vw,30px);margin:18px 0 8px}p{color:#B9C0C6;margin:0 0 26px;line-height:1.7}a{display:inline-block;margin:4px;padding:13px 22px;border-radius:999px;background:#fff;color:#111418;font-weight:800;text-decoration:none}a+a{background:transparent;color:#fff;border:1px solid #5A636B}</style></head><body><main><b>404</b><h1>찾는 화면이 없습니다</h1><p>주소가 바뀌었거나 잘못 입력되었습니다.<br>첫 화면이나 통합검색에서 다시 찾아 주세요.</p><a href="' + U0 + '">GIST 첫 화면</a><a href="' + U0 + '#search">통합검색</a></main></body></html>\n')
+    # 4-3) v198 소식 글마다 주소가 따로 있는 가벼운 글 화면(news/글번호.html)과, 내용만 담은 파일(data/content.json)
+    os.makedirs('news', exist_ok=True); os.makedirs('data', exist_ok=True); NEWS_URLS = []
+    for x in FULL:
+        n = _r.sub(r'\D', '', x['date']); iso = (n[:4] + '-' + n[4:6] + '-' + n[6:8]) if len(n) >= 8 else ''
+        desc = (x['summary'][0] if x['summary'] else x['byline'])[:150]
+        ld = {'@context': 'https://schema.org', '@type': 'NewsArticle', 'headline': x['title'], 'articleSection': x['category'], 'url': U0 + 'news/' + x['id'] + '.html', 'publisher': {'@type': 'CollegeOrUniversity', 'name': '광주과학기술원'}}
+        if iso: ld['datePublished'] = iso
+        body = ''.join('<p>%s</p>' % _h.escape(s_) for s_ in x['summary'])
+        links = ''.join('<a href="%s" rel="noopener">%s</a>' % (_h.escape(u_), _h.escape(l_)) for u_, l_ in ((x['gist_url'], 'GIST 원문'), (x['source_url'], x['source'] or '언론 원문')) if u_)
+        page = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>%s | GIST Insight</title><meta name="description" content="%s">'
+                '<link rel="canonical" href="%snews/%s.html"><meta property="og:type" content="article"><meta property="og:title" content="%s"><meta property="og:description" content="%s"><meta property="og:image" content="%sdocs/화면_PC_첫화면.png"><link rel="icon" href="../img/favicon.png">'
+                '<script type="application/ld+json">%s</script>'
+                '<style>body{margin:0;font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif;color:#111418;line-height:1.8}header{background:#111418;color:#fff;padding:18px 22px}header a{color:#fff;font-weight:900;text-decoration:none;letter-spacing:-.02em}main{max-width:760px;margin:0 auto;padding:36px 22px 80px}small{color:#C11D0E;font-weight:800}h1{font-size:clamp(24px,5vw,36px);line-height:1.35;letter-spacing:-.03em;margin:8px 0 6px}.by{color:#5A636B;margin:0 0 22px}p{font-size:17px}nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}nav a{padding:11px 18px;border-radius:999px;border:1px solid #E1E4E7;color:#111418;text-decoration:none;font-weight:700}nav a.go{background:#DC2715;border-color:#DC2715;color:#fff}</style></head>'
+                '<body><header><a href="../">GIST 광주과학기술원</a></header><main><small>%s · %s</small><h1>%s</h1><p class="by">%s</p>%s<nav><a class="go" href="../#news/%s">사진·관련 연구실과 함께 보기</a>%s<a href="../#story">GIST Insight 전체</a></nav></main></body></html>\n') % (
+                _h.escape(x['title']), _h.escape(desc), U0, x['id'], _h.escape(x['title']), _h.escape(desc), U0, _j.dumps(ld, ensure_ascii=False), _h.escape(x['category']), _h.escape(x['date']), _h.escape(x['title']), _h.escape(x['byline']), body, x['id'], links)
+        io.open('news/%s.html' % x['id'], 'w', encoding='utf-8').write(page); NEWS_URLS.append(U0 + 'news/%s.html' % x['id'])
+    ps = _r.search(r'const PSLUG=(\{[^}]*\})', SRC)
+    pages = [{'name': k, 'address': '#p/' + v} for k, v in _j.loads(ps.group(1)).items()] if ps else []
+    try: depts = _j.load(io.open('src/dept.json', encoding='utf-8'))
+    except Exception: depts = []
+    io.open('data/content.json', 'w', encoding='utf-8').write(_j.dumps({'$description': 'GIST 홈페이지 D안의 내용만 모은 파일입니다(모양 없음). 어떤 제작 도구(CMS)로 옮기더라도 이 파일에서 소식·화면 이름·학과 정보를 그대로 읽어 갈 수 있습니다. src/index_source.html 과 src/dept.json 에서 자동으로 만듭니다.', 'stories': FULL, 'pages': pages, 'departments': depts}, ensure_ascii=False, indent=1) + '\n')
+    print('news/ 글 화면 %d개, data/content.json 만들었습니다' % len(FULL))
     print('feed.xml %d건, tokens.json %d개, manifest, 404.html 만들었습니다' % (min(40, len(items)), len(tok)))
 except Exception as e:
     print('부속 파일 건너뜀:', e)
@@ -146,6 +171,8 @@ try:
                 ('<h2>학과 소개</h2><section><p>%s</p></section>' % e(intro)) if intro else '', ('<h2>특징</h2><section><ul>%s</ul></section>' % pts) if pts else '', ('<h2>연구 분야</h2>' + areas) if areas else '',
                 e(d.get('tel', '')), (' · 팩스 ' + e(d['fax'])) if d.get('fax') else '', e(d.get('mail', '')))
         io.open('dept/%s.html' % code, 'w', encoding='utf-8').write(page); urls.append(U + 'dept/%s.html' % code)
+    try: urls += NEWS_URLS
+    except Exception: pass
     io.open('sitemap.xml', 'w', encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (u, today) for u in urls) + '</urlset>\n')
     io.open('robots.txt', 'w', encoding='utf-8').write('User-agent: *\nAllow: /\nSitemap: ' + U + 'sitemap.xml\n')
     print('학과 글 화면 %d개, sitemap.xml, robots.txt 만들었습니다' % (len(urls) - 1))
