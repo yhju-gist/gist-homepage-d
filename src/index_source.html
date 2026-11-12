@@ -5131,7 +5131,7 @@ function nxStoryRel(x){const T=nxThemesOfStory(x).slice(0,3);if(!T.length)return
 /* v180 Nexus: 통합검색·연구 분야 화면 연결 */
 const NXAL={ai:["AI","인공지능","데이터"],chip:["반도체","양자","광학","레이저"],energy:["에너지","배터리","수소","탄소"],earth:["환경","기후","대기"],bio:["바이오","의료","생명","신약"],mat:["소재","나노","고분자"],robot:["로봇","기계","모빌리티","자율주행"],basic:["수학","기초과학","이론물리"]};
 function nxTeaser(){const all=new Set();NX.forEach(t=>nxLabs(t).forEach(p=>all.add(p)));
- return '<div class="nxh-l"><span class="eyebrow">GIST NEXUS · 끊김 없이 연결</span><h3>학과에서 멈추지 않고<br>연구실 · 소식 · 입학까지</h3><p>학과 이름을 몰라도 됩니다. 관심 주제를 고르면 그 주제를 연구하는 <b class="num">'+new Set([...all].map(p=>p[1])).size+'</b>개 학과, <b class="num">'+all.size+'</b>개 연구실이 한 화면에 이어집니다.</p><a class="nxh-b" href="#nexus">연구 연결 지도 열기 <i data-lucide="arrow-right"></i></a></div><div class="nxh-r">'+NX.map(t=>{const L=nxLabs(t);return '<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i><b>'+esc(t.n)+'</b><span>학과 <em class="num">'+new Set(L.map(p=>p[1])).size+'</em> · 연구실 <em class="num">'+L.length+'</em></span></a>'}).join("")+'</div>';}
+ return '<div class="nxh-l"><span class="eyebrow">연구 한 줄 · 끊김 없이 연결</span><h3>학과에서 멈추지 않고<br>연구실 · 소식 · 입학까지</h3><p>학과 이름을 몰라도 됩니다. 관심 주제를 고르면 그 주제를 연구하는 <b class="num">'+new Set([...all].map(p=>p[1])).size+'</b>개 학과, <b class="num">'+all.size+'</b>개 연구실이 한 화면에 이어집니다.</p><a class="nxh-b" href="#nexus">연구 연결 지도 열기 <i data-lucide="arrow-right"></i></a></div><div class="nxh-r">'+NX.map(t=>{const L=nxLabs(t);return '<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i><b>'+esc(t.n)+'</b><span>학과 <em class="num">'+new Set(L.map(p=>p[1])).size+'</em> · 연구실 <em class="num">'+L.length+'</em></span></a>'}).join("")+'</div>';}
 {const _rs=runSearch;runSearch=function(){_rs();try{const q=($("#q").value||"").replace(/\s/g,"");if(q.length<2)return;const up=q.toUpperCase();const T=NX.filter(t=>NXAL[t.k].some(a=>up.includes(a.toUpperCase()))).slice(0,2);if(!T.length)return;const r=$("#res");if(!r)return;
  r.insertAdjacentHTML("afterbegin",T.map(t=>{const L=nxLabs(t);return '<li class="ri nxr"><a href="#nexus-'+t.k+'"><span class="src"><span>연구 한 줄</span>연구 연결 지도</span><b><i data-lucide="'+t.ic+'"></i> ‘'+esc(t.n)+'’ 주제로 이어 보기</b><p>이 주제를 연구하는 학과 '+new Set(L.map(p=>p[1])).size+'개 · 연구실 '+L.length+'곳 · 연구소 · 최근 소식 '+nxStories(t).length+'건을 한 화면에서 봅니다.</p></a></li>'}).join(""));icons();}catch(e){}};}
 {const _rf=PBODY["연구 분야"];if(_rf)PBODY["연구 분야"]=()=>_rf()+'<div class="nxh" style="margin-top:34px">'+nxTeaser()+'</div>';}
@@ -5886,4 +5886,7 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 /* v205 사진 위 '자료 사진' 꼬리표와 첫 화면 행사 구역의 출처·시안 문구는 화면에 띄우지 않음 */
 .p-ex{display:none!important}
 .gnow .note{display:none!important}
+</style>
+<style>/* v206 휴대폰 첫 화면 가볍게: 아래 구역은 가까이 왔을 때 그림 */
+@media (max-width:760px){#v-home .gnow,#v-home .p-sec,#v-home .p-outline,#v-home .sec.nc,footer.ft{content-visibility:auto;contain-intrinsic-size:auto 900px}}
 </style>
