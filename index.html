@@ -2643,7 +2643,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
 <a class="skip" href="#main-c">본문 바로가기</a>
 <div class="topbar" id="topbar"><div class="wrap"><span id="topbarT">2026 GIST 과학기술문화페스타 — 특별강연·공연 일정은 공지에서 확인하세요</span><a id="topbarL" href="https://www.gist.ac.kr/kr/html/sub06/060101.html" target="_blank" rel="noopener noreferrer">공지 자세히 보기</a><button type="button" id="topbarX">오늘 하루 닫기 ×</button></div></div>
 <div class="util"><div class="wrap">
-  <nav class="sp-links" aria-label="특화 페이지"><a href="#tutorial">GIST Compass</a><a href="#story">GIST Insight</a><a href="#colleges">대학·학과 바로가기</a></nav>
+  <nav class="sp-links" aria-label="특화 페이지"><a href="#tutorial">GIST Compass</a><a href="#story">GIST Insight</a><a href="#nexus">GIST Nexus</a><a href="#colleges">대학·학과 바로가기</a></nav>
   <nav aria-label="언어·시스템"><a href="https://portal.gist.ac.kr/" target="_blank" rel="noopener noreferrer">포털</a><a href="https://zeus.gist.ac.kr/" target="_blank" rel="noopener noreferrer">ZEUS</a><a href="https://ngw.gist.ac.kr/" target="_blank" rel="noopener noreferrer">그룹웨어</a><a href="https://mail.gist.ac.kr/" target="_blank" rel="noopener noreferrer">웹메일</a><a href="#en" lang="en">ENG</a><span class="a11y" role="group" aria-label="글자 크기"><button type="button" id="fzm">가−</button><button type="button" id="fz0">가</button><button type="button" id="fzp">가+</button></span></nav>
 </div></div>
 
@@ -2701,7 +2701,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
         <select id="hscope"><option value="all">전체</option><option value="main">대표</option><option value="dept">학과 홈페이지</option><option value="rule">규정·안내</option><option value="sns">SNS</option></select>
         <button type="submit" aria-label="검색"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
       </form>
-      <div class="sugg hx-kw p-kw"><span>많이 찾는 검색어</span><a href="#search" data-q="학과">학과</a><a href="#search" data-q="장학">장학금</a><a href="#search" data-q="증명서">증명서 발급</a><a href="#search" data-q="학위논문">학사일정</a><a href="#search" data-q="연구실">연구실 찾기</a><span class="hint">초성·오타도 찾아요 (ㅎㄱㅇㄴㅈ)</span></div>
+      <div class="sugg hx-kw p-kw"><span>많이 찾는 검색어</span><a href="#search" data-q="학과">학과</a><a href="#search" data-q="장학">장학금</a><a href="#search" data-q="증명서">증명서 발급</a><a href="#search" data-q="학위논문">학사일정</a><a href="#nexus" class="kw-nx">연구실·주제로 찾기 →</a><span class="hint">초성·오타도 찾아요 (ㅎㄱㅇㄴㅈ)</span></div>
       <span class="tag" data-r="8" style="align-self:center"><b>⑧</b>학과 홈페이지·SNS까지 검색</span>
   </div></section>
 
@@ -2765,6 +2765,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
   <section class="p-sec p-words" aria-labelledby="p-h-words"><div class="wrap">
     <h2 class="p-tit" id="p-h-words">4개 단과대학, 13개 학과와 1개 대학원 <span class="tag" data-r="4"><b>④</b>학과로 바로</span></h2>
     <div class="p-wl" id="pwords"></div>
+    <div class="nxh" id="pnexus"></div>
   </div></section>
 
   <!-- F. 이야기 -->
@@ -2788,7 +2789,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
     <h2 class="p-tit" id="p-h-topics">Research <small class="p-ko">주제로 보는 GIST 연구</small></h2>
     <p class="p-sub">GIST Insight 실제 소식을 주제별로 모았습니다. 누르면 그 주제로 찾은 결과를 보여 줍니다.</p>
     <div class="tpc" id="ptopics"></div>
-    <div class="nxh" id="pnexus"></div>
+    <p class="p-more2">주제를 고르면 학과·연구실·연구소까지 이어 봅니다. <a class="p-go" href="#nexus">GIST Nexus 연구 연결 지도 <span><i data-lucide="arrow-right"></i></span></a></p>
     <h3 class="p-h3t" id="p-h-labs">연구소·센터 둘러보기</h3>
     <div id="plabs"></div>
   </div></section>
@@ -3014,6 +3015,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
     <p>단과대학 소개는 대표 홈페이지에서 보고, 학과마다 홈페이지·입학·교수진으로 한 번에 들어갑니다.</p>
     <div><span class="tag" data-r="4"><b>④</b>끊김 없이 학과로</span> <span class="tag" data-r="12"><b>⑫</b>학과 홈페이지는 지금 그대로 연결</span></div>
   </div></div>
+  <div class="wrap"><div class="nxh" id="pnexus2" style="margin:34px 0 0"></div></div>
   <div class="wrap colpage" id="colpage"></div>
 </div>
 
@@ -3115,7 +3117,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
       <p class="rp-bsrc">근거: 11.10. TF 1차 회의 녹음 — 진행 차장님 설명(06:02~07:57) “이사회에서 이사장님께서 홈페이지를 새롭게 구축하는 게 어떻겠냐는 의견을 반복해서 주셨다”, 참석자 설명(1:51:43) “이번 이사회 때 가장 컸던 주문”. 목표: 2027.2. 이사회 초안 보고.</p>
       <ol class="rp-bl">
         <li><div class="rb-q"><span class="rb-n">1</span><b>가장 큰 주문</b><h3>대표 홈페이지에서 단과대학·학과로 타고 들어가 학과 정보를 얻기가 어렵다. 끊김 없이 바로 이어지게</h3><small>회의 1:51:43</small></div>
-          <div class="rb-a"><h4>D안 해소</h4><ul><li>첫 화면에 <b>4개 단과대학을 큰 글자</b>로 두고, 학과 이름을 누르면 바로 <b>대표 홈페이지 안 학과 소개 화면</b>으로 갑니다(밖으로 튕기지 않음).</li><li>학과 소개 화면 14곳: 현행 홈페이지 ‘대학·학과’ 원문 소개·연구 분야·학과 사무실 연락처, 그 학과 GIST Insight 소식, <b>학과 홈페이지·대학원 입학 버튼</b>.</li><li>위치 막대(대학·학과 › 단과대학 › 학과)에서 다른 대학·학과로 바로 옮겨 다닙니다.</li></ul><p class="rb-k"><b class="num">2번</b> 누르면 첫 화면 → 학과 정보 · <b class="num">14곳</b> 학과 소개 화면</p><a class="rp-go" href="#home" data-go="home|#pwords">그 화면으로 →</a></div></li>
+          <div class="rb-a"><h4>D안 해소</h4><ul><li>첫 화면에 <b>4개 단과대학을 큰 글자</b>로 두고, 학과 이름을 누르면 바로 <b>대표 홈페이지 안 학과 소개 화면</b>으로 갑니다(밖으로 튕기지 않음).</li><li>학과 소개 화면 14곳: 현행 홈페이지 ‘대학·학과’ 원문 소개·연구 분야·학과 사무실 연락처, 그 학과 GIST Insight 소식, <b>학과 홈페이지·대학원 입학 버튼</b>.</li><li>위치 막대(대학·학과 › 단과대학 › 학과)에서 다른 대학·학과로 바로 옮겨 다닙니다.</li><li><b>학과에서 멈추지 않습니다 (11.12. 추가):</b> 학과 화면에 <b>연구실·교수 목록과 이어진 연구 주제</b>를 두었습니다. 주제를 누르면 같은 주제를 연구하는 다른 단과대학의 학과·연구실·부설 연구소·최근 소식·대학원 입학·오픈랩 신청까지, 대표 홈페이지 밖으로 한 번도 나가지 않고 이어집니다(<a href="#nexus">GIST Nexus</a>). 첫 화면 단과대학 바로 아래, 맨 위 띠, 검색창 아래, 전체 메뉴(교육·연구)에서 들어갑니다.</li><li>세부 화면마다 <b>‘이어서 하기’</b>: 예비 학부생·대학원 지원자·재학생·기업·방문자가 다음에 볼 화면을 한 줄로 이어 줍니다.</li></ul><p class="rb-k"><b class="num">2번</b> 누르면 첫 화면 → 학과 정보 · <b class="num">14곳</b> 학과 소개 화면 · 연구실 <b class="num">171곳</b>까지 연결</p><a class="rp-go" href="#home" data-go="home|#pwords">그 화면으로 →</a></div></li>
         <li><div class="rb-q"><span class="rb-n">2</span><h3>GIST가 언론이나 다른 곳에 잘 드러나지(노출되지) 않는다</h3><small>회의 06:02~07:57</small></div>
           <div class="rb-a"><h4>D안 해소</h4><ul><li>소식·학과·세부 화면마다 <b>고유 주소와 주소 복사</b>(공유) 버튼, GIST Insight <b>RSS</b>, 공식 SNS 최근 글을 첫 화면에 연결.</li><li>검색엔진이 기관·학과를 정확히 알아보도록 <b>구조화 데이터(schema.org)</b>를 넣었습니다. 현행 홈페이지에는 없습니다(0건, 2026.11.11. 확인).</li><li>영문 화면(ENG)을 같은 디자인으로 두어 해외 방문자도 같은 인상을 받습니다.</li></ul><a class="rp-go" href="#story" data-go="story|#scat">그 화면으로 →</a></div></li>
         <li><div class="rb-q"><span class="rb-n">3</span><h3>구축한 지 오래되어 지금 GIST의 상황을 반영하지 못한다</h3><small>회의 06:02~07:57</small></div>
@@ -3225,7 +3227,7 @@ if(document.readyState==="complete")setTimeout(go,800);else addEventListener("lo
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/hangul-js@0.2.6/hangul.min.js"></script>
-<script defer src="js/app_6d0a3059d1.js"></script><script defer src="js/app_769e287d01.js"></script><script defer src="js/app_4f64923530.js"></script><script defer src="js/app_f89d9291f6.js"></script>
+<script defer src="js/app_bafbe94a56.js"></script><script defer src="js/app_769e287d01.js"></script><script defer src="js/app_4f64923530.js"></script><script defer src="js/app_f89d9291f6.js"></script>
 <style>/* v180 GIST Nexus · 이어서 하기 */
 .nx .rp-kpi{margin-bottom:26px}
 .nx-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 28px}
@@ -3407,6 +3409,13 @@ if(document.readyState==="complete")setTimeout(go,800);else addEventListener("lo
 @media (max-width:760px){.rf-t,.rf-t tbody{display:block}.rf-t thead{display:none}.rf-t tr{display:block;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:0 0 10px;background:#fff}
 .rf-t tr[hidden]{display:none}.rf-t tr:before{content:attr(data-id);display:block;font-size:12.5px;font-weight:800;color:var(--red-tx,#C11D0E);margin-bottom:6px}
 .rf-t th.rf-id{display:none}.rf-t td{display:block;border:0!important;padding:3px 0!important;text-align:left!important;font-size:14.5px}.rf-t td:first-of-type{font-weight:800;font-size:15.5px}.rf-t td:empty{display:none}}
+</style>
+<style>/* v186 Nexus를 앞에 */
+.p-words .nxh{margin:44px 0 0}
+.hx-kw a.kw-nx,.p-kw a.kw-nx{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important;font-weight:800}
+.sp-links a[href="#nexus"]{color:#FF8A7D;font-weight:800}
+.mg-nx{display:flex;align-items:center;gap:10px;margin-top:16px;padding:12px 14px;border-radius:14px;background:var(--ink);color:#fff!important;text-decoration:none;max-width:260px}
+.mg-nx svg{width:22px;height:22px;color:#FF8A7D;flex:none}.mg-nx span{display:flex;flex-direction:column;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.75)}.mg-nx b{font-size:15px;color:#fff}.mg-nx:hover{background:var(--red)}.mg-nx:hover svg{color:#fff}
 </style>
 <script>addEventListener("load",function(){setTimeout(function(){document.querySelectorAll("[data-bg]").forEach(function(e){e.style.backgroundImage="url("+e.getAttribute("data-bg")+")"});document.querySelectorAll("source[data-srcset]").forEach(function(e){e.srcset=e.getAttribute("data-srcset")});document.querySelectorAll("img[data-src]").forEach(function(e){e.src=e.getAttribute("data-src")})},1200)});</script>
 </body></html>
