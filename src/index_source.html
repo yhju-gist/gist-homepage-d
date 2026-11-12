@@ -5864,3 +5864,26 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
  #v-search .askc .seg button{padding:9px 15px;font-size:14px}}
 @media (forced-colors:active){#v-search .askc .seg button{border:1px solid}}
 </style>
+<style>/* v205 거르기 단추(.seg) 알약 통일 — 검색 콘솔(#scope)은 따로 */
+.seg:not(#scope){display:flex!important;flex-wrap:wrap;gap:8px;border:0!important;border-radius:0!important;overflow:visible!important;background:transparent!important;width:auto;max-width:100%}
+.seg:not(#scope) button{flex:none;border:1.5px solid #D5D9DD!important;border-radius:999px!important;padding:10px 18px!important;min-height:44px;background:#fff;color:var(--ink);font-size:15px!important;font-weight:700;text-align:center;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.seg:not(#scope) button:hover{border-color:var(--ink)!important}
+.seg:not(#scope) button:active{transform:scale(.97)}
+.seg:not(#scope) button[aria-pressed="true"]{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)!important}
+.seg:not(#scope) button[aria-pressed="true"] small{opacity:.8}
+.seg:not(#scope) button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+@media (max-width:760px){.seg:not(#scope){gap:7px}.seg:not(#scope) button{padding:9px 15px!important;font-size:14.5px!important}}
+/* v205 휴대폰 아래 탭: 떠 있는 섬 */
+@media (max-width:760px){
+ .tabbar{left:10px!important;right:10px!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;padding:6px!important;gap:2px;border:1px solid rgba(17,20,24,.08)!important;border-radius:24px;background:rgba(255,255,255,.88)!important;-webkit-backdrop-filter:saturate(1.6) blur(18px);backdrop-filter:saturate(1.6) blur(18px);box-shadow:0 14px 36px rgba(17,20,24,.2),0 2px 6px rgba(17,20,24,.08)}
+ .tabbar a{border-radius:18px;padding:8px 0 7px!important;gap:3px;font-size:11.5px!important;letter-spacing:-.02em;color:#4A5259!important;transition:background .18s,color .18s}
+ .tabbar a.on,.tabbar a[aria-current="page"]{background:var(--ink);color:#fff!important}
+ .tabbar a.on svg,.tabbar a[aria-current="page"] svg{stroke:#fff}
+ .tabbar a:active{transform:scale(.96)}
+ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:760px) and (prefers-reduced-transparency:reduce){.tabbar{background:#fff!important;-webkit-backdrop-filter:none;backdrop-filter:none}}
+/* v205 사진 위 '자료 사진' 꼬리표와 첫 화면 행사 구역의 출처·시안 문구는 화면에 띄우지 않음 */
+.p-ex{display:none!important}
+.gnow .note{display:none!important}
+</style>
