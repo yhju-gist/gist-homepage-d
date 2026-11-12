@@ -5104,7 +5104,7 @@ function renderNexus(k){const host=$("#v-page");if(k&&NX.some(x=>x.k===k)){if(nx
 document.addEventListener("click",e=>{
  const tb=e.target.closest("#nxtabs button");if(tb){nxSel={k:tb.dataset.nx,d:""};history.replaceState(null,"","#nexus-"+tb.dataset.nx);nxDraw();return;}
  const nd=e.target.closest("[data-nxd]");if(nd&&nd.closest(".nx")){const d=nd.dataset.nxd;nxSel.d=(nxSel.d===d?"":d);nxDraw();return;}
- const q=e.target.closest("a[data-nxq]");if(q){e.preventDefault();const i=$("#q");if(i)i.value=q.dataset.nxq;location.hash="search";setTimeout(()=>{if(i)i.value=q.dataset.nxq;typeof runSearch==="function"&&runSearch();},140);return;}
+ const q=e.target.closest("a[data-nxq]");if(q&&!q.dataset.go&&(q.closest(".nx-labs")||q.closest(".nxd-l"))){e.preventDefault();nxLabOpen(q);return;}if(q){e.preventDefault();const i=$("#q");if(i)i.value=q.dataset.nxq;location.hash="search";setTimeout(()=>{if(i)i.value=q.dataset.nxq;typeof runSearch==="function"&&runSearch();},140);return;}
  const dot=e.target.closest(".nx-dot");if(dot){const li=document.querySelector('.nx-labs li[data-lab="'+dot.dataset.lab+'"]');if(li){li.scrollIntoView({block:"center",behavior:"smooth"});li.classList.add("hit");setTimeout(()=>li.classList.remove("hit"),1600);}}
 });
 document.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches(".nx-n")){e.preventDefault();e.target.dispatchEvent(new MouseEvent("click",{bubbles:true}));}});
@@ -5114,7 +5114,7 @@ addEventListener("hashchange",()=>{if(/^#nexus/.test(location.hash||""))route();
 PSPECIAL["연구실 찾기"]="#nexus";
 /* 학과 화면: 연구실 + 이어진 주제 */
 function nxDept(n){const P=PROFDIR.filter(p=>p[1]===n);if(!P.length)return "";const ts=NX.map(t=>[t,P.filter(p=>(p[3]&&t.re.test(p[3]))||(t.dept&&t.dept.test(n))).length]).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]);const named=P.filter(p=>p[3]);
- return '<section class="nxd" aria-labelledby="nxdh"><h3 class="p-h3" id="nxdh">연구실·교수 <small><span class="num">'+P.length+'</span>명'+(named.length?' · 연구실 이름 공개 <span class="num">'+named.length+'</span>곳':'')+'</small></h3>'+
+ return '<section class="nxd" id="nxd-sec" aria-labelledby="nxdh"><h3 class="p-h3" id="nxdh">연구실·교수 <small><span class="num">'+P.length+'</span>명'+(named.length?' · 연구실 이름 공개 <span class="num">'+named.length+'</span>곳':'')+'</small></h3>'+
  (ts.length?'<div class="nxd-t"><span class="eyebrow">이 학과와 이어진 연구 주제</span><div>'+ts.map(([t,c])=>'<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+' <b class="num">'+c+'</b></a>').join("")+'</div><p>주제를 누르면 같은 주제를 연구하는 다른 학과·연구소·소식까지 GIST Nexus에서 이어 봅니다.</p></div>':'')+
  nxDeptPeers(n,ts)+'<ul class="nxd-l">'+P.map(p=>'<li><a href="#search" data-nxq="'+esc(nxBase(p[0]))+'"><b>'+esc(p[3]||nxBase(p[0])+" 교수")+'</b><span>'+(p[3]?esc(nxBase(p[0]))+' 교수':'')+(nxRole(p[0])?(p[3]?' · ':'')+esc(nxRole(p[0])):'')+'</span></a></li>').join("")+'</ul><p class="note">교수·연구실 이름은 현행 학과 홈페이지 교수진 공개 화면 기준입니다. 이름을 누르면 Ask GIST에서 내선과 함께 찾습니다.</p></section>';}
 /* 세부 화면: 이어서 하기(여정) */
@@ -5339,12 +5339,22 @@ function trailName(){const h=location.hash||"#home";if(h==="#home"||h==="#")retu
 function trailDraw(){const el=$("#trail");if(!el)return;const cur=location.hash||"#home";const L=TRAIL.filter(x=>x.h!==cur).slice(-4);el.hidden=!L.length;if(!L.length)return;el.innerHTML='<div class="wrap"><span class="eyebrow">방금 본 화면</span><div>'+L.map(x=>'<a href="'+esc(x.h)+'">'+esc(x.n)+'</a>').join('<i data-lucide="chevron-right"></i>')+'<i data-lucide="chevron-right"></i><span aria-current="page">'+esc(trailName()||"지금 화면")+'</span></div></div>';icons();}
 function trailPush(){setTimeout(()=>{const h=location.hash||"#home";const n=trailName();if(n&&h!=="#home"&&document.title==="GIST 홈페이지 D안")document.title=n+" | GIST 홈페이지 D안";if(n){const i=TRAIL.findIndex(x=>x.h===h);if(i>=0)TRAIL.splice(i,1);TRAIL.push({h,n});if(TRAIL.length>8)TRAIL.shift();}trailDraw();},260);}
 (function(){const f=document.querySelector("footer");if(!f)return;const d=document.createElement("nav");d.id="trail";d.className="trail";d.hidden=true;d.setAttribute("aria-label","방금 본 화면");f.parentNode.insertBefore(d,f);addEventListener("hashchange",trailPush);trailPush();})();
+
+/* v188 끊김 없이: 연구실을 누르면 그 자리에서 교수·학과·내선·이어진 주제·신청까지 */
+function nxLabOpen(a){const li=a.closest("li");const old=li.querySelector(".nxl-x");$$(".nxl-x").forEach(x=>{x.parentNode.classList.remove("open");x.remove()});if(old)return;
+ const nm=a.dataset.nxq;const dm=(location.hash||"").match(/^#d-([a-z0-9]+)$/);const dn=dm&&deptByCode(dm[1]);const idx=li.dataset.lab;
+ const p=idx!=null?PROFDIR[+idx]:PROFDIR.find(x=>nxBase(x[0])===nm&&(!dn||x[1]===dn));if(!p)return;const ts=nxThemesOfLab(p);const ext=(p[2]||"").split(/[\/,]/)[0].trim();
+ const pre=esc(JSON.stringify({dept:p[1],lab:p[3]||""}));
+ li.classList.add("open");li.insertAdjacentHTML("beforeend",'<div class="nxl-x"><dl><div><dt>교수</dt><dd>'+esc(nxBase(p[0]))+(nxRole(p[0])?' <small>'+esc(nxRole(p[0]))+'</small>':'')+'</dd></div><div><dt>학과</dt><dd><a href="#d-'+DURL[p[1]]+'">'+esc(p[1])+'</a> <small>'+esc(COLLEGES[nxDeptCol(p[1])].n)+'</small></dd></div>'+(ext?'<div><dt>내선</dt><dd><a class="num" href="tel:062-715-'+esc(ext)+'">062-715-'+esc(ext)+'</a></dd></div>':'')+(ts.length?'<div><dt>이어진 주제</dt><dd class="c">'+ts.map(t=>'<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+'</a>').join("")+'</dd></div>':'')+'</dl><div class="nxl-b"><a href="#apply-ga-openlab" data-appre="'+pre+'"><i data-lucide="door-open"></i>오픈랩 신청</a><a href="#apply-ga-intern" data-appre="'+pre+'"><i data-lucide="briefcase"></i>인턴십 신청</a><a href="#d-'+DURL[p[1]]+'"><i data-lucide="building-2"></i>학과 화면</a><a href="#search" data-nxq="'+esc(nm)+'" data-go="1"><i data-lucide="search"></i>Ask GIST에서 더 찾기</a></div><small>이름·연구실·내선은 현행 학과 홈페이지 교수진 공개 화면 기준입니다. 연구실 홈페이지 주소는 구축 때 학과 자료와 연결합니다.</small></div>');icons();}
+/* 학과 화면 위쪽 단추 줄에서 연구실 목록으로 바로 */
+document.addEventListener("click",e=>{const j=e.target.closest("[data-jump]");if(!j)return;e.preventDefault();const t=document.querySelector(j.dataset.jump);if(t){const y=t.getBoundingClientRect().top+scrollY-110;(typeof lenis!=="undefined"&&lenis)?lenis.scrollTo(y):scrollTo({top:y,behavior:"smooth"});}});
 route();heroState();requestAnimationFrame(()=>{drawBanner();drawThumbs();heroState();});
 })();
 
 /* ===== v69 위원장 보고: 정확히 그 자리로 가기 ===== */
 (function(){var $=function(q){return document.querySelector(q)};var esc=function(t){return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};var REF=window.REF||window.__REF||[];
 var RAFTER=[
+ ["연구실을 누르면 그 자리에서 (v188)","GIST Nexus·학과 화면의 연구실을 누르면 화면을 옮기지 않고 그 자리에서 교수·학과·내선·이어진 주제와 오픈랩·인턴십 신청 단추가 펼쳐짐","nexus|.nx-labs"],
  ["학과에서 다른 단과대학 학과로 바로 (v187)","학과 화면에 ‘같은 주제를 함께 연구하는 다른 학과’를 주제별로 두어 단과대학을 넘어 바로 옮겨 감. 모든 화면 아래 ‘방금 본 화면’ 줄로 왔던 길을 한 번에 되돌아감","d-env1|.nxp"],
  ["이사장님 가장 큰 주문 ‘끊김 없이’를 연구실까지 (v186)","GIST Nexus를 첫 화면 단과대학 바로 아래·맨 위 띠·검색창 아래·전체 메뉴(교육·연구)·대학·학과 화면 맨 위로 꺼냄. 첫 화면 → 단과대학 → 학과 → 연구실 → 같은 주제의 다른 학과 → 소식 → 입학·오픈랩 신청까지 밖으로 나가지 않고 이어짐","home|#pnexus"],
  ["품질 성적표 (v182)","구글 공개 검사 도구(Lighthouse)로 현행 홈페이지와 D안을 같은 날 같은 PC에서 잰 점수·속도·용량을 나란히 표시. 글꼴 분리·사진 WebP로 화면 파일 1.7MB→0.9MB","quality|.ql-k"],
@@ -5630,4 +5640,19 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 .trail a{background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none}.trail a:hover{border-color:var(--ink)}.trail span[aria-current]{color:var(--mute)}.trail svg{width:14px;height:14px;color:var(--mute);flex:none}
 @media (max-width:760px){.nxp-r{grid-template-columns:1fr}.trail{padding-bottom:14px}.trail a,.trail span[aria-current]{max-width:150px;font-size:13px}}
 @media print{.trail{display:none}}
+</style>
+<style>/* v188 */
+.nx-dg li.open,.nxd-l li.open{flex-wrap:wrap}.nxd-l li{min-width:0}.nxd-l li.open{grid-column:1/-1}.nx-dg li.open{grid-column:1/-1}
+.nxl-x{flex-basis:100%;width:100%;box-sizing:border-box;margin:8px 0 4px;padding:16px 18px;border-radius:16px;background:var(--soft);border:1px solid var(--line)}
+.nxl-x dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px 18px;margin:0 0 12px}.nxl-x dt{font-size:12px;font-weight:800;color:var(--mute);margin-bottom:2px}.nxl-x dd{margin:0;font-size:15px;font-weight:700}
+.nxl-x dd small{font-weight:600;color:var(--mute);font-size:12.5px}.nxl-x dd a{color:var(--red-tx,#C11D0E)}.nxl-x dd.c{display:flex;flex-wrap:wrap;gap:6px}.nxl-x dd.c a{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:13px;color:var(--ink);text-decoration:none}.nxl-x dd.c svg{width:13px;height:13px;color:var(--red)}
+.nxl-b{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.nxl-b a{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;border-radius:999px;padding:9px 14px;font-size:13.5px;font-weight:800;text-decoration:none}.nxl-b a svg{width:15px;height:15px}.nxl-b a:hover{background:var(--red)}
+.nxl-b a:nth-child(n+3){background:#fff;color:var(--ink);border:1px solid var(--line)}.nxl-b a:nth-child(n+3):hover{border-color:var(--ink);background:#fff}
+.nxl-x>small{display:block;font-size:12px;color:var(--mute);line-height:1.6}
+.nx-dg li.open>a b,.nxd-l li.open>a b{color:var(--red-tx,#C11D0E)}
+.nxd-l .nxl-x a:hover{transform:none}
+.nxd-l .nxl-x dd>a{display:inline;min-height:0;border:0;padding:0;background:none;border-radius:0}
+.nxd-l .nxl-x dd.c a{display:inline-flex;flex-direction:row;align-items:center;min-height:0;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:#fff}
+.nxd-l .nxl-b a{flex-direction:row;min-height:0;display:inline-flex;align-items:center;justify-content:flex-start;padding:9px 14px;border-radius:999px;background:var(--ink);border:0;color:#fff}
+.nxd-l .nxl-b a:nth-child(n+3){background:#fff;color:var(--ink);border:1px solid var(--line)}
 </style>
