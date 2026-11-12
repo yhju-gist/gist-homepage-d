@@ -35,6 +35,26 @@ def img(m):
 s = re.sub(r'\{\{IMG:([^}"+]+)\}\}', img, s)
 s = re.sub(r'\{\{IMG:([^}]+)\}\}', r'img/\1', s)   # 코드에서 이름을 이어 붙이는 자리
 s = s.replace('const IMG=n=>"img/"+n+"";', 'const IMG=n=>{const W=' + repr(sorted(webp)).replace("'", '"') + ';const b=String(n).replace(/\\.(jpe?g|png)$/i,"");return "img/"+(W.indexOf(b)>=0?b+".webp":n)};')
+# 2-2) 첫 화면에서 당장 안 보이는 큰 사진(둘째·셋째 넘김 사진, GIST 글자 사진)은 화면이 다 뜬 뒤에 받기
+s = re.sub(r'(<span class="lt lt-[a-z]")\s*style="background-image:url\(([^)]+)\)"', r'\1 data-bg="\2"', s)
+s = re.sub(r'<picture class="hxs">.*?</picture>', lambda m: m.group(0).replace('srcset=', 'data-srcset=').replace(' src=', ' data-src='), s, flags=re.S)
+LATE = ('<script>addEventListener("load",function(){setTimeout(function(){document.querySelectorAll("[data-bg]").forEach(function(e){e.style.backgroundImage="url("+e.getAttribute("data-bg")+")"});'
+        'document.querySelectorAll("source[data-srcset]").forEach(function(e){e.srcset=e.getAttribute("data-srcset")});document.querySelectorAll("img[data-src]").forEach(function(e){e.src=e.getAttribute("data-src")})},1200)});</script>')
+# 2-3) 스크립트는 따로 파일로 빼서 화면 글·사진을 먼저 보여 준 뒤 순서대로 실행(defer)
+i = s.find('<script src=')
+if i > 0:
+    os.makedirs('js', exist_ok=True)
+    pre, post = s[:i], s[i:]
+    post = re.sub(r'<script src="(https://cdn[^"]+)"></script>', r'<script defer src="\1"></script>', post)
+    made = set()
+    def ext(m):
+        code = m.group(1); name = 'app_' + hashlib.md5(code.encode('utf-8')).hexdigest()[:10] + '.js'; made.add(name)
+        io.open(os.path.join('js', name), 'w', encoding='utf-8').write(code)
+        return '<script defer src="js/' + name + '"></script>'
+    post = re.sub(r'<script>(.*?)</script>', ext, post, flags=re.S)
+    for f in os.listdir('js'):
+        if f.startswith('app_') and f not in made: os.remove(os.path.join('js', f))
+    s = pre + post
 # 3) 머리
 D = 'GIST(광주과학기술원) 대표 홈페이지 D안 시안 — 통합검색·AI 안내 Ask GIST, 학사 길잡이 GIST Compass, 연구 연결 지도 GIST Nexus, 소식 GIST Insight를 한곳에서.'
 U = 'https://yhju-gist.github.io/gist-homepage-d/'
@@ -44,7 +64,7 @@ head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
         '<meta property="og:type" content="website"><meta property="og:title" content="GIST 홈페이지 D안 (시안)"><meta property="og:description" content="' + D + '">'
         '<meta property="og:url" content="' + U + '"><meta property="og:image" content="' + U + 'docs/화면_PC_첫화면.png"><meta name="twitter:card" content="summary_large_image">'
         '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png">'
-        '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
+        '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="fonts/pretendard-gist-sub.woff2" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
         '<style>[hidden]{display:none!important}</style></head><body>\n')
-io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n</body></html>')
+io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n' + LATE + '\n</body></html>')
 print('index.html 만들었습니다 (글꼴 %d개, webp %d장)' % (len(keep), len(webp)))

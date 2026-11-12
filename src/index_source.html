@@ -3993,7 +3993,7 @@ let PAGEOV={};
 let SITE=JSON.parse(JSON.stringify(DEF)),SITE_AT=null;
 const HERO0=$("#hxImg").getAttribute("src");
 const BNIMG0=EXI.map(n=>IMG(n));
-function setHeroImg(u){const s=u||HERO0;$("#hxImg").src=s;}
+function setHeroImg(u){const s=u||HERO0;const im=$("#hxImg");if(im.getAttribute("src")!==s)im.src=s;}
 function applySite(S){
  PAGEOV=S.pages||{};try{IDX.forEach(r=>{if(!r.h||!/^#p-/.test(r.h))return;if(r.k0==null)r.k0=r.k;const o=PAGEOV[r.t];r.k=r.k0+(o?" "+[o.lead,o.dept,o.body].filter(Boolean).join(" "):"");});if(typeof fuseCache!=="undefined"&&fuseCache.clear)fuseCache.clear();}catch(_){}try{if(typeof pageCtx==="function"&&pageCtx())renderPage(pageCtx());}catch(_){}
  const h=S.hero||DEF.hero;
@@ -4341,7 +4341,7 @@ document.addEventListener("click",e=>{const b=e.target.closest(".pbar .tools but
 {const hx=$(".hx2"),b=$("#hxpz");if(RM){hx.classList.add("still");b.setAttribute("aria-pressed","true");}
  b.onclick=()=>{const st=hx.classList.toggle("still");b.setAttribute("aria-pressed",st);b.setAttribute("aria-label",st?"배경 움직임 재생":"배경 움직임 멈춤");b.innerHTML='<i data-lucide="'+(st?"play":"pause")+'"></i>';icons();};
  const HMOB=$(".hx-bg source").getAttribute("srcset");
- let hxCustom=false;setHeroImg=function(u){const s0=u||HERO0;hxCustom=!!u;$("#hxImg").src=s0;$(".hx-bg source").setAttribute("srcset",u||HMOB);if(u)hxGo(0);};
+ let hxCustom=false;setHeroImg=function(u){const s0=u||HERO0;hxCustom=!!u;{const im=$("#hxImg"),so=$(".hx-bg source");if(im.getAttribute("src")!==s0)im.src=s0;if(so.getAttribute("srcset")!==(u||HMOB))so.setAttribute("srcset",u||HMOB);}if(u)hxGo(0);};
  const HS=$$(".hx-bg picture.hxs"),HD=$$("#hxdots .hxd");let hxI=0,hxT=0;
  function hxGo(n){hxI=(n+HS.length)%HS.length;HS.forEach((x,k)=>x.classList.toggle("on",k===hxI));HD.forEach((x,k)=>x.setAttribute("aria-current",k===hxI));HD.forEach(x=>x.hidden=hxCustom);}
  function hxTick(){clearTimeout(hxT);hxT=setTimeout(()=>{if(!hx.classList.contains("still")&&!hxCustom&&!document.hidden&&!document.body.classList.contains("hxdone"))hxGo(hxI+1);hxTick();},7000);}
