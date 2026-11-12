@@ -5389,7 +5389,7 @@ const TEN=[
  ["찾기","검색을 맨 앞에 둔다","MIT 첫 화면","반영","첫 화면 검색 · 초성·오타 · 교수 → 연구실","search"],
  ["대상별 길","누구에게 필요한 정보인지로 길을 낸다","Stanford ‘Information for’","반영","예비 학부생·대학원 지원자·학부모·재학생·교직원·기업·연구자 메뉴","home"],
  ["끊김 없는 연결","한 화면에서 다음에 볼 화면으로 이어 준다","이사회·TF 회의 의견","반영","소식 → 주제 → 학과 → 연구실 → 신청까지 한 줄로","nexus"],
- ["접근성","WCAG 2.2 AA를 지킨다","W3C WCAG 2.2","부분","자동 검사 100점, 누르는 곳 크기 24px 이상(휴대폰 16개 화면 실측). 사람이 하는 전문가 심사는 구축 때 받아야 합니다.","quality"],
+ ["접근성","WCAG 2.2 AA를 지킨다","W3C WCAG 2.2","부분","자동 검사 100점. 실측: 누르는 곳 24px 이상, 폭 320px(4배 확대)·720px(2배 확대)에서 좌우 넘침 0(124개 화면), 키보드 초점 가림 0(12개 화면). 사람이 하는 전문가 심사는 구축 때 받아야 합니다.","quality"],
  ["가벼움","내려받는 양과 에너지를 줄인다","GOV.UK 디자인 원칙 11","반영","첫 화면 1.4MB (현행 48.0MB)","quality"],
  ["일관성","색·글꼴·간격을 한 곳에서 정한다","GOV.UK Design System","반영","디자인 규칙 화면 + 디자인 값 파일(tokens.json)","guide"],
  ["도구 독립","내용과 모양을 나눠, 제작 도구가 바뀌어도 내용이 남게 한다","대학 홈페이지 재구축 지침(API 우선)","부분","내용만 담은 파일(data/content.json)을 따로 냅니다. 구축 때 관리 도구(CMS)와 연결해야 합니다.","guide"],
@@ -5830,4 +5830,7 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 <style>/* v199 */
 .fu-t td,.fu-t th{font-size:15px}.fu-t td.me{font-weight:800;color:var(--red-tx,#C11D0E);background:var(--red-t)}.fu-t thead th:last-child{background:var(--ink);color:#fff}
 @media (max-width:760px){.fu-t{min-width:0!important;width:100%;table-layout:fixed}.fu-t td,.fu-t th{font-size:13px;padding:10px 6px;word-break:keep-all;overflow-wrap:anywhere}.fu-t th:first-child{width:34%}.fu-t th,.fu-t td{white-space:normal!important}.fu-t tbody th{text-align:left}}
+</style>
+<style>/* v200 인쇄: 보내기 단추·읽기 진행 띠·이어 보기 줄은 종이에 찍지 않음 */
+@media print{.nxsh,.rdbar,.dway,#trail,.ap-strip,.tdy{display:none!important}}
 </style>
