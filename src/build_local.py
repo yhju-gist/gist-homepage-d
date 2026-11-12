@@ -62,14 +62,14 @@ if i > 0:
         if f.startswith('app_') and f not in made: os.remove(os.path.join('js', f))
     s = pre + post
 # 3) 머리
-D = 'GIST(광주과학기술원) 대표 홈페이지 D안 시안 — 통합검색·AI 안내 Ask GIST, 학사 길잡이 GIST Compass, 연구 연결 지도 GIST Nexus, 소식 GIST Insight를 한곳에서.'
+D = 'GIST(광주과학기술원) 대표 홈페이지 D안 시안 — 통합검색·AI 안내 지스트에 물어봐, 학사 길잡이 학사 한 장, 연구 연결 지도 연구 한 줄, 소식 지금, 지스트를 한곳에서.'
 U = 'https://yhju-gist.github.io/gist-homepage-d/'
 hero = 'hxm_t.webp' if 'hxm_t' in webp else 'hxm_t.jpg'
 head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
         '<title>GIST 홈페이지 D안</title><meta name="description" content="' + D + '">'
         '<meta property="og:type" content="website"><meta property="og:title" content="GIST 홈페이지 D안 (시안)"><meta property="og:description" content="' + D + '">'
         '<meta property="og:url" content="' + U + '"><meta property="og:image" content="' + U + 'docs/화면_PC_첫화면.png"><meta name="twitter:card" content="summary_large_image">'
-        '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png"><link rel="manifest" href="manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="GIST Insight" href="feed.xml">'
+        '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png"><link rel="manifest" href="manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="지금, 지스트" href="feed.xml">'
         '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="fonts/pretendard-gist-sub.woff2" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
         '<style>[hidden]{display:none!important}</style></head><body>\n')
 io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n' + LATE + '\n' + globals().get('LATE_FONT','') + '\n</body></html>')
@@ -111,7 +111,7 @@ try:
         import datetime as _d
         try: return _d.datetime(int(n[:4]), int(n[4:6]), int(n[6:8]), 9, 0).strftime('%a, %d %b %Y %H:%M:%S +0900')
         except Exception: return ''
-    feed = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0"><channel><title>GIST Insight (D안 시안)</title><link>' + U0 + '#story</link><description>GIST 소식 — 보도자료·연구성과·사람·캠퍼스</description><language>ko</language>']
+    feed = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0"><channel><title>지금, 지스트 (D안 시안)</title><link>' + U0 + '#story</link><description>GIST 소식 — 보도자료·연구성과·사람·캠퍼스</description><language>ko</language>']
     for t, d, c, sid, sm in items[:40]:
         pd = _rfc(d)
         feed.append('<item><title>%s</title><link>%s#news/%s</link><guid isPermaLink="true">%s#news/%s</guid><category>%s</category>%s%s</item>' % (_h.escape(t), U0, sid, U0, sid, _h.escape(c), ('<pubDate>%s</pubDate>' % pd) if pd else '', ('<description>%s</description>' % _h.escape(sm)) if sm else ''))
@@ -135,11 +135,11 @@ try:
         if iso: ld['datePublished'] = iso
         body = ''.join('<p>%s</p>' % _h.escape(s_) for s_ in x['summary'])
         links = ''.join('<a href="%s" rel="noopener">%s</a>' % (_h.escape(u_), _h.escape(l_)) for u_, l_ in ((x['gist_url'], 'GIST 원문'), (x['source_url'], x['source'] or '언론 원문')) if u_)
-        page = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>%s | GIST Insight</title><meta name="description" content="%s">'
+        page = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>%s | 지금, 지스트</title><meta name="description" content="%s">'
                 '<link rel="canonical" href="%snews/%s.html"><meta property="og:type" content="article"><meta property="og:title" content="%s"><meta property="og:description" content="%s"><meta property="og:image" content="%sdocs/화면_PC_첫화면.png"><link rel="icon" href="../img/favicon.png">'
                 '<script type="application/ld+json">%s</script>'
                 '<style>body{margin:0;font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif;color:#111418;line-height:1.8}header{background:#111418;color:#fff;padding:18px 22px}header a{color:#fff;font-weight:900;text-decoration:none;letter-spacing:-.02em}main{max-width:760px;margin:0 auto;padding:36px 22px 80px}small{color:#C11D0E;font-weight:800}h1{font-size:clamp(24px,5vw,36px);line-height:1.35;letter-spacing:-.03em;margin:8px 0 6px}.by{color:#5A636B;margin:0 0 22px}p{font-size:17px}nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}nav a{padding:11px 18px;border-radius:999px;border:1px solid #E1E4E7;color:#111418;text-decoration:none;font-weight:700}nav a.go{background:#DC2715;border-color:#DC2715;color:#fff}</style></head>'
-                '<body><header><a href="../">GIST 광주과학기술원</a></header><main><small>%s · %s</small><h1>%s</h1><p class="by">%s</p>%s<nav><a class="go" href="../#news/%s">사진·관련 연구실과 함께 보기</a>%s<a href="../#story">GIST Insight 전체</a></nav></main></body></html>\n') % (
+                '<body><header><a href="../">GIST 광주과학기술원</a></header><main><small>%s · %s</small><h1>%s</h1><p class="by">%s</p>%s<nav><a class="go" href="../#news/%s">사진·관련 연구실과 함께 보기</a>%s<a href="../#story">지금, 지스트 전체</a></nav></main></body></html>\n') % (
                 _h.escape(x['title']), _h.escape(desc), U0, x['id'], _h.escape(x['title']), _h.escape(desc), U0, _j.dumps(ld, ensure_ascii=False), _h.escape(x['category']), _h.escape(x['date']), _h.escape(x['title']), _h.escape(x['byline']), body, x['id'], links)
         io.open('news/%s.html' % x['id'], 'w', encoding='utf-8').write(page); NEWS_URLS.append(U0 + 'news/%s.html' % x['id'])
     ps = _r.search(r'const PSLUG=(\{[^}]*\})', SRC)
