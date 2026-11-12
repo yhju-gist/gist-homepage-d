@@ -2652,7 +2652,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
     <a href="#home" data-m="0">About GIST</a><a href="#colleges" data-m="1">교육</a><a href="#home" data-m="2">입학</a><a href="#home" data-m="3">연구</a><a href="#tutorial" data-m="4">대학생활</a><a href="#story" data-m="5">미디어센터</a>
   </nav>
   <div class="hd-act">
-    <button class="icon-btn" type="button" id="cmdbtn" aria-label="검색 Ctrl K"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="txt">검색</span><span class="kbd txt">Ctrl K</span></button>
+    <button class="icon-btn" type="button" id="cmdbtn" aria-label="검색 Ctrl K"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="txt">검색</span> <span class="kbd txt">Ctrl K</span></button>
     <a class="icon-btn red" href="#search" data-chat="1" aria-label="AI 안내 열기"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 5h16v11H9l-5 4z"/></svg><span class="txt">AI 안내</span></a>
     <button class="icon-btn red mmenu" type="button" id="mmenu" aria-label="전체 메뉴 열기"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
@@ -3501,11 +3501,11 @@ $("#obsteps").addEventListener("click",e=>{const a=e.target.closest("a[data-k]")
 document.addEventListener("change",e=>{const c=e.target.closest("input[data-k][data-t]");if(!c)return;const t=+c.dataset.t,id=TOP[t].id;const st=ckState[id]||[];st[+c.dataset.k]=c.checked;ckState[id]=st;try{localStorage.setItem("d5ck",JSON.stringify(ckState))}catch(_){}const b=$("#ckbar-"+t);if(b)b.style.width=ckPct(t)+"%";renderTGTop();});
 $("#obcopy").addEventListener("click",()=>{const v=$("#obu").value;const ok=()=>$("#copied").textContent="주소를 복사했습니다";if(navigator.clipboard)navigator.clipboard.writeText(v).then(ok,()=>{$("#obu").select();$("#copied").textContent="주소를 선택했습니다. 복사해서 쓰세요."});else{$("#obu").select();}});
 $("#tocbtn").addEventListener("click",()=>{$("#toc2").classList.toggle("on")});
-$("#toc2").innerHTML=TOP.map((T,i)=>'<div><b>'+esc(T.n)+'</b>'+STEPS.map((x,k)=>'<a data-i="'+i+'" data-k="'+k+'">'+(k+1)+'. '+esc(x)+'</a>').join("")+'</div>').join("");
+$("#toc2").innerHTML=TOP.map((T,i)=>'<div><b>'+esc(T.n)+'</b>'+STEPS.map((x,k)=>'<a href="#tutorial" data-i="'+i+'" data-k="'+k+'">'+(k+1)+'. '+esc(x)+'</a>').join("")+'</div>').join("");
 function jump(i,k){ot=i;ost=k;renderOB(2);$("#toc2").classList.remove("on");$("#obq").value="";$("#obres").innerHTML="";}
 $("#toc2").addEventListener("click",e=>{const a=e.target.closest("a");if(a)jump(+a.dataset.i,+a.dataset.k);});
 const OBX=TOP.flatMap((T,i)=>[{t:T.n+" 개요",p:T.ov,k:T.d,i,s:0},...T.terms.map(x=>({t:x[0],p:x[1],k:T.n+" 용어",i,s:1})),...T.qa.map(x=>({t:x[0],p:T.n+" 질문과 답변",k:"",i,s:2})),...CK[T.id].map(x=>({t:x,p:T.n+" 체크리스트",k:"",i,s:4}))]);
-$("#obq").addEventListener("input",()=>{const q=$("#obq").value.trim();if(!q){$("#obres").innerHTML="";return;}const R=smart(OBX,q,()=>true).slice(0,6);$("#obres").innerHTML=R.length?R.map(r=>'<a data-i="'+r.i+'" data-k="'+r.s+'"><b>'+hl(r.t,q)+'</b><small>'+esc(TOP[r.i].n)+' · '+esc(STEPS[r.s])+'</small></a>').join(""):'<a>찾는 내용이 없습니다. AI 안내에 물어보세요.</a>';});
+$("#obq").addEventListener("input",()=>{const q=$("#obq").value.trim();if(!q){$("#obres").innerHTML="";return;}const R=smart(OBX,q,()=>true).slice(0,6);$("#obres").innerHTML=R.length?R.map(r=>'<a href="#tutorial" data-i="'+r.i+'" data-k="'+r.s+'"><b>'+hl(r.t,q)+'</b><small>'+esc(TOP[r.i].n)+' · '+esc(STEPS[r.s])+'</small></a>').join(""):'<a>찾는 내용이 없습니다. AI 안내에 물어보세요.</a>';});
 $("#obres").addEventListener("click",e=>{const a=e.target.closest("a[data-i]");if(a)jump(+a.dataset.i,+a.dataset.k);});
 
 /* ---------- GIST Insight ---------- */
