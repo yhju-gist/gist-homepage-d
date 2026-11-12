@@ -24,8 +24,14 @@ if os.path.exists('fonts/pretendard-gist-sub.woff2') and os.path.exists('fonts/p
         full = m.group(0)
         small = re.sub(r'url\(fonts/f_[0-9a-f]+\.woff2\)', 'url(fonts/pretendard-gist-sub.woff2)', full)[:-1] + ';unicode-range:' + rng + '}'
         rest = 'fonts/pretendard-gist-rest.range.txt'
-        if os.path.exists(rest): full = full[:-1] + ';unicode-range:' + open(rest).read().strip() + '}'   # 전체 글꼴은 '나머지 글자'에만
+        if os.path.exists(rest):
+            # v202: 전체 글꼴(나머지 글자용)은 CSS에 두지 않고, 화면이 다 뜬 뒤에 붙인다 — SNS 새 글의 드문 글자 하나 때문에 첫 화면에서 477KB를 받지 않도록
+            global LATE_FONT
+            u = re.search(r'url\((fonts/f_[0-9a-f]+\.woff2)\)', full).group(1)
+            LATE_FONT = '<script>addEventListener("load",function(){setTimeout(function(){try{document.fonts.add(new FontFace("Pretendard GIST","url(' + u + ') format(\\"woff2\\")",{weight:"45 920",style:"normal",display:"swap",unicodeRange:"' + open(rest).read().strip() + '"}))}catch(e){}},2500)})</script>'
+            return small
         return full + small
+    LATE_FONT = ''
     s, n = re.subn(r'@font-face\{[^}]*Pretendard GIST[^}]*\}', subf, s, count=1)
 # 2) 사진: webp가 있으면 webp
 webp = {f[:-5] for f in os.listdir('img') if f.endswith('.webp')}
@@ -66,7 +72,7 @@ head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
         '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png"><link rel="manifest" href="manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="GIST Insight" href="feed.xml">'
         '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="fonts/pretendard-gist-sub.woff2" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
         '<style>[hidden]{display:none!important}</style></head><body>\n')
-io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n' + LATE + '\n</body></html>')
+io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n' + LATE + '\n' + globals().get('LATE_FONT','') + '\n</body></html>')
 print('index.html 만들었습니다 (글꼴 %d개, webp %d장)' % (len(keep), len(webp)))
 
 # 4-2) v196 10년 기준 부속 파일: 소식 구독(feed.xml), 디자인 값(tokens.json), 앱 정보(manifest), 없는 주소 안내(404.html)
