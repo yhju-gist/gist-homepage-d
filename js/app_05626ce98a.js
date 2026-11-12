@@ -1859,19 +1859,17 @@ function nxMatrix(){
  return '<div class="tbl-w" tabindex="0" role="region" aria-label="주제와 단과대학이 만나는 표"><table class="tbl nx-mx"><thead><tr><th scope="col">연구 주제</th>'+COLLEGES.map((c,ci)=>'<th scope="col"><i style="background:'+NXCOL[ci]+'"></i>'+esc(c.n)+'</th>').join("")+'<th scope="col">이어진 학과</th><th scope="col">연구실</th></tr></thead><tbody>'+NX.map(t=>{const L=nxLabs(t);const nd=new Set(L.map(p=>p[1])).size;return '<tr><th scope="row"><a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+'</a></th>'+COLLEGES.map((c,ci)=>{const n=L.filter(p=>nxDeptCol(p[1])===ci).length;return '<td class="num"'+(n?' style="background:rgba(220,39,21,'+(0.06+n/mx*0.5).toFixed(2)+')'+(n/mx>.62?';color:#fff':'')+'"':'')+'>'+(n||'<span class="sr">없음</span>–')+'</td>'}).join("")+'<td class="num"><b>'+nd+'</b>개</td><td class="num"><b>'+L.length+'</b>곳</td></tr>'}).join("")+'</tbody></table></div>';
 }
 function nxDraw(){const t=NX.find(x=>x.k===nxSel.k)||NX[0];const L=nxLabs(t);const m=$("#nxmap"),p=$("#nxpanel"),s=$("#nxside");if(!m)return;
- m.innerHTML=nxMap(t,L)+'<p class="nx-cap">가운데 주제에서 <b>학과(큰 원, 숫자는 연구실 수)</b>와 <b>연구실(작은 점)</b>로 이어집니다. 학과 원을 누르면 그 학과만 봅니다.</p><div class="nx-leg">'+COLLEGES.map((c,ci)=>'<span><i style="background:'+NXCOLD[ci]+'"></i>'+esc(c.n)+'</span>').join("")+'</div>';
+ m.innerHTML=nxMap(t,L)+'<div class="nx-leg">'+COLLEGES.map((c,ci)=>'<span><i style="background:'+NXCOLD[ci]+'"></i>'+esc(c.n)+'</span>').join("")+'</div>';
  p.innerHTML='<h2 class="nx-h2"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+'<small>학과 <b class="num">'+new Set(L.map(x=>x[1])).size+'</b>개 · 연구실 <b class="num">'+L.length+'</b>곳'+(new Set(L.map(x=>nxDeptCol(x[1]))).size>1?' · 단과대학 <b class="num">'+new Set(L.map(x=>nxDeptCol(x[1]))).size+'</b>곳이 함께':'')+'</small></h2>'+nxPanel(t,L);
  s.innerHTML=nxSide(t);$$("#nxtabs button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.nx===t.k));icons();}
 function renderNexus(k){const host=$("#v-page");if(k&&NX.some(x=>x.k===k)){if(nxSel.k!==k)nxSel.d="";nxSel.k=k;}
  const all=new Set();NX.forEach(t=>nxLabs(t).forEach(p=>all.add(p)));const multi=[...all].filter(p=>nxThemesOfLab(p).length>1).length;const un=PROFDIR.filter(p=>DURL[p[1]]&&!all.has(p)).length;
- host.innerHTML='<div class="page-h pv"><div class="pv-bg" aria-hidden="true"><img loading="lazy" src="'+IMG("p_night.jpg")+'" alt="" decoding="async"></div><div class="wrap"><span class="pv-en" aria-hidden="true">GIST NEXUS</span><h1>GIST Nexus <small style="font-size:.5em;font-weight:700;opacity:.9">연구 연결 지도</small></h1><p>주제 하나를 고르면, 그 주제를 연구하는 학과·연구실·연구소·최근 소식·진학과 협력의 길이 한 화면에 이어집니다. 학과 칸막이를 넘어 GIST 연구를 찾는 방법입니다.</p></div></div>'+
- '<div class="wrap nx" style="padding-block:40px 90px">'+
- '<div class="rp-kpi" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><div class="r"><b class="num">'+NX.length+'</b><span>연구 주제</span></div><div><b class="num">'+new Set([...all].map(p=>p[1])).size+'</b><span>이어진 학과·대학원</span></div><div><b class="num">'+all.size+'</b><span>연구실·교수</span></div><div><b class="num">'+multi+'</b><span>두 주제 이상에 걸친 연구실</span></div></div>'+
- '<div class="nx-tabs" id="nxtabs" role="group" aria-label="연구 주제 고르기">'+NX.map(t=>'<button type="button" data-nx="'+t.k+'" aria-pressed="false"><i data-lucide="'+t.ic+'"></i><span><b>'+esc(t.n)+'</b><em>'+esc(t.e)+'</em></span><small class="num">'+nxLabs(t).length+'</small></button>').join("")+'</div>'+
+ host.innerHTML='<div class="nxhero"><div class="wrap"><nav class="nxhero-c" aria-label="위치"><a href="#home">홈</a><i data-lucide="chevron-right"></i><a href="#colleges">대학·학과</a><i data-lucide="chevron-right"></i><span>GIST Nexus</span></nav><h1><b lang="en">NEXUS</b><span>연구 연결 지도</span></h1><p>주제 하나로 학과 · 연구실 · 소식 · 입학까지 이어 봅니다.</p><ul class="nxhero-k"><li><b class="num">'+NX.length+'</b>주제</li><li><b class="num">'+new Set([...all].map(p=>p[1])).size+'</b>학과</li><li><b class="num">'+all.size+'</b>연구실</li></ul>'+
+ '<div class="nx-tabs" id="nxtabs" role="group" aria-label="연구 주제 고르기">'+NX.map(t=>'<button type="button" data-nx="'+t.k+'" aria-pressed="false"><i data-lucide="'+t.ic+'"></i><span><b>'+esc(t.n)+'</b><em>'+esc(t.e)+'</em></span><small class="num">'+nxLabs(t).length+'</small></button>').join("")+'</div></div></div><div class="wrap nx" style="padding-block:0 90px">'+
  '<div class="nx-g"><div class="nx-mapw" id="nxmap"></div><div class="nx-pan" id="nxpanel" aria-live="polite"></div></div>'+
  '<div id="nxside"></div>'+
  '<h2 class="pg-t" style="margin-top:64px">융합 한눈에 보기 <small style="font-size:.5em;color:var(--mute);font-weight:600">주제 × 단과대학</small></h2><p class="nx-lead">한 주제를 여러 단과대학이 함께 연구합니다. 칸의 숫자는 연구실 수, 색이 짙을수록 많습니다. 주제 이름을 누르면 위 지도가 바뀝니다.</p>'+nxMatrix()+
- '<p class="note" style="margin-top:18px">어떻게 만들었나요? D안 통합검색 색인에 있는 교수 '+PROFDIR.length+'명의 <b>연구실 이름 낱말</b>로 주제를 자동으로 나눴습니다(한 연구실이 여러 주제에 들어갈 수 있고, 수리과학과는 학과 단위로 ‘기초과학·이론’에 넣었습니다). 연구실 이름만으로 나눌 수 없는 '+un+'명은 넣지 않았습니다. 교수·연구실 자료는 현행 학과 홈페이지 교수진 공개 화면 기준이며, [시안] 구축 때는 학과가 관리자 화면에서 주제를 직접 고르게 합니다.</p></div>';
+ '<p class="nx-fine">연구실 이름으로 주제를 자동 분류했습니다. 구축 때는 학과가 직접 지정합니다.</p></div>';
  document.title="GIST Nexus 연구 연결 지도 | GIST 홈페이지 D안";nxDraw();}
 document.addEventListener("click",e=>{
  const tb=e.target.closest("#nxtabs button");if(tb){nxSel={k:tb.dataset.nx,d:""};history.replaceState(null,"","#nexus-"+tb.dataset.nx);nxDraw();return;}
@@ -1909,7 +1907,7 @@ function nxTeaser(){const all=new Set();NX.forEach(t=>nxLabs(t).forEach(p=>all.a
 
 
 /* ===== v182 온라인 신청 센터 — 제안요청서 SFR-006~009의 신청형 기능을 양식 하나의 틀로 (시안: 이 기기에만 저장) ===== */
-const AP_NOTE="[시안] 입력한 내용은 이 기기(브라우저)에만 저장되고 어디에도 보내지 않습니다. 실제 개인정보 대신 예시를 넣어 보세요.";
+const AP_NOTE="시안이라 입력한 내용은 이 기기에만 저장됩니다.";
 const AP_ST=["접수","확정","완료","취소"];
 const apDeptOpts=()=>Object.keys(DURL);
 const AP_COMMON=[["nm","신청자 이름","text",null,1],["em","이메일","email",null,1],["ph","연락처","tel",null,0]];
@@ -1945,7 +1943,6 @@ function apNav(cur){return '<nav class="ap-nav" aria-label="신청 센터 메뉴
 function renderApplyHub(){const gs=[...new Set(AP.map(x=>x.g))];
  $("#v-page").innerHTML=apHead("APPLY","온라인 신청 센터","입시자료·방문·상담·설명회·인턴십·오픈랩·국제교류·기부 약정까지, 신청은 한곳에서 하고 접수번호로 진행 상황을 확인합니다.")+
  '<div class="wrap ap" style="padding-block:36px 90px">'+apNav("hub")+
- '<div class="rp-kpi" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><div class="r"><b class="num">'+AP.length+'</b><span>신청 양식</span></div><div><b class="num">'+gs.length+'</b><span>홈페이지 영역</span></div><div><b class="num">1</b><span>같은 틀 (접수번호·조회·취소·담당자 관리)</span></div><div><b class="num">'+apLoad().length+'</b><span>이 기기에서 넣은 신청</span></div></div>'+
  gs.map(g=>'<h2 class="ap-g">'+esc(g)+'</h2><div class="ap-cards">'+AP.filter(x=>x.g===g).map(F=>'<a class="ap-c" href="#apply-'+F.id+'"'+(F.en?' lang="en"':'')+'><i data-lucide="'+F.ic+'"></i><b>'+esc(F.n)+'</b><span>'+esc(F.d)+'</span><em>'+(F.en?"Apply":"신청하기")+' <i data-lucide="arrow-right"></i></em></a>').join("")+'</div>').join("")+
  '<p class="note" style="margin-top:26px">양식 항목은 「GIST 홈페이지 통합 재구축 제안요청서」 기능 요구사항(대학 입학 SFR-006, 대학원 입학 SFR-007, 국제교류협력 SFR-008, 발전기금 SFR-009)에 적힌 신청·조회·관리 항목을 그대로 옮겼습니다. [시안] 실제 일정·정원·담당 부서 이름은 구축 때 담당 부서가 정합니다. <a href="#rfp">제안요청서 대조표 보기</a></p></div>';
  document.title="온라인 신청 센터 | GIST 홈페이지 D안";icons();}
