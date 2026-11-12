@@ -2128,6 +2128,9 @@ addEventListener("hashchange",()=>setTimeout(tabSync,40));setTimeout(tabSync,60)
  li.insertAdjacentHTML("beforeend",'<div class="ri-nx"><a href="#d-'+DURL[p[1]]+'" data-nxopen="'+esc(nxBase(p[0]))+'"><i data-lucide="building-2"></i>'+esc(p[1])+' 화면에서 연구실 보기</a>'+ts.map(t=>'<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+'</a>').join("")+'</div>');});icons();}catch(e){}};}
 document.addEventListener("click",e=>{const a=e.target.closest("[data-nxopen]");if(a)window.__nxOpen=a.dataset.nxopen;});
 addEventListener("hashchange",()=>{if(!window.__nxOpen||!/^#d-/.test(location.hash||""))return;const nm=window.__nxOpen;window.__nxOpen=null;setTimeout(()=>{const t=[...document.querySelectorAll(".nxd-l li>a[data-nxq]")].find(x=>x.dataset.nxq===nm);if(t){nxLabOpen(t);const y=t.getBoundingClientRect().top+scrollY-140;scrollTo({top:y});}},420);});
+
+/* v191 소식에서 연구실까지: GIST Insight 맨 위에서 주제별 학과·연구실로 */
+(function(){const h=$("#stnx");if(!h)return;h.innerHTML='<span class="eyebrow">소식에서 연구실까지</span><div>'+NX.map(t=>{const n=nxStories(t).length;return '<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+(n?' <b class="num">소식 '+n+'</b>':'')+'</a>'}).join("")+'</div>';icons();})();
 route();heroState();requestAnimationFrame(()=>{drawBanner();drawThumbs();heroState();});
 })();
 

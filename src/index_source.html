@@ -2945,6 +2945,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
     <div><span class="tag" data-r="7"><b>⑦</b>기간 검색·익숙한 분류·사진 저작권</span></div>
   </div></div>
   <div class="wrap">
+    <div class="stnx" id="stnx"></div>
     <div class="toolbar">
       <div class="seg" role="group" aria-label="분류" id="scat"></div>
       <label for="sq" style="position:absolute;left:-9999px">GIST Insight 검색</label>
@@ -5356,6 +5357,9 @@ addEventListener("hashchange",()=>setTimeout(tabSync,40));setTimeout(tabSync,60)
  li.insertAdjacentHTML("beforeend",'<div class="ri-nx"><a href="#d-'+DURL[p[1]]+'" data-nxopen="'+esc(nxBase(p[0]))+'"><i data-lucide="building-2"></i>'+esc(p[1])+' 화면에서 연구실 보기</a>'+ts.map(t=>'<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+'</a>').join("")+'</div>');});icons();}catch(e){}};}
 document.addEventListener("click",e=>{const a=e.target.closest("[data-nxopen]");if(a)window.__nxOpen=a.dataset.nxopen;});
 addEventListener("hashchange",()=>{if(!window.__nxOpen||!/^#d-/.test(location.hash||""))return;const nm=window.__nxOpen;window.__nxOpen=null;setTimeout(()=>{const t=[...document.querySelectorAll(".nxd-l li>a[data-nxq]")].find(x=>x.dataset.nxq===nm);if(t){nxLabOpen(t);const y=t.getBoundingClientRect().top+scrollY-140;scrollTo({top:y});}},420);});
+
+/* v191 소식에서 연구실까지: GIST Insight 맨 위에서 주제별 학과·연구실로 */
+(function(){const h=$("#stnx");if(!h)return;h.innerHTML='<span class="eyebrow">소식에서 연구실까지</span><div>'+NX.map(t=>{const n=nxStories(t).length;return '<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+(n?' <b class="num">소식 '+n+'</b>':'')+'</a>'}).join("")+'</div>';icons();})();
 route();heroState();requestAnimationFrame(()=>{drawBanner();drawThumbs();heroState();});
 })();
 
@@ -5669,4 +5673,9 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 <style>/* v190 */
 .ri-nx{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}.ri-nx a{display:inline-flex!important;align-items:center;gap:6px;width:auto!important;padding:7px 13px!important;border:1px solid var(--line)!important;border-radius:999px!important;background:#fff!important;font-size:13.5px;font-weight:700;color:var(--ink)!important;text-decoration:none}
 .ri-nx a svg{width:14px;height:14px;color:var(--red)}.ri-nx a:first-child{background:var(--ink)!important;border-color:var(--ink)!important;color:#fff!important}.ri-nx a:first-child svg{color:#fff}.ri-nx a:hover{border-color:var(--red)!important}
+</style>
+<style>/* v191 */
+.stnx{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0 4px;padding:14px 18px;border-radius:16px;background:var(--soft)}.stnx div{display:flex;flex-wrap:wrap;gap:6px}
+.stnx a{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}.stnx a svg{width:14px;height:14px;color:var(--red)}.stnx a b{color:var(--mute);font-size:12px}.stnx a:hover{background:var(--ink);border-color:var(--ink);color:#fff}.stnx a:hover svg,.stnx a:hover b{color:#fff}
+@media (max-width:760px){.stnx div{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%}.stnx{padding:12px 14px}}
 </style>
