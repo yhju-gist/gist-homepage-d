@@ -16,6 +16,17 @@ s = re.sub(r'url\(data:font/woff2;base64,([A-Za-z0-9+/=]+)\)', font, s)
 for f in os.listdir('fonts'):
     if f.startswith('f_') and f not in keep: os.remove(os.path.join('fonts', f))
 s = re.sub(r'@font-face\{(?![^}]*font-display)', '@font-face{font-display:swap;', s)
+# 1-2) 한글 글꼴: 이 홈페이지에 실제로 쓰인 글자만 담은 작은 파일을 먼저 쓰고(약 200KB), 그 밖의 글자가 나올 때만 전체 글꼴을 받습니다.
+#      작은 파일은 fonts/pretendard-gist-sub.woff2, 담긴 글자 범위는 fonts/pretendard-gist-sub.range.txt (새 글자가 늘면 다시 만들면 되고, 안 만들어도 전체 글꼴로 보입니다)
+if os.path.exists('fonts/pretendard-gist-sub.woff2') and os.path.exists('fonts/pretendard-gist-sub.range.txt'):
+    rng = open('fonts/pretendard-gist-sub.range.txt').read().strip()
+    def subf(m):
+        full = m.group(0)
+        small = re.sub(r'url\(fonts/f_[0-9a-f]+\.woff2\)', 'url(fonts/pretendard-gist-sub.woff2)', full)[:-1] + ';unicode-range:' + rng + '}'
+        rest = 'fonts/pretendard-gist-rest.range.txt'
+        if os.path.exists(rest): full = full[:-1] + ';unicode-range:' + open(rest).read().strip() + '}'   # 전체 글꼴은 '나머지 글자'에만
+        return full + small
+    s, n = re.subn(r'@font-face\{[^}]*Pretendard GIST[^}]*\}', subf, s, count=1)
 # 2) 사진: webp가 있으면 webp
 webp = {f[:-5] for f in os.listdir('img') if f.endswith('.webp')}
 def img(m):
@@ -33,7 +44,7 @@ head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
         '<meta property="og:type" content="website"><meta property="og:title" content="GIST 홈페이지 D안 (시안)"><meta property="og:description" content="' + D + '">'
         '<meta property="og:url" content="' + U + '"><meta property="og:image" content="' + U + 'docs/화면_PC_첫화면.png"><meta name="twitter:card" content="summary_large_image">'
         '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png">'
-        '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
+        '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="fonts/pretendard-gist-sub.woff2" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
         '<style>[hidden]{display:none!important}</style></head><body>\n')
 io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n</body></html>')
 print('index.html 만들었습니다 (글꼴 %d개, webp %d장)' % (len(keep), len(webp)))
