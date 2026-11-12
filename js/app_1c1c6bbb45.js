@@ -1888,7 +1888,7 @@ PSPECIAL["연구실 찾기"]="#nexus";
 function nxDept(n){const P=PROFDIR.filter(p=>p[1]===n);if(!P.length)return "";const ts=NX.map(t=>[t,P.filter(p=>(p[3]&&t.re.test(p[3]))||(t.dept&&t.dept.test(n))).length]).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]);const named=P.filter(p=>p[3]);
  return '<section class="nxd" aria-labelledby="nxdh"><h3 class="p-h3" id="nxdh">연구실·교수 <small><span class="num">'+P.length+'</span>명'+(named.length?' · 연구실 이름 공개 <span class="num">'+named.length+'</span>곳':'')+'</small></h3>'+
  (ts.length?'<div class="nxd-t"><span class="eyebrow">이 학과와 이어진 연구 주제</span><div>'+ts.map(([t,c])=>'<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+' <b class="num">'+c+'</b></a>').join("")+'</div><p>주제를 누르면 같은 주제를 연구하는 다른 학과·연구소·소식까지 GIST Nexus에서 이어 봅니다.</p></div>':'')+
- '<ul class="nxd-l">'+P.map(p=>'<li><a href="#search" data-nxq="'+esc(nxBase(p[0]))+'"><b>'+esc(p[3]||nxBase(p[0])+" 교수")+'</b><span>'+(p[3]?esc(nxBase(p[0]))+' 교수':'')+(nxRole(p[0])?(p[3]?' · ':'')+esc(nxRole(p[0])):'')+'</span></a></li>').join("")+'</ul><p class="note">교수·연구실 이름은 현행 학과 홈페이지 교수진 공개 화면 기준입니다. 이름을 누르면 Ask GIST에서 내선과 함께 찾습니다.</p></section>';}
+ nxDeptPeers(n,ts)+'<ul class="nxd-l">'+P.map(p=>'<li><a href="#search" data-nxq="'+esc(nxBase(p[0]))+'"><b>'+esc(p[3]||nxBase(p[0])+" 교수")+'</b><span>'+(p[3]?esc(nxBase(p[0]))+' 교수':'')+(nxRole(p[0])?(p[3]?' · ':'')+esc(nxRole(p[0])):'')+'</span></a></li>').join("")+'</ul><p class="note">교수·연구실 이름은 현행 학과 홈페이지 교수진 공개 화면 기준입니다. 이름을 누르면 Ask GIST에서 내선과 함께 찾습니다.</p></section>';}
 /* 세부 화면: 이어서 하기(여정) */
 const JOUR=[["예비 학부생","graduation-cap",["학과 둘러보기","입학 전형","모집 요강","장학 제도","생활관","캠퍼스 투어"]],["대학원 지원자","flask-conical",["연구 분야","연구실 찾기","전형 안내","장학 제도","생활관"]],["재학생","book-open",["학사일정","수강신청","증명서 발급","상담센터","학생기구"]],["기업·연구자","handshake",["연구 분야","기술이전","공동연구 문의","공동 연구장비","창업 지원"]],["방문자","map-pin",["찾아오시는 길","3D 캠퍼스맵","캠퍼스 투어","오룡관 예약"]]];
 function nxJourney(name){const J=JOUR.filter(j=>j[2].includes(name)).slice(0,2);if(!J.length)return "";
@@ -2102,12 +2102,22 @@ addEventListener("hashchange",()=>{if(location.hash==="#quality")route();});
 /* v186 Nexus를 앞에: 대학·학과 화면 들머리, 전체 메뉴(교육·연구) 안내 */
 (function(){const h=$("#pnexus2");if(h){h.innerHTML=nxTeaser();icons();}})();
 openMega=(function(_){return function(i){_(i);if(i===1||i===3){const l=$("#megaw .lead");if(l&&!l.querySelector(".mg-nx"))l.insertAdjacentHTML("beforeend",'<a class="mg-nx" href="#nexus"><i data-lucide="waypoints"></i><span><b>GIST Nexus</b>주제로 학과·연구실 잇기</span></a>');icons();}};})(openMega);
+
+/* v187 끊김 없이: 학과 화면에서 같은 주제를 함께 연구하는 다른 학과로 바로 / 방금 본 화면 이어 보기 */
+function nxDeptPeers(n,ts){const R=ts.slice(0,3).map(([t])=>{const by={};nxLabs(t).forEach(p=>{if(p[1]!==n)by[p[1]]=(by[p[1]]||0)+1});const ds=Object.keys(by).sort((a,b)=>by[b]-by[a]).slice(0,6);return ds.length?'<div class="nxp-r"><a class="nxp-t" href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i>'+esc(t.n)+'</a><div>'+ds.map(d=>'<a href="#d-'+DURL[d]+'"><i style="background:'+NXCOL[nxDeptCol(d)]+'"></i>'+esc(d)+' <b class="num">'+by[d]+'</b></a>').join("")+'</div></div>':''}).join("");
+ return R?'<div class="nxp"><span class="eyebrow">같은 주제를 함께 연구하는 다른 학과</span>'+R+'<p>학과 이름을 누르면 그 학과 화면으로 바로 갑니다. 숫자는 그 주제의 연구실 수입니다.</p></div>':'';}
+const TRAIL=[];
+function trailName(){const h=location.hash||"#home";if(h==="#home"||h==="#")return "첫 화면";const t=(document.title||"").replace(/\s*\|.*$/,"").trim();if(t&&t!=="GIST 홈페이지 D안")return t;let m;if((m=h.match(/^#d-([a-z0-9]+)$/))&&deptByCode(m[1]))return deptByCode(m[1]);if((m=h.match(/^#st-(\d+)$/))&&STORIES[+m[1]])return STORIES[+m[1]].t;return ({"#tutorial":"GIST Compass","#story":"GIST Insight","#search":"Ask GIST 통합검색","#colleges":"대학·학과","#reflect":"회의 반영 보고","#vote":"투표 미리보기","#menu":"메뉴 구조도","#en":"English","#search-people":"사람·업무 찾기"})[h]||"";}
+function trailDraw(){const el=$("#trail");if(!el)return;const cur=location.hash||"#home";const L=TRAIL.filter(x=>x.h!==cur).slice(-4);el.hidden=!L.length;if(!L.length)return;el.innerHTML='<div class="wrap"><span class="eyebrow">방금 본 화면</span><div>'+L.map(x=>'<a href="'+esc(x.h)+'">'+esc(x.n)+'</a>').join('<i data-lucide="chevron-right"></i>')+'<i data-lucide="chevron-right"></i><span aria-current="page">'+esc(trailName()||"지금 화면")+'</span></div></div>';icons();}
+function trailPush(){setTimeout(()=>{const h=location.hash||"#home";const n=trailName();if(n&&h!=="#home"&&document.title==="GIST 홈페이지 D안")document.title=n+" | GIST 홈페이지 D안";if(n){const i=TRAIL.findIndex(x=>x.h===h);if(i>=0)TRAIL.splice(i,1);TRAIL.push({h,n});if(TRAIL.length>8)TRAIL.shift();}trailDraw();},260);}
+(function(){const f=document.querySelector("footer");if(!f)return;const d=document.createElement("nav");d.id="trail";d.className="trail";d.hidden=true;d.setAttribute("aria-label","방금 본 화면");f.parentNode.insertBefore(d,f);addEventListener("hashchange",trailPush);trailPush();})();
 route();heroState();requestAnimationFrame(()=>{drawBanner();drawThumbs();heroState();});
 })();
 
 /* ===== v69 위원장 보고: 정확히 그 자리로 가기 ===== */
 (function(){var $=function(q){return document.querySelector(q)};var esc=function(t){return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};var REF=window.REF||window.__REF||[];
 var RAFTER=[
+ ["학과에서 다른 단과대학 학과로 바로 (v187)","학과 화면에 ‘같은 주제를 함께 연구하는 다른 학과’를 주제별로 두어 단과대학을 넘어 바로 옮겨 감. 모든 화면 아래 ‘방금 본 화면’ 줄로 왔던 길을 한 번에 되돌아감","d-env1|.nxp"],
  ["이사장님 가장 큰 주문 ‘끊김 없이’를 연구실까지 (v186)","GIST Nexus를 첫 화면 단과대학 바로 아래·맨 위 띠·검색창 아래·전체 메뉴(교육·연구)·대학·학과 화면 맨 위로 꺼냄. 첫 화면 → 단과대학 → 학과 → 연구실 → 같은 주제의 다른 학과 → 소식 → 입학·오픈랩 신청까지 밖으로 나가지 않고 이어짐","home|#pnexus"],
  ["품질 성적표 (v182)","구글 공개 검사 도구(Lighthouse)로 현행 홈페이지와 D안을 같은 날 같은 PC에서 잰 점수·속도·용량을 나란히 표시. 글꼴 분리·사진 WebP로 화면 파일 1.7MB→0.9MB","quality|.ql-k"],
  ["온라인 신청 센터 (v182)","제안요청서의 신청형 기능 9가지(입시자료·대학 방문·입학 상담·고교 설명회·대학원 설명회·인턴십·오픈랩·국제교류·기부 약정)를 양식 하나의 틀로: 접수번호 발급, 내 신청 조회·취소, 정원 마감, 담당자 화면(상태 변경·엑셀). 시안은 이 기기에만 저장","apply|.ap-cards"],
