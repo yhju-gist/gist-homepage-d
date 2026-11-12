@@ -63,12 +63,63 @@ head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
         '<title>GIST 홈페이지 D안</title><meta name="description" content="' + D + '">'
         '<meta property="og:type" content="website"><meta property="og:title" content="GIST 홈페이지 D안 (시안)"><meta property="og:description" content="' + D + '">'
         '<meta property="og:url" content="' + U + '"><meta property="og:image" content="' + U + 'docs/화면_PC_첫화면.png"><meta name="twitter:card" content="summary_large_image">'
-        '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png">'
+        '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png"><link rel="manifest" href="manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="GIST Insight" href="feed.xml">'
         '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="fonts/pretendard-gist-sub.woff2" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
         '<style>[hidden]{display:none!important}</style></head><body>\n')
 io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n' + LATE + '\n</body></html>')
 print('index.html 만들었습니다 (글꼴 %d개, webp %d장)' % (len(keep), len(webp)))
 
+# 4-2) v196 10년 기준 부속 파일: 소식 구독(feed.xml), 디자인 값(tokens.json), 앱 정보(manifest), 없는 주소 안내(404.html)
+try:
+    import json as _j, html as _h, re as _r
+    SRC = io.open('src/index_source.html', encoding='utf-8').read()
+    U0 = 'https://yhju-gist.github.io/gist-homepage-d/'
+    def _js(v): return _j.loads('"' + v + '"')
+    def _sid(t, d, g):
+        m = _r.search(r'[?&]no=(\d+)', g or '')
+        if m: return m.group(1)
+        h = 0
+        for ch in t:
+            c = ord(ch)
+            if c > 0xFFFF: c = 0xD800 + ((c - 0x10000) >> 10)
+            h = (h * 31 + c) & 0xFFFFFFFF
+        digs = '0123456789abcdefghijklmnopqrstuvwxyz'; o = ''
+        while True:
+            o = digs[h % 36] + o; h //= 36
+            if h == 0: break
+        return _r.sub(r'\D', '', d)[:8] + '-' + o[:4]
+    a = SRC.find('const STORIES=['); z = SRC.find('\n];', a)
+    items = []
+    for ln in SRC[a:z].split('\n'):
+        if not ln.lstrip().startswith('{c:"'): continue
+        f = lambda k: (_r.search(r'[{,]' + k + r':"((?:[^"\\]|\\.)*)"', ln) or [None, ''])[1]
+        t, d, c, g, m = _js(f('t')), _js(f('d')), _js(f('c')), _js(f('g')), _js(f('m'))
+        sm = _r.search(r'sum:\["((?:[^"\\]|\\.)*)"', ln)
+        items.append((t, d or m, c, _sid(t, d or m, g), _js(sm.group(1)) if sm else ''))
+    def _rfc(d):
+        n = _r.sub(r'\D', '', d)
+        if len(n) < 8: return ''
+        import datetime as _d
+        try: return _d.datetime(int(n[:4]), int(n[4:6]), int(n[6:8]), 9, 0).strftime('%a, %d %b %Y %H:%M:%S +0900')
+        except Exception: return ''
+    feed = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0"><channel><title>GIST Insight (D안 시안)</title><link>' + U0 + '#story</link><description>GIST 소식 — 보도자료·연구성과·사람·캠퍼스</description><language>ko</language>']
+    for t, d, c, sid, sm in items[:40]:
+        pd = _rfc(d)
+        feed.append('<item><title>%s</title><link>%s#news/%s</link><guid isPermaLink="true">%s#news/%s</guid><category>%s</category>%s%s</item>' % (_h.escape(t), U0, sid, U0, sid, _h.escape(c), ('<pubDate>%s</pubDate>' % pd) if pd else '', ('<description>%s</description>' % _h.escape(sm)) if sm else ''))
+    feed.append('</channel></rss>')
+    io.open('feed.xml', 'w', encoding='utf-8').write('\n'.join(feed) + '\n')
+    tok = {}
+    for rt in _r.finditer(r':root\s*\{([^}]*)\}', SRC):
+        if 'swiper' in rt.group(1): continue
+        for k, v in _r.findall(r'--([a-zA-Z0-9-]+)\s*:\s*([^;}]+)', rt.group(1)):
+            v = v.strip(); typ = 'color' if _r.match(r'^(#|rgb|hsl)', v) else ('dimension' if _r.match(r'^-?[\d.]+(px|rem|em|%)$', v) else ('fontFamily' if k.startswith('f-') else 'other'))
+            tok[k] = {'$value': v, '$type': typ}
+    io.open('tokens.json', 'w', encoding='utf-8').write(_j.dumps({'$description': 'GIST 홈페이지 D안 디자인 값(색·글꼴·간격). src/index_source.html 의 :root 에서 자동으로 뽑습니다. 어떤 제작 도구(CMS)로 옮겨도 이 파일만 읽으면 같은 모양이 됩니다.', 'gist': tok}, ensure_ascii=False, indent=1) + '\n')
+    io.open('manifest.webmanifest', 'w', encoding='utf-8').write(_j.dumps({'name': 'GIST 광주과학기술원 (D안 시안)', 'short_name': 'GIST', 'lang': 'ko', 'start_url': './', 'display': 'standalone', 'background_color': '#FFFFFF', 'theme_color': '#DC2715', 'icons': [{'src': 'img/favicon.png', 'sizes': '192x192', 'type': 'image/png'}]}, ensure_ascii=False, indent=1) + '\n')
+    io.open('404.html', 'w', encoding='utf-8').write('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>찾는 화면이 없습니다 | GIST</title><meta name="robots" content="noindex"><link rel="icon" href="' + U0 + 'img/favicon.png"><style>body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif;background:#111418;color:#fff;text-align:center;padding:24px}b{display:block;font-size:clamp(64px,18vw,140px);line-height:1;color:#DC2715;letter-spacing:-.04em}h1{font-size:clamp(20px,5vw,30px);margin:18px 0 8px}p{color:#B9C0C6;margin:0 0 26px;line-height:1.7}a{display:inline-block;margin:4px;padding:13px 22px;border-radius:999px;background:#fff;color:#111418;font-weight:800;text-decoration:none}a+a{background:transparent;color:#fff;border:1px solid #5A636B}</style></head><body><main><b>404</b><h1>찾는 화면이 없습니다</h1><p>주소가 바뀌었거나 잘못 입력되었습니다.<br>첫 화면이나 통합검색에서 다시 찾아 주세요.</p><a href="' + U0 + '">GIST 첫 화면</a><a href="' + U0 + '#search">통합검색</a></main></body></html>\n')
+    print('feed.xml %d건, tokens.json %d개, manifest, 404.html 만들었습니다' % (min(40, len(items)), len(tok)))
+except Exception as e:
+    print('부속 파일 건너뜀:', e)
 # 5) 검색에 잘 잡히게(이사회 지적 2 ‘노출’): 학과 14곳을 주소가 따로 있는 가벼운 글 화면으로도 만들고 sitemap.xml·robots.txt를 둡니다.
 #    (본 화면은 주소 끝 #d-코드 방식이라 검색 로봇이 학과별로 따로 읽지 못합니다. 구축 때는 서버가 화면마다 주소를 줍니다.)
 import json, html, datetime
