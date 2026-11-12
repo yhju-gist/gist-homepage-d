@@ -2687,7 +2687,6 @@ html.calm .vmfab{top:calc(50% - 60px)}
         <li><b>T</b><span>Tolerance for trust</span><small>배려와 신뢰의 조직문화</small></li>
       </ul>
       <p class="rise-t">보다 나은 미래를 만들기 위하여, 우리 함께 <b>지스트</b></p>
-      <span class="rise-cr">핵심가치 출처: GIST 홈페이지 VISION · 글자 속 사진: GIST 미디어센터 갤러리(정문 사진 공모전 수상작 · 2025.6. 전경)</span>
     </div>
     <span class="hx-scroll" id="hxscroll" aria-hidden="true">스크롤<i></i></span>
   </section>
@@ -3228,7 +3227,7 @@ if(document.readyState==="complete")setTimeout(go,800);else addEventListener("lo
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/hangul-js@0.2.6/hangul.min.js"></script>
-<script defer src="js/app_ad45535f05.js"></script><script defer src="js/app_769e287d01.js"></script><script defer src="js/app_4f64923530.js"></script><script defer src="js/app_f89d9291f6.js"></script>
+<script defer src="js/app_bfb76da549.js"></script><script defer src="js/app_769e287d01.js"></script><script defer src="js/app_4f64923530.js"></script><script defer src="js/app_f89d9291f6.js"></script>
 <style>/* v180 GIST Nexus · 이어서 하기 */
 .nx .rp-kpi{margin-bottom:26px}
 .nx-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 28px}
@@ -3454,6 +3453,33 @@ if(document.readyState==="complete")setTimeout(go,800);else addEventListener("lo
 .stnx{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0 4px;padding:14px 18px;border-radius:16px;background:var(--soft)}.stnx div{display:flex;flex-wrap:wrap;gap:6px}
 .stnx a{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}.stnx a svg{width:14px;height:14px;color:var(--red)}.stnx a b{color:var(--mute);font-size:12px}.stnx a:hover{background:var(--ink);border-color:var(--ink);color:#fff}.stnx a:hover svg,.stnx a:hover b{color:#fff}
 @media (max-width:760px){.stnx div{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%}.stnx{padding:12px 14px}}
+</style>
+<style>/* v192 Nexus 지도: 어두운 무대 + 빛 + 움직임 */
+.nx-mapw{background:radial-gradient(circle at 50% 44%,#3A1410 0,#1A1416 34%,#101317 62%,#0B0D10 100%);border-color:#0B0D10;box-shadow:0 34px 70px -28px rgba(17,20,24,.65),inset 0 0 0 1px rgba(255,255,255,.06);overflow:hidden}
+.nx-ring{stroke:rgba(255,255,255,.16)}.nx-halo{fill:none;stroke:rgba(220,39,21,.28);stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:nxhalo 3.6s ease-out infinite}
+.nx-stars circle{fill:#fff;opacity:.22;animation:nxtw 4.2s ease-in-out infinite alternate}
+.nx-t{fill:#fff;stroke:#12151A;stroke-width:6px}.nx-n circle{stroke:#12151A}.nx-dot{stroke:#12151A}
+.nx-l{opacity:.55;stroke-dasharray:420;stroke-dashoffset:420;animation:nxdraw 1s cubic-bezier(.2,.7,.2,1) forwards}.nx-l2{opacity:0;animation:nxfade .7s ease .55s forwards}
+.nx-l.off{opacity:.1!important}.nx-l2.off{animation:none;opacity:.06}
+.nx-n{transform-box:fill-box;transform-origin:center;animation:nxpop .55s cubic-bezier(.2,1.4,.4,1) both}
+.nx-dot{animation:nxfade2 .6s ease .7s both}.nx-dot.off{animation:none}
+.nx-n:hover circle,.nx-n.on circle{stroke:#fff;stroke-width:4}.nx-dot:hover,.nx-dot.hot{stroke:#fff}
+.nx-core circle{filter:drop-shadow(0 0 26px rgba(220,39,21,.8))}.nx-core{transform-box:fill-box;transform-origin:center;animation:nxpop .6s cubic-bezier(.2,1.4,.4,1) both}
+.nx-cap{color:rgba(255,255,255,.62)}.nx-cap b{color:#fff}.nx-leg{color:rgba(255,255,255,.78)}
+@keyframes nxdraw{to{stroke-dashoffset:0}}@keyframes nxfade{to{opacity:.34}}@keyframes nxfade2{from{opacity:0}}@keyframes nxpop{from{opacity:0;transform:scale(.4)}}
+@keyframes nxhalo{0%{transform:scale(.62);opacity:.9}100%{transform:scale(2.5);opacity:0}}@keyframes nxtw{to{opacity:.6}}
+@media (prefers-reduced-motion:reduce){.nx-l,.nx-l2,.nx-n,.nx-dot,.nx-core,.nx-halo,.nx-stars circle{animation:none!important}.nx-l{stroke-dashoffset:0}.nx-l2{opacity:.34}.nx-halo{display:none}}
+</style>
+<style>/* v192 휴대폰에서 좌우로 밀리지 않게(옆 여백 없음) */
+html,body{overflow-x:clip;max-width:100%}
+.tbl-w{position:relative}.nx-mx td,.nx-mx th{position:relative}
+.view,#v-page,main{overflow-x:clip}
+.nx,.nx-g,.nx-g>*,.nx-labs,.nx-dg,.nx-side,.nx-side>*{min-width:0;max-width:100%}
+.nx-tabs button{min-width:0}
+@media (max-width:1020px){.nx-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.nx-dg li>a b,.nxd-l a b,.ap-c b,.nx-st b{overflow-wrap:anywhere}
+.nx-go div,.nxs div,.nxd-t div{min-width:0}
+@media (max-width:640px){.nx-dch{max-width:100%;flex-wrap:wrap!important;overflow-x:visible!important;padding-bottom:0}.nx-dch button{white-space:normal!important;flex:0 1 auto!important}.stnx div{flex-wrap:wrap!important;overflow-x:visible!important}.nx-dg h4{min-width:0}.jr ol{min-width:0}.jr ol a,.jr ol span{white-space:normal}}
 </style>
 <script>addEventListener("load",function(){setTimeout(function(){document.querySelectorAll("[data-bg]").forEach(function(e){e.style.backgroundImage="url("+e.getAttribute("data-bg")+")"});document.querySelectorAll("source[data-srcset]").forEach(function(e){e.srcset=e.getAttribute("data-srcset")});document.querySelectorAll("img[data-src]").forEach(function(e){e.src=e.getAttribute("data-src")})},1200)});</script>
 </body></html>
