@@ -5281,7 +5281,7 @@ const RFP=[
  ["SFR-013","SNS 연계","SNS 간편 로그인(네이버·카카오·구글)",2,"로그인 연계 — 시안 범위 밖",""]
 ];
 function renderRfp(){const cnt=[0,1,2].map(i=>RFP.filter(r=>r[3]===i).length);const ids=[...new Set(RFP.map(r=>r[0]))];
- const rows=ids.map(id=>{const R=RFP.filter(r=>r[0]===id);return R.map((r,i)=>'<tr data-st="'+r[3]+'">'+(i?'':'<th scope="rowgroup" rowspan="'+R.length+'" class="rf-id"><span class="num">'+id+'</span>'+esc(r[1])+'</th>')+'<td>'+esc(r[2])+'</td><td><span class="rf-s s'+r[3]+'">'+RFPS[r[3]]+'</span></td><td>'+esc(r[4])+'</td><td>'+(r[5]?'<a class="rp-go" href="#'+esc(r[5].split("|")[0])+'">보기 →</a>':'')+'</td></tr>').join("")}).join("");
+ const rows=ids.map(id=>{const R=RFP.filter(r=>r[0]===id);return R.map((r,i)=>'<tr data-st="'+r[3]+'" data-id="'+id+' · '+esc(r[1])+'">'+(i?'':'<th scope="rowgroup" rowspan="'+R.length+'" class="rf-id"><span class="num">'+id+'</span>'+esc(r[1])+'</th>')+'<td>'+esc(r[2])+'</td><td><span class="rf-s s'+r[3]+'">'+RFPS[r[3]]+'</span></td><td>'+esc(r[4])+'</td><td>'+(r[5]?'<a class="rp-go" href="#'+esc(r[5].split("|")[0])+'">보기 →</a>':'')+'</td></tr>').join("")}).join("");
  $("#v-page").innerHTML='<div class="page-h pv"><div class="pv-bg" aria-hidden="true"><img loading="lazy" src="'+IMG("p_night.jpg")+'" alt="" decoding="async"></div><div class="wrap"><span class="pv-en" aria-hidden="true">CHECKLIST</span><h1>제안요청서 대조표</h1><p>「GIST 홈페이지 통합 재구축 제안요청서」의 기능 요구사항(SFR-001~013)을 한 줄씩 놓고, D안 시안에서 지금 눌러 볼 수 있는 것과 구축 단계에서 해야 할 것을 나눴습니다.</p></div></div>'+
  '<div class="wrap" style="padding-block:44px 90px"><div class="pg-main" style="max-width:none"><h2 class="pg-t">한눈에 보기</h2><div class="rp-kpi" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><div class="r"><b class="num">'+RFP.length+'</b><span>견준 요구 항목 (SFR 13개)</span></div>'+cnt.map((c,i)=>'<div><b class="num">'+c+'</b><span>'+RFPS[i]+'</span></div>').join("")+'</div>'+
  '<div class="rf-leg"><span><i class="rf-s s0">시안에서 동작</i> 지금 이 홈페이지에서 직접 눌러 볼 수 있음</span><span><i class="rf-s s1">시안에 일부</i> 화면과 흐름은 있고, 서버 연동·운영 자료가 더 필요함</span><span><i class="rf-s s2">구축 단계 몫</i> 서버·보안·인증·촬영처럼 시안으로 대신할 수 없음</span></div>'+
@@ -5588,4 +5588,9 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 .ql-l{margin:0;padding-left:20px;line-height:1.9;color:var(--gray)}.ql-l b{color:var(--ink)}
 .ql-dl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0}.ql-dl div{background:var(--soft);border-radius:12px;padding:14px 16px}.ql-dl dt{font-weight:800;margin-bottom:4px}.ql-dl dd{margin:0;font-size:14.5px;line-height:1.7;color:var(--gray)}
 @media (max-width:800px){.ql-k{grid-template-columns:1fr 1fr}.ql-dl{grid-template-columns:1fr}.ql-k p b{font-size:36px}}
+</style>
+<style>/* v184 대조표: 휴대폰에서는 카드로 */
+@media (max-width:760px){.rf-t,.rf-t tbody{display:block}.rf-t thead{display:none}.rf-t tr{display:block;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:0 0 10px;background:#fff}
+.rf-t tr[hidden]{display:none}.rf-t tr:before{content:attr(data-id);display:block;font-size:12.5px;font-weight:800;color:var(--red-tx,#C11D0E);margin-bottom:6px}
+.rf-t th.rf-id{display:none}.rf-t td{display:block;border:0!important;padding:3px 0!important;text-align:left!important;font-size:14.5px}.rf-t td:first-of-type{font-weight:800;font-size:15.5px}.rf-t td:empty{display:none}}
 </style>

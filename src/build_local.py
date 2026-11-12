@@ -44,7 +44,7 @@ head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
         '<meta property="og:type" content="website"><meta property="og:title" content="GIST 홈페이지 D안 (시안)"><meta property="og:description" content="' + D + '">'
         '<meta property="og:url" content="' + U + '"><meta property="og:image" content="' + U + 'docs/화면_PC_첫화면.png"><meta name="twitter:card" content="summary_large_image">'
         '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png">'
-        '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="fonts/pretendard-gist-sub.woff2" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
+        '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
         '<style>[hidden]{display:none!important}</style></head><body>\n')
 io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n</body></html>')
 print('index.html 만들었습니다 (글꼴 %d개, webp %d장)' % (len(keep), len(webp)))
