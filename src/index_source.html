@@ -5845,11 +5845,11 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 .bl.nd b+span::before{display:none}.bl.nd{gap:0}
 </style>
 <style>/* v204 검색 콘솔 */
-#v-search .askc{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:center;margin-top:26px;padding:34px 36px 30px;border:0;border-radius:32px;background:radial-gradient(120% 140% at 0% 0%,#2a1512 0%,#15181c 46%,#111418 100%);box-shadow:0 30px 70px rgba(17,20,24,.26);overflow:hidden}
+#v-search .askc{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:center;margin-top:26px;padding:34px 36px 30px;border:0;border-radius:var(--console-r);background:radial-gradient(120% 140% at 0% 0%,#2a1512 0%,#15181c 46%,#111418 100%);box-shadow:0 30px 70px rgba(17,20,24,.26);overflow:hidden}
 #v-search .askc::after{content:"";position:absolute;right:-70px;top:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(220,39,21,.55),rgba(220,39,21,0) 68%);pointer-events:none}
 #v-search .askc-t{grid-row:1;margin:0;color:#fff;font-size:clamp(28px,3.4vw,46px);font-weight:300;letter-spacing:-.035em;line-height:1.15;position:relative;z-index:1}
 #v-search .askc-t b{font-weight:900}
-#v-search .askc #q{grid-row:2;grid-column:1;width:100%;height:68px;border:0;border-radius:999px;padding:0 150px 0 30px;font-size:19px;font-weight:600;background:#fff;color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.28);position:relative;z-index:1;flex:none}
+#v-search .askc #q{grid-row:2;grid-column:1;width:100%;height:var(--search-h);border:0;border-radius:999px;padding:0 150px 0 30px;font-size:19px;font-weight:600;background:#fff;color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.28);position:relative;z-index:1;flex:none}
 #v-search .askc #q::placeholder{color:#8B939A;font-weight:500}
 #v-search .askc #q:focus{outline:3px solid var(--red);outline-offset:3px}
 #v-search .askc>button[type=submit]{grid-row:2;grid-column:1;justify-self:end;margin-right:9px;height:50px;padding:0 30px;border-radius:999px;font-size:17px;font-weight:800;position:relative;z-index:2;box-shadow:0 8px 20px rgba(220,39,21,.45)}
@@ -5866,7 +5866,7 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 </style>
 <style>/* v205 거르기 단추(.seg) 알약 통일 — 검색 콘솔(#scope)은 따로 */
 .seg:not(#scope){display:flex!important;flex-wrap:wrap;gap:8px;border:0!important;border-radius:0!important;overflow:visible!important;background:transparent!important;width:auto;max-width:100%}
-.seg:not(#scope) button{flex:none;border:1.5px solid #D5D9DD!important;border-radius:999px!important;padding:10px 18px!important;min-height:44px;background:#fff;color:var(--ink);font-size:15px!important;font-weight:700;text-align:center;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.seg:not(#scope) button{flex:none;border:var(--pill-bd)!important;border-radius:var(--pill-r)!important;padding:10px 18px!important;min-height:var(--pill-h);background:#fff;color:var(--ink);font-size:15px!important;font-weight:700;text-align:center;transition:background .15s,color .15s,border-color .15s,transform .15s}
 .seg:not(#scope) button:hover{border-color:var(--ink)!important}
 .seg:not(#scope) button:active{transform:scale(.97)}
 .seg:not(#scope) button[aria-pressed="true"]{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)!important}
@@ -5875,7 +5875,7 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 @media (max-width:760px){.seg:not(#scope){gap:7px}.seg:not(#scope) button{padding:9px 15px!important;font-size:14.5px!important}}
 /* v205 휴대폰 아래 탭: 떠 있는 섬 */
 @media (max-width:760px){
- .tabbar{left:10px!important;right:10px!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;padding:6px!important;gap:2px;border:1px solid rgba(17,20,24,.08)!important;border-radius:24px;background:rgba(255,255,255,.88)!important;-webkit-backdrop-filter:saturate(1.6) blur(18px);backdrop-filter:saturate(1.6) blur(18px);box-shadow:0 14px 36px rgba(17,20,24,.2),0 2px 6px rgba(17,20,24,.08)}
+ .tabbar{left:10px!important;right:10px!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;padding:6px!important;gap:2px;border:1px solid rgba(17,20,24,.08)!important;border-radius:var(--tab-r);background:rgba(255,255,255,.88)!important;-webkit-backdrop-filter:saturate(1.6) blur(18px);backdrop-filter:saturate(1.6) blur(18px);box-shadow:0 14px 36px rgba(17,20,24,.2),0 2px 6px rgba(17,20,24,.08)}
  .tabbar a{border-radius:18px;padding:8px 0 7px!important;gap:3px;font-size:11.5px!important;letter-spacing:-.02em;color:#4A5259!important;transition:background .18s,color .18s}
  .tabbar a.on,.tabbar a[aria-current="page"]{background:var(--ink);color:#fff!important}
  .tabbar a.on svg,.tabbar a[aria-current="page"] svg{stroke:#fff}
@@ -5891,6 +5891,9 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 @media (max-width:760px){#v-home .gnow,#v-home .p-sec,#v-home .p-outline,#v-home .sec.nc,footer.ft{content-visibility:auto;contain-intrinsic-size:auto 900px}}
 </style>
 <style>/* v207 실측 반영: 검색창 글자 20px(휴대폰)·22px(PC) 굵게, 아래 탭 글자 13px(최소 글자 규칙) */
-#v-search .askc #q{font-size:22px;font-weight:700}
+#v-search .askc #q{font-size:var(--search-fs);font-weight:700}
 @media (max-width:760px){#v-search .askc #q{font-size:20px}.tabbar a{font-size:13px!important;letter-spacing:-.04em}}
+</style>
+<style>/* v208 새 부품 값 — 디자인 규칙 5-0-1과 같은 값, tokens.json으로 함께 나감 */
+:root{--pill-h:44px;--pill-r:999px;--pill-bd:1.5px solid #D5D9DD;--pill-fs:15px;--pill-fs-m:14.5px;--console-r:32px;--console-r-m:26px;--search-h:68px;--search-h-m:58px;--search-fs:22px;--search-fs-m:20px;--tab-r:24px;--tab-fs:13px;--tab-gap:10px}
 </style>
