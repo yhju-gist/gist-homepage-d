@@ -46,6 +46,16 @@ s = re.sub(r'(<span class="lt lt-[a-z]")\s*style="background-image:url\(([^)]+)\
 s = re.sub(r'<picture class="hxs">.*?</picture>', lambda m: m.group(0).replace('srcset=', 'data-srcset=').replace(' src=', ' data-src='), s, flags=re.S)
 LATE = ('<script>addEventListener("load",function(){setTimeout(function(){document.querySelectorAll("[data-bg]").forEach(function(e){e.style.backgroundImage="url("+e.getAttribute("data-bg")+")"});'
         'document.querySelectorAll("source[data-srcset]").forEach(function(e){e.srcset=e.getAttribute("data-srcset")});document.querySelectorAll("img[data-src]").forEach(function(e){e.src=e.getAttribute("data-src")})},1200)});</script>')
+# 2-2b) 문서 맨 뒤에 덧붙인 스타일(v180~)을 본문 앞으로 옮김 — 화면이 먼저 그려진 뒤 모양이 바뀌며 밀리는 일 방지(순서는 그대로)
+_i = s.find('<script src=')
+_j = s.find('<header')
+if 0 < _j < _i:
+    _tail = s[_i:]
+    _blocks = re.findall(r'\n<style>/\* v\d.*?</style>', _tail, flags=re.S)
+    _tail = re.sub(r'\n<style>/\* v\d.*?</style>', '', _tail, flags=re.S)
+    _FW = '<script>(function(){var z=window.__fz,f=document.fonts;if(!z)return;try{Promise.all([f.load("800 32px Pretendard GIST","\\uc778\\ub958 GIST"),f.load("500 16px Inter Tight","Creating")]).then(z,z)}catch(e){z()}})();</script>\n'
+    s = s[:_j] + ''.join(_blocks) + '\n' + _FW + s[_j:_i] + _tail
+    print('뒤쪽 스타일 %d개를 앞으로 옮겼습니다' % len(_blocks))
 # 2-3) 스크립트는 따로 파일로 빼서 화면 글·사진을 먼저 보여 준 뒤 순서대로 실행(defer)
 i = s.find('<script src=')
 if i > 0:
@@ -60,6 +70,18 @@ if i > 0:
     post = re.sub(r'<script>(.*?)</script>', ext, post, flags=re.S)
     for f in os.listdir('js'):
         if f.startswith('app_') and f not in made: os.remove(os.path.join('js', f))
+    # v211: 스크립트는 첫 화면 큰 사진이 실제로 그려진 뒤에 실행(파일은 미리 받아 둠, 순서 그대로)
+    import json as _json
+    srcs = re.findall(r'<script defer src="([^"]+)"></script>', post)
+    post = re.sub(r'<script defer src="[^"]+"></script>', '', post)
+    PRELOAD_JS = ''.join('<link rel="preload" as="script" href="%s"%s>' % (u, ' crossorigin' if u.startswith('http') else '') for u in srcs)
+    post += ('<script>(function(){var Q=' + _json.dumps(srcs) + ',d=0,im=document.getElementById("hxImg");'
+             'function go(){if(d)return;d=1;Q.forEach(function(u){var s=document.createElement("script");s.src=u;s.async=false;if(u.indexOf("http")===0)s.crossOrigin="anonymous";document.head.appendChild(s)})}'
+             'function af(){requestAnimationFrame(function(){setTimeout(go,60)})}'
+             'var h=location.hash;if((h&&h!=="#home"&&h!=="#")||!im||!window.requestAnimationFrame){go();return}'
+             'var ok=0;try{new PerformanceObserver(function(l){if(l.getEntries().some(function(e){return e.element===im})){af()}}).observe({type:"largest-contentful-paint",buffered:true});ok=1}catch(e){}'
+             'function lf(){setTimeout(go,ok?450:80)}if(im.complete)lf();else{im.addEventListener("load",lf);im.addEventListener("error",go)}'
+             'setTimeout(go,2500)})();</script>')
     s = pre + post
 # 3) 머리
 D = 'GIST(광주과학기술원) 대표 홈페이지 D안 시안 — 통합검색·AI 안내 지스트에 물어봐, 학사 길잡이 학사 한 장, 연구 연결 지도 연구 한 줄, 소식 지금, 지스트를 한곳에서.'
@@ -71,7 +93,8 @@ head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
         '<meta property="og:url" content="' + U + '"><meta property="og:image" content="' + U + 'docs/화면_PC_첫화면.png"><meta name="twitter:card" content="summary_large_image">'
         '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png"><link rel="manifest" href="manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="지금, 지스트" href="feed.xml">'
         '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="fonts/pretendard-gist-sub.woff2" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
-        '<style>[hidden]{display:none!important}</style></head><body>\n')
+        + '<style>[hidden]{display:none!important}html.fw .hx-copy,html.fw .hx-cr{visibility:hidden}</style></head><body>'
+        '<script>(function(){var b=document.body,h=location.hash,p=true;try{p=localStorage.getItem("d_pres")!=="0"}catch(e){}if(/[?&]tools=1/.test(location.search))p=false;if(p)b.classList.add("pres");if(!h||h==="#home")b.classList.add("onhero");var r=document.documentElement,f=document.fonts;if(f&&f.load&&window.Promise){r.classList.add("fw");window.__fz=function(){r.classList.remove("fw")};setTimeout(window.__fz,1800)}})();</script>\n')
 io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n' + LATE + '\n' + globals().get('LATE_FONT','') + '\n</body></html>')
 print('index.html 만들었습니다 (글꼴 %d개, webp %d장)' % (len(keep), len(webp)))
 
