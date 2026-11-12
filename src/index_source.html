@@ -4865,13 +4865,14 @@ if(/^#d-/.test(LH()||""))setTimeout(route,0);
   const lab=s=>s[0]==="up"?'<span class="gn-st up">D-'+s[1]+'</span>':s[0]==="on"?'<span class="gn-st on">진행 중</span>':'<span class="gn-st past">지난 소식</span>';
   const cardH=({e,s},i)=>'<a class="gn-c'+(i===0?' big':'')+(s[0]==="past"?' is-past':'')+'" href="https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no='+e.no+'"'+EXT+'><span class="gn-top"><span class="gn-k">'+esc(e.k)+'</span>'+lab(s)+'</span><b>'+esc(e.t)+'</b><span class="gn-w"><i aria-hidden="true">'+'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>'+'</i>'+esc(e.w)+'</span><span class="gn-o">'+esc(e.o)+' · 게시 '+esc(e.p)+' ↗</span></a>';
   g.innerHTML=L.slice(0,5).map(cardH).join("")+(L.length>5?'<ul class="gn-more">'+L.slice(5).map(({e,s})=>'<li><a href="https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no='+e.no+'"'+EXT+'>'+lab(s)+'<span class="gn-mk">'+esc(e.k)+'</span><b>'+esc(e.t)+'</b><span class="gn-mw">'+esc(e.w)+'</span></a></li>').join("")+'</ul>':'');}}
+function vsDue(t){const m=/(\d{4})\.(\d{1,2})\.(\d{1,2})\./.exec(t||"");if(!m)return "";const d=new Date(+m[1],+m[2]-1+6,1),n=new Date();const late=n>=new Date(d.getFullYear(),d.getMonth()+1,1);return '<span class="vs-t vs-due'+(late?' late':'')+'">'+(late?'점검할 때가 지났습니다 · ':'')+'다음 점검 '+d.getFullYear()+'.'+(d.getMonth()+1)+'.</span>';}
 {const VS={
  tutorial:[["학적팀",[["교과과정·증명서","2053"],["대학 학적","2057"],["대학원 학적","2052"]]],"GIST 학사공지 원문 (2026.11.5. 수집)"],
  story:[["대외홍보팀",[["국내 언론홍보","2062"],["온라인 홍보·홈페이지","2063"]]],"GIST 미디어센터 게시판·언론 보도 원문 (2026.11.11. 확인)"],
  search:[["정보운영팀",[["통합홈페이지","2071"]]],"현행 홈페이지 직원검색 686건·학과 홈페이지 교수진 (2026.11.11. 확인)"],
  colleges:[["각 학과 사무실",[]],"현행 홈페이지 ‘대학·학과’ 원문 (2026.11.11. 확인)"]};
  Object.keys(VS).forEach(v=>{const host=$("#v-"+v);if(!host||host.querySelector(".vstrip"))return;const [d,tels]=VS[v][0];const el=document.createElement("div");el.className="wrap vstrip";el.setAttribute("role","note");el.setAttribute("aria-label","이 화면 정보");
-  el.innerHTML='<div><span>담당 부서</span><b>'+esc(d)+'</b>'+(tels.length?'<span class="vs-t">'+tels.map(t=>'<a class="num" href="tel:062-715-'+t[1]+'">'+esc(t[0])+' T.'+t[1]+'</a>').join("")+'</span>':'<span class="vs-t"><a href="#colleges">학과 화면마다 전화번호</a></span>')+'</div><div><span>자료·확인일</span><b>'+esc(VS[v][1])+'</b></div><div><span>정보가 틀렸다면</span><b>담당 부서로 알려 주세요</b><span class="vs-t">구축 때는 관리자 모드에서 바로 고칩니다</span></div>';host.appendChild(el);});}
+  el.innerHTML='<div><span>담당 부서</span><b>'+esc(d)+'</b>'+(tels.length?'<span class="vs-t">'+tels.map(t=>'<a class="num" href="tel:062-715-'+t[1]+'">'+esc(t[0])+' T.'+t[1]+'</a>').join("")+'</span>':'<span class="vs-t"><a href="#colleges">학과 화면마다 전화번호</a></span>')+'</div><div><span>자료·확인일</span><b>'+esc(VS[v][1])+'</b>'+vsDue(VS[v][1])+'</div><div><span>정보가 틀렸다면</span><b>담당 부서로 알려 주세요</b><span class="vs-t">구축 때는 관리자 모드에서 바로 고칩니다</span></div>';host.appendChild(el);});}
 /* v103 세부 화면 고도화 (스탠퍼드식: 첫 문장 → 한눈에 → 단계·카드 → 담당 연락처 → 더 보기) · 내용은 현행 GIST 홈페이지 원문(2026.11.11. 확인) */
 (function(){
  const tl=e=>"062-715-"+String(e).split(/[\/, ]/)[0];
@@ -5395,7 +5396,7 @@ const TEN=[
  ["도구 독립","내용과 모양을 나눠, 제작 도구가 바뀌어도 내용이 남게 한다","대학 홈페이지 재구축 지침(API 우선)","부분","내용만 담은 파일(data/content.json)을 따로 냅니다. 구축 때 관리 도구(CMS)와 연결해야 합니다.","guide"],
  ["구독","새 소식을 받아 볼 수 있게 한다","ETH Zürich RSS","반영","소식 구독 파일(feed.xml)","story"],
  ["언어","언어 전환을 같은 자리에 둔다","ETH Zürich","부분","영문 첫 화면. 세부 화면 영문은 구축 때 채워야 합니다.","en"],
- ["내용 수명","화면마다 담당 부서와 확인일을 밝힌다","GOV.UK 내용 보존·철회 기준","반영","세부 화면 아래 담당 부서 · 자료·확인일","p/scholarships"],
+ ["내용 수명","화면마다 담당 부서와 확인일을 밝힌다","GOV.UK 내용 보존·철회 기준","반영","화면 아래 담당 부서 · 자료·확인일 · 다음 점검 달(확인일에서 6개월 뒤). 점검 달이 지나면 그 자리에 빨간 글씨로 알립니다. 주기는 운영 때 바꿀 수 있습니다.","p/scholarships"],
  ["검색 로봇","기계가 읽는 정보와 화면 목록을 둔다","schema.org · sitemap","반영","기관·소식·위치 정보(JSON-LD), sitemap.xml, 학과 글 화면 14개 · 소식 글 화면 25개","quality"],
  ["없는 주소","없는 주소는 안내하고 검색으로 잇는다","W3C 주소 관리","반영","없는 화면 안내 + 404 화면","search"],
  ["고쳐 가며 쓰기","크게 갈아엎지 않고 계속 고친다","GOV.UK 디자인 원칙 5","결정 필요","직원이 직접 고치는 관리자 모드 시안은 있습니다. 운영 조직·주기는 TF가 정해야 합니다.","reflect"]];
@@ -5833,4 +5834,7 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 </style>
 <style>/* v200 인쇄: 보내기 단추·읽기 진행 띠·이어 보기 줄은 종이에 찍지 않음 */
 @media print{.nxsh,.rdbar,.dway,#trail,.ap-strip,.tdy{display:none!important}}
+</style>
+<style>/* v201 내용 수명 */
+.vs-due{font-size:14px;color:var(--mute);font-weight:700}.vs-due.late{color:var(--red-tx)}
 </style>
