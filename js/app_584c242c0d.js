@@ -2161,6 +2161,9 @@ function renderIpaPage(k){const P=IPA.pages[k];const pos=ipaPos(k);if(!P||!pos){
  $$("#v-page .ipa-b .tbl-w").forEach(w=>{w.tabIndex=0;w.setAttribute("role","region");w.setAttribute("aria-label","Table")});document.title=P.t+" | International | GIST";}
 {const _ri=route;route=function(){const m=(LH()||"").match(/^#ipa(?:-([a-z\-]+))?$/);if(m){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));ipaLoad(function(){if((LH()||"").indexOf("#ipa")!==0)return;if(m[1])renderIpaPage(m[1]);else renderIpaHub();if(window.lucide)lucide.createIcons();});scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_ri();};}
 addEventListener("hashchange",function(){if(/^#ipa(-|$)/.test(LH()||""))route();});
+/* v238 머리 사진 위 큰 영문 낱말이 머리 폭을 넘으면 글자를 줄여 맞춤 */
+function pvFit(){document.querySelectorAll(".view.on .page-h.pv .pv-en").forEach(function(e){e.style.fontSize="";const w=e.parentElement;if(!w||!e.offsetParent)return;const cs=getComputedStyle(w);const room=w.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);if(getComputedStyle(e).whiteSpace!=="nowrap")return;const need=e.scrollWidth;if(need>room+1){const fs=parseFloat(getComputedStyle(e).fontSize);e.style.fontSize=Math.max(22,Math.floor(fs*room/need*0.98))+"px";}});}
+addEventListener("hashchange",function(){setTimeout(pvFit,120);setTimeout(pvFit,700);});addEventListener("resize",pvFit);addEventListener("load",function(){setTimeout(pvFit,300)});setTimeout(pvFit,900);
 /* v234 통합검색에 새 화면 넣기: 고정 화면은 바로, 자료 파일(발전기금·국제교류·영문·서류 초안)은 검색을 쓰려 할 때 한 번 읽어 넣음 */
 let IDXM=0;
 function idxText(h){return String(h||"").replace(/<[^>]+>/g," ").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/\s+/g," ").trim();}

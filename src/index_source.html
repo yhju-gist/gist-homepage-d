@@ -1702,6 +1702,8 @@ footer .fsns svg{width:18px;height:18px}
 .ev2{border:1px solid var(--line);border-radius:24px;padding:28px}.kpi.k3{grid-template-columns:repeat(3,minmax(0,1fr))}.org3.o4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .dchips.big span,.dchips.big a{padding:12px 18px;font-size:15px;background:var(--soft);border-color:transparent;border:1px solid transparent;border-radius:999px;font-weight:700}.dchips.big a{background:#fff;border-color:var(--line);color:var(--ink)}.dchips.big a:hover{border-color:var(--red);color:var(--red-tx)}
 .tl{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;position:relative}
+.pg-main .tl{min-width:0}
+@media (max-width:760px){.pflow{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pflow li{min-width:0}}
 .tlc{position:relative;padding:22px 18px;border-radius:20px;background:var(--soft);display:flex;flex-direction:column;gap:6px}.tlc span{font-size:14px;font-weight:800;color:var(--red-tx)}.tlc b{font-size:17px}.tlc p{margin:0;font-size:14px;color:var(--gray);line-height:1.55}
 .tlc.on{background:var(--red)}.tlc.on span,.tlc.on b,.tlc.on p{color:#fff}
 .dc p b{font-size:18px;color:var(--red-tx)}
@@ -1733,7 +1735,8 @@ footer .fsns svg{width:18px;height:18px}
 @media (max-width:1100px){.ot-vp{grid-template-columns:1fr 1fr}.kpi{grid-template-columns:1fr 1fr}}
 @media (max-width:760px){.ot-vp,.rch{grid-template-columns:minmax(0,1fr)}.ot-top{flex-wrap:wrap;justify-content:center}.ot-pres b{width:96px;height:96px;font-size:20px}
 .dir li{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:16px 4px}.dir span{grid-column:1;font-size:14px}.dir a{grid-row:1/3;grid-column:2}.dir-s{height:56px;padding:0 18px}.dir-s input{font-size:16px}
-.kpi b{font-size:30px}.kpi div{padding:20px 18px}.cbars{height:180px;gap:8px}.cbv{font-size:12px}.t6l{grid-template-columns:1fr 1fr}}
+.kpi b{font-size:30px}.kpi div{padding:20px 18px}.cbars{height:180px;gap:8px}.cbv{font-size:12px}.t6l{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.t6l{grid-template-columns:minmax(0,1fr)!important}}
 
 .vg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 16px;grid-auto-flow:dense}.vn{position:absolute;inset:0;display:grid;place-content:center;text-align:center;font-family:Anton,"Inter Tight",sans-serif;font-size:34px;letter-spacing:.04em;color:rgba(255,255,255,.88)}.vn small{display:block;font-family:"Inter Tight",sans-serif;font-size:12px;letter-spacing:.3em;font-weight:700;color:#FF8A7A;text-transform:uppercase}
 .vc{display:flex;flex-direction:column;gap:10px}.vc .vt{position:relative;display:block;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#2B3136,#4F5B54) center/cover}
@@ -5399,6 +5402,9 @@ function renderIpaPage(k){const P=IPA.pages[k];const pos=ipaPos(k);if(!P||!pos){
  $$("#v-page .ipa-b .tbl-w").forEach(w=>{w.tabIndex=0;w.setAttribute("role","region");w.setAttribute("aria-label","Table")});document.title=P.t+" | International | GIST";}
 {const _ri=route;route=function(){const m=(LH()||"").match(/^#ipa(?:-([a-z\-]+))?$/);if(m){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));ipaLoad(function(){if((LH()||"").indexOf("#ipa")!==0)return;if(m[1])renderIpaPage(m[1]);else renderIpaHub();if(window.lucide)lucide.createIcons();});scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_ri();};}
 addEventListener("hashchange",function(){if(/^#ipa(-|$)/.test(LH()||""))route();});
+/* v238 머리 사진 위 큰 영문 낱말이 머리 폭을 넘으면 글자를 줄여 맞춤 */
+function pvFit(){document.querySelectorAll(".view.on .page-h.pv .pv-en").forEach(function(e){e.style.fontSize="";const w=e.parentElement;if(!w||!e.offsetParent)return;const cs=getComputedStyle(w);const room=w.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);if(getComputedStyle(e).whiteSpace!=="nowrap")return;const need=e.scrollWidth;if(need>room+1){const fs=parseFloat(getComputedStyle(e).fontSize);e.style.fontSize=Math.max(22,Math.floor(fs*room/need*0.98))+"px";}});}
+addEventListener("hashchange",function(){setTimeout(pvFit,120);setTimeout(pvFit,700);});addEventListener("resize",pvFit);addEventListener("load",function(){setTimeout(pvFit,300)});setTimeout(pvFit,900);
 /* v234 통합검색에 새 화면 넣기: 고정 화면은 바로, 자료 파일(발전기금·국제교류·영문·서류 초안)은 검색을 쓰려 할 때 한 번 읽어 넣음 */
 let IDXM=0;
 function idxText(h){return String(h||"").replace(/<[^>]+>/g," ").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/\s+/g," ").trim();}
@@ -6089,7 +6095,7 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 @media (max-width:760px){.tabbar a{white-space:nowrap}}
 @media (max-width:359px){.tabbar a{font-size:12px!important;letter-spacing:-.06em}}
 </style<style>/* v228 국제교류(IPA) 영문 화면: 세부 화면 틀과 본문 글 규격을 그대로 씀 */
-.ipa-b{font-size:16.5px;line-height:1.8}.ipa-b p{margin:0 0 14px}.ipa-b ul,.ipa-b ol{margin:0 0 16px;padding-left:22px;display:grid;gap:6px}.ipa-b li>ul{margin:6px 0 0}
+.ipa-b{font-size:16.5px;line-height:1.8}.ipa-b p{margin:0 0 14px}.ipa-b ul,.ipa-b ol{margin:0 0 16px;padding-left:22px;display:grid;gap:6px}.ipa-b li>ul{margin:6px 0 0}.ipa-b ul,.ipa-b ol{grid-template-columns:minmax(0,1fr)}.ipa-b li{min-width:0}
 .ipa-b .p-h3:first-child{margin-top:8px}.ipa-b .p-h4{font-size:17px;font-weight:800;margin:24px 0 8px}.ipa-b h5{font-size:15.5px;margin:18px 0 6px}
 .ipa-b a:not(.p-pill){color:var(--red-tx);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .ipa-b em{font-style:normal;color:var(--gray)}.ipa-b>em,.ipa-b p>em:only-child{display:block}.ipa-b .tbl-w{margin:10px 0 22px}.ipa-b .tbl{min-width:720px}.ipa-b .tbl td a{overflow-wrap:anywhere}
