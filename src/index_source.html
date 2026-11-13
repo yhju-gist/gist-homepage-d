@@ -1370,7 +1370,7 @@ footer{margin:0 max(12px,1.4vw) max(12px,1.4vw);border-radius:32px;overflow:hidd
 .page-h.pv .crumb,.page-h.pv .pv-eye{display:none}
 .page-h.pv h1{font-size:clamp(20px,2vw,26px);font-weight:800;letter-spacing:-.02em;color:rgba(255,255,255,.95)}
 .page-h.pv p{max-width:40em;font-size:15px}
-.pv-bg::after{background:linear-gradient(180deg,rgba(17,20,24,.45),rgba(17,20,24,.6))}
+.pv-bg::after{background:linear-gradient(180deg,rgba(17,20,24,.5),rgba(17,20,24,.68))}.page-h.pv h1,.page-h.pv p{text-shadow:0 1px 14px rgba(0,0,0,.45)}
 .pbar{border-bottom:1px solid var(--line)}
 .pbar .wrap{display:flex;align-items:center;gap:0;min-height:60px}
 .pbar .home{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;flex:none}
@@ -5195,6 +5195,7 @@ function pvHead(o){const L=o.en?{pos:"Breadcrumb",home:"Home",cp:"Copy this page
 const PV_EN=["hx_b.jpg","mg_adm.jpg","lecture.jpg","mg_res.jpg","mg_campus.jpg","pv_story.jpg","p_gate.jpg","library.jpg"];
 function dHero(word,title,lead){return '<div class="nxhero dh"><div class="wrap"><nav class="nxhero-c" aria-label="위치"><a href="#home">홈</a><i data-lucide="chevron-right"></i><span>'+title+'</span></nav><h1><b lang="en">'+word+'</b><span>'+title+'</span></h1>'+(lead?'<p>'+lead+'</p>':'')+'</div></div>';}
 function apHead(en,t,p){return dHero(String(en).split(" ")[0],t,p);}
+function apFlow(n,en){const T=en?["Fill in the form","Receipt number","Track status"]:["양식 쓰기","접수번호 받기","진행 상황 확인"];return '<ol class="ap-steps ap-flow" aria-label="'+(en?"Steps":"신청 순서")+'">'+T.map((t,i)=>'<li class="'+(i<=n?"on":"")+'"'+(i===n?' aria-current="step"':'')+'><b class="num">'+(i+1)+'</b>'+t+'</li>').join("")+'</ol>';}
 function apNav(cur){return '<nav class="ap-nav" aria-label="신청 센터 메뉴"><a href="#apply"'+(cur==="hub"?' aria-current="page"':'')+'><i data-lucide="layout-grid"></i>신청 양식</a><a href="#apply-my"'+(cur==="my"?' aria-current="page"':'')+'><i data-lucide="clipboard-list"></i>내 신청 내역 <b class="num">'+apLoad().length+'</b></a><a href="#apply-admin"'+(cur==="admin"?' aria-current="page"':'')+'><i data-lucide="shield-check"></i>담당자 화면 (미리보기)</a></nav><p class="ap-note"><i data-lucide="info"></i>'+AP_NOTE+'</p>';}
 function renderApplyHub(){const gs=[...new Set(AP.map(x=>x.g))];
  $("#v-page").innerHTML=apHead("APPLY","온라인 신청 센터","입시자료·방문·상담·설명회·인턴십·오픈랩·국제교류·기부 약정까지, 신청은 한곳에서 하고 접수번호로 진행 상황을 확인합니다.")+
@@ -5203,8 +5204,8 @@ function renderApplyHub(){const gs=[...new Set(AP.map(x=>x.g))];
  '<p class="note" style="margin-top:26px">양식 항목은 「GIST 홈페이지 통합 재구축 제안요청서」 기능 요구사항(대학 입학 SFR-006, 대학원 입학 SFR-007, 국제교류협력 SFR-008, 발전기금 SFR-009)에 적힌 신청·조회·관리 항목을 그대로 옮겼습니다. [시안] 실제 일정·정원·담당 부서 이름은 구축 때 담당 부서가 정합니다. <a href="#rfp">제안요청서 대조표 보기</a></p></div>';
  document.title="온라인 신청 센터 | GIST 홈페이지 D안";icons();}
 function renderApplyForm(F){const pre=window.__apPre||{};window.__apPre=null;const T=F.en?{b:"Submit application",c:"I agree to the collection and use of personal information (required)",ci:"Items: name, e-mail, phone · Purpose: handling this application · Retention: until processing is complete",own:"Office in charge"}:{b:"신청하기",c:"개인정보 수집·이용에 동의합니다 (필수)",ci:"수집 항목: 이름·이메일·연락처 · 목적: 신청 접수와 안내 · 보유: 처리 끝날 때까지",own:"담당 부서"};
- $("#v-page").innerHTML=apHead("APPLY",esc(F.n),esc(F.d))+'<div class="wrap ap" style="padding-block:36px 90px">'+apNav("")+
- '<div class="ap-fw"><form class="ap-form" id="apform" novalidate data-f="'+F.id+'"'+(F.en?' lang="en"':'')+'><div class="ap-sum" id="apsum" role="alert" tabindex="-1" hidden></div><div class="ap-grid">'+F.f.concat(F.en?[["nm","Name","text",null,1],["em","E-mail","email",null,1],["ph","Phone","tel",null,0]]:AP_COMMON).map(x=>apField(F,x)).join("")+'</div>'+
+ $("#v-page").innerHTML=apHead("APPLY",esc(F.n),esc(F.d))+'<div class="wrap ap" style="padding-block:36px 90px">'+apNav("")+apFlow(0,F.en)+
+ '<div class="ap-fw"><form class="ap-form" id="apform" novalidate data-f="'+F.id+'"'+(F.en?' lang="en"':'')+'><div class="ap-sum" id="apsum" role="alert" tabindex="-1" hidden></div><div class="ap-grid"><p class="ap-sec"><span class="eyebrow">'+(F.en?"Application":"신청 내용")+'</span><small><em>*</em> '+(F.en?"required":"표시는 꼭 써야 하는 칸")+'</small></p>'+F.f.map(x=>apField(F,x)).join("")+'<p class="ap-sec"><span class="eyebrow">'+(F.en?"Applicant":"신청자")+'</span></p>'+(F.en?[["nm","Name","text",null,1],["em","E-mail","email",null,1],["ph","Phone","tel",null,0]]:AP_COMMON).map(x=>apField(F,x)).join("")+'</div>'+
  (F.cap?'<p class="ap-cap" id="apcap" aria-live="polite"></p>':'')+
  '<label class="ap-agree"><input type="checkbox" name="agree" required><span><b>'+T.c+'</b><small>'+T.ci+'</small></span></label><p class="ap-e" data-e="agree" role="alert"></p>'+
  '<div class="ap-act"><button type="submit" class="ap-b">'+T.b+' <i data-lucide="arrow-right"></i></button><a href="#apply">'+(F.en?"Back to all forms":"다른 양식 보기")+'</a></div></form>'+
@@ -5230,7 +5231,7 @@ document.addEventListener("submit",e=>{const fm=e.target;if(fm.id!=="apform")ret
  if(errs.length){const s=$("#apsum");s.hidden=false;s.innerHTML='<b>'+(en?"Please fix "+errs.length+" item(s).":"고칠 곳이 "+errs.length+"군데 있습니다.")+'</b><ul>'+errs.map(x=>'<li><a href="#" data-apgo="'+x[0]+'">'+esc(x[1])+'</a></li>').join("")+'</ul>';s.focus();return;}
  delete v.agree;const d=new Date();const ymd=d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0");const L=apLoad();const no=F.pf+"-"+ymd+"-"+String(L.filter(r=>r.f===F.id).length+1).padStart(4,"0");
  L.unshift({no,f:F.id,v,s:0,t:d.toISOString()});apSave();
- $("#v-page").innerHTML=apHead("APPLY",en?"Application received":"신청이 접수되었습니다",esc(F.n))+'<div class="wrap ap" style="padding-block:36px 90px"><div class="ap-done"><i data-lucide="check-circle-2"></i><span class="eyebrow">'+(en?"Receipt number":"접수번호")+'</span><b class="num">'+no+'</b><p>'+(en?"Keep this number. You can check the status or cancel in “My applications”.":"이 번호로 진행 상황을 확인합니다. ‘내 신청 내역’에서 상태를 보거나 확정 전에 취소할 수 있습니다.")+'</p><div><a class="ap-b" href="#apply-my">'+(en?"My applications":"내 신청 내역 보기")+' <i data-lucide="arrow-right"></i></a><a href="#apply">'+(en?"All forms":"다른 신청 하기")+'</a></div><small>'+AP_NOTE+'</small></div></div>';icons();scrollTo({top:0});});
+ $("#v-page").innerHTML=apHead("APPLY",en?"Application received":"신청이 접수되었습니다",esc(F.n))+'<div class="wrap ap" style="padding-block:36px 90px">'+apFlow(1,en)+'<div class="ap-done"><i data-lucide="check-circle-2"></i><span class="eyebrow">'+(en?"Receipt number":"접수번호")+'</span><b class="num">'+no+'</b><p>'+(en?"Keep this number. You can check the status or cancel in “My applications”.":"이 번호로 진행 상황을 확인합니다. ‘내 신청 내역’에서 상태를 보거나 확정 전에 취소할 수 있습니다.")+'</p><div><a class="ap-b" href="#apply-my">'+(en?"My applications":"내 신청 내역 보기")+' <i data-lucide="arrow-right"></i></a><a href="#apply">'+(en?"All forms":"다른 신청 하기")+'</a></div><small>'+AP_NOTE+'</small></div></div>';icons();scrollTo({top:0});});
 document.addEventListener("click",e=>{const g=e.target.closest("[data-apgo]");if(g){e.preventDefault();const el=$('#apform [name="'+g.dataset.apgo+'"]');el&&el.focus();return;}
  const c=e.target.closest("[data-apcancel]");if(c){const r=apLoad().find(x=>x.no===c.dataset.apcancel);if(r&&r.s===0){r.s=3;apSave();renderApplyMy();}return;}
  const s=e.target.closest("[data-apnext]");if(s){const r=apLoad().find(x=>x.no===s.dataset.apnext);if(r&&r.s<2){r.s++;apSave();renderApplyAdmin();}return;}
@@ -5811,7 +5812,12 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 .ap-my-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}.ap-my-h b{font-size:18px;font-weight:800}.ap-my-h .num{font-weight:800;color:var(--gray)}.ap-my-h time{margin-left:auto;font-size:13px;color:var(--mute)}
 .ap-st{display:inline-block;border-radius:999px;padding:4px 12px;font-size:12.5px;font-weight:800;background:var(--red-t,#FDECEA);color:var(--red-tx,#C11D0E);white-space:nowrap}.ap-st.s1{background:#E7F0FF;color:#1D4FB8}.ap-st.s2{background:#E3F4EA;color:#17693F}.ap-st.s3{background:var(--soft);color:var(--mute)}
 .ap-steps{display:flex;gap:4px;margin:14px 0}.ap-steps span{flex:1;text-align:center;font-size:12.5px;font-weight:800;padding:7px 4px;background:var(--soft);color:var(--mute);border-radius:4px}.ap-steps span:first-child{border-radius:999px 4px 4px 999px}.ap-steps span:last-child{border-radius:4px 999px 999px 4px}
-.ap-steps span.on{background:var(--ink);color:#fff}.ap-steps span.x{text-decoration:line-through}
+.ap-steps span.on{background:var(--ink);color:#fff}
+ol.ap-flow{list-style:none;padding:0;margin:22px 0 20px;gap:6px}.ap-flow li{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:800;padding:11px 8px;background:var(--soft);color:var(--mute);border-radius:6px;line-height:1.3}.ap-flow li:first-child{border-radius:999px 6px 6px 999px}.ap-flow li:last-child{border-radius:6px 999px 999px 6px}.ap-flow li.on{background:var(--ink);color:#fff}.ap-flow li b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(17,20,24,.08);font-size:12.5px;flex:none}.ap-flow li.on b{background:rgba(255,255,255,.18)}.ap-flow li[aria-current] b{background:var(--red);color:#fff}
+.ap-done{margin-top:0}.wrap.ap>.ap-flow+.ap-done{margin-top:20px}
+.ap-sec{grid-column:1/-1;margin:0;padding-bottom:10px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:12px}.ap-sec~.ap-sec{margin-top:10px}.ap-sec small{font-size:12.5px;font-weight:600;color:var(--mute)}.ap-sec small em{color:var(--red);font-style:normal;font-weight:800}
+.ap-f input:focus-visible,.ap-f select:focus-visible,.ap-f textarea:focus-visible{outline:3px solid var(--red);outline-offset:2px}.ap-agree:focus-within{box-shadow:0 0 0 2px var(--ink)}
+@media (max-width:560px){.ap-flow li{flex-direction:column;gap:4px;font-size:12.5px;padding:9px 4px;border-radius:12px!important;text-align:center}}.ap-steps span.x{text-decoration:line-through}
 .ap-my dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px 18px;margin:0}.ap-my dt{font-size:12px;font-weight:700;color:var(--mute)}.ap-my dd{margin:0;font-size:14.5px;font-weight:600;word-break:break-word}
 .ap-x{margin-top:14px;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;font-size:13.5px;cursor:pointer;color:var(--gray)}.ap-x:hover{border-color:var(--red);color:var(--red-tx,#C11D0E)}
 .ap-empty{text-align:center;padding:60px 20px;border:1.5px dashed var(--line);border-radius:24px;display:flex;flex-direction:column;align-items:center;gap:14px}.ap-empty>svg{width:40px;height:40px;color:var(--mute)}
@@ -5984,6 +5990,13 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 </style>
 <style>/* v200 인쇄: 보내기 단추·읽기 진행 띠·이어 보기 줄은 종이에 찍지 않음 */
 @media print{.nxsh,.rdbar,.dway,#trail,.ap-strip,.tdy{display:none!important}}
+@media print{*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+.ap-nav,.ap-note,.ap-act,.ap-x,.st-copy,[data-copy],.tg-find,.fd-q,.ipa-act,.vm,.vmw,#demo,.cookie{display:none!important}
+.ap-side{position:static!important}.pv-bg img{animation:none!important}
+.ap-c,.ap-form .ap-f,.ap-side,.ap-done,.ap-my li,.fd-tier,.fd-fm li,.kpi.hubk a,.ipa-fig,.tg-card,.pflow li,.ap-flow,.ipa-b table tr,.ipa-b figure{break-inside:avoid}
+h2,h3,h4,.ap-sec,.ap-g,.ipa-g{break-after:avoid}
+.ipa-b a[href^="http"]{text-decoration:underline}
+@page{margin:14mm 12mm}}
 </style>
 <style>/* v201 내용 수명 */
 .vs-due{font-size:14px;color:var(--mute);font-weight:700}.vs-due.late{color:var(--red-tx)}
@@ -6127,7 +6140,6 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 .dc-i summary:focus-visible{outline:2px solid var(--red);outline-offset:2px}.dc-b{padding:2px 2px 22px;display:grid;gap:14px;font-size:16px;line-height:1.75}.dc-b h4{font-size:13.5px;font-weight:800;color:var(--gray);margin:0 0 4px}.dc-b p{margin:0}.dc-b ul{margin:0;padding-left:20px;display:grid;gap:6px}.dc-b .dr{background:var(--soft);border-radius:16px;padding:18px 20px}.dc-b .td{color:var(--gray)}
 @media (max-width:760px){.dc-i summary{grid-template-columns:78px minmax(0,1fr) 18px;font-size:16px}}
 </style>
->
 <style>/* v240 지오넷 A안에서 배운 움직임 4가지(코드는 새로 씀, 그림·영상은 가져오지 않음)
  ① 구역 제목이 가려진 줄 아래에서 한 글자씩 올라옴 ② 내려 읽을 때 머리 메뉴가 비켜 주고 올리면 돌아옴
  ③ 첫 화면 사진 점이 넘어갈 때까지 차오름 ④ 안내 카드 위에서 마우스를 따라오는 둥근 단추(글자 고리가 속도만큼 돎)
