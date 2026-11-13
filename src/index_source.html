@@ -1735,7 +1735,7 @@ footer .fsns svg{width:18px;height:18px}
 .cbv{font-size:13px;font-weight:800;color:var(--gray)}.cbar.on .cbv{color:var(--red-tx)}.cbl{font-size:13px;font-weight:700;color:var(--gray)}.cbu{margin:10px 0 0;font-size:13px;color:var(--mute)}
 .t6{display:flex;height:28px;border-radius:999px;overflow:hidden;gap:3px}.t6 span:nth-child(1),.t6l li:nth-child(1) i{background:#DC2715}.t6 span:nth-child(2),.t6l li:nth-child(2) i{background:#E9654F}.t6 span:nth-child(3),.t6l li:nth-child(3) i{background:#F29C86}.t6 span:nth-child(4),.t6l li:nth-child(4) i{background:#4F5B54}.t6 span:nth-child(5),.t6l li:nth-child(5) i{background:#7F8A84}.t6 span:nth-child(6),.t6l li:nth-child(6) i{background:#AFB7B2}.t6 span:nth-child(7),.t6l li:nth-child(7) i{background:#D9DDE0}
 .t6l{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 18px}.t6l li{display:flex;align-items:center;gap:8px;font-size:14px}.t6l i{width:12px;height:12px;border-radius:4px;flex:none}.t6l span{color:var(--gray)}.t6l em{margin-left:auto;font-style:normal;font-weight:800}
-@media (max-width:1100px){.ot-vp{grid-template-columns:1fr 1fr}.kpi{grid-template-columns:1fr 1fr}}
+@media (max-width:1100px){.ot-vp{grid-template-columns:1fr 1fr}.kpi{grid-template-columns:repeat(2,minmax(0,1fr))}}.kpi>*{min-width:0}.kpi .eyebrow{overflow-wrap:anywhere}
 @media (max-width:760px){.ot-vp,.rch{grid-template-columns:minmax(0,1fr)}.ot-top{flex-wrap:wrap;justify-content:center}.ot-pres b{width:96px;height:96px;font-size:20px}
 .dir li{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:16px 4px}.dir span{grid-column:1;font-size:14px}.dir a{grid-row:1/3;grid-column:2}.dir-s{height:56px;padding:0 18px}.dir-s input{font-size:16px}
 .kpi b{font-size:30px}.kpi div{padding:20px 18px}.cbars{height:180px;gap:8px}.cbv{font-size:12px}.t6l{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -5101,7 +5101,7 @@ function nxSide(t){
  const go=(lab,arr)=>'<div class="nx-go"><span class="eyebrow">'+lab+'</span><div>'+arr.map(n=>'<a href="'+mHref(n[0])+'">'+esc(n[1]||n[0])+' <i data-lucide="arrow-right"></i></a>').join("")+'</div></div>';
  return '<div class="nx-side">'+
   '<section><h3>이 주제의 최근 소식 <small>미디어센터</small></h3>'+(S.length?'<div class="nx-st">'+S.map(([x,i])=>'<a href="#st-'+i+'"><img loading="lazy" src="'+sImg(x).u+'" alt=""><span><span class="gk">'+esc(x.c)+' · <span class="num">'+esc(x.d||x.m||"")+'</span></span><b>'+esc(x.t)+'</b></span></a>').join("")+'</div>':'<p class="nx-none">지금 색인에 이 주제 소식이 없습니다. <a href="#story">미디어센터 전체 보기</a></p>')+'</section>'+
-  '<section><h3>이어진 연구소·센터</h3>'+(ins.length?'<div class="nx-ins">'+ins.map(x=>'<a href="'+x[1]+'"'+EXT+'><i data-lucide="'+x[2]+'"></i><b>'+esc(x[0])+'</b><span>'+esc(x[1].replace(/^https?:\/\//,"").replace(/\/$/,""))+' ↗</span></a>').join("")+'</div>':'<p class="nx-none">이 주제 이름으로 바로 이어지는 부설 연구소는 색인에 없습니다. <a href="'+mHref("부설 연구소")+'">부설 연구소 전체 보기</a></p>')+'</section>'+
+  '<section><h3>이어진 연구소·센터</h3>'+(ins.length?'<div class="nx-ins">'+ins.map(x=>'<a href="'+x[1]+'"'+EXT+'><i data-lucide="'+(x[2]||"landmark")+'"></i><b>'+esc(x[0])+'</b><span>'+esc(x[1].replace(/^https?:\/\//,"").replace(/\/$/,""))+' ↗</span></a>').join("")+'</div>':'<p class="nx-none">이 주제 이름으로 바로 이어지는 부설 연구소는 색인에 없습니다. <a href="'+mHref("부설 연구소")+'">부설 연구소 전체 보기</a></p>')+'</section>'+
   '<section><h3>다음 걸음</h3>'+go("이 분야로 진학",[["전형 안내","대학원 전형 안내"],["장학 제도"],["생활관"]])+go("함께 연구·사업화",[["공동연구 문의"],["기술이전"],["공동 연구장비"]])+'</section></div>';
 }
 function nxMatrix(){
@@ -5411,6 +5411,8 @@ function renderIpaPage(k){const P=IPA.pages[k];const pos=ipaPos(k);if(!P||!pos){
 {const _ri=route;route=function(){const m=(LH()||"").match(/^#ipa(?:-([a-z\-]+))?$/);if(m){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));ipaLoad(function(){if((LH()||"").indexOf("#ipa")!==0)return;if(m[1])renderIpaPage(m[1]);else renderIpaHub();if(window.lucide)lucide.createIcons();});scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_ri();};}
 addEventListener("hashchange",function(){if(/^#ipa(-|$)/.test(LH()||""))route();});
 /* v238 머리 사진 위 큰 영문 낱말이 머리 폭을 넘으면 글자를 줄여 맞춤 */
+function nxFit(){document.querySelectorAll(".view.on .nxhero h1>b").forEach(function(e){e.style.fontSize="";const w=e.closest(".wrap");if(!w||!e.offsetParent)return;const cs=getComputedStyle(w);const room=w.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);const z=parseFloat(document.body.style.zoom)||1;const need=e.getBoundingClientRect().width/z;if(need>room+1){const fs=parseFloat(getComputedStyle(e).fontSize);e.style.fontSize=Math.max(30,Math.floor(fs*room/need*0.98))+"px";}});const tb=document.querySelector(".tabbar");if(tb){const z=parseFloat(document.body.style.zoom)||1;tb.style.zoom=z>1?String(Math.round(1000/z)/1000):"";}}
+addEventListener("hashchange",function(){setTimeout(nxFit,120);setTimeout(nxFit,700);});addEventListener("resize",nxFit);addEventListener("load",function(){setTimeout(nxFit,300)});setTimeout(nxFit,900);document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("#fzm,#fz0,#fzp"))setTimeout(nxFit,80);});
 function pvFit(){document.querySelectorAll(".view.on .page-h.pv .pv-en").forEach(function(e){e.style.fontSize="";const w=e.parentElement;if(!w||!e.offsetParent)return;const cs=getComputedStyle(w);const room=w.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);if(getComputedStyle(e).whiteSpace!=="nowrap")return;const need=e.scrollWidth;if(need>room+1){const fs=parseFloat(getComputedStyle(e).fontSize);e.style.fontSize=Math.max(22,Math.floor(fs*room/need*0.98))+"px";}});}
 addEventListener("hashchange",function(){setTimeout(pvFit,120);setTimeout(pvFit,700);});addEventListener("resize",pvFit);addEventListener("load",function(){setTimeout(pvFit,300)});setTimeout(pvFit,900);
 /* v234 통합검색에 새 화면 넣기: 고정 화면은 바로, 자료 파일(발전기금·국제교류·영문·서류 초안)은 검색을 쓰려 할 때 한 번 읽어 넣음 */
@@ -5840,7 +5842,7 @@ ol.ap-flow{list-style:none;padding:0;margin:22px 0 20px;gap:6px}.ap-flow li{flex
 @media (max-width:900px){.ap-fw{grid-template-columns:minmax(0,1fr)}.ap-side{position:static}.ap-grid{grid-template-columns:minmax(0,1fr)}.ap-form{padding:20px 16px;border-radius:20px}.ap-done>b{font-size:28px}.ap-my-h time{margin-left:0;flex-basis:100%}}
 </style>
 <style>/* v182 품질 성적표 */
-.ql-k{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 26px}.ql-k>div{position:relative;border:1px solid var(--line);border-radius:20px;padding:20px 22px;background:#fff}
+.ql-k>div{min-width:0}.ql-k{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:8px 0 26px}.ql-k>div{position:relative;border:1px solid var(--line);border-radius:20px;padding:20px 22px;background:#fff}
 .ql-k p{display:flex;align-items:baseline;gap:8px;margin:6px 0 0}.ql-k p b{font-size:44px;font-weight:800;line-height:1.1;color:var(--red)}.ql-k p em{font-style:normal;font-weight:700;font-size:14px;color:var(--ink)}
 .ql-k p.g b{font-size:24px;color:var(--mute)}.ql-k p.g em{color:var(--mute)}
 .ql-d{position:absolute;right:16px;top:16px;border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:800;background:var(--soft);color:var(--mute)}.ql-d.up{background:#E3F4EA;color:#17693F}.ql-d.dn{background:var(--red-t,#FDECEA);color:var(--red-tx,#C11D0E)}
@@ -5848,7 +5850,8 @@ ol.ap-flow{list-style:none;padding:0;margin:22px 0 20px;gap:6px}.ap-flow li{flex
 .ql-b{display:inline-block;width:64px;height:8px;border-radius:99px;background:var(--soft);vertical-align:middle;margin-right:8px;overflow:hidden}.ql-b i{display:block;height:100%;border-radius:99px}.ql-b i.g{background:#1E8E5A}.ql-b i.o{background:#E08A00}.ql-b i.r{background:var(--red)}
 .ql-l{margin:0;padding-left:20px;line-height:1.9;color:var(--gray)}.ql-l b{color:var(--ink)}
 .ql-dl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0}.ql-dl div{background:var(--soft);border-radius:12px;padding:14px 16px}.ql-dl dt{font-weight:800;margin-bottom:4px}.ql-dl dd{margin:0;font-size:14.5px;line-height:1.7;color:var(--gray)}
-@media (max-width:800px){.ql-k{grid-template-columns:1fr 1fr}.ql-dl{grid-template-columns:1fr}.ql-k p b{font-size:36px}}
+button.pill{max-width:100%;white-space:normal;text-align:left}.nx-dg li>a b{overflow-wrap:anywhere}.nx-ins a{grid-template-columns:auto minmax(0,1fr)}.nx-ins a b{overflow-wrap:anywhere}.nx-ins a>b,.nx-ins a>span{grid-column:2;min-width:0;overflow-wrap:anywhere}.nx-ins a>svg,.nx-ins a>i{grid-column:1;grid-row:1/span 2}.cbar,.cbt{min-width:0}.cbv{max-width:100%;overflow-wrap:anywhere;text-align:center;line-height:1.15;letter-spacing:-.03em}
+@media (max-width:800px){.ql-k{grid-template-columns:repeat(2,minmax(0,1fr))}.ql-dl{grid-template-columns:1fr}.ql-k p b{font-size:36px}}
 </style>
 <style>/* v184 대조표: 휴대폰에서는 카드로 */
 @media (max-width:760px){.rf-t,.rf-t tbody{display:block}.rf-t thead{display:none}.rf-t tr{display:block;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:0 0 10px;background:#fff}
