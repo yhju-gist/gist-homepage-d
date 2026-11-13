@@ -1625,7 +1625,7 @@ footer .fsns svg{width:18px;height:18px}
 .gcomp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.gcomp>div{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:20px;border-radius:20px;background:var(--soft)}.gl{font-size:13px;font-weight:800;color:var(--gray)}
 @media (max-width:1100px){.gsws{grid-template-columns:repeat(3,minmax(0,1fr))}.gcomp{grid-template-columns:1fr 1fr}}
 @media (max-width:760px){.gsws{grid-template-columns:1fr 1fr}.gcomp{grid-template-columns:minmax(0,1fr)}}
-.sxe{list-style:none;display:grid;gap:28px;padding:10px 0 20px}.sxe h3{font-size:16px;margin:0 0 12px}.sxe-c{display:flex;flex-wrap:wrap;gap:8px}.sxe-c button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:10px 16px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}.sxe-c button:hover{border-color:var(--ink)}
+.sxe{list-style:none;display:grid;gap:28px;padding:10px 0 20px}.sxe h2{font-size:16px;margin:0 0 12px}.sxe-c{display:flex;flex-wrap:wrap;gap:8px}.sxe-c button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:10px 16px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}.sxe-c button:hover{border-color:var(--ink)}
 .sxe-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.sxe-g div{padding:18px;border-radius:20px;background:var(--soft);display:flex;flex-direction:column;gap:2px}.sxe-g b{font-size:26px}.sxe-g span{font-weight:800;font-size:15px}.sxe-g small{font-size:13px;color:#4A5259}
 .sxe-n{display:block;padding:14px 0;border-bottom:1px solid var(--line)}.sxe-n span{font-size:13px;font-weight:700;color:var(--red-tx)}.sxe-n b{display:block;margin-top:3px;font-size:16px;line-height:1.5}.sxe-n:hover b{color:var(--red-tx)}
 @media (max-width:760px){.sxe-g{grid-template-columns:1fr 1fr}}
@@ -4448,9 +4448,9 @@ runSearch=function(){
  if(!q){$("#rcount").innerHTML='찾을 말을 넣어 주세요 · 지금 <b class="num">'+IDX.length+'</b>건의 화면·글이 검색됩니다';
   const POP=["장학","증명서","생활관","수강신청","재수강료","복수전공","통합경비","오룡관","기술이전","연구 분야"];
   const cnt=k=>IDX.filter(r=>r.s===k).length;
-  html='<li class="sxe"><div class="sxe-b"><h3>많이 찾는 말</h3><div class="sxe-c">'+POP.map(w=>'<button type="button" data-sq="'+esc(w)+'">'+esc(w)+'</button>').join("")+'</div></div>'+
-   '<div class="sxe-b"><h3>찾는 범위</h3><div class="sxe-g">'+[["main","대표 홈페이지","세부페이지·학과 소개·지금, 지스트"],["dept","학과 홈페이지","13개 학과·1개 대학원 홈페이지 바로가기"],["people","사람·업무","직원검색 "+new Set(ORGDIR.map(r=>r[0])).size+"개 부서 업무·내선 "+ORGDIR.length+"건 + 교수 "+PROFDIR.length+"명"],["rule","규정·안내","튜토리얼 7주제"],["sns","SNS","공식 유튜브·인스타그램 글"]].map(x=>'<div><b class="num">'+cnt(x[0])+'</b><span>'+x[1]+'</span><small>'+x[2]+'</small></div>').join("")+'</div></div>'+
-   '<div class="sxe-b"><h3>최근 지금, 지스트</h3>'+STORIES.map((x,i)=>[x,i]).sort((a,b)=>(b[0].d||b[0].m).replace(/\D/g,"").padEnd(8,"0").localeCompare((a[0].d||a[0].m).replace(/\D/g,"").padEnd(8,"0"))).slice(0,4).map(([x,i])=>'<a class="sxe-n" href="#st-'+i+'"><span>'+esc(x.c)+' · <span class="num">'+esc(x.d||x.m)+'</span></span><b>'+esc(x.t)+'</b></a>').join("")+'</div></li>';}
+  html='<li class="sxe"><div class="sxe-b"><h2>많이 찾는 말</h2><div class="sxe-c">'+POP.map(w=>'<button type="button" data-sq="'+esc(w)+'">'+esc(w)+'</button>').join("")+'</div></div>'+
+   '<div class="sxe-b"><h2>찾는 범위</h2><div class="sxe-g">'+[["main","대표 홈페이지","세부페이지·학과 소개·지금, 지스트"],["dept","학과 홈페이지","13개 학과·1개 대학원 홈페이지 바로가기"],["people","사람·업무","직원검색 "+new Set(ORGDIR.map(r=>r[0])).size+"개 부서 업무·내선 "+ORGDIR.length+"건 + 교수 "+PROFDIR.length+"명"],["rule","규정·안내","튜토리얼 7주제"],["sns","SNS","공식 유튜브·인스타그램 글"]].map(x=>'<div><b class="num">'+cnt(x[0])+'</b><span>'+x[1]+'</span><small>'+x[2]+'</small></div>').join("")+'</div></div>'+
+   '<div class="sxe-b"><h2>최근 지금, 지스트</h2>'+STORIES.map((x,i)=>[x,i]).sort((a,b)=>(b[0].d||b[0].m).replace(/\D/g,"").padEnd(8,"0").localeCompare((a[0].d||a[0].m).replace(/\D/g,"").padEnd(8,"0"))).slice(0,4).map(([x,i])=>'<a class="sxe-n" href="#st-'+i+'"><span>'+esc(x.c)+' · <span class="num">'+esc(x.d||x.m)+'</span></span><b>'+esc(x.t)+'</b></a>').join("")+'</div></li>';}
  $("#res").innerHTML=html||'<li class="ri"><b>결과가 없습니다.</b><p>범위를 "전체"로 바꾸거나 오른쪽 AI 안내에 물어보세요.</p></li>';
 };
 if($("#q").value)runSearch();
@@ -5072,7 +5072,7 @@ function nxMap(t,L){
    lines+='<path class="nx-l2'+(on?'':' off')+'" d="M'+x.toFixed(1)+' '+y.toFixed(1)+'L'+lx.toFixed(1)+' '+ly.toFixed(1)+'" stroke="'+col+'"/>';
    dots+='<circle class="nx-dot'+(on?'':' off')+'" data-lab="'+PROFDIR.indexOf(p)+'" cx="'+lx.toFixed(1)+'" cy="'+ly.toFixed(1)+'" r="6.5" fill="'+col+'"><title>'+esc((p[3]||"연구실 이름 미기재")+" · "+nxBase(p[0])+" 교수 · "+d)+'</title></circle>';});
   const out=r+13;const tx=x+Math.cos(am)*out,ty=y+Math.sin(am)*out;const cs=Math.cos(am);const anc=cs>.35?"start":cs<-.35?"end":"middle";const dy=Math.sin(am)>.5?12:Math.sin(am)<-.5?-4:4;const big=n>=6;const tx2=big?x:tx,ty2=big?y+r+17:ty+dy;const anc2=big?"middle":anc;
-  nodes+='<g class="nx-n'+(nxSel.d===d?' on':'')+(on?'':' off')+'" style="animation-delay:'+(120+i*70)+'ms" data-nxd="'+esc(d)+'" tabindex="0" role="button" aria-pressed="'+(nxSel.d===d)+'" aria-label="'+esc(d)+' 연구실 '+n+'곳만 보기"><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(1)+'" fill="'+col+'"/><text class="nx-c num" style="fill:'+(col==="#FFFFFF"||col==="#E5B76E"||col==="#9DB8AA"?"#111418":"#fff")+'" x="'+x.toFixed(1)+'" y="'+(y+5).toFixed(1)+'" text-anchor="middle">'+n+'</text><text class="nx-t" x="'+tx2.toFixed(1)+'" y="'+ty2.toFixed(1)+'" text-anchor="'+anc2+'">'+esc(d)+'</text></g>';
+  nodes+='<g class="nx-n'+(nxSel.d===d?' on':'')+(on?'':' off')+'" style="animation-delay:'+(120+i*70)+'ms" data-nxd="'+esc(d)+'" tabindex="0" role="button" aria-pressed="'+(nxSel.d===d)+'" aria-label="'+esc(d)+' '+n+'"><title>'+esc(d)+' 연구실 '+n+'곳만 보기</title><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r.toFixed(1)+'" fill="'+col+'"/><text class="nx-t" x="'+tx2.toFixed(1)+'" y="'+ty2.toFixed(1)+'" text-anchor="'+anc2+'">'+esc(d)+'</text> <text class="nx-c num" style="fill:'+(col==="#FFFFFF"||col==="#E5B76E"||col==="#9DB8AA"?"#111418":"#fff")+'" x="'+x.toFixed(1)+'" y="'+(y+5).toFixed(1)+'" text-anchor="middle">'+n+'</text></g>';
   a0+=share;});
  return '<svg class="nx-svg" viewBox="0 0 '+W+' '+W+'" role="img" aria-label="'+esc(t.n)+' 주제와 이어진 학과 '+ds.length+'개, 연구실 '+L.length+'곳의 연결 그림"><g class="nx-stars" aria-hidden="true">'+Array.from({length:46},(_,q)=>{const a=q*2.399963,r=40+((q*53)%330);return '<circle cx="'+(C+Math.cos(a)*r).toFixed(1)+'" cy="'+(C+Math.sin(a)*r).toFixed(1)+'" r="'+(q%5===0?1.6:1)+'" style="animation-delay:'+(q%7)*400+'ms"/>'}).join("")+'</g><circle class="nx-halo" cx="'+C+'" cy="'+C+'" r="120"/><circle class="nx-ring" cx="'+C+'" cy="'+C+'" r="178"/><circle class="nx-ring" cx="'+C+'" cy="'+C+'" r="299"/>'+lines+dots+nodes+'<g class="nx-core"><circle cx="'+C+'" cy="'+C+'" r="74"/><text class="nx-ce" x="'+C+'" y="'+(C-16)+'" text-anchor="middle">'+esc(t.e.split(" ")[0])+'</text><text class="nx-ck" x="'+C+'" y="'+(C+12)+'" text-anchor="middle">'+esc(t.n.split("·")[0])+'</text><text class="nx-cs" x="'+C+'" y="'+(C+34)+'" text-anchor="middle">'+esc(t.n.split("·").slice(1).join("·"))+'</text></g></svg>';
 }
@@ -5080,7 +5080,7 @@ function nxPanel(t,L){
  const by={};L.forEach(p=>{(by[p[1]]=by[p[1]]||[]).push(p)});const ds=Object.keys(by).sort((a,b)=>nxDeptCol(a)-nxDeptCol(b)||by[b].length-by[a].length);
  const show=nxSel.d&&by[nxSel.d]?[nxSel.d]:ds;
  const dchips='<div class="nx-dch" role="group" aria-label="학과로 좁히기"><button type="button" data-nxd="" aria-pressed="'+(!nxSel.d)+'">전체 <span class="num">'+L.length+'</span></button>'+ds.map(d=>'<button type="button" data-nxd="'+esc(d)+'" aria-pressed="'+(nxSel.d===d)+'"><i style="background:'+NXCOL[nxDeptCol(d)]+'"></i>'+esc(d)+' <span class="num">'+by[d].length+'</span></button>').join("")+'</div>';
- const labs=show.map(d=>'<div class="nx-dg"><h4><i style="background:'+NXCOL[nxDeptCol(d)]+'"></i><a href="#d-'+DURL[d]+'">'+esc(d)+'</a><small>'+esc(COLLEGES[nxDeptCol(d)].n)+' · <span class="num">'+by[d].length+'</span>곳</small></h4><ul>'+by[d].map(p=>{const oth=nxThemesOfLab(p).filter(x=>x!==t);return '<li data-lab="'+PROFDIR.indexOf(p)+'"><a href="#search" data-nxq="'+esc(nxBase(p[0]))+'"><b>'+esc(p[3]||"(연구실 이름 미기재)")+'</b><span>'+esc(nxBase(p[0]))+' 교수'+(nxRole(p[0])?' · '+esc(nxRole(p[0])):'')+'</span></a>'+(oth.length?'<span class="nx-x" aria-label="함께 이어진 주제">'+oth.map(x=>'<a href="#nexus-'+x.k+'">'+esc(x.n.split("·")[0])+'</a>').join("")+'</span>':'')+'</li>'}).join("")+'</ul></div>').join("");
+ const labs=show.map(d=>'<div class="nx-dg"><h3><i style="background:'+NXCOL[nxDeptCol(d)]+'"></i><a href="#d-'+DURL[d]+'">'+esc(d)+'</a><small>'+esc(COLLEGES[nxDeptCol(d)].n)+' · <span class="num">'+by[d].length+'</span>곳</small></h3><ul>'+by[d].map(p=>{const oth=nxThemesOfLab(p).filter(x=>x!==t);return '<li data-lab="'+PROFDIR.indexOf(p)+'"><a href="#search" data-nxq="'+esc(nxBase(p[0]))+'"><b>'+esc(p[3]||"(연구실 이름 미기재)")+'</b><span>'+esc(nxBase(p[0]))+' 교수'+(nxRole(p[0])?' · '+esc(nxRole(p[0])):'')+'</span></a>'+(oth.length?'<span class="nx-x" aria-label="함께 이어진 주제">'+oth.map(x=>'<a href="#nexus-'+x.k+'">'+esc(x.n.split("·")[0])+'</a>').join("")+'</span>':'')+'</li>'}).join("")+'</ul></div>').join("");
  return dchips+'<div class="nx-labs">'+labs+'</div>';
 }
 function nxSide(t){
@@ -5137,7 +5137,7 @@ function nxStoryRel(x){const T=nxThemesOfStory(x).slice(0,3);if(!T.length)return
 /* v180 Nexus: 통합검색·연구 분야 화면 연결 */
 const NXAL={ai:["AI","인공지능","데이터"],chip:["반도체","양자","광학","레이저"],energy:["에너지","배터리","수소","탄소"],earth:["환경","기후","대기"],bio:["바이오","의료","생명","신약"],mat:["소재","나노","고분자"],robot:["로봇","기계","모빌리티","자율주행"],basic:["수학","기초과학","이론물리"]};
 function nxTeaser(){const all=new Set();NX.forEach(t=>nxLabs(t).forEach(p=>all.add(p)));
- return '<div class="nxh-l"><span class="eyebrow">연구 한 줄 · 끊김 없이 연결</span><h3>학과에서 멈추지 않고<br>연구실 · 소식 · 입학까지</h3><p>학과 이름을 몰라도 됩니다. 관심 주제를 고르면 그 주제를 연구하는 <b class="num">'+new Set([...all].map(p=>p[1])).size+'</b>개 학과, <b class="num">'+all.size+'</b>개 연구실이 한 화면에 이어집니다.</p><a class="nxh-b" href="#nexus">연구 연결 지도 열기 <i data-lucide="arrow-right"></i></a></div><div class="nxh-r">'+NX.map(t=>{const L=nxLabs(t);return '<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i><b>'+esc(t.n)+'</b><span>학과 <em class="num">'+new Set(L.map(p=>p[1])).size+'</em> · 연구실 <em class="num">'+L.length+'</em></span></a>'}).join("")+'</div>';}
+ return '<div class="nxh-l"><span class="eyebrow">연구 한 줄 · 끊김 없이 연결</span><h2>학과에서 멈추지 않고<br>연구실 · 소식 · 입학까지</h2><p>학과 이름을 몰라도 됩니다. 관심 주제를 고르면 그 주제를 연구하는 <b class="num">'+new Set([...all].map(p=>p[1])).size+'</b>개 학과, <b class="num">'+all.size+'</b>개 연구실이 한 화면에 이어집니다.</p><a class="nxh-b" href="#nexus">연구 연결 지도 열기 <i data-lucide="arrow-right"></i></a></div><div class="nxh-r">'+NX.map(t=>{const L=nxLabs(t);return '<a href="#nexus-'+t.k+'"><i data-lucide="'+t.ic+'"></i><b>'+esc(t.n)+'</b><span>학과 <em class="num">'+new Set(L.map(p=>p[1])).size+'</em> · 연구실 <em class="num">'+L.length+'</em></span></a>'}).join("")+'</div>';}
 {const _rs=runSearch;runSearch=function(){_rs();try{const q=($("#q").value||"").replace(/\s/g,"");if(q.length<2)return;const up=q.toUpperCase();const T=NX.filter(t=>NXAL[t.k].some(a=>up.includes(a.toUpperCase()))).slice(0,2);if(!T.length)return;const r=$("#res");if(!r)return;
  r.insertAdjacentHTML("afterbegin",T.map(t=>{const L=nxLabs(t);return '<li class="ri nxr"><a href="#nexus-'+t.k+'"><span class="src"><span>연구 한 줄</span>연구 연결 지도</span><b><i data-lucide="'+t.ic+'"></i> ‘'+esc(t.n)+'’ 주제로 이어 보기</b><p>이 주제를 연구하는 학과 '+new Set(L.map(p=>p[1])).size+'개 · 연구실 '+L.length+'곳 · 연구소 · 최근 소식 '+nxStories(t).length+'건을 한 화면에서 봅니다.</p></a></li>'}).join(""));icons();}catch(e){}};}
 {const _rf=PBODY["연구 분야"];if(_rf)PBODY["연구 분야"]=()=>_rf()+'<div class="nxh" style="margin-top:34px">'+nxTeaser()+'</div>';}
@@ -5551,7 +5551,7 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 .nx-ck{fill:#fff;font-weight:800;font-size:24px;letter-spacing:-.03em}.nx-cs{fill:#fff;font-weight:700;font-size:14px;opacity:.92}
 .nx-cap{margin:6px 4px 10px;font-size:13.5px;line-height:1.6;color:var(--mute)}.nx-cap b{color:var(--ink)}
 .nx-leg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;font-weight:700;color:var(--gray);padding:0 4px}
-.nx-leg i,.nx-dch i,.nx-dg h4 i,.nx-mx thead i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:baseline}
+.nx-leg i,.nx-dch i,.nx-dg h3 i,.nx-mx thead i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:baseline}
 .nx-h2{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:2px 0 14px;font-size:30px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
 .nx-h2 svg{width:28px;height:28px;color:var(--red)}.nx-h2 small{flex-basis:100%;font-size:15px;font-weight:600;color:var(--mute);letter-spacing:-.01em}.nx-h2 small b{color:var(--red-tx,#C11D0E)}
 .nx-dch{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
@@ -5560,9 +5560,9 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 .nx-dch button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}.nx-dch button[aria-pressed="true"] .num{color:rgba(255,255,255,.75)}
 .nx-labs{display:flex;flex-direction:column;gap:14px}
 .nx-dg{border:1px solid var(--line);border-radius:20px;background:#fff;padding:16px 18px 8px}
-.nx-dg h4{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:0 0 6px;font-size:17px;font-weight:800}
-.nx-dg h4 a{color:var(--ink);text-decoration:none}.nx-dg h4 a:hover{color:var(--red-tx,#C11D0E);text-decoration:underline}
-.nx-dg h4 small{font-size:12.5px;font-weight:600;color:var(--mute)}
+.nx-dg h3{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:0 0 6px;font-size:17px;font-weight:800}
+.nx-dg h3 a{color:var(--ink);text-decoration:none}.nx-dg h3 a:hover{color:var(--red-tx,#C11D0E);text-decoration:underline}
+.nx-dg h3 small{font-size:12.5px;font-weight:600;color:var(--mute)}
 .nx-dg ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:18px}
 .nx-dg li{display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);padding:9px 0;min-width:0;transition:background .3s}
 .nx-dg li.hit{background:var(--red-t,#FDECEA);box-shadow:-8px 0 0 var(--red-t,#FDECEA),8px 0 0 var(--red-t,#FDECEA)}
@@ -5616,7 +5616,7 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 .nxh{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);gap:34px;align-items:center;margin:26px 0 46px;background:var(--ink);color:#fff;border-radius:24px;padding:38px 40px;position:relative;overflow:hidden}
 .nxh:before{content:"";position:absolute;right:-120px;top:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(220,39,21,.5),rgba(220,39,21,0) 68%);pointer-events:none}
 .nxh>*{position:relative}.nxh .eyebrow{color:#FF8A7D}
-.nxh h3{margin:10px 0 12px;font-size:31px;line-height:1.3;font-weight:800;letter-spacing:-.03em;color:#fff}
+.nxh h2{margin:10px 0 12px;font-size:31px;line-height:1.3;font-weight:800;letter-spacing:-.03em;color:#fff}
 .nxh p{margin:0 0 20px;font-size:15.5px;line-height:1.8;color:rgba(255,255,255,.78)}.nxh p b{color:#fff}
 .nxh-b{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;border-radius:999px;padding:13px 22px;font-weight:800;font-size:15.5px;text-decoration:none;transition:transform .2s,background .2s}.nxh-b svg{width:18px;height:18px}.nxh-b:hover{background:#fff;color:var(--ink);transform:translateX(3px)}
 .nxh-r{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
@@ -5624,7 +5624,7 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-vm]"
 .nxh-r a svg{width:20px;height:20px;color:#FF8A7D}.nxh-r a b{font-size:14.5px;font-weight:800;letter-spacing:-.03em;line-height:1.35}.nxh-r a span{font-size:11.5px;color:rgba(255,255,255,.62)}.nxh-r a em{font-style:normal;font-weight:800;color:#fff}
 .nxh-r a:hover{background:var(--red);border-color:var(--red);transform:translateY(-3px)}.nxh-r a:hover svg{color:#fff}.nxh-r a:hover span{color:rgba(255,255,255,.9)}
 @media (max-width:1020px){.nx-g{grid-template-columns:minmax(0,1fr)}.nx-mapw{position:static}.nx-side{grid-template-columns:minmax(0,1fr)}.nx-leg{font-size:12px;gap:4px 12px}.nxh{grid-template-columns:1fr;padding:30px 24px}.nx-tabs{grid-template-columns:repeat(2,1fr)}.nxd-l{grid-template-columns:repeat(2,1fr)}.jr-r{grid-template-columns:1fr}}
-@media (max-width:640px){.nx-tabs{gap:8px}.nx-tabs button{padding:11px 12px;border-radius:16px;gap:8px}.nx-tabs button b{font-size:14px}.nx-tabs button em{display:none}.nx-dg ul{grid-template-columns:1fr}.nx-h2{font-size:25px}.nx-mapw{padding:8px 8px 14px;border-radius:20px}.nx-t{font-size:17px}.nx-c{font-size:17px}.nxh-r{grid-template-columns:repeat(2,1fr)}.nxh h3{font-size:25px}.nxd-l{grid-template-columns:1fr}.jr{padding:18px 16px 4px}.jr ol a,.jr ol span{font-size:13px;padding:5px 10px 5px 5px}.jr ol li+li:before{width:8px}.nx-dch{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.nx-dch button{white-space:nowrap;flex:none}}
+@media (max-width:640px){.nx-tabs{gap:8px}.nx-tabs button{padding:11px 12px;border-radius:16px;gap:8px}.nx-tabs button b{font-size:14px}.nx-tabs button em{display:none}.nx-dg ul{grid-template-columns:1fr}.nx-h2{font-size:25px}.nx-mapw{padding:8px 8px 14px;border-radius:20px}.nx-t{font-size:17px}.nx-c{font-size:17px}.nxh-r{grid-template-columns:repeat(2,1fr)}.nxh h2{font-size:25px}.nxd-l{grid-template-columns:1fr}.jr{padding:18px 16px 4px}.jr ol a,.jr ol span{font-size:13px;padding:5px 10px 5px 5px}.jr ol li+li:before{width:8px}.nx-dch{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.nx-dch button{white-space:nowrap;flex:none}}
 @media (prefers-reduced-motion:reduce){.nx-tabs button,.nxh-r a,.nxd-l a,.nxh-b{transition:none}}
 </style>
 <style>/* v182 온라인 신청 센터 · 제안요청서 대조표 · SNS 보내기 */
@@ -5775,7 +5775,7 @@ html,body{overflow-x:clip;max-width:100%}
 @media (max-width:1020px){.nx-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .nx-dg li>a b,.nxd-l a b,.ap-c b,.nx-st b{overflow-wrap:anywhere}
 .nx-go div,.nxs div,.nxd-t div{min-width:0}
-@media (max-width:640px){.nx-dch{max-width:100%;flex-wrap:wrap!important;overflow-x:visible!important;padding-bottom:0}.nx-dch button{white-space:normal!important;flex:0 1 auto!important}.stnx div{flex-wrap:wrap!important;overflow-x:visible!important}.nx-dg h4{min-width:0}.jr ol{min-width:0}.jr ol a,.jr ol span{white-space:normal}}
+@media (max-width:640px){.nx-dch{max-width:100%;flex-wrap:wrap!important;overflow-x:visible!important;padding-bottom:0}.nx-dch button{white-space:normal!important;flex:0 1 auto!important}.stnx div{flex-wrap:wrap!important;overflow-x:visible!important}.nx-dg h3{min-width:0}.jr ol{min-width:0}.jr ol a,.jr ol span{white-space:normal}}
 </style>
 <style>/* v193 디자인: Nexus 머리, 신청 센터 정돈 */
 .nxhero{background:radial-gradient(120% 90% at 85% -10%,#4A1610 0,#1B1416 38%,#0E1114 70%);color:#fff;padding:54px 0 38px;margin:0 0 30px}
@@ -5949,7 +5949,10 @@ label.ck input,.ap-agree input{width:24px!important;height:24px!important;min-wi
 <style>/* v220 PC도 최소 글자 13px — 1440px 실측(2026.11.13.) */
 @media (min-width:761px){
 .hd .draft,.kbd,.tdy-k,.tdy-k em,.nxh-r a span,.nxh-r a span em,.list .k,.ft-brand small,.pres-t,.cxon span,.dchips2 span,.chat .ch span,.now button em,.tg-sec .k,.urlrow button,.sc .th .pf,.jr-d a em,.jr-r ol em.num,.nx-leg span,.nx-x a,.nx-ins a span,.ap-nav a b.num,#stnx a b.num,.nx-dg ul li a span,.ql-d,.rf-s,.fu-s,
-.tg-sub,.tg-months li button small,.tg-months li button em,.stopic button small.num,.nx-tabs button span em,.nx-dg h4 small,.nx-dg h4 small span,.nx-side h3 small,.nx-st .gk,.nx-st .gk span,.ql-t th small,.vmfab button small,.rail .rq b,.fu-m small{font-size:13px!important}
+.tg-sub,.tg-months li button small,.tg-months li button em,.stopic button small.num,.nx-tabs button span em,.nx-dg h3 small,.nx-dg h3 small span,.nx-side h3 small,.nx-st .gk,.nx-st .gk span,.ql-t th small,.vmfab button small,.rail .rq b,.fu-m small{font-size:13px!important}
 .rail .rq b{letter-spacing:-.04em}.nx-tabs button span em{letter-spacing:0!important}
 }
+</style>
+<style>/* v221 고른 탭(빨강 바탕)의 작은 글자 대비 4.5 이상 */
+.nx-tabs button[aria-pressed="true"] em,.nx-tabs button[aria-pressed="true"] small,.nxhero .nx-tabs button[aria-pressed="true"] em,.nxhero .nx-tabs button[aria-pressed="true"] small{color:#fff!important}
 </style>
