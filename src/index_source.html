@@ -1543,6 +1543,7 @@ html,body{overflow-x:clip}
 /* 스크롤하며 서서히 나타남(포스텍) */
 .rv{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
+.rvy{transform:translateY(36px)!important;transition:transform .85s cubic-bezier(.2,.7,.2,1)!important}.rvy.in{transform:none!important}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
 .fsns{gap:10px!important}
@@ -3961,10 +3962,13 @@ addEventListener("scroll",heroState,{passive:true});addEventListener("hashchange
 try{if(localStorage.getItem("tbx")===new Date().toDateString())$("#topbar").hidden=true;}catch(_){}
 $("#topbarX").addEventListener("click",()=>{$("#topbar").hidden=true;try{localStorage.setItem("tbx",new Date().toDateString())}catch(_){};heroState();});
 
+/* 보이면 아래에서 올라오기(위치만) — 가벼운 방식 */
+const RVY=("IntersectionObserver" in window)?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;RVY.unobserve(t);t.classList.add("in");setTimeout(()=>{t.classList.remove("rvy","in");t.style.transitionDelay="";},1400);}}),{rootMargin:"0px 0px -8% 0px"}):null;
+const rvy=(el,i,m)=>{if(!RVY)return;el.classList.add("rvy");el.style.transitionDelay=((i%m)*60)+"ms";RVY.observe(el);};
 /* 스크롤하며 채워지는 큰 문장 */
 if(window.gsap&&window.ScrollTrigger&&!RM&&$("#fillT")){gsap.registerPlugin(ScrollTrigger);
  gsap.to("#fillT",{backgroundPosition:"0% 0",ease:"none",scrollTrigger:{trigger:"#fillT",start:"top 85%",end:"bottom 40%",scrub:true}});
- gsap.utils.toArray(".st,.tile,.b-sm,.cl-item").filter(el=>!el.closest("#need")).forEach((el,i)=>gsap.from(el,{y:40,duration:.9,ease:"power3.out",delay:(i%3)*.06,scrollTrigger:{trigger:el,start:"top 92%",once:true}}));
+ gsap.utils.toArray(".st,.tile,.b-sm,.cl-item").filter(el=>!el.closest("#need")).forEach((el,i)=>rvy(el,i,3));
 }else if($("#fillT"))$("#fillT").style.backgroundPosition="0% 0";
 const _rn=renderNeed;renderNeed=function(w){_rn(w);};
 
@@ -3975,7 +3979,7 @@ if(window.gsap&&!RM){
  if(window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);
   if(lenis)lenis.on("scroll",ScrollTrigger.update);
   ["#cols .col","#hstory .card",".sp-grid .sp",".events .ev",".list li"].forEach(sel=>{
-   gsap.utils.toArray(sel).forEach((el,i)=>gsap.from(el,{y:34,duration:.8,ease:"power3.out",delay:(i%4)*.06,scrollTrigger:{trigger:el,start:"top 92%",once:true}}));});
+   gsap.utils.toArray(sel).forEach((el,i)=>rvy(el,i,4));});
   $$("[data-count]").forEach(el=>{const v=+el.dataset.count;const o={n:v<100?0:v-40};gsap.to(o,{n:v,duration:1.4,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 90%",once:true},onUpdate:()=>el.textContent=Math.round(o.n)});});
  }
 }
