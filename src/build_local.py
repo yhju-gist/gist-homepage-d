@@ -23,6 +23,14 @@ if os.path.exists('fonts/pretendard-gist-sub.woff2') and os.path.exists('fonts/p
     def subf(m):
         full = m.group(0)
         small = re.sub(r'url\(fonts/f_[0-9a-f]+\.woff2\)', 'url(fonts/pretendard-gist-sub.woff2)', full)[:-1] + ';unicode-range:' + rng + '}'
+        if os.path.exists('fonts/pretendard-gist-crit.woff2') and os.path.exists('fonts/pretendard-gist-sub2.range.txt'):
+            # v216: 첫 화면에 보이는 글자(약 230자, 61KB)만 먼저 받고, 나머지 쓰는 글자(약 750자, 198KB)는 큰 사진이 그려진 뒤에 붙임
+            global SUB_LATE_JS, SUB_NOSCRIPT, FONT_PRELOAD
+            _r2 = open('fonts/pretendard-gist-sub2.range.txt').read().strip()
+            SUB_NOSCRIPT = '<noscript><style>' + small[:-1].replace(rng, _r2) + '}</style></noscript>'
+            SUB_LATE_JS = 'try{document.fonts.add(new FontFace("Pretendard GIST","url(fonts/pretendard-gist-sub.woff2) format(\\"woff2\\")",{weight:"45 920",style:"normal",display:"swap",unicodeRange:"' + _r2 + '"}))}catch(e){}'
+            FONT_PRELOAD = 'fonts/pretendard-gist-crit.woff2'
+            small = re.sub(r'url\(fonts/f_[0-9a-f]+\.woff2\)', 'url(fonts/pretendard-gist-crit.woff2)', full)[:-1] + ';unicode-range:' + open('fonts/pretendard-gist-crit.range.txt').read().strip() + '}'
         rest = 'fonts/pretendard-gist-rest.range.txt'
         if os.path.exists(rest):
             # v202: 전체 글꼴(나머지 글자용)은 CSS에 두지 않고, 화면이 다 뜬 뒤에 붙인다 — SNS 새 글의 드문 글자 하나 때문에 첫 화면에서 477KB를 받지 않도록
@@ -84,7 +92,7 @@ if i > 0:
     post = re.sub(r'<script defer src="[^"]+"></script>', '', post)
     PRELOAD_JS = ''.join('<link rel="preload" as="script" href="%s"%s>' % (u, ' crossorigin' if u.startswith('http') else '') for u in srcs)
     post += ('<script>(function(){var Q=' + _json.dumps(srcs) + ',d=0,im=document.getElementById("hxImg");'
-             'function go(){if(d)return;d=1;Q.forEach(function(u){var s=document.createElement("script");s.src=u;s.async=false;if(u.indexOf("http")===0)s.crossOrigin="anonymous";document.head.appendChild(s)})}'
+             'function go(){if(d)return;d=1;' + globals().get('SUB_LATE_JS','') + ';Q.forEach(function(u){var s=document.createElement("script");s.src=u;s.async=false;if(u.indexOf("http")===0)s.crossOrigin="anonymous";document.head.appendChild(s)})}'
              'function af(){requestAnimationFrame(function(){setTimeout(go,60)})}'
              'var h=location.hash;if((h&&h!=="#home"&&h!=="#")||!im||!window.requestAnimationFrame){go();return}'
              'var ok=0;try{new PerformanceObserver(function(l){if(l.getEntries().some(function(e){return e.element===im})){af()}}).observe({type:"largest-contentful-paint",buffered:true});ok=1}catch(e){}'
@@ -100,7 +108,7 @@ head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
         '<meta property="og:type" content="website"><meta property="og:title" content="GIST 홈페이지 D안 (시안)"><meta property="og:description" content="' + D + '">'
         '<meta property="og:url" content="' + U + '"><meta property="og:image" content="' + U + 'docs/화면_PC_첫화면.png"><meta name="twitter:card" content="summary_large_image">'
         '<link rel="canonical" href="' + U + '"><meta name="theme-color" content="#DC2715"><link rel="icon" href="img/favicon.png" type="image/png"><link rel="manifest" href="manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="지금, 지스트" href="feed.xml">'
-        '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="fonts/pretendard-gist-sub.woff2" crossorigin><link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
+        '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="' + globals().get('FONT_PRELOAD','fonts/pretendard-gist-sub.woff2') + '" crossorigin>' + globals().get('SUB_NOSCRIPT','') + '<link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
         + '<style>[hidden]{display:none!important}html.fw .hx-copy,html.fw .hx-cr{visibility:hidden}</style></head><body>'
         '<script>(function(){var b=document.body,h=location.hash,p=true;try{p=localStorage.getItem("d_pres")!=="0"}catch(e){}if(/[?&]tools=1/.test(location.search))p=false;if(p)b.classList.add("pres");if(!h||h==="#home")b.classList.add("onhero");var r=document.documentElement,f=document.fonts;if(f&&f.load&&window.Promise){r.classList.add("fw");window.__fz=function(){r.classList.remove("fw")};setTimeout(window.__fz,1800)}})();</script>\n')
 io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n' + LATE + '\n' + globals().get('LATE_FONT','') + '\n</body></html>')
