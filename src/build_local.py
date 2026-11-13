@@ -28,7 +28,15 @@ if os.path.exists('fonts/pretendard-gist-sub.woff2') and os.path.exists('fonts/p
             # v202: 전체 글꼴(나머지 글자용)은 CSS에 두지 않고, 화면이 다 뜬 뒤에 붙인다 — SNS 새 글의 드문 글자 하나 때문에 첫 화면에서 477KB를 받지 않도록
             global LATE_FONT
             u = re.search(r'url\((fonts/f_[0-9a-f]+\.woff2)\)', full).group(1)
-            LATE_FONT = '<script>addEventListener("load",function(){setTimeout(function(){try{document.fonts.add(new FontFace("Pretendard GIST","url(' + u + ') format(\\"woff2\\")",{weight:"45 920",style:"normal",display:"swap",unicodeRange:"' + open(rest).read().strip() + '"}))}catch(e){}},2500)})</script>'
+            _ck = 'fonts/pretendard-gist-rest.chunks.json'
+            if os.path.exists(_ck):
+                # v212: 나머지 글자는 작은 조각(조각마다 글자 64자 안팎, 21KB 이하)으로 — 드문 글자 하나 때문에 477KB를 받지 않음
+                import json as _j
+                _cs = [[c['f'], c['r']] for c in _j.load(open(_ck))]
+                LATE_FONT = ('<script>addEventListener("load",function(){setTimeout(function(){try{' + _j.dumps(_cs, separators=(',', ':')) +
+                             '.forEach(function(c){document.fonts.add(new FontFace("Pretendard GIST","url(fonts/"+c[0]+") format(\\"woff2\\")",{weight:"45 920",style:"normal",display:"swap",unicodeRange:c[1]}))})}catch(e){}},2500)})</script>')
+            else:
+                LATE_FONT = '<script>addEventListener("load",function(){setTimeout(function(){try{document.fonts.add(new FontFace("Pretendard GIST","url(' + u + ') format(\\"woff2\\")",{weight:"45 920",style:"normal",display:"swap",unicodeRange:"' + open(rest).read().strip() + '"}))}catch(e){}},2500)})</script>'
             return small
         return full + small
     LATE_FONT = ''
