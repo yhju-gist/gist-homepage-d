@@ -5299,6 +5299,7 @@ const RFP=[
  ["SFR-013","SNS 연계","기관 SNS 콘텐츠 끌어오기",0,"공식 유튜브·인스타그램 최근 글을 30분마다 자동으로 가져옴","home|#snsw"],
  ["SFR-013","SNS 연계","SNS 간편 로그인(네이버·카카오·구글)",2,"로그인 연계 — 시안 범위 밖",""]
 ];
+(function(){try{const nd=new Set(ORGDIR.map(r=>r[0])).size,nr=ORGDIR.length,np=IDX.filter(r=>r.s==="people"&&/ 교수/.test(r.t)).length;RFP.forEach(r=>{r[4]=r[4].replace("68개 부서 업무 358건",nd+"개 부서의 담당 업무·내선 "+nr+"건").replace("부서별 업무 358건, 교수 180명·연구실","부서별 담당 업무·내선 "+nr+"건, 교수 정보 "+np+"건·연구실")});}catch(_){}})();
 function renderRfp(){const cnt=[0,1,2].map(i=>RFP.filter(r=>r[3]===i).length);const ids=[...new Set(RFP.map(r=>r[0]))];
  const rows=ids.map(id=>{const R=RFP.filter(r=>r[0]===id);return R.map((r,i)=>'<tr data-st="'+r[3]+'" data-id="'+id+' · '+esc(r[1])+'">'+(i?'':'<th scope="rowgroup" rowspan="'+R.length+'" class="rf-id"><span class="num">'+id+'</span>'+esc(r[1])+'</th>')+'<td>'+esc(r[2])+'</td><td><span class="rf-s s'+r[3]+'">'+RFPS[r[3]]+'</span></td><td>'+esc(r[4])+'</td><td>'+(r[5]?'<a class="rp-go" href="#'+esc(r[5].split("|")[0])+'">보기 →</a>':'')+'</td></tr>').join("")}).join("");
  $("#v-page").innerHTML=dHero("CHECK","제안요청서 대조표","기능 요구사항 13개를 한 줄씩, 지금 되는 것과 구축 때 할 것으로 나눴습니다.")+
@@ -5395,6 +5396,35 @@ function renderIpaPage(k){const P=IPA.pages[k];const pos=ipaPos(k);if(!P||!pos){
  $$("#v-page .ipa-b .tbl-w").forEach(w=>{w.tabIndex=0;w.setAttribute("role","region");w.setAttribute("aria-label","Table")});document.title=P.t+" | International | GIST";}
 {const _ri=route;route=function(){const m=(LH()||"").match(/^#ipa(?:-([a-z\-]+))?$/);if(m){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));ipaLoad(function(){if((LH()||"").indexOf("#ipa")!==0)return;if(m[1])renderIpaPage(m[1]);else renderIpaHub();if(window.lucide)lucide.createIcons();});scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_ri();};}
 addEventListener("hashchange",function(){if(/^#ipa(-|$)/.test(LH()||""))route();});
+/* v234 통합검색에 새 화면 넣기: 고정 화면은 바로, 자료 파일(발전기금·국제교류·영문·서류 초안)은 검색을 쓰려 할 때 한 번 읽어 넣음 */
+let IDXM=0;
+function idxText(h){return String(h||"").replace(/<[^>]+>/g," ").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/\s+/g," ").trim();}
+function idxAdd(r){IDX.push(r);try{CMDX.push(r)}catch(_){}}
+(function(){
+ AP.forEach(F=>idxAdd({s:"main",site:"온라인 신청 센터 · "+F.g,t:F.n,p:F.d||"",k:"신청 접수 온라인 신청 "+F.g+" "+F.n+" "+(F.own||""),h:"#apply-"+F.id}));
+ NX.forEach(t=>idxAdd({s:"main",site:"연구 연결 지도",t:t.n+" 연구",p:"‘"+t.n+"’ 주제로 이어진 학과·연구실·연구소·소식을 한 화면에서 봅니다.",k:t.n+" "+(t.e||"")+" 연구 주제 연구실 연구소",h:"#nexus-"+t.k}));
+ [["온라인 신청 센터","입시자료·방문·상담·설명회·인턴십·오픈랩·국제교류·기부 약정을 한곳에서 신청하고 접수번호로 확인합니다.","#apply","신청 접수 조회 신청서"],
+  ["내 신청 내역","접수번호와 진행 상황을 확인하고 취소합니다.","#apply-my","신청 내역 조회 취소 접수번호"],
+  ["연구 연결 지도","연구 주제에서 학과·연구실·연구소·소식·진학·협력으로 이어 봅니다.","#nexus","연구 주제 연구실 지도 넥서스 Nexus"],
+  ["발전기금","기부 참여 방법, 기부자 예우, 후원의 집, 명예의 전당, 기부자 명단","#fund","기부 후원 발전재단 발전기금 약정"],
+  ["International (IPA)","Exchange programs, Global Intern Program, partner institutions, alumni","#ipa","국제교류 교환학생 외국인 exchange international IPA"],
+  ["제안요청서 대조표","제안요청서 기능 요구사항을 시안에서 동작·일부·구축 단계 몫으로 나눠 봅니다.","#rfp","제안요청서 요구사항 대조표 과업"],
+  ["서류 초안","자료·테스트·보안·품질·표준 요구사항 서류 초안 모음","#docs","서류 초안 요구사항 자료 표준 테스트 보안 품질"],
+  ["품질 성적표","현행 홈페이지와 D안을 같은 날 같은 PC에서 잰 값","#quality","속도 접근성 성능 품질 성적표 Lighthouse"]
+ ].forEach(x=>idxAdd({s:"main",site:"D안 화면",t:x[0],p:x[1],k:x[3],h:x[2]}));
+})();
+function idxMore(){if(IDXM)return;IDXM=1;let n=4;const done=function(){if(--n)return;try{
+  Object.keys(FUND.pages||{}).forEach(k=>{const P=FUND.pages[k];let t=idxText(P.h);if(k==="sponsors")t+=" "+(FUND.sponsors||[]).map(x=>x[0]+" "+x[3]).join(" ");if(k==="hall-of-fame")t+=" "+((FUND.fame||{}).clubs||[]).map(x=>x[0]).join(" ");idxAdd({s:"main",site:"발전기금 · "+(P.g||""),t:P.t,p:t.slice(0,110)||"발전기금 화면",k:"발전기금 기부 "+t.slice(0,1400),h:"#fund-"+k})});
+  Object.keys(IPA.pages||{}).forEach(k=>{const P=IPA.pages[k];const t=idxText(P.h);idxAdd({s:"main",site:"International · "+(P.nav||[]).slice(0,-1).join(" › "),t:P.t,p:t.slice(0,110)||"International (IPA)",k:"국제교류 IPA international "+t.slice(0,1400),h:"#ipa-"+k})});
+  Object.keys(ENP.pages||{}).forEach(k=>{const P=ENP.pages[k];const t=idxText(P.h);idxAdd({s:"main",site:"English · "+(P.nav||[]).slice(0,-1).join(" › "),t:P.t,p:t.slice(0,110)||"GIST English site",k:"영문 English "+t.slice(0,1400),h:"#en-"+k})});
+  (DOCS.docs||[]).forEach(d=>idxAdd({s:"main",site:"서류 초안 · "+d.id,t:d.n,p:String(d.req||"").slice(0,110),k:"서류 초안 요구사항 "+d.id+" "+idxText([d.req,d.now].concat(d.draft||[]).join(" ")).slice(0,1200),h:"#docs"}));
+ }catch(_){}
+ fuseCache.clear();try{if((LH()||"").indexOf("#search")===0&&$("#q")&&$("#q").value.trim())runSearch();}catch(_){}};
+ fundLoad(done);ipaLoad(done);enLoad(done);docsLoad(done);}
+document.addEventListener("focusin",function(e){if(e.target&&e.target.matches&&e.target.matches('input[type="search"]'))idxMore();});
+document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&(e.key==="k"||e.key==="K"))idxMore();});
+addEventListener("hashchange",function(){if((LH()||"").indexOf("#search")===0)idxMore();});
+if((location.hash||"").indexOf("#search")===0)setTimeout(idxMore,600);
 if(/^#ipa/.test(location.hash))setTimeout(route,0);
 
 /* SNS 보내기 */
