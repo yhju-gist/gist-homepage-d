@@ -3246,11 +3246,11 @@ const COLLEGES=[
 ];
 const NEED={
  ug:["대학 입학 전형","학과 둘러보기","장학 제도","생활관","캠퍼스 투어"],
- gr:["대학원 입학 전형","연구실 찾기","학과 홈페이지","장학·등록금","외국인 지원"],
+ gr:["대학원 입학 전형","연구실 찾기","학과 홈페이지","장학·등록금","외국인 지원|#ipa"],
  pa:["학과 둘러보기","장학 제도","생활관","학사일정","상담센터"],
  st:["학사 한 장","학사일정","수강신청","증명서 발급","장학","상담센터"],
  fa:["포털·ZEUS","업무별 담당부서","사람·업무 찾기|#search-people","규정","오룡관 예약"],
- co:["공동연구 문의","기술이전","사람·업무 찾기","창업 지원","발전기금"]
+ co:["공동연구 문의","기술이전","사람·업무 찾기","창업 지원","발전기금|#fund"]
 };
 const WHO={ug:"예비 학부생",gr:"대학원 지원자",pa:"학부모",st:"재학생",fa:"교직원",co:"기업·연구자"};
 const STORIES=[
@@ -4427,7 +4427,7 @@ addEventListener("lazylibs",()=>{try{
   var go=function(){var b=$('.who button[data-who="'+a.dataset.aud+'"]');if(b)b.click();var t=$("#aud");if(t){t.style.scrollMarginTop="140px";t.scrollIntoView({block:"start"});}};
   if((LH()||"#home")!=="#home"){location.hash="home";setTimeout(go,750);}else go();},true);
  /* 바닥글 '바로 하기' (스탠퍼드 Action) */
- var ft=$("footer .ft-top");if(ft&&!$(".ft-act")){ft.insertAdjacentHTML("afterend",'<div class="wrap ft-act"><b>바로 하기</b><a href="#apply">온라인 신청 센터</a><a href="#nexus">연구 연결 지도</a><a href="https://www.gist.ac.kr/uadm/main.html" target="_blank" rel="noopener noreferrer">대학 입학 지원 ↗</a><a href="https://www.gist.ac.kr/gadm/" target="_blank" rel="noopener noreferrer">대학원 입학 지원 ↗</a><a href="https://www.gist.ac.kr/kr/html/sub01/010305.html" target="_blank" rel="noopener noreferrer">찾아오시는 길 ↗</a><a href="https://www.youtube.com/c/GIST_YOUTUBE" target="_blank" rel="noopener noreferrer">유튜브 ↗</a><a href="https://www.instagram.com/gist.ac.kr/" target="_blank" rel="noopener noreferrer">인스타그램 ↗</a></div>');}
+ var ft=$("footer .ft-top");if(ft&&!$(".ft-act")){ft.insertAdjacentHTML("afterend",'<div class="wrap ft-act"><b>바로 하기</b><a href="#apply">온라인 신청 센터</a><a href="#nexus">연구 연결 지도</a><a href="#fund">발전기금</a><a href="#ipa" lang="en">International</a><a href="https://www.gist.ac.kr/uadm/main.html" target="_blank" rel="noopener noreferrer">대학 입학 지원 ↗</a><a href="https://www.gist.ac.kr/gadm/" target="_blank" rel="noopener noreferrer">대학원 입학 지원 ↗</a><a href="https://www.gist.ac.kr/kr/html/sub01/010305.html" target="_blank" rel="noopener noreferrer">찾아오시는 길 ↗</a><a href="https://www.youtube.com/c/GIST_YOUTUBE" target="_blank" rel="noopener noreferrer">유튜브 ↗</a><a href="https://www.instagram.com/gist.ac.kr/" target="_blank" rel="noopener noreferrer">인스타그램 ↗</a></div>');}
 })();
 
 
