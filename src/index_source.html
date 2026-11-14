@@ -3161,7 +3161,19 @@ html.calm .vmfab{top:calc(50% - 60px)}
 </div>
 </main>
 
-<footer><div class="wrap ft-top">
+<style>/* v255 꼬리말 큰 GIST 글자: 글자 안에 학교 사진이 5초마다 바뀐다(겹쳐 놓고 서서히 바꿈). 움직임 줄이기 설정이면 첫 사진만 */
+.ft-big{position:relative;height:clamp(118px,29vw,400px);margin:22px auto 0;max-width:1280px;overflow:hidden}
+.ft-bigw{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--f-disp);font-size:clamp(96px,24vw,330px);line-height:1.2;letter-spacing:.02em;color:transparent;background-color:#39424A;background-size:cover;background-position:center 55%;-webkit-background-clip:text;background-clip:text;opacity:0;transition:opacity 1.4s ease;user-select:none;pointer-events:none}
+.ft-bigw.on{opacity:1}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){.ft-bigw{color:#39424A;background:none!important}}
+@media (prefers-reduced-motion:reduce){.ft-bigw{transition:none}}
+</style>
+<footer><div class="ft-big" id="ftbig" aria-hidden="true">
+  <span class="ft-bigw on" style="background-image:url({{IMG:campus_pano.jpg}})">GIST</span>
+  <span class="ft-bigw" data-bg="{{IMG:aerial.jpg}}">GIST</span>
+  <span class="ft-bigw" data-bg="{{IMG:campus_air.jpg}}">GIST</span>
+  <span class="ft-bigw" data-bg="{{IMG:campus_plaza.jpg}}">GIST</span>
+</div><div class="wrap ft-top">
   <div class="ft-brand"><img class="ft-ci" src="{{IMG:ci_gist_w.png}}" alt="GIST" width="137" height="42"><p>광주과학기술원<br><small>Creating limitless possibilities through research and education</small></p>
    <div class="ft-call"><span>대표전화</span><b class="num">062-715-2114</b><span>팩스</span><b class="num">062-715-2300</b></div>
    <a class="pill ft-way" href="https://www.gist.ac.kr/kr/html/sub01/010305.html" target="_blank" rel="noopener noreferrer">찾아오시는 길 →</a></div>
@@ -3184,6 +3196,15 @@ html.calm .vmfab{top:calc(50% - 60px)}
   <div>(우)61005 전남광주통합특별시 북구 첨단과기로 123 (오룡동) · Tel. 062)715-2114 · Fax. 062)715-2300<br><span style="font-size:13px">이 화면은 대표 홈페이지 재구축 TF 단과대학 의견용 D안 시안입니다. 내용은 2026.11.10. 현행 홈페이지·공식 유튜브에서 가져왔습니다.</span></div>
   <div class="vmode" role="group" aria-label="화면 보기 방식(위원회 비교용)"><span>위원회 비교용 화면 보기</span><button type="button" data-vm="" aria-pressed="true">기본</button><button type="button" data-vm="calm" aria-pressed="false">간결 (스탠퍼드형)</button><small>간결: 오른쪽 떠 있는 단추 숨김 · 첫 화면 검색·내 바로가기 블록 숨김 · 숫자 글꼴을 본문·제목 글꼴로(글꼴 4종→2종)</small></div>
 </div></footer>
+<script>/* v255 꼬리말 큰 GIST 글자 사진 바꾸기: 꼬리말이 화면에 들어온 뒤에만 사진을 받고 5초마다 다음 사진으로 */
+(function(){var box=document.getElementById("ftbig");if(!box)return;var w=[].slice.call(box.querySelectorAll(".ft-bigw")),i=0,tm=null,still=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+function load(el){var u=el.getAttribute("data-bg");if(u){el.style.backgroundImage="url("+u+")";el.removeAttribute("data-bg")}}
+function next(){var n=(i+1)%w.length;load(w[n]);w[i].classList.remove("on");w[n].classList.add("on");i=n;load(w[(n+1)%w.length])}
+function run(on){if(still)return;if(on&&!tm){load(w[(i+1)%w.length]);tm=setInterval(next,5000)}else if(!on&&tm){clearInterval(tm);tm=null}}
+if("IntersectionObserver" in window){new IntersectionObserver(function(e){run(e[0].isIntersecting)},{rootMargin:"200px"}).observe(box)}else run(true);
+document.addEventListener("visibilitychange",function(){if(document.hidden)run(false)});})();
+</script>
+
 
 <nav class="tabbar" aria-label="휴대폰 메뉴">
   <a href="#home"><i data-lucide="house"></i>홈</a>
