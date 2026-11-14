@@ -2818,6 +2818,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
   <section class="p-sec p-sns" aria-labelledby="p-h-sns">
     <h2 class="p-tit" id="p-h-sns">Social Media <small class="p-ko">GIST 공식 SNS</small> <span class="tag" data-r="17"><b>⑰</b>공식 유튜브 실제 연동</span></h2>
     <div class="p-srow" id="psns" tabindex="0" aria-label="SNS 최근 글, 좌우로 넘겨 보기"></div>
+    <div class="wrap"><div class="ytv" id="ytv" hidden aria-label="GIST 공식 유튜브 최근 영상"><div class="ytv-c" data-k="w"></div><div class="ytv-c" data-k="w2"></div><div class="ytv-c ytv-s" data-k="s"></div></div></div>
     <div class="wrap p-acc"><a href="https://www.youtube.com/c/GIST_YOUTUBE" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://www.instagram.com/gist.ac.kr/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.facebook.com/GIST.SNS" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://blog.naver.com/bestgista" target="_blank" rel="noopener noreferrer">Blog</a></div>
     <div class="wrap subs" aria-labelledby="h-subs"><div><h3 id="h-subs">새 소식 받기</h3><p>미디어센터 새 글을 RSS로 받거나, GIST 공식 채널을 구독하세요.</p></div><div class="subs-b"><a href="feed.xml" class="rss" data-rss="1"><i data-lucide="rss"></i>RSS 주소</a><a href="https://www.youtube.com/c/GIST_YOUTUBE?sub_confirmation=1" target="_blank" rel="noopener noreferrer"><i data-lucide="youtube"></i>유튜브 구독</a><a href="https://www.instagram.com/gist.ac.kr/" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i>인스타그램</a><a href="https://www.facebook.com/GIST.SNS" target="_blank" rel="noopener noreferrer"><i data-lucide="facebook"></i>페이스북</a><a href="https://blog.naver.com/bestgista" target="_blank" rel="noopener noreferrer"><i data-lucide="book-open"></i>네이버 블로그</a><a href="https://www.linkedin.com/company/gwangju-institute-of-science-&amp;-technology" target="_blank" rel="noopener noreferrer"><i data-lucide="linkedin"></i>LinkedIn</a></div></div>
   </section>
@@ -3161,6 +3162,25 @@ html.calm .vmfab{top:calc(50% - 60px)}
 </div>
 </main>
 
+<style>/* v256 공식 유튜브 세로 줄: 가로 영상 두 줄 + 쇼츠 한 줄이 천천히 위로 흐른다(올리거나 초점이 가면 멈춤, 움직임 줄이기면 멈춘 채 보임). 꼬리말 큰 GIST 글자: 화면에 들어올 때 사선 띠가 벌어지며 드러난다 */
+.ytv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.62fr);gap:14px;height:460px;overflow:hidden;margin-top:18px;border-radius:24px;-webkit-mask-image:linear-gradient(#0000,#000 9%,#000 91%,#0000);mask-image:linear-gradient(#0000,#000 9%,#000 91%,#0000)}
+.ytv[hidden]{display:none}
+.ytv.ytv-2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ytv.ytv-2 .ytv-s{display:none}
+.ytv-c{min-width:0;overflow:hidden}.ytv-t{display:flex;flex-direction:column;gap:14px;animation:ytvup 46s linear infinite}
+.ytv-c[data-k="w2"] .ytv-t{animation-duration:58s;animation-direction:reverse}.ytv-s .ytv-t{animation-duration:52s}
+.ytv:hover .ytv-t,.ytv:focus-within .ytv-t{animation-play-state:paused}
+@keyframes ytvup{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 7px))}}
+.ytv-i{display:block;position:relative;border-radius:20px;overflow:hidden;background:var(--soft);color:#fff;text-decoration:none;flex:none}
+.ytv-i img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.ytv-s .ytv-i img{aspect-ratio:9/16}
+.ytv-i span{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;font-size:14px;font-weight:700;line-height:1.4;background:linear-gradient(#0000,rgba(17,20,24,.86));display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ytv-i:focus-visible{outline:3px solid var(--red);outline-offset:-3px}
+@media (max-width:760px){.ytv{grid-template-columns:minmax(0,1fr) minmax(0,.62fr);height:380px}.ytv-c[data-k="w2"]{display:none}.ytv.ytv-2{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.ytv-t{animation:none}.ytv{height:auto;max-height:460px}}
+.ft-big::before,.ft-big::after{content:"";position:absolute;z-index:2;top:-20%;height:140%;width:62%;background:var(--ink);transition:transform 1.25s cubic-bezier(.7,0,.2,1);pointer-events:none}
+.ft-big::before{left:-6%;transform:skewX(-18deg)}.ft-big::after{right:-6%;transform:skewX(-18deg)}
+.ft-big.open::before{transform:skewX(-18deg) translateX(-105%)}.ft-big.open::after{transform:skewX(-18deg) translateX(105%)}
+@media (prefers-reduced-motion:reduce){.ft-big::before,.ft-big::after{display:none}}
+</style>
 <style>/* v255 꼬리말 큰 GIST 글자: 글자 안에 학교 사진이 5초마다 바뀐다(겹쳐 놓고 서서히 바꿈). 움직임 줄이기 설정이면 첫 사진만 */
 .ft-big{position:relative;height:clamp(118px,29vw,400px);margin:22px auto 0;max-width:1280px;overflow:hidden}
 .ft-bigw{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--f-disp);font-size:clamp(96px,24vw,330px);line-height:1.2;letter-spacing:.02em;color:transparent;background-color:#39424A;background-size:cover;background-position:center 55%;-webkit-background-clip:text;background-clip:text;opacity:0;transition:opacity 1.4s ease;user-select:none;pointer-events:none}
@@ -3196,12 +3216,25 @@ html.calm .vmfab{top:calc(50% - 60px)}
   <div>(우)61005 전남광주통합특별시 북구 첨단과기로 123 (오룡동) · Tel. 062)715-2114 · Fax. 062)715-2300<br><span style="font-size:13px">이 화면은 대표 홈페이지 재구축 TF 단과대학 의견용 D안 시안입니다. 내용은 2026.11.10. 현행 홈페이지·공식 유튜브에서 가져왔습니다.</span></div>
   <div class="vmode" role="group" aria-label="화면 보기 방식(위원회 비교용)"><span>위원회 비교용 화면 보기</span><button type="button" data-vm="" aria-pressed="true">기본</button><button type="button" data-vm="calm" aria-pressed="false">간결 (스탠퍼드형)</button><small>간결: 오른쪽 떠 있는 단추 숨김 · 첫 화면 검색·내 바로가기 블록 숨김 · 숫자 글꼴을 본문·제목 글꼴로(글꼴 4종→2종)</small></div>
 </div></footer>
+<script>/* v256 공식 유튜브 세로 줄: SNS 목록(공식 유튜브 실제 연동)에서 영상을 골라 가로 두 줄·쇼츠 한 줄로 흘린다. 영상이 모자라면 줄을 숨긴다 */
+(function(){var box=document.getElementById("ytv");if(!box)return;var sig="";
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function id(u){var m=/(?:v=|shorts\/|youtu\.be\/)([\w-]{6,})/.exec(u||"");return m?m[1]:""}
+function card(x){var v=x.id||id(x.u);if(!v)return"";return '<a class="ytv-i" href="'+esc(x.u)+'" target="_blank" rel="noopener noreferrer"><img src="'+esc(x.img||("https://i.ytimg.com/vi/"+v+"/hqdefault.jpg"))+'" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'"><span>'+esc(x.t)+'</span></a>'}
+function draw(){var L=window.__gSNS?window.__gSNS():null;if(!L)return;var yt=(L||[]).filter(function(x){return x.p==="yt"&&x.u});var s=yt.map(function(x){return x.u}).join("|");if(s===sig)return;sig=s;
+ var sh=yt.filter(function(x){return /\/shorts\//.test(x.u)}),w=yt.filter(function(x){return !/\/shorts\//.test(x.u)});
+ if(w.length<4){box.hidden=true;return}
+ var a=w.filter(function(_,i){return i%2===0}),b=w.filter(function(_,i){return i%2===1});box.classList.toggle("ytv-2",!sh.length);
+ [["w",a],["w2",b],["s",sh]].forEach(function(p){var c=box.querySelector('[data-k="'+p[0]+'"]');var h=p[1].map(card).join("");c.innerHTML='<div class="ytv-t">'+h+h.replace(/<a /g,'<a tabindex="-1" aria-hidden="true" ')+'</div>'});
+ box.hidden=false}
+draw();setInterval(draw,4000);})();
+</script>
 <script>/* v255 꼬리말 큰 GIST 글자 사진 바꾸기: 꼬리말이 화면에 들어온 뒤에만 사진을 받고 5초마다 다음 사진으로 */
 (function(){var box=document.getElementById("ftbig");if(!box)return;var w=[].slice.call(box.querySelectorAll(".ft-bigw")),i=0,tm=null,still=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
 function load(el){var u=el.getAttribute("data-bg");if(u){el.style.backgroundImage="url("+u+")";el.removeAttribute("data-bg")}}
 function next(){var n=(i+1)%w.length;load(w[n]);w[i].classList.remove("on");w[n].classList.add("on");i=n;load(w[(n+1)%w.length])}
-function run(on){if(still)return;if(on&&!tm){load(w[(i+1)%w.length]);tm=setInterval(next,5000)}else if(!on&&tm){clearInterval(tm);tm=null}}
-if("IntersectionObserver" in window){new IntersectionObserver(function(e){run(e[0].isIntersecting)},{rootMargin:"200px"}).observe(box)}else run(true);
+function run(on){if(on)box.classList.add("open");if(still)return;if(on&&!tm){load(w[(i+1)%w.length]);tm=setInterval(next,5000)}else if(!on&&tm){clearInterval(tm);tm=null}}
+if("IntersectionObserver" in window){new IntersectionObserver(function(e){run(e[0].isIntersecting)},{threshold:.35}).observe(box)}else run(true);
 document.addEventListener("visibilitychange",function(){if(document.hidden)run(false)});})();
 </script>
 
@@ -3895,6 +3928,7 @@ const SNS=[
 ];
 const IGI='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
 const YTI='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></svg>';
+window.__gSNS=function(){return SNS};
 function snsCard(x,i,tag){return '<'+(tag||'button type="button"')+' class="sc '+x.p+'" data-i="'+i+'"><span class="th">'+(x.img?'<img src="'+x.img+'" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">':'<canvas data-s="'+i+'"></canvas>')+'<span class="pf">'+(x.p==="ig"?IGI+"Instagram":x.p==="fb"?"Facebook":YTI+"YouTube")+'</span>'+(x.p==="yt"?'<span class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>':'')+'</span><span class="bd"><b>'+esc(x.t)+'</b><small>'+esc(x.d)+(x.p==="yt"?' · 공식 유튜브':x.p==="fb"?' · 페이스북':' · 인스타그램')+'</small></span></'+(tag?tag.split(" ")[0]:'button')+'>';}
 function drawSns(){$$(".sc canvas").forEach(c=>{const r=c.getBoundingClientRect();if(!r.width)return;const d=Math.min(devicePixelRatio||1,2);c.width=r.width*d;c.height=r.height*d;const x=c.getContext("2d");x.scale(d,d);const W=r.width,H=r.height,i=+c.dataset.s,s=SNS[i];
  const g=x.createLinearGradient(0,0,W,H);const pal=[["#2A1114","#DC2715"],["#111418","#4F5B54"],["#1A1E23","#7A2A22"],["#20262B","#3A4047"]][i%4];g.addColorStop(0,pal[0]);g.addColorStop(1,pal[1]);x.fillStyle=g;x.fillRect(0,0,W,H);
