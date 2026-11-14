@@ -395,7 +395,11 @@ $("#mega").addEventListener("click",e=>{if(e.target.closest("a"))closeMega()});
 /* 유리 머리 + 위로 */
 addEventListener("scroll",()=>{const y=scrollY;$("header.hd").classList.toggle("glass",y>10);$("#toTop").classList.toggle("on",y>700);},{passive:true});
 /* 삼성 인터넷: 스크롤하면 브라우저가 화면 아래 가운데에 위·아래 단추 두 개를 띄움 → 그동안 아래 탭을 그 위로 올림 */
-if(/SamsungBrowser/i.test(navigator.userAgent)||/[?&]sb=1/.test(location.search)){const tb=$(".tabbar");let tt=0;if(tb)addEventListener("scroll",()=>{tb.classList.add("lift");clearTimeout(tt);tt=setTimeout(()=>tb.classList.remove("lift"),3200);},{passive:true});}
+(function(){const tb=$(".tabbar");if(!tb)return;const SB=/SamsungBrowser/i.test(navigator.userAgent)||/[?&]sb=1/.test(location.search);let ly=scrollY,acc=0,tt=0;
+addEventListener("scroll",()=>{const y=scrollY,d=y-ly;ly=y;if(Math.abs(d)<2)return;acc=((d>0)===(acc>0))?acc+d:d;const end=y+innerHeight>document.documentElement.scrollHeight-60;
+ if(acc>40&&y>200&&!end)tb.classList.add("hide");else if(acc<-16||y<=200||end)tb.classList.remove("hide");
+ if(SB){tb.classList.add("side");clearTimeout(tt);tt=setTimeout(()=>tb.classList.remove("side"),3200);}},{passive:true});
+tb.addEventListener("focusin",()=>tb.classList.remove("hide"));addEventListener("hashchange",()=>{tb.classList.remove("hide");acc=0;});})();
 $("#toTop").addEventListener("click",()=>{lenis?lenis.scrollTo(0):scrollTo({top:0,behavior:"smooth"})});
 /* 마우스 빛 */
 document.addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".col");if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px");});
