@@ -397,8 +397,8 @@ addEventListener("scroll",()=>{const y=scrollY;$("header.hd").classList.toggle("
 /* 삼성 인터넷: 스크롤하면 브라우저가 화면 아래 가운데에 위·아래 단추 두 개를 띄움 → 그동안 아래 탭을 그 위로 올림 */
 (function(){const tb=$(".tabbar");if(!tb)return;const SB=/SamsungBrowser/i.test(navigator.userAgent)||/[?&]sb=1/.test(location.search);let ly=scrollY,acc=0,tt=0;
 addEventListener("scroll",()=>{const y=scrollY,d=y-ly;ly=y;if(Math.abs(d)<2)return;acc=((d>0)===(acc>0))?acc+d:d;const end=y+innerHeight>document.documentElement.scrollHeight-60;
- if(acc>40&&y>200&&!end)tb.classList.add("hide");else if(acc<-16||y<=200||end)tb.classList.remove("hide");
- if(SB){tb.classList.add("side");clearTimeout(tt);tt=setTimeout(()=>tb.classList.remove("side"),3200);}},{passive:true});
+ if(SB){tb.classList.add("hide");clearTimeout(tt);tt=setTimeout(()=>tb.classList.remove("hide"),3600);return;}
+ if(acc>40&&y>200&&!end)tb.classList.add("hide");else if(acc<-16||y<=200||end)tb.classList.remove("hide");},{passive:true});
 tb.addEventListener("focusin",()=>tb.classList.remove("hide"));addEventListener("hashchange",()=>{tb.classList.remove("hide");acc=0;});})();
 $("#toTop").addEventListener("click",()=>{lenis?lenis.scrollTo(0):scrollTo({top:0,behavior:"smooth"})});
 /* 마우스 빛 */
