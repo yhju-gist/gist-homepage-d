@@ -1944,7 +1944,7 @@ function apField(F,x){const [k,lab,tp,op,req]=x;const id="ap-"+k;const L=F.en?{s
  else if(tp==="lab")c='<select id="'+id+'" name="'+k+'" data-aplab><option value="">'+(F.en?"Any lab":"학과를 먼저 고르세요 (정하지 않아도 됩니다)")+'</option></select>';
  else if(tp==="radio")return '<fieldset class="ap-f"><legend>'+esc(lab)+(req?' <em aria-hidden="true">*</em>':'')+'</legend><div class="ap-r">'+op.map((o,i)=>'<label><input type="radio" name="'+k+'" value="'+esc(o)+'"'+(req&&!i?' required':'')+'><span>'+esc(o)+'</span></label>').join("")+'</div><p class="ap-e" data-e="'+k+'" role="alert"></p></fieldset>';
  else if(tp==="textarea")c='<textarea id="'+id+'" name="'+k+'" rows="4" maxlength="1000"'+rq+'></textarea>';
- else if(tp==="number")c='<input id="'+id+'" name="'+k+'" type="number" inputmode="numeric" min="'+op[0]+'" max="'+op[1]+'"'+rq+'>';
+ else if(tp==="number")c='<input id="'+id+'" name="'+k+'" type="number" inputmode="numeric" min="'+op[0]+'" max="'+op[1]+'" placeholder="'+op[0].toLocaleString()+'~'+op[1].toLocaleString()+'"'+rq+'>';
  else c='<input id="'+id+'" name="'+k+'" type="'+tp+'"'+(tp==="email"?' autocomplete="email" placeholder="name@example.com"':tp==="tel"?' autocomplete="tel" placeholder="010-0000-0000"':tp==="date"?' min="'+new Date().toISOString().slice(0,10)+'"':'')+' maxlength="120"'+rq+'>';
  return '<div class="ap-f'+(tp==="textarea"||k==="addr"||k==="file"?' w':'')+'"><label for="'+id+'">'+esc(lab)+(req?' <em aria-hidden="true">*</em>':' <small>('+L.opt+')</small>')+'</label>'+c+'<p class="ap-e" data-e="'+k+'" role="alert"></p></div>';}
 function pvHead(o){const L=o.en?{pos:"Breadcrumb",home:"Home",cp:"Copy this page address",pr:"Print this page"}:{pos:"현재 위치",home:"홈으로",cp:"이 화면 주소 복사",pr:"이 화면 인쇄"};
