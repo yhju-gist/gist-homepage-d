@@ -254,3 +254,18 @@ try:
     print('학과 글 화면 %d개, sitemap.xml, robots.txt 만들었습니다' % (len(urls) - 1))
 except Exception as ex:
     print('학과 글 화면은 건너뜀:', ex)
+
+# 보안 정책: 스크립트가 없는 글 화면(학과·소식·404)은 스크립트를 아예 막는 엄격한 정책을 머리에 넣음
+_SUBCSP = ('<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src \'none\'; style-src \'self\' \'unsafe-inline\'; '
+           'img-src \'self\' data: https:; font-src \'self\' data:; connect-src \'none\'; object-src \'none\'; base-uri \'self\'; form-action \'self\'; upgrade-insecure-requests">'
+           '<meta name="referrer" content="strict-origin-when-cross-origin">')
+import glob as _glob
+_n = 0
+for _f in ['404.html'] + sorted(_glob.glob('dept/*.html')) + sorted(_glob.glob('news/*.html')):
+    _t = io.open(_f, encoding='utf-8').read()
+    if 'Content-Security-Policy' in _t or '<meta charset="utf-8">' not in _t:
+        continue
+    if re.search(r'<script(?![^>]*\bsrc=)(?![^>]*application/ld\+json)[^>]*>', _t) or re.search(r'<script[^>]*\bsrc=', _t) or re.search(r'\son[a-z]+=', _t):
+        continue
+    io.open(_f, 'w', encoding='utf-8').write(_t.replace('<meta charset="utf-8">', '<meta charset="utf-8">' + _SUBCSP, 1)); _n += 1
+print('글 화면 %d개에 엄격한 보안 정책을 넣었습니다' % _n)
