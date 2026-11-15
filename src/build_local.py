@@ -130,7 +130,19 @@ head = ('<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="
         '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="' + globals().get('FONT_PRELOAD','fonts/pretendard-gist-sub.woff2') + '" crossorigin>' + globals().get('SUB_NOSCRIPT','') + '<link rel="preload" as="image" href="img/' + hero + '" media="(max-width:700px)" fetchpriority="high">'
         + '<style>[hidden]{display:none!important}html.fw .hx-copy,html.fw .hx-cr{visibility:hidden}</style></head><body>'
         '<script>(function(){var b=document.body,h=location.hash,p=true;try{p=localStorage.getItem("d_pres")!=="0"}catch(e){}if(/[?&]tools=1/.test(location.search))p=false;if(p)b.classList.add("pres");if(!h||h==="#home")b.classList.add("onhero");var r=document.documentElement,f=document.fonts;if(f&&f.load&&window.Promise){r.classList.add("fw");window.__fz=function(){r.classList.remove("fw")};setTimeout(window.__fz,1800)}})();</script>\n')
-io.open('index.html', 'w', encoding='utf-8').write(head + s + '\n' + LATE + '\n' + globals().get('LATE_FONT','') + '\n</body></html>')
+_doc = head + s + '\n' + LATE + '\n' + globals().get('LATE_FONT','') + '\n</body></html>'
+# 보안 정책: 화면 안 스크립트는 내용 지문(sha256)으로만 허용 ('unsafe-inline' 빼기)
+import hashlib as _hl, base64 as _b64
+_hs = []
+for _m in re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>', _doc, re.S):
+    if 'application/ld+json' in _m.group(1) or 'application/json' in _m.group(1):
+        continue
+    _h = "'sha256-" + _b64.b64encode(_hl.sha256(_m.group(2).encode('utf-8')).digest()).decode() + "'"
+    if _h not in _hs: _hs.append(_h)
+_old = "script-src \'self\' \'unsafe-inline\' https://cdn.jsdelivr.net"
+assert _doc.count(_old.replace("\\'", "'")) == 1, 'CSP 자리 없음'
+_doc = _doc.replace(_old.replace("\\'", "'"), "script-src 'self' " + ' '.join(_hs) + " https://cdn.jsdelivr.net")
+io.open('index.html', 'w', encoding='utf-8').write(_doc)
 print('index.html 만들었습니다 (글꼴 %d개, webp %d장)' % (len(keep), len(webp)))
 
 # 4-2) 10년 기준 부속 파일: 소식 구독(feed.xml), 디자인 값(tokens.json), 앱 정보(manifest), 없는 주소 안내(404.html)
