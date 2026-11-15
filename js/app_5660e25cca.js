@@ -1,6 +1,7 @@
 
 (function(){
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const safeUrl=u=>{u=String(u||"").trim();return /^(https:\/\/|data:image\/(png|jpe?g|webp|gif|avif);|blob:|img\/|\.\/|\/(?!\/))/i.test(u)?u:""};
 document.addEventListener("submit",e=>{if(e.target&&e.target.matches&&e.target.matches("form[data-nosubmit]"))e.preventDefault()},true);
 document.addEventListener("error",e=>{const t=e.target;if(t&&t.tagName==="IMG"&&t.hasAttribute("data-hideerr"))t.style.visibility="hidden"},true);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -778,7 +779,7 @@ let PAGEOV={};
 let SITE=JSON.parse(JSON.stringify(DEF)),SITE_AT=null;
 const HERO0=$("#hxImg").getAttribute("src");
 const BNIMG0=EXI.map(n=>IMG(n));
-function setHeroImg(u){const s=u||HERO0;const im=$("#hxImg");if(im.getAttribute("src")!==s)im.src=s;}
+function setHeroImg(u){u=safeUrl(u);const s=u||HERO0;const im=$("#hxImg");if(im.getAttribute("src")!==s)im.src=s;}
 function applySite(S){
  PAGEOV=S.pages||{};try{IDX.forEach(r=>{if(!r.h||!/^#p-/.test(r.h))return;if(r.k0==null)r.k0=r.k;const o=PAGEOV[r.t];r.k=r.k0+(o?" "+[o.lead,o.dept,o.body].filter(Boolean).join(" "):"");});if(typeof fuseCache!=="undefined"&&fuseCache.clear)fuseCache.clear();}catch(_){}try{if(typeof pageCtx==="function"&&pageCtx())renderPage(pageCtx());}catch(_){}
  const h=S.hero||DEF.hero;
@@ -827,7 +828,7 @@ function okUrl(u){return !u||/^https:\/\//.test(u)||/^\/_blob\//.test(u)||/^#/.t
  fab.onclick=()=>openAdm();
  function F(path,label,type,hint){const v=get(path);return '<label>'+esc(label)+(type==="area"?'<textarea data-p="'+path+'">'+esc(v||"")+'</textarea>':'<input type="'+(type||"text")+'" data-p="'+path+'" value="'+esc(v||"")+'">')+(hint?'<p class="hint">'+esc(hint)+'</p>':'')+'</label>';}
  function C(path,label){return '<label class="adm-chk"><input type="checkbox" data-p="'+path+'"'+(get(path)?' checked':'')+'> '+esc(label)+'</label>';}
- function I(path,label,fallback){const v=get(path)||fallback||"";return '<div><b style="font-size:13px">'+esc(label)+'</b><div class="adm-img" style="margin-top:6px"><img loading="lazy" src="'+esc(v)+'" alt=""><div class="btns">'+(assets?'<label class="abtn" style="flex-direction:row">사진 올리기<input type="file" accept="image/*" data-up="'+path+'" hidden></label>':'<span class="hint">사진 올리기 권한 없음</span>')+'<button type="button" class="abtn" data-clr="'+path+'">기본 사진으로</button></div></div></div>';}
+ function I(path,label,fallback){const v=get(path)||fallback||"";return '<div><b style="font-size:13px">'+esc(label)+'</b><div class="adm-img" style="margin-top:6px"><img loading="lazy" src="'+esc(safeUrl(v))+'" alt=""><div class="btns">'+(assets?'<label class="abtn" style="flex-direction:row">사진 올리기<input type="file" accept="image/*" data-up="'+path+'" hidden></label>':'<span class="hint">사진 올리기 권한 없음</span>')+'<button type="button" class="abtn" data-clr="'+path+'">기본 사진으로</button></div></div></div>';}
  function get(p){return p.split(".").reduce((o,k)=>o==null?o:o[k],EDIT);}
  function put(p,v){const ks=p.split(".");let o=EDIT;ks.slice(0,-1).forEach(k=>o=o[k]);o[ks[ks.length-1]]=v;}
  function list(key,fields,label,max){const L=EDIT[key];return L.map((r,i)=>'<div class="adm-row"><div class="rh">'+esc(label)+' '+(i+1)+'<span><button type="button" class="abtn" data-mv="'+key+'.'+i+'.-1" aria-label="위로">↑</button><button type="button" class="abtn" data-mv="'+key+'.'+i+'.1" aria-label="아래로">↓</button>'+(key!=="bn"?'<button type="button" class="abtn" data-rm="'+key+'.'+i+'">빼기</button>':'')+'</span></div>'+fields.map(f=>f[2]==="img"?I(key+"."+i+"."+f[0],f[1],key==="bn"?BNIMG0[i]:""):F(key+"."+i+"."+f[0],f[1],f[2],f[3])).join("")+'</div>').join("")+(key!=="bn"&&L.length<(max||12)?'<button type="button" class="abtn" data-add="'+key+'">+ '+esc(label)+' 더하기</button>':'');}
@@ -1126,7 +1127,7 @@ document.addEventListener("click",e=>{const b=e.target.closest(".pbar .tools but
 {const hx=$(".hx2"),b=$("#hxpz");if(RM){hx.classList.add("still");b.setAttribute("aria-pressed","true");}
  b.onclick=()=>{const st=hx.classList.toggle("still");b.setAttribute("aria-pressed",st);b.setAttribute("aria-label",st?"배경 움직임 재생":"배경 움직임 멈춤");b.innerHTML='<i data-lucide="'+(st?"play":"pause")+'"></i>';icons();};
  const HMOB=$(".hx-bg source").getAttribute("srcset");
- let hxCustom=false;setHeroImg=function(u){const s0=u||HERO0;hxCustom=!!u;{const im=$("#hxImg"),so=$(".hx-bg source");if(im.getAttribute("src")!==s0)im.src=s0;if(so.getAttribute("srcset")!==(u||HMOB))so.setAttribute("srcset",u||HMOB);}if(u)hxGo(0);};
+ let hxCustom=false;setHeroImg=function(u){u=safeUrl(u);const s0=u||HERO0;hxCustom=!!u;{const im=$("#hxImg"),so=$(".hx-bg source");if(im.getAttribute("src")!==s0)im.src=s0;if(so.getAttribute("srcset")!==(u||HMOB))so.setAttribute("srcset",u||HMOB);}if(u)hxGo(0);};
  const HS=$$(".hx-bg picture.hxs"),HD=$$("#hxdots .hxd");let hxI=0,hxT=0;
  function hxGo(n){hxI=(n+HS.length)%HS.length;HS.forEach((x,k)=>x.classList.toggle("on",k===hxI));HD.forEach((x,k)=>x.setAttribute("aria-current",k===hxI));HD.forEach(x=>x.hidden=hxCustom);}
  function hxTick(){clearTimeout(hxT);hxT=setTimeout(()=>{if(!hx.classList.contains("still")&&!hxCustom&&!document.hidden&&!document.body.classList.contains("hxdone"))hxGo(hxI+1);hxTick();},7000);}
@@ -2179,7 +2180,7 @@ function pvFit(){document.querySelectorAll(".view.on .page-h.pv .pv-en").forEach
 addEventListener("hashchange",function(){setTimeout(pvFit,120);setTimeout(pvFit,700);});addEventListener("resize",pvFit);addEventListener("load",function(){setTimeout(pvFit,300)});setTimeout(pvFit,900);
 /* 통합검색에 새 화면 넣기: 고정 화면은 바로, 자료 파일(발전기금·국제교류·영문·서류 초안)은 검색을 쓰려 할 때 한 번 읽어 넣음 */
 let IDXM=0;
-function idxText(h){return String(h||"").replace(/<[^>]+>/g," ").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/\s+/g," ").trim();}
+function idxText(h){return String(h||"").replace(/<[^>]+>/g," ").replace(/&nbsp;/g," ").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&amp;/g,"&").replace(/\s+/g," ").trim();}
 function idxAdd(r){IDX.push(r);try{CMDX.push(r)}catch(_){}}
 (function(){
  AP.forEach(F=>idxAdd({s:"main",site:"온라인 신청 센터 · "+F.g,t:F.n,p:F.d||"",k:"신청 접수 온라인 신청 "+F.g+" "+F.n+" "+(F.own||""),h:"#apply-"+F.id}));
