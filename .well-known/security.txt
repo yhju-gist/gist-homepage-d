@@ -1,0 +1,6 @@
+# GIST 홈페이지 D안(시안) 보안 취약점 신고 창구
+Contact: https://github.com/yhju-gist/gist-homepage-d/security/advisories/new
+Expires: 2027-11-15T00:00:00.000Z
+Preferred-Languages: ko, en
+Canonical: https://yhju-gist.github.io/gist-homepage-d/.well-known/security.txt
+Policy: https://github.com/yhju-gist/gist-homepage-d/blob/main/SECURITY.md
