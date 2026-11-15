@@ -9,8 +9,9 @@ concurrency: sns
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4 (커밋 고정)
       - name: 공식 경로로 가져오기 (유튜브 RSS · 인스타그램/페이스북 Graph API)
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
