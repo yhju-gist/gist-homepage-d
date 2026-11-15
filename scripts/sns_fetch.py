@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""GIST 공식 SNS 최근 글을 공식 경로로 가져와 data/sns.json에 저장한다.
+- 유튜브: YouTube Data API(Secrets: YT_API_KEY 있으면) → 채널 공개 RSS → 채널 공개 영상 목록 순서로 시도
+- 인스타그램: Instagram Graph API (GitHub 저장소 Secrets: IG_TOKEN, IG_USER_ID 가 있을 때만)
+- 페이스북: Graph API 페이지 글 (Secrets: FB_TOKEN, FB_PAGE_ID 가 있을 때만)
+가져오는 것: 제목/설명 첫 줄·썸네일·주소·날짜만. 댓글·팔로워 같은 개인정보는 가져오지 않는다.
+실패하면 마지막으로 저장한 글을 그대로 둔다(화면이 비지 않게)."""
+import json, os, urllib.request, urllib.parse, xml.etree.ElementTree as ET, datetime as dt
+OUT = os.path.join(os.path.dirname(__file__), "..", "data", "sns.json")
+YT_CH = "UCofabptftrET0tfdSQgnr_A"  # GIST 공식 유튜브(youtube.com/c/GIST_YOUTUBE)
+KST = dt.timezone(dt.timedelta(hours=9))
+def get(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (GIST homepage SNS sync)"})
+    with urllib.request.urlopen(req, timeout=25) as r:
+        return r.read()
+def kd(s):
+    try: return dt.datetime.fromisoformat(s.replace("Z", "+00:00")).astimezone(KST)
+    except Exception: return None
+def yt_api():
+    key = os.environ.get("YT_API_KEY")
+    if not key: return None
+    q = urllib.parse.urlencode({"part": "snippet", "channelId": YT_CH, "order": "date", "maxResults": 12, "type": "video", "key": key})
+    js = json.loads(get("https://www.googleapis.com/youtube/v3/search?" + q)); out = []
+    for it in js.get("items", []):
+        vid = it["id"].get("videoId"); sn = it.get("snippet", {})
+        if not vid: continue
+        d = kd(sn.get("publishedAt", ""))
+        out.append({"p": "yt", "id": vid, "t": sn.get("title", ""), "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": d.isoformat() if d else ""})
+    return out
+def yt_page():
+    """채널 공개 영상 목록 화면의 ytInitialData에서 최근 영상(제목·주소·올린 지 며칠)을 읽음"""
+    import re
+    h = get("https://www.youtube.com/channel/%s/videos?hl=ko&gl=KR" % YT_CH).decode("utf-8", "ignore")
+    m = re.search(r"var ytInitialData = (\{.*?\});</script>", h, re.S) or re.search(r'ytInitialData"\] = (\{.*?\});', h, re.S)
+    if not m: return []
+    data = json.loads(m.group(1)); out, seen = [], set()
+    now = dt.datetime.now(KST)
+    def rel(txt):
+        mm = re.search(r"(\d+)\s*(초|분|시간|일|주|개월|년)", txt or "")
+        if not mm: return ""
+        n, u = int(mm.group(1)), mm.group(2)
+        days = {"초": 0, "분": 0, "시간": 0, "일": n, "주": n * 7, "개월": n * 30, "년": n * 365}[u]
+        return (now - dt.timedelta(days=days)).isoformat(timespec="minutes")
+    def walk(o):
+        if len(out) >= 12: return
+        if isinstance(o, dict):
+            L = o.get("lockupViewModel"); V = o.get("videoRenderer")
+            if L and L.get("contentId") and L["contentId"] not in seen:
+                md = L.get("metadata", {}).get("lockupMetadataViewModel", {})
+                t = md.get("title", {}).get("content", "")
+                parts = [p.get("text", {}).get("content", "") for r in md.get("metadata", {}).get("contentMetadataViewModel", {}).get("metadataRows", []) for p in r.get("metadataParts", [])]
+                vid = L["contentId"]; seen.add(vid)
+                out.append({"p": "yt", "id": vid, "t": t, "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": rel(" ".join(parts))})
+            elif V and V.get("videoId") and V["videoId"] not in seen:
+                vid = V["videoId"]; seen.add(vid)
+                t = "".join(r.get("text", "") for r in V.get("title", {}).get("runs", []))
+                out.append({"p": "yt", "id": vid, "t": t, "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": rel(V.get("publishedTimeText", {}).get("simpleText", ""))})
+            for v in o.values(): walk(v)
+        elif isinstance(o, list):
+            for v in o: walk(v)
+    walk(data)
+    return out
+def yt():
+    r = yt_api()
+    if r: return r
+    try:
+        r = yt_rss()
+        if r: return r
+    except Exception:
+        pass
+    return yt_page()
+def yt_rss():
+    ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015", "m": "http://search.yahoo.com/mrss/"}
+    last = None
+    for u in ["https://www.youtube.com/feeds/videos.xml?channel_id=" + YT_CH, "https://www.youtube.com/feeds/videos.xml?playlist_id=UU" + YT_CH[2:]]:
+        try:
+            root = ET.fromstring(get(u)); out = []
+            for e in root.findall("a:entry", ns)[:12]:
+                vid = e.findtext("yt:videoId", "", ns); t = e.findtext("a:title", "", ns); d = kd(e.findtext("a:published", "", ns))
+                out.append({"p": "yt", "id": vid, "t": t, "u": "https://www.youtube.com/watch?v=" + vid, "img": "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid, "at": d.isoformat() if d else ""})
+            if out: return out
+        except Exception as ex: last = ex
+    raise RuntimeError(str(last))
+def ig():
+    tok, uid = os.environ.get("IG_TOKEN"), os.environ.get("IG_USER_ID")
+    if not tok or not uid: return None
+    q = urllib.parse.urlencode({"fields": "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp", "limit": 12, "access_token": tok})
+    js = json.loads(get("https://graph.facebook.com/v21.0/%s/media?%s" % (uid, q)))
+    out = []
+    for m in js.get("data", []):
+        cap = (m.get("caption") or "").strip().split("\n")[0][:120]; d = kd(m.get("timestamp", ""))
+        out.append({"p": "ig", "id": m["id"], "t": cap or "GIST 인스타그램", "u": m.get("permalink", ""), "img": m.get("thumbnail_url") or (m.get("media_url") if m.get("media_type") != "VIDEO" else ""), "at": d.isoformat() if d else ""})
+    return out
+def fb():
+    tok, pid = os.environ.get("FB_TOKEN"), os.environ.get("FB_PAGE_ID")
+    if not tok or not pid: return None
+    q = urllib.parse.urlencode({"fields": "id,message,permalink_url,created_time,full_picture", "limit": 10, "access_token": tok})
+    js = json.loads(get("https://graph.facebook.com/v21.0/%s/posts?%s" % (pid, q)))
+    out = []
+    for m in js.get("data", []):
+        msg = (m.get("message") or "").strip().split("\n")[0][:120]; d = kd(m.get("created_time", "").replace("+0000", "+00:00"))
+        out.append({"p": "fb", "id": m["id"], "t": msg or "GIST 페이스북", "u": m.get("permalink_url", ""), "img": m.get("full_picture", ""), "at": d.isoformat() if d else ""})
+    return out
+def main():
+    try: old = json.load(open(OUT, encoding="utf-8"))
+    except Exception: old = {"items": [], "src": {}}
+    now = dt.datetime.now(KST).isoformat(timespec="minutes")
+    keep = {p: [x for x in old.get("items", []) if x.get("p") == p] for p in ("yt", "ig", "fb")}
+    src = old.get("src", {})
+    for p, fn in (("yt", yt), ("ig", ig), ("fb", fb)):
+        try:
+            r = fn()
+            if r is None: src[p] = {"ok": False, "why": "열쇠(토큰) 미설정", "at": src.get(p, {}).get("at", "")}; continue
+            if r: keep[p] = r; src[p] = {"ok": True, "at": now, "n": len(r)}
+        except Exception as ex:
+            src[p] = {"ok": False, "why": "가져오기 실패: " + str(ex)[:80], "at": src.get(p, {}).get("at", "")}
+    items = sorted(keep["yt"] + keep["ig"] + keep["fb"], key=lambda x: x.get("at", ""), reverse=True)
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    json.dump({"checked": now, "src": src, "items": items}, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(json.dumps(src, ensure_ascii=False))
+if __name__ == "__main__": main()

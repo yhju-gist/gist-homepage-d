@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yhju-gist.github.io/gist-homepage-d/sitemap.xml
