@@ -846,7 +846,7 @@ function okUrl(u){return !u||/^https:\/\//.test(u)||/^\/_blob\//.test(u)||/^#/.t
  function list(key,fields,label,max){const L=EDIT[key];return L.map((r,i)=>'<div class="adm-row"><div class="rh">'+esc(label)+' '+(i+1)+'<span><button type="button" class="abtn" data-mv="'+key+'.'+i+'.-1" aria-label="위로">↑</button><button type="button" class="abtn" data-mv="'+key+'.'+i+'.1" aria-label="아래로">↓</button>'+(key!=="bn"?'<button type="button" class="abtn" data-rm="'+key+'.'+i+'">빼기</button>':'')+'</span></div>'+fields.map(f=>f[2]==="img"?I(key+"."+i+"."+f[0],f[1],key==="bn"?BNIMG0[i]:""):F(key+"."+i+"."+f[0],f[1],f[2],f[3])).join("")+'</div>').join("")+(key!=="bn"&&L.length<(max||12)?'<button type="button" class="abtn" data-add="'+key+'">+ '+esc(label)+' 더하기</button>':'');}
  const TABS=[["hero","첫 화면"],["topbar","띠 공지"],["bn","연구 배너"],["notices","공지"],["events","학사일정"],["need","방문자 메뉴"],["stories","소식"], ["popup","팝업존"],["pages","세부페이지"],["sync","연결 상태"]];
  function liveBox(k,label){EDIT.live=EDIT.live||{notices:true,events:true};const L=window.__LIVE;const at=L&&L.at?new Date(L.at).toLocaleString("ko-KR"):"";
-  return '<div class="adm-live">'+C("live."+k,"현행 홈페이지 "+label+" 1시간마다 자동으로 가져와 보여 주기")+'<p class="hint">'+(L?(L.ok&&L.ok[k]===false?"⚠ 마지막 자동 가져오기 실패 — 지난번 목록을 보여 주는 중 · ":"")+"마지막 확인 "+esc(at)+" · 지금 가져온 "+(k==="notices"?L.N.length:L.E.length)+"건":"자동 연결 자료(data/live.json)를 아직 읽지 못했습니다")+'. 끄면 아래에 직접 적은 목록이 첫 화면에 나옵니다.</p></div>';}
+  return '<div class="adm-live">'+C("live."+k,"현행 홈페이지 "+label+" 1시간마다 자동으로 가져와 보여 주기")+'<p class="hint">'+(L?(L.ok&&L.ok[k]===false?"⚠ 마지막 자동 가져오기 실패 — 지난번 목록을 보여 주는 중 · ":"")+"마지막 확인 "+esc(at)+" · 지금 가져온 "+(k==="notices"?L.N.length:L.E.length)+"건":"자동 연결 자료(data/live.json)를 아직 읽지 못했습니다")+'. 끄면 아래에 직접 적은 목록이 첫 화면에 나옵니다.</p>'+(L&&(k==="notices"?L.N:L.E).length?'<button type="button" class="abtn" data-livecopy="'+k+'">지금 자동으로 가져온 '+label.replace(/[을를]$/,"")+' 목록을 아래로 옮겨 오기</button>':'')+'</div>';}
  function body(){
   if(TAB==="hero")return '<p class="hint">문구 후보 (D안 기본 + GIST 공식 문구 그대로) — 누르면 바로 바뀝니다</p><div class="hcand">'+HCAND.map((h,i)=>'<button type="button" class="abtn" data-hc="'+i+'"><small>'+esc(h[2])+'</small>'+esc(h[0]+" "+h[1])+'</button>').join("")+'</div>'+I("hero.img","첫 화면 사진 (가로 2000px 권장)",HERO0)+F("hero.t1","큰 제목 1줄")+F("hero.t2","큰 제목 2줄","text","'GIST' 글자는 빨간 상자로 강조됩니다")+F("hero.sub","작은 설명")+F("hero.ph","검색창 안내 문구");
   if(TAB==="topbar")return C("topbar.on","띠 공지 보이기")+F("topbar.t","띠 공지 문구")+F("topbar.u","‘자세히 보기’ 주소","url","https:// 로 시작하는 주소만 저장됩니다");
@@ -880,6 +880,7 @@ function okUrl(u){return !u||/^https:\/\//.test(u)||/^\/_blob\//.test(u)||/^#/.t
     if(b.dataset.tab){TAB=b.dataset.tab;paint();if(TAB==="pages")goPG();return;}
     if(b.dataset.x){if(dirty&&!p.dataset.warn){p.dataset.warn=1;p.querySelector(".adm-st").textContent="저장하지 않은 변경이 있어요. 한 번 더 누르면 버리고 닫습니다";return;}delete p.dataset.warn;EDIT=null;applySite(SITE);p.hidden=true;fab.hidden=false;document.body.classList.remove("admon");return;}
     if(b.dataset.clr){put(b.dataset.clr,"");dirty=true;applySite(EDIT);paint();return;}
+    if(b.dataset.livecopy){const k=b.dataset.livecopy,L=window.__LIVE;if(L){EDIT[k]=JSON.parse(JSON.stringify(k==="notices"?L.N:L.E));dirty=true;applySite(EDIT);paint();p.querySelector(".adm-st").textContent="자동 목록을 옮겨 왔습니다 · 고친 뒤 저장해야 반영";}return;}
     if(b.dataset.add){const k=b.dataset.add;if(k==="stories")EDIT[k].unshift({c:"연구성과",t:"",s:"",d:""});else EDIT[k].push(k==="notices"?{k:"안내",t:"",d:"",u:NURL}:{d:"",w:"",t:""});dirty=true;paint();return;}
     if(b.dataset.rm){const [k,i]=b.dataset.rm.split(".");EDIT[k].splice(+i,1);dirty=true;applySite(EDIT);paint();return;}
     if(b.dataset.mv){const [k,i,d]=b.dataset.mv.split(".");const a=+i,c=a+(+d);const L=EDIT[k];if(c<0||c>=L.length)return;[L[a],L[c]]=[L[c],L[a]];dirty=true;applySite(EDIT);paint();return;}
@@ -1018,6 +1019,7 @@ window.__gCover=gCover;
   if(window.__LIVE.S.some(x=>!STORIES.some(z=>z.g===x.u||z.t===x.t))&&typeof renderToday==="function")renderToday();
   /* 관리자 모드에서 '자동 연결'을 끈 항목만 관리자 목록을 쓴다(기본은 켜짐) — 관리자가 다른 칸을 저장해도 공지·일정 자동 갱신은 멈추지 않음 */
   const LO=(SITE&&SITE.live)||{};
+  if(!SITE_AT){if(N.length)SITE.notices=N.map(n=>({...n}));if(E.length)SITE.events=E.map(e=>({...e}));}   /* 아직 저장한 적 없으면 관리자 목록도 지금 자료로 */
   if(N.length&&LO.notices!==false){NOTICES.length=0;N.forEach(n=>NOTICES.push(n));}
   if(E.length&&LO.events!==false){EVENTS.length=0;E.forEach(e=>EVENTS.push(e));}
   if(N.length||E.length){renderNotices();const p=$("#liveSt");if(p&&js.checked){p.textContent="현행 홈페이지 공지·학사일정에서 자동으로 가져옴 · "+st(js.checked)+" 확인";p.hidden=false;}}}
