@@ -107,6 +107,8 @@ def main():
             s, fu = get(u)
             I = rss(s) if kind == "rss" else items(s, fu)
             I = [x for x in I if x["u"].startswith("https://") or x["u"].startswith("http://")]
+            for x in I:                                   # 글 제목 속 행사 날짜(앞날)를 게시일로 잘못 읽지 않게
+                if x["d"] and x["d"] > NOW.date().isoformat(): x["d"] = ""
             I.sort(key=lambda x: x["d"] or "0", reverse=True)
             rec.update(ok=True, items=I[:5], latest=max([x["d"] for x in I if x["d"]] or [""]), found=len(I))
         except Exception as e:
@@ -121,6 +123,42 @@ def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(data, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("sites.json", sum(1 for x in res if x["ok"]), "/", len(res), "ok")
+    write_feed(res)
+
+
+def write_feed(res):
+    """대표 홈페이지 GIST 소식(data/live.json) + 학과·연구소 26곳 최근 글을 날짜순으로 묶은 RSS(feed_all.xml).
+    언론·기관이 'GIST 전체 새 글'을 한 주소로 받아 가게 하려는 것. 날짜가 있는 글만, 최근 60건."""
+    from email.utils import format_datetime
+    U = "https://yhju-gist.github.io/gist-homepage-d/"
+    rows = []
+    try:
+        live = json.load(open(os.path.join(os.path.dirname(OUT), "live.json"), encoding="utf-8"))
+        for n in live.get("news", []):
+            m = re.match(r"(\d{4})\.(\d{2})\.(\d{2})", n.get("d", ""))
+            if m and n.get("u", "").startswith("https://www.gist.ac.kr/"):
+                rows.append(("-".join(m.groups()), "GIST 대표 홈페이지", n["t"], n["u"]))
+    except Exception:
+        pass
+    for x in res:
+        for it in x.get("items", []):
+            if it.get("d") and re.match(r"^https?://([a-z0-9-]+\.)*gist\.ac\.kr(:443)?/", it.get("u", ""), re.I):
+                rows.append((it["d"], x["n"], it["t"], it["u"]))
+    seen, out = set(), []
+    for d, src, t, u in sorted(rows, key=lambda r: r[0], reverse=True):
+        if u in seen: continue
+        seen.add(u); out.append((d, src, t, u))
+        if len(out) >= 60: break
+    esc = lambda v: html.escape(str(v), quote=True)
+    L = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0"><channel><title>GIST 전체 새 글 (D안 시안)</title>',
+         '<link>' + U + '#sync</link><description>GIST 대표 홈페이지 소식과 학과·연구소·센터 홈페이지 26곳의 최근 글 제목을 한곳에 모았습니다. 1시간마다 갱신.</description><language>ko</language>']
+    for d, src, t, u in out:
+        y, mo, da = map(int, d.split("-"))
+        pd = format_datetime(dt.datetime(y, mo, da, 9, 0, tzinfo=KST))
+        L.append("<item><title>" + esc("[" + src + "] " + t) + "</title><link>" + esc(u) + "</link><guid isPermaLink=\"true\">" + esc(u) + "</guid><category>" + esc(src) + "</category><pubDate>" + pd + "</pubDate></item>")
+    L.append("</channel></rss>")
+    open(os.path.join(os.path.dirname(OUT), "..", "feed_all.xml"), "w", encoding="utf-8").write("\n".join(L) + "\n")
+    print("feed_all.xml", len(out))
 
 
 if __name__ == "__main__":
