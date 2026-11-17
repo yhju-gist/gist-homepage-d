@@ -3982,7 +3982,7 @@ const EVENTS=[
  {d:"12.04",w:"FRI",t:"2027학년도 봄학기 교과과정 편성(안) 제출마감"}];
 const NURL="https://www.gist.ac.kr/kr/html/sub06/060101.html";
 function renderNotices(){
- $("#noticeList").innerHTML=NOTICES.map(n=>'<li><span class="k">'+esc(n.k)+'</span><a href="'+esc(n.u||NURL)+'" target="_blank" rel="noopener noreferrer">'+esc(n.t)+'</a><time class="num">'+esc(n.d)+'</time></li>').join("");
+ $("#noticeList").innerHTML=NOTICES.map(n=>'<li><span class="k">'+esc(n.k)+'</span><a href="'+esc(n.u&&okUrl(n.u)?n.u:NURL)+'" target="_blank" rel="noopener noreferrer">'+esc(n.t)+'</a><time class="num">'+esc(n.d)+'</time></li>').join("");
  $("#eventList").innerHTML=EVENTS.map(e=>'<a class="ev" href="#"><span class="d num">'+esc(e.d)+'<small>'+esc(e.w)+'</small></span><b>'+esc(e.t)+'</b></a>').join("");
 }
 renderNotices();
@@ -4089,7 +4089,7 @@ function applySite(S){
  if(h.ph)$("#hq").setAttribute("placeholder",h.ph);
  const tb=S.topbar||DEF.topbar;
  let closed=false;try{closed=localStorage.getItem("tbx")===new Date().toDateString()}catch(_){}
- $("#topbar").hidden=!tb.on||!tb.t||closed;$("#topbarT").textContent=tb.t||"";if(tb.u){$("#topbarL").href=tb.u;$("#topbarL").hidden=false}else $("#topbarL").hidden=true;
+ $("#topbar").hidden=!tb.on||!tb.t||closed;$("#topbarT").textContent=tb.t||"";if(tb.u&&okUrl(tb.u)){$("#topbarL").href=tb.u;$("#topbarL").hidden=false}else $("#topbarL").hidden=true;
  const bn=(S.bn&&S.bn.length?S.bn:DEF.bn).slice(0,3);
  bn.forEach((b,i)=>{BN[i]=[b.k||"",b.t||""];BIG[i]=b.big||"";BNIMG[i]=b.img||BNIMG0[i]||BNIMG0[0];});
  setBanner(bi||0);
@@ -4107,9 +4107,10 @@ function renderPopup(p){let el=$("#pz");
  let off=false;try{off=localStorage.getItem("pzx")===(p.t||"")+new Date().toDateString()}catch(_){}
  if(!p.on||!p.t||off){if(el)el.remove();return;}
  if(!el){el=document.createElement("aside");el.id="pz";el.className="pz";el.setAttribute("aria-label","팝업존");document.body.appendChild(el);}
- el.innerHTML=(p.img?'<img loading="lazy" src="'+esc(p.img)+'" alt="">':'')+'<div class="pz-b"><small>'+esc(p.k||"POPUP")+'</small><b>'+esc(p.t)+'</b>'+(p.p?'<p>'+esc(p.p)+'</p>':'')+'</div><div class="pz-f"><button type="button" data-pz="day">오늘 하루 닫기</button>'+(p.u?'<a href="'+esc(p.u)+'" target="_blank" rel="noopener noreferrer">자세히 →</a>':'')+'<button type="button" data-pz="x" aria-label="팝업 닫기">닫기 ×</button></div>';
+ el.innerHTML=(p.img?'<img loading="lazy" src="'+esc(p.img)+'" alt="">':'')+'<div class="pz-b"><small>'+esc(p.k||"POPUP")+'</small><b>'+esc(p.t)+'</b>'+(p.p?'<p>'+esc(p.p)+'</p>':'')+'</div><div class="pz-f"><button type="button" data-pz="day">오늘 하루 닫기</button>'+(p.u&&okUrl(p.u)?'<a href="'+esc(p.u)+'" target="_blank" rel="noopener noreferrer">자세히 →</a>':'')+'<button type="button" data-pz="x" aria-label="팝업 닫기">닫기 ×</button></div>';
  el.querySelectorAll("[data-pz]").forEach(b=>b.onclick=()=>{if(b.dataset.pz==="day"){try{localStorage.setItem("pzx",(p.t||"")+new Date().toDateString())}catch(_){}}el.remove();});
 }
+/* 주소 칸: https·사이트 안 경로만 — 저장할 때뿐 아니라 화면에 그릴 때도 한 번 더 거른다 */
 function okUrl(u){return !u||/^https:\/\//.test(u)||/^\/_blob\//.test(u)||/^#/.test(u);}
 
 (async function admin(){
