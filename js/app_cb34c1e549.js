@@ -1000,6 +1000,12 @@ window.__gCover=gCover;
   const N=(js.notices||[]).filter(n=>n&&n.t&&okG(n.u)).slice(0,5).map(n=>({k:String(n.k||"안내").slice(0,4),t:String(n.t).slice(0,140),d:String(n.d||"").slice(0,8),u:n.u}));
   const E=(js.events||[]).filter(e=>e&&e.t).slice(0,4).map(e=>({d:String(e.d||"").slice(0,5),w:String(e.w||"").slice(0,3),t:String(e.t).slice(0,120)}));
   if(N.length)DEF.notices=N; if(E.length)DEF.events=E;
+  /* 통합검색에도 넣음: 지난번에 넣은 자동 항목(lv)은 빼고 새로 */
+  for(let i=IDX.length-1;i>=0;i--)if(IDX[i].lv)IDX.splice(i,1);
+  (js.notices||[]).filter(n=>n&&n.t&&okG(n.u)).slice(0,10).forEach(n=>IDX.push({s:"main",lv:1,site:"대표 홈페이지 · 공지",t:n.t,p:n.d+" 공지 · 현행 홈페이지에서 자동으로 가져옴",k:"공지 "+(n.k||"")+" "+n.t,u:n.u}));
+  (js.events||[]).filter(e=>e&&e.t).slice(0,6).forEach(e=>IDX.push({s:"main",lv:1,site:"대표 홈페이지 · 학사일정",t:String(e.t).slice(0,120),p:String(e.d||"")+"("+String(e.w||"")+") 학사일정",k:"학사일정 일정 "+e.t,u:"https://www.gist.ac.kr/kr/html/sub05/0501.html"}));
+  (js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).forEach(x=>{if(!STORIES.some(z=>z.g===x.u))IDX.push({s:"main",lv:1,site:"대표 홈페이지 · GIST 소식",t:String(x.t).slice(0,140),p:String(x.d||"")+" · "+String(x.s||"").slice(0,120),k:"소식 뉴스 "+x.t+" "+(x.s||""),u:x.u});});
+  if(typeof fuseCache!=="undefined")fuseCache.clear();
   if(SITE_AT)return;                       /* 관리자가 직접 저장한 내용이 있으면 손대지 않음 */
   if(N.length){SITE.notices=N;NOTICES.length=0;N.forEach(n=>NOTICES.push(n));}
   if(E.length){SITE.events=E;EVENTS.length=0;E.forEach(e=>EVENTS.push(e));}
