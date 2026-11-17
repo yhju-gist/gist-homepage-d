@@ -2,6 +2,85 @@
  "$description": "GIST 홈페이지 D안의 내용만 모은 파일입니다(모양 없음). 어떤 제작 도구(CMS)로 옮기더라도 이 파일에서 소식·화면 이름·학과 정보를 그대로 읽어 갈 수 있습니다. src/index_source.html 과 src/dept.json 에서 자동으로 만듭니다.",
  "stories": [
   {
+   "id": "224715",
+   "title": "GIST, 설립 33주년 맞아 ‘비전 2035’ 선포… 양적 성장 넘어 질적 도약",
+   "date": "2026.11.17.",
+   "category": "보도자료",
+   "byline": "설립 33주년 기념식 · GIST미래비전위원회",
+   "summary": [
+    "11월 16일 오룡관에서 설립 33주년 기념식을 열고, 앞으로 10년의 중기 비전 ‘GIST 비전 2035 — 미래기술 선도 연구중심대학(A Leading University for Future Technology)’을 선포했습니다.",
+    "교육(인재)·연구(지식)·가치창출(기술)·ESG(기반) 4대 영역, 16개 목표, 65개 추진과제로 2035년 글로벌 TOP 100 연구중심대학을 목표로 합니다."
+   ],
+   "source": "뉴시스",
+   "source_url": "https://www.newsis.com/view/NISX20261117_0003870973",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no=224715"
+  },
+  {
+   "id": "224718",
+   "title": "GIST 교원창업기업 ㈜리셀, 필름형 태양전지로 ‘CES 2027’ 혁신상",
+   "date": "2026.11.17.",
+   "category": "사람",
+   "byline": "㈜리셀 · 이광희 신소재공학과 초빙석학",
+   "summary": [
+    "교원창업기업 ㈜리셀(대표이사 이광희·신소재공학과 초빙석학)이 개발한 필름형 태양전지 ‘SOLWEAR: The Solar Roll’이 ‘CES 2027’ 혁신상을 받았습니다."
+   ],
+   "source": "",
+   "source_url": "",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no=224718"
+  },
+  {
+   "id": "224688",
+   "title": "전남·광주 에너지산업 기술교류회 ‘2026 G.E.T. & Re:Born’ 개최",
+   "date": "2026.11.16.",
+   "category": "캠퍼스",
+   "byline": "에너지산업 기술교류회",
+   "summary": [
+    "11월 13일 오룡관에서 전남·광주 지역 에너지 기업의 기술을 소개하고 투자 유치와 사업 협력 방안을 논의하는 기술교류회를 열었습니다."
+   ],
+   "source": "",
+   "source_url": "",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no=224688"
+  },
+  {
+   "id": "224686",
+   "title": "NH투자증권과 첨단산업 특별강연… 발전기금 1천만 원 기탁",
+   "date": "2026.11.15.",
+   "category": "캠퍼스",
+   "byline": "2026 GIST 과학기술문화 페스타",
+   "summary": [
+    "11월 13일 오룡관에서 NH투자증권과 첨단산업 특별강연을 열고, 강연 뒤 발전기금 1천만 원 기탁식을 가졌습니다(과학기술문화 페스타 행사)."
+   ],
+   "source": "",
+   "source_url": "",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no=224686"
+  },
+  {
+   "id": "224677",
+   "title": "IBS 3개 연구단 공동 학술행사 ‘IBS 퀀텀 프런티어 2026’",
+   "date": "2026.11.13.",
+   "category": "연구성과",
+   "byline": "IBS 양자변환 연구단 · 양자나노과학 · 이차원 양자헤테로구조체 연구단",
+   "summary": [
+    "GIST 캠퍼스의 IBS 양자변환 연구단이 다른 두 IBS 연구단과 함께 11월 10~12일 오룡관에서 ‘IBS 퀀텀 프런티어 2026’을 열었습니다."
+   ],
+   "source": "",
+   "source_url": "",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no=224677"
+  },
+  {
+   "id": "224676",
+   "title": "교원창업기업 ㈜오니온에이아이, 글로벌광주방송 생방송에 AI 실시간 더빙·번역 적용",
+   "date": "2026.11.13.",
+   "category": "사람",
+   "byline": "㈜오니온에이아이 · 전기전자컴퓨터공학과 김홍국 교수",
+   "summary": [
+    "교원창업기업 ㈜오니온에이아이(대표 김홍국 교수)가 11월 14일 글로벌광주방송(GGN) 생방송에 AI 실시간 더빙과 다국어 번역 기술을 적용한다고 밝혔습니다."
+   ],
+   "source": "",
+   "source_url": "",
+   "gist_url": "https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no=224676"
+  },
+  {
    "id": "224635",
    "title": "GIST-성균관대, 심근경색 손상 심장에 약물 직접 전달하는 ‘붙이는 주사형 하이드로젤’ 개발",
    "date": "2026.11.10.",
