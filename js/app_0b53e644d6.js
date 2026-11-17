@@ -2276,6 +2276,9 @@ function sState(x){if(!x.ok)return["x","가져오기 실패"];const a=sAge(x.lat
 function sWhen(t){const d=new Date(t);return isNaN(d)?"":(d.getMonth()+1)+". "+d.getDate()+". "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");}
 function sDate(d){return d?d.replace(/^(\d{4})-(\d{2})-(\d{2})$/,(m,y,mo,da)=>y+". "+(+mo)+". "+(+da)+"."):"날짜 없음";}
 function syLate(){const t=SITES_LIVE&&(SITES_LIVE.tried||SITES_LIVE.checked);if(!t)return "";const h=(Date.now()-new Date(t))/36e5;return h>3?'<p class="note sy-late">자동 이어 받기가 '+Math.floor(h)+'시간째 돌지 않았습니다(마지막 시도 '+esc(sWhen(t))+'). 지금 시안은 GitHub 무료 예약 작업을 써서 몇 시간씩 늦어질 수 있습니다. 학교 서버로 옮기면 서버 예약 작업으로 정시에 돕니다.</p>':"";}
+function syHost(u){try{return new URL(u).host.replace(/:443$/,"").toLowerCase();}catch(_){return "";}}
+function syLinks(root){if(!SITES_LIVE||!root)return;const M={};(SITES_LIVE.sites||[]).forEach(x=>{const h=syHost(x.h);if(h&&!/^www\./.test(h))M[h]=x;});
+ root.querySelectorAll("a.hb[href^='http'],a.lab[href^='http']").forEach(a=>{if(a.querySelector(".hb-sy"))return;const x=M[syHost(a.href)];if(!x)return;const st=sState(x);const el=document.createElement("small");el.className="hb-sy";el.innerHTML='<span class="sy-st '+st[0]+'">'+(x.ok&&x.latest?'새 글 '+esc(sDate(x.latest)):esc(st[1]))+'</span>';a.appendChild(el);});}
 function syChip(code){const x=SITES_LIVE&&(SITES_LIVE.sites||[]).find(s=>s.id===code);if(!x)return "";const st=sState(x);return '<span class="sy-st '+st[0]+'" title="학과 홈페이지에서 1시간마다 이어 받은 마지막 글 날짜">'+(x.ok&&x.latest?'새 글 '+esc(sDate(x.latest)):esc(st[1]))+'</span>';}
 function dsync(n){const D0=DEPT[n];if(!D0)return "";const x=SITES_LIVE&&(SITES_LIVE.sites||[]).find(s=>s.id===D0.code);
  if(!x)return '<section class="dsy" id="dsy"><h3 class="p-h3">학과 홈페이지 최근 글</h3><p class="note">학과 홈페이지에서 최근 글을 불러오는 중입니다. 시험 파일로 열었거나 불러오지 못하면 <a href="'+esc(D0.hp)+'"'+EXT+'>학과 홈페이지</a>에서 확인해 주세요.</p></section>';
@@ -2309,6 +2312,7 @@ async function loadSites(){if(!/^https?:$/.test(location.protocol))return;let js
  js.sites.forEach(x=>(x.items||[]).filter(it=>it&&it.t&&okSite(it.u)).slice(0,5).forEach(it=>IDX.push({s:"main",lv:2,site:String(x.n||"").slice(0,30)+" 홈페이지",t:String(it.t).slice(0,140),p:(it.d?sDate(it.d)+" · ":"")+String(x.n||"").slice(0,30)+" 홈페이지에서 자동으로 이어 받음",k:String(x.n||"")+" "+String(it.t).slice(0,140),u:it.u,h:it.u,w:1})));
  if(typeof fuseCache!=="undefined"&&fuseCache.clear)fuseCache.clear();
  document.querySelectorAll("[data-sy]").forEach(el=>{el.innerHTML=syChip(el.dataset.sy);});
+ syLinks(document);if(!window.__syObs&&window.MutationObserver){const vp=$("#v-page");if(vp){window.__syObs=new MutationObserver(()=>syLinks(vp));window.__syObs.observe(vp,{childList:true});}}
  {const el=$("#rbLive3");if(el){const {S,c,okN}=syncSummary();const L=window.__LIVE;el.innerHTML='<b>지금 상태</b> 학과·연구소 홈페이지 <b class="num">'+okN+'/'+S.length+'</b>곳 이어 받음 · 최근 30일 안 새 글 <b class="num">'+c.ok+'</b>곳 · 1년 넘게 새 글 없음 <b class="num">'+c.stale+'</b>곳'+(L?' · 현행 공지 '+L.N.length+'건·학사일정 '+L.E.length+'건':'')+' · 마지막 확인 '+esc(sWhen(js.tried||js.checked))+' <a href="#sync">연결 현황 →</a>';el.hidden=false;}}
  const h=LH()||"";if(h==="#sync")renderSync();else if(/^#d-/.test(h)){const el=$("#dsy");const m=h.match(/^#d-([a-z0-9]+)$/);const n=m&&deptByCode(m[1]);if(el&&n){el.outerHTML=dsync(n);}}}
 loadSites();setInterval(loadSites,1800000);
