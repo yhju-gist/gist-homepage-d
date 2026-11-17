@@ -1,0 +1,929 @@
+{
+ "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
+ "checked": "2026-11-17T21:46+09:00",
+ "tried": "2026-11-17T21:46+09:00",
+ "sites": [
+  {
+   "id": "ai",
+   "n": "AI학과",
+   "g": "학과",
+   "c": "AI대학",
+   "h": "https://ai.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[김승준 교수 / 오정석 학생] GIST, 인간-컴퓨터 상호작용 분야 국제학회서 최우수 논문상 등 2개 상 수상",
+     "d": "2026-11-16",
+     "u": "https://ai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011743/B000000104846Ty1fL6s/view.do"
+    },
+    {
+     "t": "[박건혁 교수 / 김동현 학생 / 임충만 학생] “손끝을 데우지 않아도 뜨거운 철판처럼 느낀다” GIST, 가상 물체의 온도·질감 함께 구현하는 촉각 기술 개발",
+     "d": "2026-10-26",
+     "u": "https://ai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011743/B000000104064Cd0cH2y/view.do"
+    },
+    {
+     "t": "[김승준 교수 / 김광빈 학생] “자율주행차가 보행자를 놓친다면?” GIST, AI의 시각 인식 오류 유도하는 새 기술 개발 취약점 진단 정밀도 높여",
+     "d": "2026-10-26",
+     "u": "https://ai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011743/B000000104063Or9tS6z/view.do"
+    },
+    {
+     "t": "[이현주 교수 / 이지상 학생 / 염태림 학생] “학습하지 않은 약물도 반응 예측” GIST, 신약 후보물질 선별 돕는 AI 개발",
+     "d": "2026-10-19",
+     "u": "https://ai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011743/B000000103803Eu7eL7k/view.do"
+    },
+    {
+     "t": "[이영주 연구원 / 김만수 교수 / 김재관 교수] “빛과 AI로 육류 신선도 판별” GIST 이영주 박사후연구원, 세계식육과학기술학회 '젊은 과학자상' 수상",
+     "d": "2026-10-19",
+     "u": "https://ai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011743/B000000103802Mg0hP5s/view.do"
+    }
+   ],
+   "latest": "2026-11-16",
+   "found": 5
+  },
+  {
+   "id": "ax",
+   "n": "AX학과",
+   "g": "학과",
+   "c": "AI대학",
+   "h": "https://ax.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "GIST AX학과 홈페이지 신규 오픈!",
+     "d": "2026-10-07",
+     "u": "https://ax.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012543/B000000104191Rp9dS7a/view.do"
+    }
+   ],
+   "latest": "2026-10-07",
+   "found": 1
+  },
+  {
+   "id": "eecs",
+   "n": "전기전자컴퓨터공학과",
+   "g": "학과",
+   "c": "AI대학",
+   "h": "https://eecs.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "Building Your Own Distinct Expertise Is the Starting Point for Interdisciplinary..",
+     "d": "2026-11-12",
+     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=alumni_en&idx=30"
+    },
+    {
+     "t": "[2027 Winter] Research Internship Program – EECS (Deadline: Friday, Decemb..",
+     "d": "2026-11-10",
+     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=notice_en&idx=76"
+    },
+    {
+     "t": "“태양광·배터리, 과부하 없이 더 유연하게” GIST, 전력망 출력 조정 여력 계산 기술 개발",
+     "d": "2026-11-02",
+     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=achievements_en&idx=116"
+    },
+    {
+     "t": "A Space of Experience and Growth: Discovering the Path of a Researcher at GIST &..",
+     "d": "2026-10-30",
+     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=alumni_en&idx=29"
+    },
+    {
+     "t": "GIST-한양대, 빛의 세기에 따라 흐릿한 영상 더 또렷하게 만드는 반도체 기술 개발",
+     "d": "2026-10-08",
+     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=achievements_en&idx=115"
+    }
+   ],
+   "latest": "2026-11-12",
+   "found": 10
+  },
+  {
+   "id": "semi",
+   "n": "반도체공학과",
+   "g": "학과",
+   "c": "AI대학",
+   "h": "https://semi.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "2027년도 GIST 반도체공학과 동계인턴쉽 공고",
+     "d": "2026-11-12",
+     "u": "https://semi.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012227/B000000104718Uv7vK0x/view.do"
+    },
+    {
+     "t": "[Seminar] 2026-2학기 산업체 전문가에게 듣는 반도체이야기 전체 일정",
+     "d": "2026-10-06",
+     "u": "https://semi.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012227/B000000103482Vn0dX6q/view.do"
+    },
+    {
+     "t": "[인터뷰] 호남반도체 클러스터, 광주 군공항 부지에 조성",
+     "d": "2026-09-30",
+     "u": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8605567"
+    },
+    {
+     "t": "[Seminar] 「AI시대 첨단 반도체패키징 기술 동향」 (2026.9.30.(수) 14:00~15:50)",
+     "d": "2026-09-29",
+     "u": "https://semi.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012227/B000000103317Il9wB6i/view.do"
+    },
+    {
+     "t": "[2026-가을학기] 반도체공학과 콜로퀴움 전체 일정 안내",
+     "d": "2026-08-27",
+     "u": "https://semi.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012227/B000000102382Yd2xP3o/view.do"
+    }
+   ],
+   "latest": "2026-11-12",
+   "found": 6
+  },
+  {
+   "id": "aix",
+   "n": "AI정책전략대학원",
+   "g": "학과",
+   "c": "AI대학",
+   "h": "https://aix.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[AI정책전략대학원] 2027년 동계 인턴 모집 안내",
+     "d": "2026-11-13",
+     "u": "https://aix.gist.ac.kr/?kboard_content_redirect=28"
+    },
+    {
+     "t": "머니투데이방송 - '로봇의 미래는 결국 화성 탐사?' 결국 미래 기술 공개해버린 일론 머스크 (AI와 로봇 2부)",
+     "d": "2024-10-17",
+     "u": "https://aix.gist.ac.kr/?kboard_content_redirect=24"
+    },
+    {
+     "t": "머니투데이방송 - \"테슬라 로보택시가 열었다! 로봇과 AI가 주도하는 미래\" \"자율주행 택시, 6단계에 이렇게 됩니다\" (AI와 로봇 1부)",
+     "d": "2024-10-17",
+     "u": "https://aix.gist.ac.kr/?kboard_content_redirect=23"
+    },
+    {
+     "t": "머니투데이방송 - \"세계 딥페이크 주인공 절반 한국\" 직접 만들어보니..\"구분이 불가능할 지경입니다\" (딥페이크)",
+     "d": "2024-10-17",
+     "u": "https://aix.gist.ac.kr/?kboard_content_redirect=22"
+    },
+    {
+     "t": "[무등일보 창간특집] \"미래 교육은 정답보다 어떻게 질문하냐에 달렸다\"",
+     "d": "2024-10-17",
+     "u": "https://aix.gist.ac.kr/?kboard_content_redirect=21"
+    }
+   ],
+   "latest": "2026-11-13",
+   "found": 10
+  },
+  {
+   "id": "physics",
+   "n": "물리·광과학과",
+   "g": "학과",
+   "c": "자연과학대학",
+   "h": "https://physics.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[Colloquium] 2026.11.18.(Wed) / Prof.EunMi Choi (UNIST) / Terahertz Waves and the Future of Fusion Energy",
+     "d": "2026-11-12",
+     "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-47/"
+    },
+    {
+     "t": "[물리]2027년 동계 인턴 모집",
+     "d": "2026-11-05",
+     "u": "https://physics.gist.ac.kr/internship/%eb%ac%bc%eb%a6%ac2027%eb%85%84-%eb%8f%99%ea%b3%84-%ec%9d%b8%ed%84%b4-%eb%aa%a8%ec%a7%91/"
+    },
+    {
+     "t": "[Colloquium] 2026.11.11.(Wed) / Prof.Youngwook Kim(DGIST) / Interlayer corrlations and remote moiré modulation in large-",
+     "d": "2026-11-05",
+     "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-46/"
+    },
+    {
+     "t": "[Colloquium] 2026.11.4.(Wed) / Prof.ChoongKi Sung(KAIST) / The role of magnetic mirrors in fusion research",
+     "d": "2026-10-28",
+     "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-45/"
+    },
+    {
+     "t": "[남창희 교수] ‘2026 IUPAP 요시아키 가토 상’ 수상자로 선정",
+     "d": "2026-10-28",
+     "u": "https://physics.gist.ac.kr/news-events/research_highlights_news/%eb%82%a8%ec%b0%bd%ed%9d%ac-%ea%b5%90%ec%88%98%eb%8b%98-isuils-2025%ec%97%90%ec%84%9c-isuils-%eb%a9%94%eb%8b%ac-%ec%88%98%ec%83%81-3/"
+    }
+   ],
+   "latest": "2026-11-12",
+   "found": 10
+  },
+  {
+   "id": "chem",
+   "n": "화학과",
+   "g": "학과",
+   "c": "자연과학대학",
+   "h": "https://chem.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "“눈으로는 구별하기 어려운 정보, 빛으로 새기고 읽는다” GIST, 빛의 회전 방향만으로 유기 소재의 구조 제어… 정보 기록·판독 기술 개발",
+     "d": "2026-11-04",
+     "u": "https://chem.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000733/view.do?nttId=B000000104279Tz9fN9l"
+    },
+    {
+     "t": "GIST, IBS 양자변환 연구단’ 日 RIKEN에 글로벌 파트너랩 출범",
+     "d": "2026-11-04",
+     "u": "https://chem.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000733/view.do?nttId=B000000104274Zj8bD7g"
+    },
+    {
+     "t": "“전기차 넘어 ‘배터리의 다음 시장’은 어디?” GIST, 배터리X전남·광주 2026 개최 (GIST 화학과 김형진 초빙석학)",
+     "d": "2026-09-10",
+     "u": "https://chem.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000733/view.do?nttId=B000000102852Oj7jZ6i"
+    },
+    {
+     "t": "‘빛의 도시’ 광주에서 만난 화학·물리·생명과학… GIST, IBS 광과학 연구클러스터 첫 공동 심포지엄",
+     "d": "2026-09-10",
+     "u": "https://chem.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000733/view.do?nttId=B000000102851Ay4lQ4l"
+    }
+   ],
+   "latest": "2026-11-04",
+   "found": 4
+  },
+  {
+   "id": "math",
+   "n": "수리과학과",
+   "g": "학과",
+   "c": "자연과학대학",
+   "h": "https://math.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "GIST 수학 세미나 - Geometric and Topological Combinatorics of Intersection patterns - Part 2 (김민기 교수)",
+     "d": "2026-11-05",
+     "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012431/view.do?nttId=B000000104305Gn5zY7a"
+    },
+    {
+     "t": "[과학기술문화페스타] 수리과학과 특별강연 「수학으로 먹고살기」",
+     "d": "2026-10-30",
+     "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012431/view.do?nttId=B000000104133Sj0zX3f"
+    },
+    {
+     "t": "2026년 수학주간 행사 안내",
+     "d": "2026-10-20",
+     "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012431/view.do?nttId=B000000103824Gm3lH9p"
+    },
+    {
+     "t": "[대한수학회 대중강연] 수의 기하학, 동역학과 양자 내성 암호 (연사: 임선희 서울대 교수, 10.29.(목) 오후 7시, 광주과학기술원)",
+     "d": "2026-10-14",
+     "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012431/view.do?nttId=B000000103716Ec9vV2v"
+    },
+    {
+     "t": "2024 수리과학포럼 (2024.09.06. Fri)",
+     "d": "",
+     "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012433/view.do?nttId=B000000091064Bo1jQ3k"
+    }
+   ],
+   "latest": "2026-11-05",
+   "found": 5
+  },
+  {
+   "id": "mse",
+   "n": "신소재공학과",
+   "g": "학과",
+   "c": "공과대학",
+   "h": "https://mse.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "2027 상반기 박사학위논문심사일정 공고(11.13.기준)",
+     "d": "2026-11-13",
+     "u": "https://mse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000300/B000000104242Ex9vM3d/view.do"
+    },
+    {
+     "t": "[입학팀/소재] 제6회 학위연계과정(GIFT) 및 대학원과정 과정변경 선발 안내 (학생접수기간: 11. 30.(월)~ 12. 11.(금)까지)",
+     "d": "2026-11-11",
+     "u": "https://mse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000300/B000000104625La5tE2q/view.do"
+    },
+    {
+     "t": "[전공 탐색]신소재, 나는 어떤 분야에 끌릴까?",
+     "d": "2026-10-27",
+     "u": "https://mse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000300/B000000104068Qb6xY8b/view.do"
+    },
+    {
+     "t": "[행사] 2026 신소재 오픈데이(2026.11.6.(금), 16:00~20:00)",
+     "d": "2026-10-21",
+     "u": "https://mse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000300/B000000103862Ep1hM8p/view.do"
+    },
+    {
+     "t": "[GIST 공과대학] 마음챙김 원예 프로그램 「식물 하나 입양하실래요?」 참가 신청 안내",
+     "d": "2026-10-16",
+     "u": "https://mse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000300/B000000103761Us4aO0g/view.do"
+    }
+   ],
+   "latest": "2026-11-13",
+   "found": 22
+  },
+  {
+   "id": "me",
+   "n": "기계로봇공학과",
+   "g": "학과",
+   "c": "공과대학",
+   "h": "https://me.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "이수현, 이상윤, 류연주 석사과정생(지도교수 김태성) 한국풍력에너지학회 추계학술대회 우수발표상 수상",
+     "d": "2026-11-16",
+     "u": "https://me.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012172/B000000104841Ij3kT1y/view.do"
+    },
+    {
+     "t": "오현석 교수 대한기계학회 김윤영AI교육혁신상 수상",
+     "d": "2026-11-16",
+     "u": "https://me.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012172/B000000104840Bz8cP2o/view.do"
+    },
+    {
+     "t": "심광선 졸업생(지도교수 최성임) 한국전산유체공학회 추계학술대회 우수발표논문상 수상",
+     "d": "2026-11-10",
+     "u": "https://me.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012172/B000000104611Cb5eN3x/view.do"
+    },
+    {
+     "t": "GIST, 풍력 연구 분야 국내 최초 ‘호라이즌 유럽’ 과제 선정 혹한기 얼어붙는 풍력발전기 난제 해결 나서",
+     "d": "2026-11-10",
+     "u": "https://me.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012172/B000000104607Dj1rQ5z/view.do"
+    },
+    {
+     "t": "오현석 교수 기계의날 기념 산업통상부장관 표창 수상",
+     "d": "2026-11-10",
+     "u": "https://me.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012172/B000000104575Ye0bU6e/view.do"
+    }
+   ],
+   "latest": "2026-11-16",
+   "found": 17
+  },
+  {
+   "id": "env1",
+   "n": "환경·에너지공학과",
+   "g": "학과",
+   "c": "공과대학",
+   "h": "https://env1.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[주종훈교수] GIST-POSTECH-KIER, 공정 교체 없이 차세대 연료전지 성능·수명 다 잡았다",
+     "d": "2026-11-03",
+     "u": "https://env1.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000401/B000000104211Wy3cT9s/view.do"
+    },
+    {
+     "t": "[박영준교수] GIST 성유경 학생, 이산화탄소 잡는 흡착제 오래 쓰는 원리 밝혀… 국제학회 우수상",
+     "d": "2026-10-15",
+     "u": "https://env1.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000401/B000000103734In8iE8g/view.do"
+    },
+    {
+     "t": "GIST 환경·에너지공학과, ‘AI+X‘ 융합인재 5인 국내·외 대학 교수로 잇따라 임용",
+     "d": "2026-10-15",
+     "u": "https://env1.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000401/B000000103727Jc5nZ4v/view.do"
+    },
+    {
+     "t": "[주종훈 교수] “전류만 모으던 부품이 스스로 촉매로” GIST, 공정 교체 없이 차세대 연료전지 성능·수명 다 잡았다",
+     "d": "2026-10-15",
+     "u": "https://env1.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000401/B000000103726Wb6lB2u/view.do"
+    },
+    {
+     "t": "[문승현 교수] “생성형 AI 시대, 인간은 무엇으로 차별화될 것인가” GIST 문승현 前 총장, 『인텔리전스 파워』 출간",
+     "d": "2026-10-15",
+     "u": "https://env1.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000401/B000000103724Zo6wG6j/view.do"
+    }
+   ],
+   "latest": "2026-11-03",
+   "found": 22
+  },
+  {
+   "id": "life",
+   "n": "생명과학과",
+   "g": "학과",
+   "c": "생명·의과학융합대학",
+   "h": "https://life.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "2027 생명과학과 동계 연구인턴십 안내",
+     "d": "2026-11-06",
+     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000104385Mr1bR8h"
+    },
+    {
+     "t": "[GIST 정현수 교수 공동연구팀] 신장 세뇨관 상피세포의 ‘후성유전적 노화 가속’ 확인",
+     "d": "2026-10-08",
+     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000103557Lh5zF3w"
+    },
+    {
+     "t": "[김용철 교수 창업기업 ㈜펠레메드 공동연구팀] “신장암 환자에게 새로운 치료 선택지를“ GIST 교원창업기업 ㈜펠레메드, 30억 원 지원 ‘스케일업 팁스‘ 과제 선정",
+     "d": "2026-08-18",
+     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000102168Cz2fW2t"
+    },
+    {
+     "t": "[김용철 교수 공동연구팀] GIST-케이메디허브, 국가신약개발사업 과제 선정… 암세포 면역 회피 차단하는 먹는 항암제 개발 나서",
+     "d": "2026-06-29",
+     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000101309Nv0uV8g"
+    },
+    {
+     "t": "학과앨범 2026년 3회 OMICSTALK",
+     "d": "",
+     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000512/view.do?nttId=B000000104815Lq7gD9e"
+    }
+   ],
+   "latest": "2026-11-06",
+   "found": 11
+  },
+  {
+   "id": "bmse",
+   "n": "의생명공학과",
+   "g": "학과",
+   "c": "생명·의과학융합대학",
+   "h": "https://bmse.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[NEWS-김재관 교수] tbn 광주교통방송 스튜디오 973(광주) 고정 출연",
+     "d": "2026-04-07",
+     "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000098938Ql5oB3e"
+    },
+    {
+     "t": "2026년 LINK-ON DAY 정기 교류 프로그램 안내-5월",
+     "d": "2026-02-25",
+     "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000097569Fb2qB2q"
+    },
+    {
+     "t": "[생명의과학융합대학] G-FIRST 연구체험 프로그램 신청 안내(~26.4.17.(금)까지)",
+     "d": "2026-02-10",
+     "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000097131Es1jH4j"
+    },
+    {
+     "t": "[의생명공학과] 2026학년도 대학원 봄학기 2차 전형 오픈랩 신청안내",
+     "d": "2025-08-26",
+     "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000093124Dn0uD6s"
+    },
+    {
+     "t": "[NEWS] \"지방세포 분화의 숨겨진 연결고리 풀었다\" 조준 교수 연구팀-순천향대, 지방세포 대사 조절 메커니즘 세계 첫 규명",
+     "d": "2025-04-29",
+     "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000090200Yc1uP4l"
+    }
+   ],
+   "latest": "2026-04-07",
+   "found": 8
+  },
+  {
+   "id": "intnscphys",
+   "n": "융합신경생리학과",
+   "g": "학과",
+   "c": "생명·의과학융합대학",
+   "h": "https://intnscphys.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "2027학년도 융합신경생리학과 연구실 소개집",
+     "d": "2026-09-07",
+     "u": "https://intnscphys.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012498/B000000102720Oq5aC2x/view.do"
+    },
+    {
+     "t": "2026학년도 융합신경생리학과 연구실 소개집",
+     "d": "2026-03-31",
+     "u": "https://intnscphys.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012498/B000000098593Dl0nY8p/view.do"
+    }
+   ],
+   "latest": "2026-09-07",
+   "found": 2
+  },
+  {
+   "id": "las",
+   "n": "인문사회과학부",
+   "g": "교육·지원",
+   "c": "",
+   "h": "https://las.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[인문사회과학부 런치톡] 성큼 들어온 AI, 이제 '어떻게'를 물을 시간(11.26.)",
+     "d": "2026-11-12",
+     "u": "https://las.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012060/B000000104727Tr1rU6t/view.do"
+    },
+    {
+     "t": "[인문사회과학부 공개특강] 눈(eye)으로 보고, 마음(mind)으로 읽다: 미술은 우리에게 무엇을 줄 수 있는가?(11.16.)",
+     "d": "2026-11-06",
+     "u": "https://las.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012060/B000000104395Xg3jF7f/view.do"
+    },
+    {
+     "t": "[인문사회과학부 런치톡] 수(數)에 관한 인문학자와의 대화(11.12.)",
+     "d": "2026-11-02",
+     "u": "https://las.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012060/B000000104193Fy3vZ4l/view.do"
+    },
+    {
+     "t": "[인문사회과학부 공개특강] '좋은' 삶을 위한 철학: 소크라테스와 스토아 철학(10.31.)",
+     "d": "2026-10-22",
+     "u": "https://las.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012060/B000000103903Pr2dO5u/view.do"
+    },
+    {
+     "t": "(세미나 취소) [인문사회과학부 세미나] 한강의 '밤섬'은 어떻게 되살아났을까: 생태적 미디어로서 밤섬의 반세기 생애(10.27.)",
+     "d": "2026-10-20",
+     "u": "https://las.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012060/B000000103838Rl4iZ1u/view.do"
+    }
+   ],
+   "latest": "2026-11-12",
+   "found": 6
+  },
+  {
+   "id": "language",
+   "n": "언어교육원",
+   "g": "교육·지원",
+   "c": "",
+   "h": "https://language.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[LEC Workshop] Statement of Purpose",
+     "d": "2026-10-07",
+     "u": "https://language.gist.ac.kr:443/bbs/board.php?bo_table=eec0801&wr_id=463"
+    },
+    {
+     "t": "LEC Creative Writing Contest",
+     "d": "2026-10-01",
+     "u": "https://language.gist.ac.kr:443/bbs/board.php?bo_table=eec0801&wr_id=462"
+    },
+    {
+     "t": "서버 관리 작업으로 인한 홈페이지 접속 제한 안내(8.13. 18시 이후)",
+     "d": "2026-08-12",
+     "u": "https://language.gist.ac.kr:443/bbs/board.php?bo_table=eec0801&wr_id=461"
+    },
+    {
+     "t": "[Undergraduate] English I(GS1607) and English II(GS2652) cou…",
+     "d": "2026-08-07",
+     "u": "https://language.gist.ac.kr:443/bbs/board.php?bo_table=eec0801&wr_id=460"
+    },
+    {
+     "t": "[2026-2] Korean Language Course Exemption for international …",
+     "d": "2026-08-06",
+     "u": "https://language.gist.ac.kr:443/bbs/board.php?bo_table=eec0801&wr_id=458"
+    }
+   ],
+   "latest": "2026-10-07",
+   "found": 16
+  },
+  {
+   "id": "giai",
+   "n": "인공지능연구소",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://giai.gist.ac.kr/giai/",
+   "ok": true,
+   "items": [
+    {
+     "t": "2026.09.22. 「GIST 인공지능연구소 협력연구실 탐방의 날」오픈랩 개최",
+     "d": "2026-09-11",
+     "u": "https://giai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011496/view.do?nttId=B000000103237Fi7eP0x"
+    },
+    {
+     "t": "GIST AI 연구소 '말할 수 없는 비밀 AI ver' 영상",
+     "d": "2024-09-04",
+     "u": "https://giai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011498/view.do?nttId=B000000085981Jp0pV2y"
+    },
+    {
+     "t": "GIST 인공지능연구소 신기술 전시 발표회 '말할 수 없는 비밀 : AI ver,' 포스터",
+     "d": "2024-08-06",
+     "u": "https://giai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011498/view.do?nttId=B000000085399Rd0tX9e"
+    },
+    {
+     "t": "2023년 AI기반 융합인재 양성 지원사업 성과발표회 개최 안내(12.15. 금)",
+     "d": "2023-11-08",
+     "u": "https://giai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011498/view.do?nttId=B000000080180Kj4bO9m"
+    },
+    {
+     "t": "2023 GIST-MIT Joint Research Symposium 개최 안내",
+     "d": "2023-10-31",
+     "u": "https://giai.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011498/view.do?nttId=B000000079984Mm6iH6i"
+    }
+   ],
+   "latest": "2026-09-11",
+   "found": 6
+  },
+  {
+   "id": "kct",
+   "n": "한국문화기술연구소",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://kct.gist.ac.kr/kct/",
+   "ok": true,
+   "items": [
+    {
+     "t": "민형배 의원 '한국문화기술(CT) 연구원 설립 위한 정책토론회' 개최",
+     "d": "2025-05-02",
+     "u": "https://kct.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000907/view.do?nttId=B000000090273Xe7tP9l"
+    },
+    {
+     "t": "\"인간에서 기계로의 전환을 시뮬레이션하는 미디어아트\" 홍요한 연구원, 레드닷 디자인 어워드 본상 수상",
+     "d": "2024-11-07",
+     "u": "https://kct.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000907/view.do?nttId=B000000087063Qj2oQ4n"
+    },
+    {
+     "t": "GIST 한국CT연구소, 청각장애인 문화시설 맞춤형 수어 통·번역 서비스 시범 운영",
+     "d": "2024-11-07",
+     "u": "https://kct.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000907/view.do?nttId=B000000087061Qp9qB9k"
+    },
+    {
+     "t": "\"내가 너의 눈이 되어 줄게\"...시각장애인용 전시 관람 로봇 등장",
+     "d": "2024-11-01",
+     "u": "https://kct.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000907/view.do?nttId=B000000086970Pz8xW9h"
+    },
+    {
+     "t": "로봇과 책 고르고 읽자!…어린이 독서 돕는 로봇 개발",
+     "d": "2024-10-28",
+     "u": "https://kct.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000907/view.do?nttId=B000000086868Sq5nP1o"
+    }
+   ],
+   "latest": "2025-05-02",
+   "found": 5
+  },
+  {
+   "id": "ieri",
+   "n": "국제환경연구소",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://ieri.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[23-25 Oct. 2023] 국제기후적응포럼(IFOCA) 2023 개최(초록마감 연장: ~9/30)",
+     "d": "2023-09-01",
+     "u": "https://ieri.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011790/view.do?nttId=B000000078944Ls2vG9c"
+    },
+    {
+     "t": "[26-29 Oct. 2020] Take Part in the 4th G-STIC Conference",
+     "d": "2020-09-16",
+     "u": "https://ieri.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011790/view.do?nttId=B000000050847Rl2hI5q"
+    },
+    {
+     "t": "IERI International Internship Program Announcement 2020",
+     "d": "2020-03-16",
+     "u": "https://ieri.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011790/view.do?nttId=B000000049820Xz6vI5o"
+    },
+    {
+     "t": "IERI Call for Research Proposals 2020 for developing countries",
+     "d": "2019-11-08",
+     "u": "https://ieri.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011790/view.do?nttId=B000000049819Hu0pR8t"
+    },
+    {
+     "t": "2018 Fall Internship Programme",
+     "d": "",
+     "u": "https://ieri.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011788/view.do?nttId=B000000049760Pa2rR1u"
+    }
+   ],
+   "latest": "2023-09-01",
+   "found": 10
+  },
+  {
+   "id": "iibr",
+   "n": "생명의과학융합연구소",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://iibr.gist.ac.kr/iibr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[공지사항] 2022년 제1회 연구소 연구책임자(PI) 간담회 개최",
+     "d": "2022-02-10",
+     "u": "https://iibr.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011816/view.do?nttId=B000000064709Xq3zR7g"
+    },
+    {
+     "t": "[공지사항] 제4회 생명의과학융합연구소 운영위원회 개최",
+     "d": "2022-02-08",
+     "u": "https://iibr.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011816/view.do?nttId=B000000064558Lk0sO3i"
+    },
+    {
+     "t": "[채용공고] 광주과학기술원 생명의과학융합연구소 연구직 채용 공고",
+     "d": "2022-02-08",
+     "u": "https://iibr.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011818/view.do?nttId=B000000064554Ae3sD9e"
+    },
+    {
+     "t": "[공지사항] 홈페이지 영문 버전 업데이트 도우미 모집",
+     "d": "2021-09-15",
+     "u": "https://iibr.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011816/view.do?nttId=B000000061235Zd9bP0m"
+    },
+    {
+     "t": "[공지사항] 제4회 연구소 연구책임자(PI) 간담회 개최",
+     "d": "2021-08-19",
+     "u": "https://iibr.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000011816/view.do?nttId=B000000061236Ma0hL8j"
+    }
+   ],
+   "latest": "2022-02-10",
+   "found": 10
+  },
+  {
+   "id": "rise",
+   "n": "차세대에너지연구소",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://rise.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "지스트 개발과제 연구성과 질적 우수성에 대한 정성적 평가 및 차년도 연구계획의 적절성 평가",
+     "d": "2020-12-14",
+     "u": "https://rise.gist.ac.kr/user/board/view/board_cd/notice/wr_no/914"
+    },
+    {
+     "t": "GIST 차세대에너지연구소-엠에스웨이(주) 산학연구센터 개소식 및 협약식",
+     "d": "2020-11-18",
+     "u": "https://rise.gist.ac.kr/user/board/view/board_cd/notice/wr_no/913"
+    },
+    {
+     "t": "지스트 연구팀, 박막표면 결함 제거해 빛과 열에 강한 페로브스카이트 개발",
+     "d": "2020-09-21",
+     "u": "https://rise.gist.ac.kr/user/board/view/board_cd/report3/wr_no/824"
+    },
+    {
+     "t": "이광희 교수, 국가 난제 \"제로 에너지 빌딩을 위한 윈도우필름형 투명태양전지 개발 \" 도전",
+     "d": "2020-09-21",
+     "u": "https://rise.gist.ac.kr/user/board/view/board_cd/report3/wr_no/820"
+    },
+    {
+     "t": "지스트 이광희 교수,“건물일체형 고효율 친환경 태양전지 미니발전소 개발”에 도전",
+     "d": "2020-09-21",
+     "u": "https://rise.gist.ac.kr/user/board/view/board_cd/report3/wr_no/819"
+    }
+   ],
+   "latest": "2020-12-14",
+   "found": 7
+  },
+  {
+   "id": "apri",
+   "n": "고등광기술연구원",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://apri.gist.ac.kr/index.php",
+   "ok": true,
+   "items": [
+    {
+     "t": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래-머니투데이",
+     "d": "2026-11-02",
+     "u": "https://apri.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=1315"
+    },
+    {
+     "t": "\"GIST '반도체 혁신기술' 2종, 소부장 기업들 러브콜 기대\"-머니투데이",
+     "d": "2026-11-02",
+     "u": "https://apri.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=1314"
+    },
+    {
+     "t": "GIST, 한·스위스 양자광기술 포럼 개최…최신 연구성과 공유-뉴스1",
+     "d": "2026-09-30",
+     "u": "https://apri.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=1313"
+    },
+    {
+     "t": "GIST, 베른대와 양자광기술 MOU…IBS 3개 연구단 첫 공동 심포지엄-뉴스핌",
+     "d": "2026-09-30",
+     "u": "https://apri.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=1312"
+    },
+    {
+     "t": "[스페이스버드2] ⑫3100만 km 밖 고양이 영상, 비밀은 ‘레이저’-동아사이언스",
+     "d": "2026-07-28",
+     "u": "https://apri.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=1311"
+    }
+   ],
+   "latest": "2026-11-02",
+   "found": 18
+  },
+  {
+   "id": "gaia",
+   "n": "중앙기기연구소",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://gaia.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "중앙기기연구소 출입등록 카드 반납 (Super User)",
+     "d": "2026-01-21",
+     "u": "https://gaia.gist.ac.kr/hm/board/notice/list"
+    },
+    {
+     "t": "중앙기기연구소 출입등록 안내",
+     "d": "2026-01-20",
+     "u": "https://gaia.gist.ac.kr/hm/board/notice/list"
+    },
+    {
+     "t": "외부이용자 시험분석료 세금계산서 발행 관련 유의사항",
+     "d": "2025-03-10",
+     "u": "https://gaia.gist.ac.kr/hm/board/notice/list"
+    },
+    {
+     "t": "중앙기기연구소 사업자등록증&통장사본",
+     "d": "2025-02-24",
+     "u": "https://gaia.gist.ac.kr/hm/board/notice/list"
+    },
+    {
+     "t": "[중요!] 내부이용자 시험분석료 납부 관련 안내",
+     "d": "2025-01-02",
+     "u": "https://gaia.gist.ac.kr/hm/board/notice/list"
+    }
+   ],
+   "latest": "2026-01-21",
+   "found": 16
+  },
+  {
+   "id": "larc",
+   "n": "실험동물자원센터",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://larc.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "조직병리기술지원 이용 변경 안내",
+     "d": "2026-09-01",
+     "u": "https://larc.gist.ac.kr/06_board/board01.html?Item=free&mode=view&No=243"
+    },
+    {
+     "t": "Real-Time PCR 장비 이용 및 비용 부과 방식 변경 안내",
+     "d": "2026-08-13",
+     "u": "https://larc.gist.ac.kr/06_board/board01.html?Item=free&mode=view&No=242"
+    },
+    {
+     "t": "임상병리기술지원 생화학 검사 이용 및 비용 청구 방식 변경",
+     "d": "2026-08-10",
+     "u": "https://larc.gist.ac.kr/06_board/board01.html?Item=free&mode=view&No=241"
+    },
+    {
+     "t": "Cryosection 장비 운영 및 관리 개선 방안",
+     "d": "2026-02-24",
+     "u": "https://larc.gist.ac.kr/06_board/board01.html?Item=free&mode=view&No=229"
+    },
+    {
+     "t": "Slide Scanner 서비스 재개 안내",
+     "d": "2026-02-19",
+     "u": "https://larc.gist.ac.kr/06_board/board01.html?Item=free&mode=view&No=227"
+    }
+   ],
+   "latest": "2026-09-01",
+   "found": 9
+  },
+  {
+   "id": "angels",
+   "n": "첨단AI반도체팹센터",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://angels.gist.ac.kr/angels/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[뉴스보도] 임기철 GIST 총장 \"오픈팹·자이언츠로 호남 반도체 키운다\"",
+     "d": "2026-11-16",
+     "u": "https://angels.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012509/view.do?nttId=B000000104878Nn1jG0i"
+    },
+    {
+     "t": "[인재양성] GIST-imec 글로벌 인턴십 연수생 모집 공고",
+     "d": "2026-10-30",
+     "u": "https://angels.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012509/view.do?nttId=B000000104139Uw4rH8n"
+    },
+    {
+     "t": "[인재양성] GIST-imec 글로벌 인턴십 사전설명회 개최 안내",
+     "d": "2026-10-30",
+     "u": "https://angels.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012509/view.do?nttId=B000000104136Mn8rW7k"
+    },
+    {
+     "t": "광주과학기술원-나노종합기술원",
+     "d": "2026-10-30",
+     "u": "https://angels.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012511/view.do?nttId=B000000104141Pq9iZ4f"
+    },
+    {
+     "t": "[뉴스보도] \"용인 트리니티 팹 주목…\"호남도 반도체 테스트 팹 필요\"",
+     "d": "2026-10-13",
+     "u": "https://angels.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012509/view.do?nttId=B000000103618Rj4jB3j"
+    }
+   ],
+   "latest": "2026-11-16",
+   "found": 12
+  },
+  {
+   "id": "gti",
+   "n": "창업혁신진흥원(GTI)",
+   "g": "연구소·센터",
+   "c": "",
+   "h": "https://gti.gist.ac.kr/",
+   "ok": true,
+   "items": [
+    {
+     "t": "[교육 안내] 2026 광주특구 투자…",
+     "d": "2026-11-13",
+     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0605&wr_id=1369"
+    },
+    {
+     "t": "제3회 K-ROBOTICS START…",
+     "d": "2026-11-13",
+     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0605&wr_id=1368"
+    },
+    {
+     "t": "광주과학기술원 창업진흥센터 입주 기업…",
+     "d": "2026-04-01",
+     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=523"
+    },
+    {
+     "t": "AI를 이용한 기술개발 효율화 전략 …",
+     "d": "2026-04-01",
+     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=520"
+    },
+    {
+     "t": "[창업진흥센터] 「실험실창업 법률 특…",
+     "d": "2025-11-19",
+     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=516"
+    }
+   ],
+   "latest": "2026-11-13",
+   "found": 27
+  }
+ ]
+}

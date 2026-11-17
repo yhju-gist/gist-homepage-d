@@ -779,7 +779,8 @@ const DEF={
  need:Object.fromEntries(Object.keys(NEED).map(k=>[k,NEED[k].join("\n")])),
  stories:STORIES.map(x=>({c:x.c,t:x.t,s:x.s,d:x.d,m:x.m,cr:x.cr,body:x.body||"",...(x.u?{u:x.u}:{}),...(x.g?{g:x.g}:{}),...(x.src?{src:x.src}:{}),...(x.sum?{sum:x.sum}:{})})),
  popup:{on:false,k:"POPUP",t:"",p:"",u:"",img:""},
- pages:{}
+ pages:{},
+ live:{notices:true,events:true}
 };
 let PAGEOV={};
 let SITE=JSON.parse(JSON.stringify(DEF)),SITE_AT=null;
@@ -800,8 +801,9 @@ function applySite(S){
  const bn=(S.bn&&S.bn.length?S.bn:DEF.bn).slice(0,3);
  bn.forEach((b,i)=>{BN[i]=[b.k||"",b.t||""];BIG[i]=b.big||"";BNIMG[i]=b.img||BNIMG0[i]||BNIMG0[0];});
  setBanner(bi||0);
- NOTICES.length=0;(S.notices||DEF.notices).forEach(n=>NOTICES.push(n));
- EVENTS.length=0;(S.events||DEF.events).forEach(e=>EVENTS.push(e));
+ const LV=window.__LIVE,LO=S.live||{};
+ NOTICES.length=0;((LV&&LV.N.length&&LO.notices!==false)?LV.N:(S.notices||DEF.notices)).forEach(n=>NOTICES.push(n));
+ EVENTS.length=0;((LV&&LV.E.length&&LO.events!==false)?LV.E:(S.events||DEF.events)).forEach(e=>EVENTS.push(e));
  if(S.stories&&S.stories.length){STORIES.length=0;S.stories.forEach(x=>STORIES.push({...x,m:x.m||((x.d||"").slice(0,7).replace(".","-")),cr:x.cr||"자료 © GIST",body:x.body||""}));renderToday();renderStGrid();typeof renderStory==="function"&&renderStory();}
  if(S.need){Object.keys(NEED).forEach(k=>{if(typeof S.need[k]==="string"){const L=S.need[k].split("\n").map(t=>t.trim()).filter(Boolean).slice(0,10);if(L.length)NEED[k]=L;}});const cur=document.querySelector('.who button[aria-pressed="true"]');renderNeed(cur?cur.dataset.who:"ug");}
  renderNotices();
@@ -839,17 +841,20 @@ function okUrl(u){return !u||/^https:\/\//.test(u)||/^\/_blob\//.test(u)||/^#/.t
  function get(p){return p.split(".").reduce((o,k)=>o==null?o:o[k],EDIT);}
  function put(p,v){const ks=p.split(".");let o=EDIT;ks.slice(0,-1).forEach(k=>o=o[k]);o[ks[ks.length-1]]=v;}
  function list(key,fields,label,max){const L=EDIT[key];return L.map((r,i)=>'<div class="adm-row"><div class="rh">'+esc(label)+' '+(i+1)+'<span><button type="button" class="abtn" data-mv="'+key+'.'+i+'.-1" aria-label="위로">↑</button><button type="button" class="abtn" data-mv="'+key+'.'+i+'.1" aria-label="아래로">↓</button>'+(key!=="bn"?'<button type="button" class="abtn" data-rm="'+key+'.'+i+'">빼기</button>':'')+'</span></div>'+fields.map(f=>f[2]==="img"?I(key+"."+i+"."+f[0],f[1],key==="bn"?BNIMG0[i]:""):F(key+"."+i+"."+f[0],f[1],f[2],f[3])).join("")+'</div>').join("")+(key!=="bn"&&L.length<(max||12)?'<button type="button" class="abtn" data-add="'+key+'">+ '+esc(label)+' 더하기</button>':'');}
- const TABS=[["hero","첫 화면"],["topbar","띠 공지"],["bn","연구 배너"],["notices","공지"],["events","학사일정"],["need","방문자 메뉴"],["stories","소식"], ["popup","팝업존"],["pages","세부페이지"]];
+ const TABS=[["hero","첫 화면"],["topbar","띠 공지"],["bn","연구 배너"],["notices","공지"],["events","학사일정"],["need","방문자 메뉴"],["stories","소식"], ["popup","팝업존"],["pages","세부페이지"],["sync","연결 상태"]];
+ function liveBox(k,label){EDIT.live=EDIT.live||{notices:true,events:true};const L=window.__LIVE;const at=L&&L.at?new Date(L.at).toLocaleString("ko-KR"):"";
+  return '<div class="adm-live">'+C("live."+k,"현행 홈페이지 "+label+" 1시간마다 자동으로 가져와 보여 주기")+'<p class="hint">'+(L?(L.ok&&L.ok[k]===false?"⚠ 마지막 자동 가져오기 실패 — 지난번 목록을 보여 주는 중 · ":"")+"마지막 확인 "+esc(at)+" · 지금 가져온 "+(k==="notices"?L.N.length:L.E.length)+"건":"자동 연결 자료(data/live.json)를 아직 읽지 못했습니다")+'. 끄면 아래에 직접 적은 목록이 첫 화면에 나옵니다.</p></div>';}
  function body(){
   if(TAB==="hero")return '<p class="hint">문구 후보 (D안 기본 + GIST 공식 문구 그대로) — 누르면 바로 바뀝니다</p><div class="hcand">'+HCAND.map((h,i)=>'<button type="button" class="abtn" data-hc="'+i+'"><small>'+esc(h[2])+'</small>'+esc(h[0]+" "+h[1])+'</button>').join("")+'</div>'+I("hero.img","첫 화면 사진 (가로 2000px 권장)",HERO0)+F("hero.t1","큰 제목 1줄")+F("hero.t2","큰 제목 2줄","text","'GIST' 글자는 빨간 상자로 강조됩니다")+F("hero.sub","작은 설명")+F("hero.ph","검색창 안내 문구");
   if(TAB==="topbar")return C("topbar.on","띠 공지 보이기")+F("topbar.t","띠 공지 문구")+F("topbar.u","‘자세히 보기’ 주소","url","https:// 로 시작하는 주소만 저장됩니다");
   if(TAB==="bn")return '<p class="hint">GIST Excellence 3칸. 5초마다 넘어갑니다.</p>'+list("bn",[["k","소속·이름"],["t","제목","area"],["big","사진 위 큰 글자"],["img","그림","img"]],"배너");
-  if(TAB==="notices")return '<p class="hint">첫 화면 공지 목록(위에서부터 보임).</p>'+list("notices",[["k","분류(채용·행사·안내·모집)"],["t","제목"],["d","날짜 (예: 11.05.)"],["u","주소","url"]],"공지",8);
-  if(TAB==="events")return list("events",[["d","날짜 (예: 11.17)"],["w","요일 (예: TUE)"],["t","내용"]],"일정",8);
+  if(TAB==="notices")return liveBox("notices","공지를")+'<p class="hint">첫 화면 공지 목록(위에서부터 보임). 자동 연결을 끈 때만 이 목록이 쓰입니다.</p>'+list("notices",[["k","분류(채용·행사·안내·모집)"],["t","제목"],["d","날짜 (예: 11.05.)"],["u","주소","url"]],"공지",8);
+  if(TAB==="events")return liveBox("events","학사일정을")+list("events",[["d","날짜 (예: 11.17)"],["w","요일 (예: TUE)"],["t","내용"]],"일정",8);
   if(TAB==="need")return '<p class="hint">한 줄에 메뉴 하나. 주소를 붙이려면 「메뉴 이름 | https://주소」. 주소가 없으면 통합검색으로 연결됩니다. 최대 10개.</p>'+Object.keys(WHO).map(k=>F("need."+k,WHO[k],"area")).join("");
   if(TAB==="stories")return '<p class="hint">GIST TODAY 흐르는 소식·이야기 격자·미디어센터에 함께 쓰입니다. 분류: 연구성과 / 사람 / 보도자료 / 영상 / 캠퍼스</p>'+list("stories",[["c","분류"],["t","제목","area"],["s","부제 (학과·교수 등)"],["d","날짜 (예: 2026.11.10.)"]],"소식",40);
   if(TAB==="pages"){EDIT.pages=EDIT.pages||{};const names=[];MEGA.forEach((M,i)=>M[2].forEach((G,g)=>G[1].forEach((x,k)=>{if(i!==1&&!PSPECIAL[x])names.push([x,M[0]+" › "+G[0],i,g,k]);})));if(!PG||!names.some(n=>n[0]===PG))PG=names[0][0];EDIT.pages[PG]=EDIT.pages[PG]||{lead:"",dept:"",body:""};
    return '<p class="hint">메뉴 43개 세부페이지를 직접 고칩니다. 고르면 그 화면으로 이동해 바로 미리 보입니다.</p><label>고칠 화면<select id="admpg">'+names.map(n=>'<option value="'+esc(n[0])+'"'+(n[0]===PG?' selected':'')+'>'+esc(n[1]+" › "+n[0])+(EDIT.pages[n[0]]&&(EDIT.pages[n[0]].body||EDIT.pages[n[0]].lead||EDIT.pages[n[0]].dept)?" ✎":"")+'</option>').join("")+'</select></label>'+F("pages."+PG+".lead","첫 줄 설명 (비우면 기본 문구)")+F("pages."+PG+".dept","담당 부서 (예: 학적팀 T.2055)")+F("pages."+PG+".body","본문","area","## 제목 · - 목록 · 빈 줄로 문단 나누기 · [글자](https://주소) 로 링크");}
+  if(TAB==="sync")return syncAdm();
   if(TAB==="popup")return C("popup.on","팝업존 보이기 (화면을 가리지 않는 왼쪽 아래 카드)")+F("popup.k","작은 머리말")+F("popup.t","제목")+F("popup.p","설명","area")+F("popup.u","주소","url")+I("popup.img","사진");
  }
  function goPG(){let h=null;MEGA.forEach((M,i)=>M[2].forEach((G,g)=>G[1].forEach((x,k)=>{if(x===PG&&i!==1)h="#p-"+i+"-"+g+"-"+k;})));if(h&&LH()!==h)location.hash=h;}
@@ -1006,9 +1011,11 @@ window.__gCover=gCover;
   (js.events||[]).filter(e=>e&&e.t).slice(0,6).forEach(e=>IDX.push({s:"main",lv:1,site:"대표 홈페이지 · 학사일정",t:String(e.t).slice(0,120),p:String(e.d||"")+"("+String(e.w||"")+") 학사일정",k:"학사일정 일정 "+e.t,u:"https://www.gist.ac.kr/kr/html/sub05/0501.html"}));
   (js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).forEach(x=>{if(!STORIES.some(z=>z.g===x.u))IDX.push({s:"main",lv:1,site:"대표 홈페이지 · GIST 소식",t:String(x.t).slice(0,140),p:String(x.d||"")+" · "+String(x.s||"").slice(0,120),k:"소식 뉴스 "+x.t+" "+(x.s||""),u:x.u});});
   if(typeof fuseCache!=="undefined")fuseCache.clear();
-  if(SITE_AT)return;                       /* 관리자가 직접 저장한 내용이 있으면 손대지 않음 */
-  if(N.length){SITE.notices=N;NOTICES.length=0;N.forEach(n=>NOTICES.push(n));}
-  if(E.length){SITE.events=E;EVENTS.length=0;E.forEach(e=>EVENTS.push(e));}
+  window.__LIVE={N,E,at:js.checked,ok:js.ok||{}};
+  /* 관리자 모드에서 '자동 연결'을 끈 항목만 관리자 목록을 쓴다(기본은 켜짐) — 관리자가 다른 칸을 저장해도 공지·일정 자동 갱신은 멈추지 않음 */
+  const LO=(SITE&&SITE.live)||{};
+  if(N.length&&LO.notices!==false){NOTICES.length=0;N.forEach(n=>NOTICES.push(n));}
+  if(E.length&&LO.events!==false){EVENTS.length=0;E.forEach(e=>EVENTS.push(e));}
   if(N.length||E.length){renderNotices();const p=$("#liveSt");if(p&&js.checked){p.textContent="현행 홈페이지 공지·학사일정에서 자동으로 가져옴 · "+st(js.checked)+" 확인";p.hidden=false;}}}
  loadLive();setInterval(loadLive,1800000);}
 
@@ -1654,7 +1661,7 @@ function renderDept(n){const D0=DEPT[n],ci=deptCol(n),C=COLLEGES[ci];const host=
  const sat='<section class="psat" aria-label="페이지 만족도"><b>이 화면의 정보가 도움이 되었나요?</b><div class="psat-b" role="group" aria-label="만족도 고르기">'+["매우 만족","만족","보통","불만족"].map(v=>'<button type="button" data-sat="'+v+'">'+v+'</button>').join("")+'</div><p class="psat-m" role="status">[시안] 고른 결과는 저장하지 않습니다. 구축 때 담당 부서 집계로 연결합니다.</p></section>';
  host.innerHTML='<div class="page-h dhero2 c'+ci+'">'+dphoto(D0.code,ci,'dh2-bg')+'<div class="wrap dh2-in"><span class="dh2-col">'+esc(CEN2[ci])+'</span><span class="dh2-w" aria-hidden="true">'+esc(DWD[D0.code]||"")+'</span><h1>'+esc(n)+'</h1><p class="dh2-e">'+esc(D0.e||C.n)+'</p>'+(D0.slo?'<p class="dh2-s">'+esc(D0.slo)+'</p>':'')+(D0.areas.length?'<div class="dh2-ch">'+D0.areas.slice(0,5).map(x=>'<span>'+esc(x[0])+'</span>').join("")+'</div>':'')+'</div><span class="dh2-cr">'+(/^d_/.test(DPH[D0.code]||'')?'사진 © '+esc(n)+' 홈페이지':'사진 © GIST')+'</span></div>'+
   '<nav class="pbar" aria-label="현재 위치"><div class="wrap"><a class="home" href="#home" aria-label="홈으로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg></a><ol><li><a class="dd" style="padding:8px 6px" href="#colleges">대학·학과</a></li>'+dd("pdc",C.n,colItems)+dd("pdd",n,sibItems)+'</ol><span class="tools"><span class="pb-st" role="status"></span><button type="button" class="cp" aria-label="이 화면 주소 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button><button type="button" class="pr" aria-label="이 화면 인쇄"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6h-2"/><rect x="6" y="14" width="12" height="7"/></svg></button></span></div></nav>'+
-  '<div class="wrap"><div class="lnbw">'+lnb+'<div class="lnb-main pg-main"><div class="dhd"><div><span class="eyebrow">'+esc(C.n)+'</span><h2 class="pg-t" style="margin:4px 0 0">'+esc(n)+'</h2>'+(D0.e?'<p class="den">'+esc(D0.e)+'</p>':'')+'</div></div>'+(D0.slo?'<p class="dslo">'+esc(D0.slo)+'</p>':'')+(intro?'<div class="dint">'+intro+'</div>':'<div class="slot sm"><b>학과 소개</b><p>현행 GIST 홈페이지 학과 소개 화면에 소개글이 없어 비워 두었습니다. 학과 홈페이지에서 확인해 주세요.</p></div>')+act+areas+nxDept(n)+apDeptBtns(n)+deptWays(n)+dnews(n)+contact+offc+src+sat+sibs+'</div></div></div>';
+  '<div class="wrap"><div class="lnbw">'+lnb+'<div class="lnb-main pg-main"><div class="dhd"><div><span class="eyebrow">'+esc(C.n)+'</span><h2 class="pg-t" style="margin:4px 0 0">'+esc(n)+'</h2>'+(D0.e?'<p class="den">'+esc(D0.e)+'</p>':'')+'</div></div>'+(D0.slo?'<p class="dslo">'+esc(D0.slo)+'</p>':'')+(intro?'<div class="dint">'+intro+'</div>':'<div class="slot sm"><b>학과 소개</b><p>현행 GIST 홈페이지 학과 소개 화면에 소개글이 없어 비워 두었습니다. 학과 홈페이지에서 확인해 주세요.</p></div>')+act+areas+nxDept(n)+apDeptBtns(n)+deptWays(n)+dnews(n)+dsync(n)+contact+offc+src+sat+sibs+'</div></div></div>';
  document.title=n+" | GIST 홈페이지 D안";icons();}
 {const _r2=route;route=function(){const m=(LH()||"").match(/^#d-([a-z0-9]+)$/);const n=m&&deptByCode(m[1]);if(n){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));$$(".gnb a").forEach(a=>a.classList.toggle("on",+a.dataset.m===1));renderDept(n);scrollTo({top:0});heroState&&heroState();return;}_r2();};}
 addEventListener("hashchange",()=>{if(/^#d-/.test(LH()||""))route();});
@@ -2224,7 +2231,8 @@ function idxAdd(r){IDX.push(r);try{CMDX.push(r)}catch(_){}}
   ["International (IPA)","Exchange programs, Global Intern Program, partner institutions, alumni","#ipa","국제교류 교환학생 외국인 exchange international IPA"],
   ["제안요청서 대조표","제안요청서 기능 요구사항을 시안에서 동작·일부·구축 단계 몫으로 나눠 봅니다.","#rfp","제안요청서 요구사항 대조표 과업"],
   ["서류 초안","자료·테스트·보안·품질·표준 요구사항 서류 초안 모음","#docs","서류 초안 요구사항 자료 표준 테스트 보안 품질"],
-  ["품질 성적표","현행 홈페이지와 D안을 같은 날 같은 PC에서 잰 값","#quality","속도 접근성 성능 품질 성적표 Lighthouse"]
+  ["품질 성적표","현행 홈페이지와 D안을 같은 날 같은 PC에서 잰 값","#quality","속도 접근성 성능 품질 성적표 Lighthouse"],
+  ["홈페이지 연결 현황","학과·연구소·센터 홈페이지 26곳의 최근 글과 마지막 글 날짜를 1시간마다 이어 받아 봅니다.","#sync","연결 현황 학과 홈페이지 연구소 센터 최신화 동기화 싱크 최근 글"]
  ].forEach(x=>idxAdd({s:"main",site:"D안 화면",t:x[0],p:x[1],k:x[3],h:x[2]}));
 })();
 function idxMore(){if(IDXM)return;IDXM=1;let n=4;const done=function(){if(--n)return;try{
@@ -2259,6 +2267,50 @@ function apDeptBtns(n){return '<div class="ap-strip"><span class="eyebrow">온�
 const QUAL={when:"현행 홈페이지 2026.11.12. 18:25~19:20, D안 2026.11.13. 17:38~17:41 — 휴대폰·PC 모두 3번 잰 가운데 값",tool:"Lighthouse 12.8.2 (크롬, 사무실 PC). 휴대폰 점수는 잴 때마다 차이가 커서 3번 잰 가운데 값",
  rows:[["현행 GIST 대표 홈페이지","www.gist.ac.kr/kr/main.html",[56,87,79,92,"10.2초","25.0초","48.0MB"],[70,85,81,92,"1.3초","18.1초","48.0MB"]],
        ["D안","yhju-gist.github.io/gist-homepage-d",[93,100,100,100,"1.8초","2.6초","1.4MB"],[99,100,100,100,"0.7초","0.8초","1.6MB"]]]};
+/* 대표 홈페이지 ↔ 학과·연구소·센터 홈페이지 연결: scripts/sites_fetch.py 가 1시간마다 data/sites.json 을 만든다(각 홈페이지 첫 화면·공지 목록의 제목·날짜·주소만).
+   학과 화면에 그 학과 홈페이지 최근 글, '홈페이지 연결 현황(#sync)'에 26곳의 마지막 글 날짜, 통합검색에 각 홈페이지 최근 글이 함께 나온다. 주소는 *.gist.ac.kr 만 받는다. */
+let SITES_LIVE=null;
+function okSite(u){return /^https?:\/\/([a-z0-9-]+\.)*gist\.ac\.kr(:443)?(\/[^\s"'<>]*)?$/i.test(u||"");}
+function sAge(d){if(!d)return null;const t=new Date(d+"T00:00:00");if(isNaN(t))return null;return Math.max(0,Math.floor((Date.now()-t)/864e5));}
+function sState(x){if(!x.ok)return["x","가져오기 실패"];const a=sAge(x.latest);if(a==null)return["n","날짜 없는 글뿐"];if(a<=30)return["ok","최근 30일 안"];if(a<=180)return["mid","1~6개월 전"];if(a<=365)return["old","6개월~1년 전"];return["stale","1년 넘음"];}
+function sWhen(t){const d=new Date(t);return isNaN(d)?"":(d.getMonth()+1)+". "+d.getDate()+". "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");}
+function sDate(d){return d?d.replace(/^(\d{4})-(\d{2})-(\d{2})$/,(m,y,mo,da)=>y+". "+(+mo)+". "+(+da)+"."):"날짜 없음";}
+function dsync(n){const D0=DEPT[n];if(!D0)return "";const x=SITES_LIVE&&(SITES_LIVE.sites||[]).find(s=>s.id===D0.code);
+ if(!x)return '<section class="dsy" id="dsy"><h3 class="p-h3">학과 홈페이지 최근 글</h3><p class="note">학과 홈페이지에서 최근 글을 불러오는 중입니다. 시험 파일로 열었거나 불러오지 못하면 <a href="'+esc(D0.hp)+'"'+EXT+'>학과 홈페이지</a>에서 확인해 주세요.</p></section>';
+ const L=(x.items||[]).filter(it=>it&&it.t&&okSite(it.u)).slice(0,5),st=sState(x);
+ return '<section class="dsy" id="dsy"><h3 class="p-h3">학과 홈페이지 최근 글 <small>자동 연결 · '+esc(sWhen(SITES_LIVE.checked))+' 확인</small></h3>'+
+  (L.length?'<ul class="dsy-l">'+L.map(it=>'<li><a href="'+esc(it.u)+'"'+EXT+'><b>'+esc(it.t)+'</b><span class="num">'+esc(sDate(it.d))+'</span></a></li>').join("")+'</ul>':'<p class="note">학과 홈페이지 첫 화면에서 글을 찾지 못했습니다.</p>')+
+  '<p class="note"><span class="sy-st '+st[0]+'">'+esc(st[1])+'</span> 글 본문은 학과 홈페이지에 그대로 있고, 대표 홈페이지는 제목·날짜만 1시간마다 이어 받습니다. 학과가 자기 홈페이지에 올리면 여기에도 따로 올리지 않아도 됩니다. · <a href="#sync">26곳 연결 현황 →</a></p></section>';}
+function syncSummary(){const S=(SITES_LIVE&&SITES_LIVE.sites)||[];const c={ok:0,mid:0,old:0,stale:0,x:0,n:0};S.forEach(x=>c[sState(x)[0]]++);return {S,c,okN:S.filter(x=>x.ok).length};}
+function renderSync(){const host=$("#v-page");const {S,c,okN}=syncSummary();
+ const G=[["학과","학과 홈페이지 (단과대학별)"],["연구소·센터","연구소·센터"],["교육·지원","교육·지원 기관"]];
+ const row=x=>{const st=sState(x),it=(x.items||[]).filter(i=>i&&i.t&&okSite(i.u))[0];const a=sAge(x.latest);
+  return '<tr><th scope="row"><a href="'+esc(okSite(x.h)?x.h:"#sync")+'"'+EXT+'>'+esc(x.n)+'</a>'+(x.c?'<small>'+esc(x.c)+'</small>':'')+'</th><td><span class="sy-st '+st[0]+'">'+esc(st[1])+'</span></td><td class="num">'+esc(sDate(x.latest))+(a!=null?'<small>'+a+'일 전</small>':'')+'</td><td class="sy-t">'+(it?'<a href="'+esc(it.u)+'"'+EXT+'>'+esc(it.t)+'</a>':'<span class="mute">—</span>')+'</td></tr>';};
+ const tbl=g=>{const L=S.filter(x=>x.g===g[0]);if(!L.length)return "";const ord=g[0]==="학과"?L.slice().sort((a,b)=>COLLEGES.findIndex(C=>C.n===a.c)-COLLEGES.findIndex(C=>C.n===b.c)):L.slice().sort((a,b)=>(b.latest||"").localeCompare(a.latest||""));
+  return '<h3 class="p-h3">'+esc(g[1])+' <small>'+L.length+'곳</small></h3><div class="tbl-w" tabindex="0" role="region" aria-label="'+esc(g[1])+' 연결 현황"><table class="tbl sy-tb"><thead><tr><th scope="col">홈페이지</th><th scope="col">상태</th><th scope="col">마지막 글</th><th scope="col">가장 최근 글</th></tr></thead><tbody>'+ord.map(row).join("")+'</tbody></table></div>';};
+ host.innerHTML=dHero("SYNC","홈페이지 연결 현황","대표 홈페이지가 학과·연구소·센터 홈페이지 "+(S.length||26)+"곳의 최근 글을 1시간마다 이어 받습니다. 어느 홈페이지가 언제 마지막으로 글을 올렸는지 한 화면에서 봅니다.")+
+  '<div class="wrap" style="padding-block:44px 90px"><div class="pg-main" style="max-width:none">'+
+  (S.length?'<div class="sy-k"><div><span class="eyebrow">이어 받기 성공</span><b class="num">'+okN+'<small>/'+S.length+'</small></b></div><div><span class="eyebrow">최근 30일 안 새 글</span><b class="num">'+c.ok+'<small>곳</small></b></div><div><span class="eyebrow">1~12개월 전</span><b class="num">'+(c.mid+c.old)+'<small>곳</small></b></div><div class="w"><span class="eyebrow">1년 넘게 새 글 없음</span><b class="num">'+c.stale+'<small>곳</small></b></div></div>'+
+   '<p class="note">마지막 확인 '+esc(sWhen(SITES_LIVE.checked))+' · 각 홈페이지 첫 화면(또는 공지 목록·RSS)에 보이는 글 가운데 날짜가 가장 최근인 글 기준입니다. 첫 화면에 날짜를 쓰지 않는 글은 세지 않으므로, ‘1년 넘음’은 실제 운영 여부를 담당 부서에 확인할 점검 대상이라는 뜻입니다.</p>'+G.map(tbl).join(""):
+   '<div class="slot sm"><b>연결 자료를 아직 불러오지 못했습니다</b><p>시험 파일로 열었거나 data/sites.json 을 읽지 못했습니다. 공개 주소에서 다시 열어 주세요.</p></div>')+
+  '<h3 class="p-h3">어떻게 이어지나</h3><ol class="ql-l"><li>학과·연구소는 지금처럼 <b>자기 홈페이지에만</b> 글을 올립니다.</li><li>대표 홈페이지가 1시간마다 각 홈페이지의 <b>제목·날짜·주소만</b> 읽어 옵니다(본문·작성자 이름은 가져오지 않음).</li><li>학과 화면의 ‘학과 홈페이지 최근 글’, 통합검색, 이 현황표가 함께 바뀝니다. 읽어 오기에 실패한 곳은 지난번 목록을 그대로 두고 ‘가져오기 실패’로 표시합니다.</li><li>구축 때는 같은 방식을 학교 서버 작업으로 옮기거나, 지오넷 공통 게시판(RSS·API)으로 바꿀 수 있습니다 [지오넷 협의 필요].</li></ol>'+
+  '<p class="note" style="margin-top:18px">자료: scripts/sites_fetch.py → data/sites.json (GitHub 작업 gist.yml, 1시간마다). 홈페이지 목록은 D안의 학과·부속기관 바로가기 주소와 같습니다.</p></div></div>';
+ document.title="홈페이지 연결 현황 | GIST 홈페이지 D안";icons();}
+function syncAdm(){const L=window.__LIVE,{S,c,okN}=syncSummary();
+ const lv=L?'<li><b>현행 대표 홈페이지</b> 공지 '+L.N.length+'건 · 학사일정 '+L.E.length+'건 · 마지막 확인 '+esc(sWhen(L.at))+(L.ok&&Object.values(L.ok).some(v=>v===false)?' · <b style="color:var(--red)">일부 가져오기 실패</b>':' · 정상')+'</li>':'<li>현행 대표 홈페이지 자료(data/live.json)를 아직 읽지 못했습니다</li>';
+ const sv=S.length?'<li><b>학과·연구소·센터 홈페이지</b> '+okN+'/'+S.length+'곳 이어 받기 성공 · 최근 30일 안 새 글 '+c.ok+'곳 · 1년 넘게 새 글 없음 '+c.stale+'곳 · 마지막 확인 '+esc(sWhen(SITES_LIVE.checked))+'</li>':'<li>학과·연구소·센터 자료(data/sites.json)를 아직 읽지 못했습니다</li>';
+ const st=S.filter(x=>!x.ok||sState(x)[0]==="stale");
+ return '<p class="hint">이 탭은 읽기 전용입니다. 자동으로 이어 받는 자료가 제대로 들어오는지 확인합니다.</p><ul class="ql-l">'+lv+sv+'</ul>'+(st.length?'<p class="hint" style="margin-top:10px">점검 대상: '+st.map(x=>esc(x.n)+'('+esc(x.ok?sDate(x.latest):"가져오기 실패")+')').join(", ")+'</p>':'')+'<p style="margin-top:12px"><a class="abtn" href="#sync">홈페이지 연결 현황 화면 열기 →</a></p>';}
+async function loadSites(){if(!/^https?:$/.test(location.protocol))return;let js;try{const r=await fetch("data/sites.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)return;js=await r.json();}catch(_){return;}
+ if(!js||!Array.isArray(js.sites))return;js.sites=js.sites.slice(0,60);SITES_LIVE=js;
+ for(let i=IDX.length-1;i>=0;i--)if(IDX[i].lv===2)IDX.splice(i,1);
+ js.sites.forEach(x=>(x.items||[]).filter(it=>it&&it.t&&okSite(it.u)).slice(0,5).forEach(it=>IDX.push({s:"main",lv:2,site:String(x.n||"").slice(0,30)+" 홈페이지",t:String(it.t).slice(0,140),p:(it.d?sDate(it.d)+" · ":"")+String(x.n||"").slice(0,30)+" 홈페이지에서 자동으로 이어 받음",k:String(x.n||"")+" "+String(it.t).slice(0,140),u:it.u,h:it.u,w:1})));
+ if(typeof fuseCache!=="undefined"&&fuseCache.clear)fuseCache.clear();
+ const h=LH()||"";if(h==="#sync")renderSync();else if(/^#d-/.test(h)){const el=$("#dsy");const m=h.match(/^#d-([a-z0-9]+)$/);const n=m&&deptByCode(m[1]);if(el&&n){el.outerHTML=dsync(n);}}}
+loadSites();setInterval(loadSites,1800000);
+{const _rs=route;route=function(){if((LH()||"")==="#sync"){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));renderSync();scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_rs();};}
+addEventListener("hashchange",()=>{if(LH()==="#sync")route();});
+if(LH()==="#sync")setTimeout(route,0);
 function renderQuality(){const H=["성능","접근성","권장 사항","검색 최적화"];const tb=(mi,cap)=>'<h3 class="p-h3">'+cap+'</h3><div class="tbl-w" tabindex="0" role="region" aria-label="'+cap+' 점수 표"><table class="tbl ql-t"><thead><tr><th scope="col">홈페이지</th>'+H.map(h=>'<th scope="col">'+h+'</th>').join("")+'<th scope="col">첫 내용 표시</th><th scope="col">가장 큰 내용 표시</th><th scope="col">내려받는 양</th></tr></thead><tbody>'+QUAL.rows.map((r,ri)=>'<tr'+(ri===1?' class="me"':'')+'><th scope="row">'+esc(r[0])+(r[1]?'<small>'+esc(r[1])+'</small>':'')+'</th>'+r[mi].slice(0,4).map(v=>'<td><span class="ql-b"><i style="width:'+v+'%" class="'+(v>=90?"g":v>=50?"o":"r")+'"></i></span><b class="num">'+v+'</b></td>').join("")+r[mi].slice(4).map(v=>'<td class="num">'+v+'</td>').join("")+'</tr>').join("")+'</tbody></table></div>';
  const G=QUAL.rows[0],D=QUAL.rows[1];
  $("#v-page").innerHTML=dHero("QUALITY","품질 성적표","같은 도구로 현행 홈페이지와 D안을 쟀습니다.")+

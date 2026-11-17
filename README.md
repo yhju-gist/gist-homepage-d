@@ -44,6 +44,13 @@
 | **GIST Compass** | 학사 길잡이(튜토리얼 7주제) | `#tutorial` |
 | **Ask GIST** | 통합검색·AI 안내 (범위: 대표·학과 홈페이지·사람·업무·규정·SNS) | `#search` · 사람 찾기 `#search-people` |
 
+## 홈페이지 자동 연결 (1시간마다)
+- `.github/workflows/gist.yml` → `scripts/gist_fetch.py` → `data/live.json`: 현행 대표 홈페이지 공지·학사일정·GIST 소식(제목·날짜·주소)
+- 같은 작업 → `scripts/sites_fetch.py` → `data/sites.json`: 학과 14곳·연구소·센터·교육기관 12곳, 모두 26곳 홈페이지 첫 화면(또는 공지 목록·RSS)의 최근 글 제목·날짜·주소
+- 화면: 첫 화면 공지·학사일정, 학과 화면 ‘학과 홈페이지 최근 글’, 통합검색, `#sync` 홈페이지 연결 현황(마지막 글 날짜·1년 넘게 새 글 없는 곳), 관리자 모드 ‘연결 상태’ 탭
+- 관리자 모드에서 공지·학사일정의 ‘자동 연결’을 끄면 직접 적은 목록을 씀(기본은 켜짐). 다른 칸을 저장해도 자동 갱신은 멈추지 않음
+- 가져오기에 실패한 곳은 지난번 값을 두고 실패로 표시. 본문·작성자 이름은 가져오지 않음. 바뀐 내용이 있을 때만 저장(commit)
+
 ## SNS 자동 연동 (30분마다)
 - `.github/workflows/sns.yml` → `scripts/sns_fetch.py` → `data/sns.json` → 화면이 열 때와 10분마다 다시 읽음
 - 유튜브: YouTube Data API(`YT_API_KEY`가 있으면) → 공개 RSS → 공개 영상 목록 순서로 시도

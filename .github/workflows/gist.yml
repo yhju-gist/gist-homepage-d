@@ -1,4 +1,4 @@
-name: 현행 홈페이지 공지·학사일정·소식 가져오기
+name: 현행 홈페이지 공지·학사일정·소식 + 학과·연구소 홈페이지 최근 글 가져오기
 on:
   schedule:
     - cron: "13 * * * *"   # 1시간마다
@@ -14,9 +14,11 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4 (커밋 고정)
       - name: www.gist.ac.kr 공개 게시판에서 제목·날짜·주소만 읽기
         run: python3 scripts/gist_fetch.py
+      - name: 학과·연구소·센터 홈페이지 26곳 첫 화면에서 최근 글 제목·날짜·주소만 읽기
+        run: python3 scripts/sites_fetch.py
       - name: 바뀐 내용이 있을 때만 저장
         run: |
           git config user.name "gist-live-bot"
           git config user.email "gist-live-bot@users.noreply.github.com"
-          git add data/live.json
-          git diff --cached --quiet || (git commit -m "현행 홈페이지 공지·학사일정 갱신" && git pull --rebase -q && git push)
+          git add data/live.json data/sites.json
+          git diff --cached --quiet || (git commit -m "현행 홈페이지·학과·연구소 홈페이지 최근 글 갱신" && git pull --rebase -q && git push)
