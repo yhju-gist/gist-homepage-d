@@ -2,7 +2,7 @@
 """학과·연구소·센터 홈페이지의 첫 화면(또는 공지 목록·RSS)에서 최근 글 제목·날짜·주소만 읽어 data/sites.json 에 저장한다.
 - D안의 학과 화면·'홈페이지 연결 현황'·통합검색이 이 파일을 읽어 각 홈페이지 최신 글을 함께 보여 준다(대표 홈페이지 ↔ 개별 홈페이지 연결).
 - 작성자 이름 같은 개인정보는 저장하지 않는다. 가져오기에 실패한 곳은 지난번 값을 그대로 두고 ok=false 로 표시한다.
-- 표준 라이브러리만 쓴다. 학교 서버 인증서 연결이 느린 곳이 있어 25초까지 기다린다."""
+- 표준 라이브러리만 쓴다. 학교 서버 인증서 연결이 느린 곳(전기전자컴퓨터공학과 등)이 있어 30초씩 세 번까지 시도한다."""
 import json, os, re, ssl, sys, time, urllib.request, datetime as dt, html
 from urllib.parse import urljoin
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "sites.json")
@@ -42,9 +42,9 @@ CTX = ssl.create_default_context()
 
 def get(u):
     last = None
-    for _ in range(2):
+    for _ in range(3):
         try:
-            r = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (GIST homepage D-draft sync)"}), timeout=25, context=CTX)
+            r = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (GIST homepage D-draft sync)"}), timeout=30, context=CTX)
             return r.read().decode("utf-8", "replace"), r.geturl()
         except Exception as e:
             last = e; time.sleep(2)

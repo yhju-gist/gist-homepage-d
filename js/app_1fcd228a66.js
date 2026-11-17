@@ -2309,6 +2309,7 @@ async function loadSites(){if(!/^https?:$/.test(location.protocol))return;let js
  js.sites.forEach(x=>(x.items||[]).filter(it=>it&&it.t&&okSite(it.u)).slice(0,5).forEach(it=>IDX.push({s:"main",lv:2,site:String(x.n||"").slice(0,30)+" 홈페이지",t:String(it.t).slice(0,140),p:(it.d?sDate(it.d)+" · ":"")+String(x.n||"").slice(0,30)+" 홈페이지에서 자동으로 이어 받음",k:String(x.n||"")+" "+String(it.t).slice(0,140),u:it.u,h:it.u,w:1})));
  if(typeof fuseCache!=="undefined"&&fuseCache.clear)fuseCache.clear();
  document.querySelectorAll("[data-sy]").forEach(el=>{el.innerHTML=syChip(el.dataset.sy);});
+ {const el=$("#rbLive3");if(el){const {S,c,okN}=syncSummary();const L=window.__LIVE;el.innerHTML='<b>지금 상태</b> 학과·연구소 홈페이지 <b class="num">'+okN+'/'+S.length+'</b>곳 이어 받음 · 최근 30일 안 새 글 <b class="num">'+c.ok+'</b>곳 · 1년 넘게 새 글 없음 <b class="num">'+c.stale+'</b>곳'+(L?' · 현행 공지 '+L.N.length+'건·학사일정 '+L.E.length+'건':'')+' · 마지막 확인 '+esc(sWhen(js.tried||js.checked))+' <a href="#sync">연결 현황 →</a>';el.hidden=false;}}
  const h=LH()||"";if(h==="#sync")renderSync();else if(/^#d-/.test(h)){const el=$("#dsy");const m=h.match(/^#d-([a-z0-9]+)$/);const n=m&&deptByCode(m[1]);if(el&&n){el.outerHTML=dsync(n);}}}
 loadSites();setInterval(loadSites,1800000);
 {const _rs=route;route=function(){if((LH()||"")==="#sync"){$$(".view").forEach(v=>v.classList.toggle("on",v.id==="v-page"));renderSync();scrollTo({top:0});typeof heroState==="function"&&heroState();return;}_rs();};}
