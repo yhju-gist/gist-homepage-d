@@ -3189,7 +3189,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
 @media (prefers-reduced-motion:reduce){.ft-bigw{transition:none}}
 </style>
 <footer><div class="ft-big" id="ftbig" aria-hidden="true">
-  <span class="ft-bigw on" style="background-image:url({{IMG:campus_pano.jpg}})">GIST</span>
+  <span class="ft-bigw on" data-bg="{{IMG:campus_pano.jpg}}">GIST</span>
   <span class="ft-bigw" data-bg="{{IMG:aerial.jpg}}">GIST</span>
   <span class="ft-bigw" data-bg="{{IMG:campus_air.jpg}}">GIST</span>
   <span class="ft-bigw" data-bg="{{IMG:campus_plaza.jpg}}">GIST</span>
@@ -3229,11 +3229,11 @@ function draw(){var L=window.__gSNS?window.__gSNS():null;if(!L)return;var yt=(L|
  box.hidden=false}
 draw();setInterval(draw,4000);})();
 </script>
-<script>/* 꼬리말 큰 GIST 글자 사진 바꾸기: 꼬리말이 화면에 들어온 뒤에만 사진을 받고 5초마다 다음 사진으로 */
+<script>/* 꼬리말 큰 GIST 글자 사진 바꾸기: 꼬리말이 화면에 들어온 뒤에만 사진을 받고(첫 사진 포함) 5초마다 다음 사진으로 */
 (function(){var box=document.getElementById("ftbig");if(!box)return;var w=[].slice.call(box.querySelectorAll(".ft-bigw")),i=0,tm=null,still=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
 function load(el){var u=el.getAttribute("data-bg");if(u){el.style.backgroundImage="url("+u+")";el.removeAttribute("data-bg")}}
 function next(){var n=(i+1)%w.length;load(w[n]);w[i].classList.remove("on");w[n].classList.add("on");i=n;load(w[(n+1)%w.length])}
-function run(on){if(on)box.classList.add("open");if(still)return;if(on&&!tm){load(w[(i+1)%w.length]);tm=setInterval(next,5000)}else if(!on&&tm){clearInterval(tm);tm=null}}
+function run(on){if(on){box.classList.add("open");load(w[i])}if(still)return;if(on&&!tm){load(w[(i+1)%w.length]);tm=setInterval(next,5000)}else if(!on&&tm){clearInterval(tm);tm=null}}
 if("IntersectionObserver" in window){new IntersectionObserver(function(e){run(e[0].isIntersecting)},{threshold:.35}).observe(box)}else run(true);
 document.addEventListener("visibilitychange",function(){if(document.hidden)run(false)});})();
 </script>
