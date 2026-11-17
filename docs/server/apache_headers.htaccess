@@ -1,0 +1,16 @@
+# GIST 홈페이지 — 보안 머리말(Apache, mod_headers 필요). (2026-11-17 TF 시험판)
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Content-Security-Policy "frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none'"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Cross-Origin-Opener-Policy "same-origin"
+Header always set Cross-Origin-Resource-Policy "same-site"
+# https 로 운영할 때만
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+<FilesMatch "\.html$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+</IfModule>
+# Cross-Origin-Embedder-Policy 는 켜지 않음 — 2026-11-17 크롬 시험: credentialless 로 켜면 유튜브 영상 틀이 막힘(끄면 재생)
