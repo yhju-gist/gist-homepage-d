@@ -5575,11 +5575,12 @@ function sAge(d){if(!d)return null;const t=new Date(d+"T00:00:00");if(isNaN(t))r
 function sState(x){if(!x.ok)return["x","가져오기 실패"];const a=sAge(x.latest);if(a==null)return["n","날짜 없는 글뿐"];if(a<=30)return["ok","최근 30일 안"];if(a<=180)return["mid","1~6개월 전"];if(a<=365)return["old","6개월~1년 전"];return["stale","1년 넘음"];}
 function sWhen(t){const d=new Date(t);return isNaN(d)?"":(d.getMonth()+1)+". "+d.getDate()+". "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");}
 function sDate(d){return d?d.replace(/^(\d{4})-(\d{2})-(\d{2})$/,(m,y,mo,da)=>y+". "+(+mo)+". "+(+da)+"."):"날짜 없음";}
+function syLate(){const t=SITES_LIVE&&(SITES_LIVE.tried||SITES_LIVE.checked);if(!t)return "";const h=(Date.now()-new Date(t))/36e5;return h>3?'<p class="note sy-late">자동 이어 받기가 '+Math.floor(h)+'시간째 돌지 않았습니다(마지막 시도 '+esc(sWhen(t))+'). 지금 시안은 GitHub 무료 예약 작업을 써서 몇 시간씩 늦어질 수 있습니다. 학교 서버로 옮기면 서버 예약 작업으로 정시에 돕니다.</p>':"";}
 function syChip(code){const x=SITES_LIVE&&(SITES_LIVE.sites||[]).find(s=>s.id===code);if(!x)return "";const st=sState(x);return '<span class="sy-st '+st[0]+'" title="학과 홈페이지에서 1시간마다 이어 받은 마지막 글 날짜">'+(x.ok&&x.latest?'새 글 '+esc(sDate(x.latest)):esc(st[1]))+'</span>';}
 function dsync(n){const D0=DEPT[n];if(!D0)return "";const x=SITES_LIVE&&(SITES_LIVE.sites||[]).find(s=>s.id===D0.code);
  if(!x)return '<section class="dsy" id="dsy"><h3 class="p-h3">학과 홈페이지 최근 글</h3><p class="note">학과 홈페이지에서 최근 글을 불러오는 중입니다. 시험 파일로 열었거나 불러오지 못하면 <a href="'+esc(D0.hp)+'"'+EXT+'>학과 홈페이지</a>에서 확인해 주세요.</p></section>';
  const L=(x.items||[]).filter(it=>it&&it.t&&okSite(it.u)).slice(0,5),st=sState(x);
- return '<section class="dsy" id="dsy"><h3 class="p-h3">학과 홈페이지 최근 글 <small>자동 연결 · '+esc(sWhen(SITES_LIVE.checked))+' 확인</small></h3>'+
+ return '<section class="dsy" id="dsy"><h3 class="p-h3">학과 홈페이지 최근 글 <small>자동 연결 · '+esc(sWhen(SITES_LIVE.tried||SITES_LIVE.checked))+' 확인</small></h3>'+
   (L.length?'<ul class="dsy-l">'+L.map(it=>'<li><a href="'+esc(it.u)+'"'+EXT+'><b>'+esc(it.t)+'</b><span class="num">'+esc(sDate(it.d))+'</span></a></li>').join("")+'</ul>':'<p class="note">학과 홈페이지 첫 화면에서 글을 찾지 못했습니다.</p>')+
   '<p class="note"><span class="sy-st '+st[0]+'">'+esc(st[1])+'</span> 글 본문은 학과 홈페이지에 그대로 있고, 대표 홈페이지는 제목·날짜만 1시간마다 이어 받습니다. 학과가 자기 홈페이지에 올리면 여기에도 따로 올리지 않아도 됩니다. · <a href="#sync">26곳 연결 현황 →</a></p></section>';}
 function syncSummary(){const S=(SITES_LIVE&&SITES_LIVE.sites)||[];const c={ok:0,mid:0,old:0,stale:0,x:0,n:0};S.forEach(x=>c[sState(x)[0]]++);return {S,c,okN:S.filter(x=>x.ok).length};}
@@ -5592,16 +5593,16 @@ function renderSync(){const host=$("#v-page");const {S,c,okN}=syncSummary();
  host.innerHTML=dHero("SYNC","홈페이지 연결 현황","대표 홈페이지가 학과·연구소·센터 홈페이지 "+(S.length||26)+"곳의 최근 글을 1시간마다 이어 받습니다. 어느 홈페이지가 언제 마지막으로 글을 올렸는지 한 화면에서 봅니다.")+
   '<div class="wrap" style="padding-block:44px 90px"><div class="pg-main" style="max-width:none">'+
   (S.length?'<div class="sy-k"><div><span class="eyebrow">이어 받기 성공</span><b class="num">'+okN+'<small>/'+S.length+'</small></b></div><div><span class="eyebrow">최근 30일 안 새 글</span><b class="num">'+c.ok+'<small>곳</small></b></div><div><span class="eyebrow">1~12개월 전</span><b class="num">'+(c.mid+c.old)+'<small>곳</small></b></div><div class="w"><span class="eyebrow">1년 넘게 새 글 없음</span><b class="num">'+c.stale+'<small>곳</small></b></div></div>'+
-   '<p class="note">마지막 확인 '+esc(sWhen(SITES_LIVE.checked))+' · 각 홈페이지 첫 화면(또는 공지 목록·RSS)에 보이는 글 가운데 날짜가 가장 최근인 글 기준입니다. 첫 화면에 날짜를 쓰지 않는 글은 세지 않으므로, ‘1년 넘음’은 실제 운영 여부를 담당 부서에 확인할 점검 대상이라는 뜻입니다.</p>'+G.map(tbl).join(""):
+   syLate()+'<p class="note">마지막 확인 '+esc(sWhen(SITES_LIVE.tried||SITES_LIVE.checked))+' · 마지막으로 바뀐 때 '+esc(sWhen(SITES_LIVE.checked))+' · 각 홈페이지 첫 화면(또는 공지 목록·RSS)에 보이는 글 가운데 날짜가 가장 최근인 글 기준입니다. 첫 화면에 날짜를 쓰지 않는 글은 세지 않으므로, ‘1년 넘음’은 실제 운영 여부를 담당 부서에 확인할 점검 대상이라는 뜻입니다.</p>'+G.map(tbl).join(""):
    '<div class="slot sm"><b>연결 자료를 아직 불러오지 못했습니다</b><p>시험 파일로 열었거나 data/sites.json 을 읽지 못했습니다. 공개 주소에서 다시 열어 주세요.</p></div>')+
   '<h3 class="p-h3">어떻게 이어지나</h3><ol class="ql-l"><li>학과·연구소는 지금처럼 <b>자기 홈페이지에만</b> 글을 올립니다.</li><li>대표 홈페이지가 1시간마다 각 홈페이지의 <b>제목·날짜·주소만</b> 읽어 옵니다(본문·작성자 이름은 가져오지 않음).</li><li>학과 화면의 ‘학과 홈페이지 최근 글’, 통합검색, 이 현황표가 함께 바뀝니다. 읽어 오기에 실패한 곳은 지난번 목록을 그대로 두고 ‘가져오기 실패’로 표시합니다.</li><li>구축 때는 같은 방식을 학교 서버 작업으로 옮기거나, 지오넷 공통 게시판(RSS·API)으로 바꿀 수 있습니다 [지오넷 협의 필요].</li></ol>'+
   '<p class="note" style="margin-top:18px">자료: scripts/sites_fetch.py → data/sites.json (GitHub 작업 gist.yml, 1시간마다). 홈페이지 목록은 D안의 학과·부속기관 바로가기 주소와 같습니다.</p></div></div>';
  document.title="홈페이지 연결 현황 | GIST 홈페이지 D안";icons();}
 function syncAdm(){const L=window.__LIVE,{S,c,okN}=syncSummary();
  const lv=L?'<li><b>현행 대표 홈페이지</b> 공지 '+L.N.length+'건 · 학사일정 '+L.E.length+'건 · 마지막 확인 '+esc(sWhen(L.at))+(L.ok&&Object.values(L.ok).some(v=>v===false)?' · <b style="color:var(--red)">일부 가져오기 실패</b>':' · 정상')+'</li>':'<li>현행 대표 홈페이지 자료(data/live.json)를 아직 읽지 못했습니다</li>';
- const sv=S.length?'<li><b>학과·연구소·센터 홈페이지</b> '+okN+'/'+S.length+'곳 이어 받기 성공 · 최근 30일 안 새 글 '+c.ok+'곳 · 1년 넘게 새 글 없음 '+c.stale+'곳 · 마지막 확인 '+esc(sWhen(SITES_LIVE.checked))+'</li>':'<li>학과·연구소·센터 자료(data/sites.json)를 아직 읽지 못했습니다</li>';
+ const sv=S.length?'<li><b>학과·연구소·센터 홈페이지</b> '+okN+'/'+S.length+'곳 이어 받기 성공 · 최근 30일 안 새 글 '+c.ok+'곳 · 1년 넘게 새 글 없음 '+c.stale+'곳 · 마지막 확인 '+esc(sWhen(SITES_LIVE.tried||SITES_LIVE.checked))+'</li>':'<li>학과·연구소·센터 자료(data/sites.json)를 아직 읽지 못했습니다</li>';
  const st=S.filter(x=>!x.ok||sState(x)[0]==="stale");
- return '<p class="hint">이 탭은 읽기 전용입니다. 자동으로 이어 받는 자료가 제대로 들어오는지 확인합니다.</p><ul class="ql-l">'+lv+sv+'</ul>'+(st.length?'<p class="hint" style="margin-top:10px">점검 대상: '+st.map(x=>esc(x.n)+'('+esc(x.ok?sDate(x.latest):"가져오기 실패")+')').join(", ")+'</p>':'')+'<p style="margin-top:12px"><a class="abtn" href="#sync">홈페이지 연결 현황 화면 열기 →</a></p>';}
+ return '<p class="hint">이 탭은 읽기 전용입니다. 자동으로 이어 받는 자료가 제대로 들어오는지 확인합니다.</p><ul class="ql-l">'+lv+sv+'</ul>'+syLate()+(st.length?'<p class="hint" style="margin-top:10px">점검 대상: '+st.map(x=>esc(x.n)+'('+esc(x.ok?sDate(x.latest):"가져오기 실패")+')').join(", ")+'</p>':'')+'<p style="margin-top:12px"><a class="abtn" href="#sync">홈페이지 연결 현황 화면 열기 →</a></p>';}
 async function loadSites(){if(!/^https?:$/.test(location.protocol))return;let js;try{const r=await fetch("data/sites.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)return;js=await r.json();}catch(_){return;}
  if(!js||!Array.isArray(js.sites))return;js.sites=js.sites.slice(0,60);SITES_LIVE=js;
  for(let i=IDX.length-1;i>=0;i--)if(IDX[i].lv===2)IDX.splice(i,1);
@@ -5994,7 +5995,7 @@ ol.ap-flow{list-style:none;padding:0;margin:22px 0 20px;gap:6px}.ap-flow li{flex
 .ql-d{position:absolute;right:16px;top:16px;border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:800;background:var(--soft);color:var(--mute)}.ql-d.up{background:#E3F4EA;color:#17693F}.ql-d.dn{background:var(--red-t,#FDECEA);color:var(--red-tx,#C11D0E)}
 .ql-t th small{display:block;font-weight:500;color:var(--mute);font-size:12px}.ql-t td{white-space:nowrap}.ql-t tr.me th,.ql-t tr.me td{background:#FFF7F6;font-weight:800}
 .ql-b{display:inline-block;width:64px;height:8px;border-radius:99px;background:var(--soft);vertical-align:middle;margin-right:8px;overflow:hidden}.ql-b i{display:block;height:100%;border-radius:99px}.ql-b i.g{background:#1E8E5A}.ql-b i.o{background:#E08A00}.ql-b i.r{background:var(--red)}
-.dsy-c .sy-st{margin:0}
+.dsy-c .sy-st{margin:0}.sy-late{background:#FFF4E0!important;color:#6B4200}
 .dsy-l{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .dsy-l a{display:flex;justify-content:space-between;gap:16px;padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}
 .dsy-l a:hover b,.dsy-l a:focus-visible b{color:var(--red)}
