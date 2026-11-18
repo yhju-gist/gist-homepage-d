@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-18T12:42+09:00",
- "tried": "2026-11-18T12:42+09:00",
+ "checked": "2026-11-18T21:59+09:00",
+ "tried": "2026-11-18T21:59+09:00",
  "sites": [
   {
    "id": "ai",
@@ -46,7 +46,7 @@
    "g": "학과",
    "c": "AI대학",
    "h": "https://ax.gist.ac.kr/",
-   "ok": true,
+   "ok": false,
    "items": [
     {
      "t": "GIST AX학과 홈페이지 신규 오픈!",
@@ -55,7 +55,7 @@
     }
    ],
    "latest": "2026-10-07",
-   "found": 1
+   "err": "HTTPError"
   },
   {
    "id": "eecs",
