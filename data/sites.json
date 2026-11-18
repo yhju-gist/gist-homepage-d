@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-18T06:41+09:00",
- "tried": "2026-11-18T06:45+09:00",
+ "checked": "2026-11-18T12:42+09:00",
+ "tried": "2026-11-18T12:42+09:00",
  "sites": [
   {
    "id": "ai",
@@ -63,7 +63,7 @@
    "g": "학과",
    "c": "AI대학",
    "h": "https://eecs.gist.ac.kr/",
-   "ok": false,
+   "ok": true,
    "items": [
     {
      "t": "Building Your Own Distinct Expertise Is the Starting Point for Interdisciplinary..",
@@ -92,7 +92,7 @@
     }
    ],
    "latest": "2026-11-12",
-   "err": "URLError"
+   "found": 10
   },
   {
    "id": "semi",
