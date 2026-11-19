@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-19T12:22+09:00",
- "tried": "2026-11-19T12:22+09:00",
+ "checked": "2026-11-19T21:58+09:00",
+ "tried": "2026-11-19T21:58+09:00",
  "sites": [
   {
    "id": "ai",
@@ -177,9 +177,14 @@
    "ok": true,
    "items": [
     {
+     "t": "[Colloquium] 2026.11.25.(Wed) / Prof.Daniel Kyungdeock Park (Yonsei Univ.) / Physics Meets AI: Quantum Computing and Gen",
+     "d": "2026-11-19",
+     "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-47/"
+    },
+    {
      "t": "[Colloquium] 2026.11.18.(Wed) / Prof.EunMi Choi (UNIST) / Terahertz Waves and the Future of Fusion Energy",
      "d": "2026-11-12",
-     "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-47/"
+     "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-48/"
     },
     {
      "t": "[물리]2027년 동계 인턴 모집",
@@ -195,14 +200,9 @@
      "t": "[Colloquium] 2026.11.4.(Wed) / Prof.ChoongKi Sung(KAIST) / The role of magnetic mirrors in fusion research",
      "d": "2026-10-28",
      "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-45/"
-    },
-    {
-     "t": "[남창희 교수] ‘2026 IUPAP 요시아키 가토 상’ 수상자로 선정",
-     "d": "2026-10-28",
-     "u": "https://physics.gist.ac.kr/news-events/research_highlights_news/%eb%82%a8%ec%b0%bd%ed%9d%ac-%ea%b5%90%ec%88%98%eb%8b%98-isuils-2025%ec%97%90%ec%84%9c-isuils-%eb%a9%94%eb%8b%ac-%ec%88%98%ec%83%81-3/"
     }
    ],
-   "latest": "2026-11-12",
+   "latest": "2026-11-19",
    "found": 10
   },
   {
@@ -246,6 +246,11 @@
    "ok": true,
    "items": [
     {
+     "t": "제8회 Gwangju Combinatorics Seminar - 김상욱 교수 (전남대학교)",
+     "d": "2026-11-19",
+     "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012431/view.do?nttId=B000000105080Zm8mQ1d"
+    },
+    {
      "t": "GIST 수학 세미나 - Geometric and Topological Combinatorics of Intersection patterns - Part 2 (김민기 교수)",
      "d": "2026-11-05",
      "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012431/view.do?nttId=B000000104305Gn5zY7a"
@@ -261,17 +266,12 @@
      "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012431/view.do?nttId=B000000103824Gm3lH9p"
     },
     {
-     "t": "[대한수학회 대중강연] 수의 기하학, 동역학과 양자 내성 암호 (연사: 임선희 서울대 교수, 10.29.(목) 오후 7시, 광주과학기술원)",
-     "d": "2026-10-14",
-     "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012431/view.do?nttId=B000000103716Ec9vV2v"
-    },
-    {
      "t": "2024 수리과학포럼 (2024.09.06. Fri)",
      "d": "",
      "u": "https://math.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012433/view.do?nttId=B000000091064Bo1jQ3k"
     }
    ],
-   "latest": "2026-11-05",
+   "latest": "2026-11-19",
    "found": 5
   },
   {
@@ -420,7 +420,7 @@
     }
    ],
    "latest": "2026-11-06",
-   "found": 11
+   "found": 10
   },
   {
    "id": "bmse",
@@ -430,6 +430,11 @@
    "h": "https://bmse.gist.ac.kr/",
    "ok": true,
    "items": [
+    {
+     "t": "[생명의과학융합대학] G-FIRST 연구체험 프로그램 신청 안내(~27.4.16.(금)까지)",
+     "d": "2026-11-19",
+     "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000105039Bp0eV7x"
+    },
     {
      "t": "[NEWS-김재관 교수] tbn 광주교통방송 스튜디오 973(광주) 고정 출연",
      "d": "2026-04-07",
@@ -449,14 +454,9 @@
      "t": "[의생명공학과] 2026학년도 대학원 봄학기 2차 전형 오픈랩 신청안내",
      "d": "2025-08-26",
      "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000093124Dn0uD6s"
-    },
-    {
-     "t": "[NEWS] \"지방세포 분화의 숨겨진 연결고리 풀었다\" 조준 교수 연구팀-순천향대, 지방세포 대사 조절 메커니즘 세계 첫 규명",
-     "d": "2025-04-29",
-     "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000090200Yc1uP4l"
     }
    ],
-   "latest": "2026-04-07",
+   "latest": "2026-11-19",
    "found": 8
   },
   {
