@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-19T06:25+09:00",
- "tried": "2026-11-19T06:25+09:00",
+ "checked": "2026-11-19T12:22+09:00",
+ "tried": "2026-11-19T12:22+09:00",
  "sites": [
   {
    "id": "ai",
@@ -66,6 +66,11 @@
    "ok": true,
    "items": [
     {
+     "t": "2026 EECS DAY Event Participation Guide",
+     "d": "2026-11-19",
+     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=notice_en&idx=77"
+    },
+    {
      "t": "Building Your Own Distinct Expertise Is the Starting Point for Interdisciplinary..",
      "d": "2026-11-12",
      "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=alumni_en&idx=30"
@@ -84,14 +89,9 @@
      "t": "A Space of Experience and Growth: Discovering the Path of a Researcher at GIST &..",
      "d": "2026-10-30",
      "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=alumni_en&idx=29"
-    },
-    {
-     "t": "GIST-한양대, 빛의 세기에 따라 흐릿한 영상 더 또렷하게 만드는 반도체 기술 개발",
-     "d": "2026-10-08",
-     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=achievements_en&idx=115"
     }
    ],
-   "latest": "2026-11-12",
+   "latest": "2026-11-19",
    "found": 10
   },
   {
