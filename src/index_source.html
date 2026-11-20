@@ -1066,6 +1066,7 @@ body.onhero header.hd:not(:has(.mega.on)) .draft{color:#fff;border-color:#fff}
 .admfab{position:fixed;left:max(20px,env(safe-area-inset-left,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:8px;border:0;border-radius:999px;background:#111418;color:#fff;font-weight:800;font-size:14px;padding:10px 18px;box-shadow:0 10px 30px rgba(0,0,0,.3);cursor:pointer}
 .admfab i{width:8px;height:8px;border-radius:50%;background:#2ECC71}
 body.admon .demo{display:none!important}
+.pnote{display:none!important}body.admon .pnote{display:revert!important}
 .adm{position:fixed;inset:0 0 0 auto;width:min(480px,100vw);z-index:300;background:var(--paper);box-shadow:-20px 0 60px rgba(0,0,0,.25);display:flex;flex-direction:column}
 .adm-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 20px;background:#111418;color:#fff}
 .adm-h b{font-size:17px}.adm-h small{display:block;font-size:12px;color:#B8BEC4;font-weight:500}
@@ -2688,7 +2689,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
       </div>
     </div>
     <div class="hx-dots" id="hxdots"><button type="button" class="hxd" aria-label="첫 화면 사진 1: 하늘로 솟은 정문 기둥" aria-current="true"></button><button type="button" class="hxd" aria-label="첫 화면 사진 2: 밤의 정문 G·I·S·T 기둥" aria-current="false"></button><button type="button" class="hxd" aria-label="첫 화면 사진 3: 캠퍼스 야경" aria-current="false"></button><button type="button" class="hx-pz" id="hxpz" aria-label="배경 움직임 멈춤" aria-pressed="false"><i data-lucide="pause"></i></button></div>
-    <span class="hx-cr">사진 © GIST 미디어센터 갤러리 (정문 사진 공모전 수상작 · 2025.7. 전경)</span>
+    <span class="hx-cr pnote">사진 © GIST 미디어센터 갤러리 (정문 사진 공모전 수상작 · 2025.7. 전경)</span>
     <div class="hx-rise hx-word" id="hxrise" aria-hidden="true">
       <p class="rise-k">Gwangju Institute of Science and Technology</p>
       <div class="rise-ci ltw" role="img" aria-label="GIST"><span class="lt lt-g" style="background-image:url({{IMG:lt_g.jpg}})"></span><span class="lt lt-i" style="background-image:url({{IMG:lt_i.jpg}})"></span><span class="lt lt-s" style="background-image:url({{IMG:lt_s.jpg}})"></span><span class="lt lt-t" style="background-image:url({{IMG:lt_t.jpg}})"></span></div>
@@ -2734,13 +2735,13 @@ html.calm .vmfab{top:calc(50% - 60px)}
   </section>
 
   <section class="myq" aria-labelledby="h-myq"><div class="wrap"><div class="myq-box" id="myqbox">
-    <div class="myq-h"><b id="h-myq">나만의 바로가기</b> <span class="tag" data-r="16"><b>⑯</b>찾다 지치지 않게</span><span>끌어서 순서를 바꾸고, 편집에서 더하거나 뺍니다. 이 기기에만 저장됩니다.</span><button class="icon-btn" type="button" id="myqedit">편집</button></div>
+    <div class="myq-h"><b id="h-myq">나만의 바로가기</b> <span class="tag" data-r="16"><b>⑯</b>찾다 지치지 않게</span><span>끌어서 순서를 바꾸고, 편집으로 더하거나 뺄 수 있어요.</span><button class="icon-btn" type="button" id="myqedit">편집</button></div>
     <div class="myq-list" id="myq"></div>
     <div class="myq-pool" id="myqpool" hidden></div>
   </div></div></section>
   <!-- GIST NOW: 행사·사업 소식 (이사장님 지적 ④) -->
   <section class="gnow" aria-labelledby="gnow-h"><div class="wrap">
-    <div class="gnow-hd"><div><span class="eyebrow">GIST NOW</span><h2 id="gnow-h">지금 GIST에서 열리는 행사·사업</h2><p>부서가 알리고 싶은 행사·협력·사업 소식을 첫 화면 가까이에 둡니다. 날짜가 지나면 ‘지난 소식’으로 저절로 내려갑니다.</p></div><a class="more" href="https://www.gist.ac.kr/kr/html/sub07/070103.html" target="_blank" rel="noopener noreferrer">미디어센터 Events 전체 ↗</a></div>
+    <div class="gnow-hd"><div><span class="eyebrow">GIST NOW</span><h2 id="gnow-h">지금 GIST에서 열리는 행사·사업</h2><p>전시·축제·포럼·협력 — 지금 캠퍼스 안팎에서 열리는 일을 한눈에 봅니다.</p></div><a class="more" href="https://www.gist.ac.kr/kr/html/sub07/070103.html" target="_blank" rel="noopener noreferrer">미디어센터 Events 전체 ↗</a></div>
     <div class="gnow-g" id="gnowg"></div>
     <p class="note">출처: 현행 GIST 홈페이지 미디어센터 ‘Events’ 게시글 (2026.11.17. 확인). 행사 날짜는 게시글 본문 기준. [시안] 구축 때는 부서 담당자가 관리자 모드에서 직접 올리고, 대외홍보팀(대표행사·홍보물 T.2068)이 확인합니다.</p>
   </div></section>
@@ -2799,7 +2800,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
   <!-- 주제로 보는 GIST · 연구소 -->
   <section class="p-sec p-topics" aria-labelledby="p-h-topics"><div class="wrap">
     <h2 class="p-tit" id="p-h-topics">Research <small class="p-ko">주제로 보는 GIST 연구</small></h2>
-    <p class="p-sub">미디어센터 실제 소식을 주제별로 모았습니다. 누르면 그 주제로 찾은 결과를 보여 줍니다.</p>
+    <p class="p-sub">인공지능부터 생명·의료까지, 주제별로 GIST 연구 소식을 모아 봅니다.</p>
     <div class="tpc" id="ptopics"></div>
     <p class="p-more2">주제를 고르면 학과·연구실·연구소까지 이어 봅니다. <a class="p-go" href="#nexus">연구 한 줄 연구 연결 지도 <span><i data-lucide="arrow-right"></i></span></a></p>
     <h3 class="p-h3t" id="p-h-labs">연구소·센터 둘러보기</h3>
@@ -2809,9 +2810,9 @@ html.calm .vmfab{top:calc(50% - 60px)}
   <!-- 사진으로 보는 GIST (GIST 미디어센터 갤러리 사진) -->
   <section class="p-sec p-gal" aria-labelledby="p-h-gal"><div class="wrap">
     <h2 class="p-tit" id="p-h-gal">사진으로 보는 GIST</h2>
-    <p class="p-sub">GIST 미디어센터 갤러리에 올라온 캠퍼스 사진입니다. 누르면 갤러리에서 더 볼 수 있습니다.</p>
+    <p class="p-sub">계절마다 달라지는 캠퍼스 풍경을 사진으로 만나 보세요.</p>
     <div class="gal5"><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="{{IMG:gal_night.jpg}}" alt="불 밝힌 중앙 연못과 본관" loading="lazy" decoding="async"><span><b>밤</b>불 밝힌 중앙 연못과 본관</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="{{IMG:p_spring.jpg}}" alt="벚꽃 핀 캠퍼스 길" loading="lazy" decoding="async"><span><b>봄</b>벚꽃 핀 캠퍼스 길</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="{{IMG:p_bldg.jpg}}" alt="파란 하늘 아래 연구동" loading="lazy" decoding="async"><span><b>여름</b>파란 하늘 아래 연구동</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="{{IMG:gal_gate.jpg}}" alt="구름 아래 정문 G·I·S·T 기둥" loading="lazy" decoding="async"><span><b>정문</b>구름 아래 G·I·S·T 기둥</span></a><a href="https://www.gist.ac.kr/kr/html/sub07/070305.html" target="_blank" rel="noopener noreferrer"><img src="{{IMG:p_winter_air.jpg}}" alt="눈 덮인 캠퍼스 전경" loading="lazy" decoding="async"><span><b>겨울</b>눈 덮인 캠퍼스 전경</span></a></div>
-    <p class="note">사진 © GIST 미디어센터 갤러리(2024~2025년 게시, 정문 사진 공모전 수상작 포함). 구축 때 대외홍보팀이 관리자 화면에서 바꿉니다.</p>
+    <p class="note pnote">사진 © GIST 미디어센터 갤러리(2024~2025년 게시, 정문 사진 공모전 수상작 포함). 구축 때 대외홍보팀이 관리자 화면에서 바꿉니다.</p>
   </div></section>
 
   <!-- H. SNS -->
@@ -2826,7 +2827,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
   <section class="sec nc"><div class="wrap split">
     <div>
       <div class="sec-h"><div><span class="eyebrow">Notice</span><h2 style="margin-top:6px">공지</h2></div><a class="more" href="https://www.gist.ac.kr/kr/html/sub06/060101.html" target="_blank" rel="noopener noreferrer">더보기 →</a></div>
-      <ul class="list" id="noticeList"></ul><p class="live-st" id="liveSt" hidden></p>
+      <ul class="list" id="noticeList"></ul><p class="live-st pnote" id="liveSt" hidden></p>
     </div>
     <div>
       <div class="sec-h"><div><span class="eyebrow">Calendar</span><h2 style="margin-top:6px">학사 일정</h2></div><a class="more" href="https://www.gist.ac.kr/kr/html/sub05/0501.html" target="_blank" rel="noopener noreferrer">더보기 →</a></div>
@@ -2857,7 +2858,7 @@ html.calm .vmfab{top:calc(50% - 60px)}
         <div class="dots" id="bn-dots"><i class="on"></i><i></i><i></i><span class="bar"><i id="bn-bar"></i></span><span id="bn-meta" class="num exc-meta">01 / 03</span><button type="button" id="bn-stop" aria-pressed="false">멈춤</button></div>
         <a class="pill red" href="#story">연구 성과 더 보기 →</a>
       </div>
-      <div class="exc-img"><img loading="lazy" id="excImg" src="{{IMG:r_spectro.jpg}}" alt="연구 성과 그림"><span class="exc-big num" id="bn-big">λ</span><span class="hx-cr">그림 © GIST</span></div>
+      <div class="exc-img"><img loading="lazy" id="excImg" src="{{IMG:r_spectro.jpg}}" alt="연구 성과 그림"><span class="exc-big num" id="bn-big">λ</span><span class="hx-cr pnote">그림 © GIST</span></div>
       <span class="tag" data-r="11"><b>⑪</b>배너 그림·글 분리</span>
     </div>
   </section>
@@ -5580,7 +5581,7 @@ function okSite(u){return /^https?:\/\/([a-z0-9-]+\.)*gist\.ac\.kr(:443)?(\/[^\s
 function sAge(d){if(!d)return null;const t=new Date(d+"T00:00:00");if(isNaN(t))return null;return Math.max(0,Math.floor((Date.now()-t)/864e5));}
 function sState(x){if(!x.ok)return["x","가져오기 실패"];const a=sAge(x.latest);if(a==null)return["n","날짜 없는 글뿐"];if(a<=30)return["ok","최근 30일 안"];if(a<=180)return["mid","1~6개월 전"];if(a<=365)return["old","6개월~1년 전"];return["stale","1년 넘음"];}
 function sWhen(t){const d=new Date(t);return isNaN(d)?"":(d.getMonth()+1)+". "+d.getDate()+". "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");}
-function sDate(d){return d?d.replace(/^(\d{4})-(\d{2})-(\d{2})$/,(m,y,mo,da)=>y+". "+(+mo)+". "+(+da)+"."):"날짜 없음";}
+function sDate(d){return d?d.replace(/^(\d{4})-(\d{2})-(\d{2})$/,(m,y,mo,da)=>y+"."+mo+"."+da+"."):"날짜 없음";}
 function syLate(){const t=SITES_LIVE&&(SITES_LIVE.tried||SITES_LIVE.checked);if(!t)return "";const h=(Date.now()-new Date(t))/36e5;return h>3?'<p class="note sy-late">자동 이어 받기가 '+Math.floor(h)+'시간째 돌지 않았습니다(마지막 시도 '+esc(sWhen(t))+'). 지금 시안은 GitHub 무료 예약 작업을 써서 몇 시간씩 늦어질 수 있습니다. 학교 서버로 옮기면 서버 예약 작업으로 정시에 돕니다.</p>':"";}
 function syHost(u){try{return new URL(u).host.replace(/:443$/,"").toLowerCase();}catch(_){return "";}}
 function syLinks(root){if(!SITES_LIVE||!root)return;const M={};(SITES_LIVE.sites||[]).forEach(x=>{const h=syHost(x.h);if(h&&!/^www\./.test(h))M[h]=x;});

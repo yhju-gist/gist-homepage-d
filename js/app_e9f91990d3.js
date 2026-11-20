@@ -2280,7 +2280,7 @@ function okSite(u){return /^https?:\/\/([a-z0-9-]+\.)*gist\.ac\.kr(:443)?(\/[^\s
 function sAge(d){if(!d)return null;const t=new Date(d+"T00:00:00");if(isNaN(t))return null;return Math.max(0,Math.floor((Date.now()-t)/864e5));}
 function sState(x){if(!x.ok)return["x","가져오기 실패"];const a=sAge(x.latest);if(a==null)return["n","날짜 없는 글뿐"];if(a<=30)return["ok","최근 30일 안"];if(a<=180)return["mid","1~6개월 전"];if(a<=365)return["old","6개월~1년 전"];return["stale","1년 넘음"];}
 function sWhen(t){const d=new Date(t);return isNaN(d)?"":(d.getMonth()+1)+". "+d.getDate()+". "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");}
-function sDate(d){return d?d.replace(/^(\d{4})-(\d{2})-(\d{2})$/,(m,y,mo,da)=>y+". "+(+mo)+". "+(+da)+"."):"날짜 없음";}
+function sDate(d){return d?d.replace(/^(\d{4})-(\d{2})-(\d{2})$/,(m,y,mo,da)=>y+"."+mo+"."+da+"."):"날짜 없음";}
 function syLate(){const t=SITES_LIVE&&(SITES_LIVE.tried||SITES_LIVE.checked);if(!t)return "";const h=(Date.now()-new Date(t))/36e5;return h>3?'<p class="note sy-late">자동 이어 받기가 '+Math.floor(h)+'시간째 돌지 않았습니다(마지막 시도 '+esc(sWhen(t))+'). 지금 시안은 GitHub 무료 예약 작업을 써서 몇 시간씩 늦어질 수 있습니다. 학교 서버로 옮기면 서버 예약 작업으로 정시에 돕니다.</p>':"";}
 function syHost(u){try{return new URL(u).host.replace(/:443$/,"").toLowerCase();}catch(_){return "";}}
 function syLinks(root){if(!SITES_LIVE||!root)return;const M={};(SITES_LIVE.sites||[]).forEach(x=>{const h=syHost(x.h);if(h&&!/^www\./.test(h))M[h]=x;});
