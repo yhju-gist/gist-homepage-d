@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-20T12:09+09:00",
- "tried": "2026-11-20T12:09+09:00",
+ "checked": "2026-11-20T20:34+09:00",
+ "tried": "2026-11-20T20:34+09:00",
  "sites": [
   {
    "id": "ai",
@@ -46,7 +46,7 @@
    "g": "학과",
    "c": "AI대학",
    "h": "https://ax.gist.ac.kr/",
-   "ok": true,
+   "ok": false,
    "items": [
     {
      "t": "GIST AX학과 홈페이지 신규 오픈!",
@@ -55,7 +55,7 @@
     }
    ],
    "latest": "2026-10-07",
-   "found": 1
+   "err": "HTTPError"
   },
   {
    "id": "eecs",
@@ -786,6 +786,11 @@
    "ok": true,
    "items": [
     {
+     "t": "외부이용자 시험분석료 납부 안내",
+     "d": "2026-11-20",
+     "u": "https://gaia.gist.ac.kr/hm/board/notice/list"
+    },
+    {
      "t": "중앙기기연구소 출입등록 카드 반납 (Super User)",
      "d": "2026-01-21",
      "u": "https://gaia.gist.ac.kr/hm/board/notice/list"
@@ -804,15 +809,10 @@
      "t": "중앙기기연구소 사업자등록증&통장사본",
      "d": "2025-02-24",
      "u": "https://gaia.gist.ac.kr/hm/board/notice/list"
-    },
-    {
-     "t": "[중요!] 내부이용자 시험분석료 납부 관련 안내",
-     "d": "2025-01-02",
-     "u": "https://gaia.gist.ac.kr/hm/board/notice/list"
     }
    ],
-   "latest": "2026-01-21",
-   "found": 16
+   "latest": "2026-11-20",
+   "found": 17
   },
   {
    "id": "larc",
