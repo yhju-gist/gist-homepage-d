@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-19T21:58+09:00",
- "tried": "2026-11-20T06:28+09:00",
+ "checked": "2026-11-20T12:09+09:00",
+ "tried": "2026-11-20T12:09+09:00",
  "sites": [
   {
    "id": "ai",
@@ -66,6 +66,16 @@
    "ok": true,
    "items": [
     {
+     "t": "GIST 교원 창업기업 ㈜오니온에이아이, 글로벌광주방송(GGN) 생방송에 AI 실시간 더빙·번역 기술 적용",
+     "d": "2026-11-20",
+     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=achievements_en&idx=118"
+    },
+    {
+     "t": "“눈에는 같은 색, 확대하면 다른 지문” GIST-KAIST, '빛의 지문' 담은 나노 광보안소자 개발",
+     "d": "2026-11-20",
+     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=achievements_en&idx=117"
+    },
+    {
      "t": "2026 EECS DAY Event Participation Guide",
      "d": "2026-11-19",
      "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=notice_en&idx=77"
@@ -79,19 +89,9 @@
      "t": "[2027 Winter] Research Internship Program – EECS (Deadline: Friday, Decemb..",
      "d": "2026-11-10",
      "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=notice_en&idx=76"
-    },
-    {
-     "t": "“태양광·배터리, 과부하 없이 더 유연하게” GIST, 전력망 출력 조정 여력 계산 기술 개발",
-     "d": "2026-11-02",
-     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=achievements_en&idx=116"
-    },
-    {
-     "t": "A Space of Experience and Growth: Discovering the Path of a Researcher at GIST &..",
-     "d": "2026-10-30",
-     "u": "https://eecs.gist.ac.kr/board/board.php?bbsid=alumni_en&idx=29"
     }
    ],
-   "latest": "2026-11-19",
+   "latest": "2026-11-20",
    "found": 10
   },
   {
