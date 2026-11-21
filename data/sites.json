@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-21T18:44+09:00",
- "tried": "2026-11-21T18:44+09:00",
+ "checked": "2026-11-22T02:28+09:00",
+ "tried": "2026-11-22T02:28+09:00",
  "sites": [
   {
    "id": "ai",
@@ -46,7 +46,7 @@
    "g": "학과",
    "c": "AI대학",
    "h": "https://ax.gist.ac.kr/",
-   "ok": false,
+   "ok": true,
    "items": [
     {
      "t": "GIST AX학과 홈페이지 신규 오픈!",
@@ -55,7 +55,7 @@
     }
    ],
    "latest": "2026-10-07",
-   "err": "HTTPError"
+   "found": 1
   },
   {
    "id": "eecs",
@@ -820,7 +820,7 @@
    "g": "연구소·센터",
    "c": "",
    "h": "https://larc.gist.ac.kr/",
-   "ok": true,
+   "ok": false,
    "items": [
     {
      "t": "조직병리기술지원 이용 변경 안내",
@@ -849,7 +849,7 @@
     }
    ],
    "latest": "2026-09-01",
-   "found": 9
+   "err": "URLError"
   },
   {
    "id": "angels",
@@ -894,7 +894,7 @@
    "g": "연구소·센터",
    "c": "",
    "h": "https://gti.gist.ac.kr/",
-   "ok": true,
+   "ok": false,
    "items": [
     {
      "t": "[교육 안내] 2026 광주특구 투자…",
@@ -923,7 +923,7 @@
     }
    ],
    "latest": "2026-11-13",
-   "found": 27
+   "err": "URLError"
   }
  ]
 }
