@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-22T02:28+09:00",
- "tried": "2026-11-22T02:28+09:00",
+ "checked": "2026-11-22T08:11+09:00",
+ "tried": "2026-11-22T08:11+09:00",
  "sites": [
   {
    "id": "ai",
@@ -46,7 +46,7 @@
    "g": "학과",
    "c": "AI대학",
    "h": "https://ax.gist.ac.kr/",
-   "ok": true,
+   "ok": false,
    "items": [
     {
      "t": "GIST AX학과 홈페이지 신규 오픈!",
@@ -55,7 +55,7 @@
     }
    ],
    "latest": "2026-10-07",
-   "found": 1
+   "err": "HTTPError"
   },
   {
    "id": "eecs",
@@ -820,7 +820,7 @@
    "g": "연구소·센터",
    "c": "",
    "h": "https://larc.gist.ac.kr/",
-   "ok": false,
+   "ok": true,
    "items": [
     {
      "t": "조직병리기술지원 이용 변경 안내",
@@ -849,7 +849,7 @@
     }
    ],
    "latest": "2026-09-01",
-   "err": "URLError"
+   "found": 9
   },
   {
    "id": "angels",
@@ -894,8 +894,13 @@
    "g": "연구소·센터",
    "c": "",
    "h": "https://gti.gist.ac.kr/",
-   "ok": false,
+   "ok": true,
    "items": [
+    {
+     "t": "광주과학기술원 창업진흥센터 입주기업 …",
+     "d": "2026-11-21",
+     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=524"
+    },
     {
      "t": "[교육 안내] 2026 광주특구 투자…",
      "d": "2026-11-13",
@@ -907,23 +912,18 @@
      "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0605&wr_id=1368"
     },
     {
-     "t": "광주과학기술원 창업진흥센터 입주 기업…",
-     "d": "2026-04-01",
-     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=523"
-    },
-    {
-     "t": "AI를 이용한 기술개발 효율화 전략 …",
-     "d": "2026-04-01",
-     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=520"
-    },
-    {
      "t": "[창업진흥센터] 「실험실창업 법률 특…",
-     "d": "2025-11-19",
+     "d": "2026-01-26",
      "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=516"
+    },
+    {
+     "t": "[한국엔젤투자협회] 2024-1st …",
+     "d": "2024-06-25",
+     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0605&wr_id=1364"
     }
    ],
-   "latest": "2026-11-13",
-   "err": "URLError"
+   "latest": "2026-11-21",
+   "found": 27
   }
  ]
 }
