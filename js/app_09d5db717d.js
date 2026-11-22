@@ -1022,7 +1022,7 @@ window.__gCover=gCover;
   (js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).forEach(x=>{if(!STORIES.some(z=>z.g===x.u))IDX.push({s:"main",lv:1,site:"대표 홈페이지 · GIST 소식",t:String(x.t).slice(0,140),p:String(x.d||"")+" · "+String(x.s||"").slice(0,120),k:"소식 뉴스 "+x.t+" "+(x.s||""),u:x.u});});
   if(typeof fuseCache!=="undefined")fuseCache.clear();
   try{const EL=(js.en_news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6),eh=document.getElementById("enl");if(eh&&EL.length){eh.innerHTML=EL.map(x=>'<li><a href="'+esc(x.u)+'" target="_blank" rel="noopener noreferrer"><time class="num">'+esc(String(x.d||"").slice(0,11))+'</time><b>'+esc(String(x.t).slice(0,180))+'</b></a></li>').join("");document.getElementById("en-news").hidden=false;}}catch(_){}
-  window.__LIVE={N,E,at:js.tried||js.checked,ok:js.ok||{},S:(js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).map(x=>({t:String(x.t).slice(0,140),d:String(x.d||"").slice(0,11),u:x.u}))};
+  window.__LIVE={N,E,EN:(js.en_news||[]).length,at:js.tried||js.checked,ok:js.ok||{},S:(js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).map(x=>({t:String(x.t).slice(0,140),d:String(x.d||"").slice(0,11),u:x.u}))};
   if(window.__LIVE.S.some(x=>!STORIES.some(z=>z.g===x.u||z.t===x.t))&&typeof renderToday==="function")renderToday();
   /* 관리자 모드에서 '자동 연결'을 끈 항목만 관리자 목록을 쓴다(기본은 켜짐) — 관리자가 다른 칸을 저장해도 공지·일정 자동 갱신은 멈추지 않음 */
   const LO=(SITE&&SITE.live)||{};
@@ -2315,7 +2315,7 @@ function renderSync(){const host=$("#v-page");const {S,c,okN}=syncSummary();
   '<p class="note" style="margin-top:18px"><a href="feed_all.xml"><b>GIST 전체 새 글 RSS</b></a> — 대표 홈페이지 소식과 26곳 최근 글 60건을 날짜순으로 한 주소에 모았습니다. 언론·기관이 이 주소 하나로 GIST 새 글을 받아 갈 수 있습니다. 자료: scripts/sites_fetch.py → data/sites.json·feed_all.xml (GitHub 작업 gist.yml, 1시간마다). 홈페이지 목록은 D안의 학과·부속기관 바로가기 주소와 같습니다. 고장 났을 때 보는 순서·홈페이지 더하는 법은 <a href="https://github.com/yhju-gist/gist-homepage-d/blob/main/docs/OPERATIONS.md"'+EXT+'>운영·유지보수 인계서 ↗</a>에 있습니다.</p></div></div>';
  document.title="홈페이지 연결 현황 | GIST 홈페이지 D안";icons();}
 function syncAdm(){const L=window.__LIVE,{S,c,okN}=syncSummary();
- const lv=L?'<li><b>현행 대표 홈페이지</b> 공지 '+L.N.length+'건 · 학사일정 '+L.E.length+'건 · 마지막 확인 '+esc(sWhen(L.at))+(L.ok&&Object.values(L.ok).some(v=>v===false)?' · <b style="color:var(--red)">일부 가져오기 실패</b>':' · 정상')+'</li>':'<li>현행 대표 홈페이지 자료(data/live.json)를 아직 읽지 못했습니다</li>';
+ const lv=L?'<li><b>현행 대표 홈페이지</b> 공지 '+L.N.length+'건 · 학사일정 '+L.E.length+'건 · GIST 소식 '+(L.S||[]).length+'건'+(L.EN?' · 영문 News '+L.EN+'건':'')+' · 마지막 확인 '+esc(sWhen(L.at))+(L.ok&&Object.values(L.ok).some(v=>v===false)?' · <b style="color:var(--red)">일부 가져오기 실패</b>':' · 정상')+'</li>':'<li>현행 대표 홈페이지 자료(data/live.json)를 아직 읽지 못했습니다</li>';
  const sv=S.length?'<li><b>학과·연구소·센터 홈페이지</b> '+okN+'/'+S.length+'곳 이어 받기 성공 · 최근 30일 안 새 글 '+c.ok+'곳 · 1년 넘게 새 글 없음 '+c.stale+'곳 · 마지막 확인 '+esc(sWhen(SITES_LIVE.tried||SITES_LIVE.checked))+'</li>':'<li>학과·연구소·센터 자료(data/sites.json)를 아직 읽지 못했습니다</li>';
  const st=S.filter(x=>!x.ok||sState(x)[0]==="stale");
  return '<p class="hint">이 탭은 읽기 전용입니다. 자동으로 이어 받는 자료가 제대로 들어오는지 확인합니다.</p><ul class="ql-l">'+lv+sv+'</ul>'+syLate()+(st.length?'<p class="hint" style="margin-top:10px">점검 대상: '+st.map(x=>esc(x.n)+'('+esc(x.ok?sDate(x.latest):"가져오기 실패")+')').join(", ")+'</p>':'')+'<p style="margin-top:12px"><a class="abtn" href="#sync">홈페이지 연결 현황 화면 열기 →</a></p>';}
