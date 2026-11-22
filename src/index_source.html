@@ -3753,8 +3753,9 @@ document.addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.c
 const CMDX=[...COLLEGES.map(c=>({s:"col",site:"단과대학",t:c.n,p:c.i,k:c.d.join(" "),h:"#colleges"})),...ALLD.map(d=>({s:"col",site:"학과",t:d,p:"학과 홈페이지 · 입학 · 교수진",k:"학과",h:"#colleges"})),...IDX.map(r=>({...r,h:"#search"}))];
 const CS=[["all","전체"],["col","대학·학과"],["main","대표"],["dept","학과 홈페이지"],["rule","규정·안내"],["sns","SNS"]];let cs="all",csel=0,cl=[];
 $("#cmds").innerHTML=CS.map(c=>'<button type="button" data-s="'+c[0]+'" aria-pressed="'+(c[0]==="all")+'">'+c[1]+'</button>').join("");
-function cmdRender(){const q=$("#cmdq").value.trim();cl=smart(CMDX,q,r=>cs==="all"||r.s===cs).slice(0,9);csel=0;
- $("#cmdl").innerHTML=cl.length?cl.map((r,i)=>'<li><a href="'+r.h+'" data-i="'+i+'" class="'+(i===0?"sel":"")+'"><span class="t"><b>'+hl(r.t,q)+'</b><small>'+esc(r.site)+' · '+esc(r.p)+'</small></span><span class="s'+(r.s==="dept"?" d":"")+'">'+({col:"대학·학과",main:"대표",dept:"학과 홈페이지",rule:"규정·안내",sns:"SNS"}[r.s])+'</span></a></li>').join(""):'<li style="padding:18px;color:var(--mute)">결과가 없습니다. AI 안내에 물어보세요.</li>';}
+function cmdRender(){const q=$("#cmdq").value.trim();if(window.__cmpN!==IDX.length+CMDX.length){window.__cmp=CMDX.filter(r=>r.s==="col").concat(IDX);window.__cmpN=IDX.length+CMDX.length;}
+ cl=smart(window.__cmp,q,r=>cs==="all"||r.s===cs).slice(0,9).map(r=>{const x=r.s==="col"?[r.h,0]:(typeof sHref==="function"?sHref(r):[r.h||"#search",0]);return Object.assign({},r,{h:x[0],ext:x[1]});});csel=0;
+ $("#cmdl").innerHTML=cl.length?cl.map((r,i)=>'<li><a href="'+esc(r.h)+'"'+(r.ext?EXT:'')+' data-i="'+i+'" class="'+(i===0?"sel":"")+'"><span class="t"><b>'+hl(r.t,q)+'</b><small>'+esc(r.site)+' · '+esc(r.p)+'</small></span><span class="s'+(r.s==="dept"?" d":"")+'">'+({col:"대학·학과",main:"대표",dept:"학과 홈페이지",rule:"규정·안내",sns:"SNS"}[r.s])+'</span></a></li>').join(""):'<li style="padding:18px;color:var(--mute)">결과가 없습니다. AI 안내에 물어보세요.</li>';}
 function openCmd(){$("#cmd").hidden=false;$("#cmdq").value="";cmdRender();setTimeout(()=>$("#cmdq").focus(),20);lenis&&lenis.stop();}
 function closeCmd(){$("#cmd").hidden=true;lenis&&lenis.start();}
 $("#cmdbtn").addEventListener("click",openCmd);
@@ -3766,7 +3767,7 @@ document.addEventListener("keydown",e=>{
  if($("#cmd").hidden)return;
  if(e.key==="Escape")closeCmd();
  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();csel=(csel+(e.key==="ArrowDown"?1:-1)+cl.length)%Math.max(cl.length,1);$$("#cmdl a").forEach((a,i)=>a.classList.toggle("sel",i===csel));}
- if(e.key==="Enter"&&cl[csel]){location.hash=cl[csel].h.slice(1);closeCmd();}
+ if(e.key==="Enter"&&cl[csel]){const r=cl[csel];if(r.ext)window.open(r.h,"_blank","noopener");else location.hash=r.h.slice(1);closeCmd();}
 });
 
 /* 부드러운 스크롤 */
@@ -4588,7 +4589,11 @@ addEventListener("lazylibs",()=>{try{
 
 /* 통합검색: 범위별 묶음 + 결과마다 바로가기 (포스텍 통합검색 방식) */
 const SGN={main:"대표 홈페이지",dept:"학과 홈페이지",people:"사람·업무",rule:"규정·안내",sns:"SNS"};
-function sHref(r){if(r.h&&/^#([pd]-|st-\d|tutorial$)/.test(r.h))return [r.h,0];if(r.u)return [r.u,1];if(r.s==="dept"){const d=r.site.replace(/\s*홈페이지$/,"");return DURL[d]?[dhref(d),1]:["#colleges",0];}
+/* 검색 결과 주소: 화면 주소(h)가 있으면 그대로, 없으면 원문 주소(u), 그래도 없으면 제목으로 알맞은 화면을 찾음 */
+const SFIX={"장학 제도 안내":"#p-2-2-0","증명서 발급":"#p-4-0-3","생활관 안내":"#p-4-1-0"};
+function sHref(r){if(r.h&&/^#./.test(r.h))return [r.h,0];if(r.h&&/^https?:/.test(r.h))return [r.h,1];if(r.u)return [r.u,1];if(SFIX[r.t])return [SFIX[r.t],0];
+ if(r.s==="main"&&(/· 공지$/.test(r.site)||/^공지 ·/.test(r.t)))return ["https://www.gist.ac.kr/kr/html/sub06/060101.html",1];
+ if(r.s==="main"&&/· 학사일정$/.test(r.site))return ["#p/academic-calendar",0];if(r.s==="dept"){const d=r.site.replace(/\s*홈페이지$/,"");return DURL[d]?[dhref(d),1]:["#colleges",0];}
  if(r.s==="sns"){const x=SNS.find(z=>r.t&&(z.t.includes(r.t)||r.t.includes(z.t.slice(0,12))));return x?[x.u,1]:["#story",0];}
  if(r.s==="rule")return ["#tutorial",0];return ["#story",0];}
 runSearch=function(){
@@ -5597,9 +5602,9 @@ function idxMore(){if(IDXM)return;IDXM=1;let n=4;const done=function(){if(--n)re
   Object.keys(ENP.pages||{}).forEach(k=>{const P=ENP.pages[k];const t=idxText(P.h);idxAdd({s:"main",site:"English · "+(P.nav||[]).slice(0,-1).join(" › "),t:P.t,p:t.slice(0,110)||"GIST English site",k:"영문 English "+t.slice(0,1400),h:"#en-"+k})});
   (DOCS.docs||[]).forEach(d=>idxAdd({s:"main",site:"서류 초안 · "+d.id,t:d.n,p:String(d.req||"").slice(0,110),k:"서류 초안 요구사항 "+d.id+" "+idxText([d.req,d.now].concat(d.draft||[]).join(" ")).slice(0,1200),h:"#docs"}));
  }catch(_){}
- fuseCache.clear();try{if((LH()||"").indexOf("#search")===0&&$("#q")&&$("#q").value.trim())runSearch();}catch(_){}};
+ fuseCache.clear();try{if((LH()||"").indexOf("#search")===0&&$("#q")&&$("#q").value.trim())runSearch();}catch(_){}try{if(!$("#cmd").hidden&&$("#cmdq").value.trim())cmdRender();}catch(_){}};
  fundLoad(done);ipaLoad(done);enLoad(done);docsLoad(done);}
-document.addEventListener("focusin",function(e){if(e.target&&e.target.matches&&e.target.matches('input[type="search"]'))idxMore();});
+document.addEventListener("focusin",function(e){if(e.target&&e.target.matches&&e.target.matches('input[type="search"],#cmdq'))idxMore();});
 document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&(e.key==="k"||e.key==="K"))idxMore();});
 addEventListener("hashchange",function(){if((LH()||"").indexOf("#search")===0)idxMore();});
 if((location.hash||"").indexOf("#search")===0)setTimeout(idxMore,600);
