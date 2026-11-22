@@ -6335,6 +6335,13 @@ h2,h3,h4,.ap-sec,.ap-g,.ipa-g{break-after:avoid}
 .hx-dots button.hxd[aria-current="true"]::after{content:"";position:absolute;inset:0;border-radius:inherit;background:#fff;transform-origin:0 50%;transform:scaleX(0);animation:a-fill 6.5s linear forwards}
 .hx-dots:has(#hxpz[aria-pressed="true"]) button.hxd[aria-current="true"]::after{animation:none;transform:none}
 @keyframes a-fill{to{transform:scaleX(1)}}
+/* 쉬운 이용(11.22): 지금 사진 점도 손가락으로 누를 자리 24px 이상, 흐르는 학과 이름 줄은 누를 자리 키우고 손가락·초점이 닿으면 멈춤 */
+.hx-dots button.hxd[aria-current="true"]{overflow:visible}
+.hx-dots button.hxd[aria-current="true"]::before{content:"";position:absolute;left:50%;top:50%;width:max(100%,24px);height:28px;transform:translate(-50%,-50%)}
+.marquee .track{padding-block:12px}
+.marquee .track a{display:inline-block;padding-block:4px}
+.marquee:focus-within .track,.marquee:active .track{animation-play-state:paused}
+td>a:only-child,th>a:only-child{display:inline-block;padding-block:3px}
 .a-fb{position:fixed;left:0;top:0;z-index:40;width:112px;height:112px;margin:-56px 0 0 -56px;pointer-events:none;opacity:0;transform:translate3d(-200px,-200px,0) scale(.4);transition:opacity .25s,scale .3s;display:none}
 .a-fb.on{opacity:1}
 .a-fb i{position:absolute;inset:26px;border-radius:50%;background:var(--red,#DC2715);display:grid;place-items:center;color:#fff;font:800 20px/1 var(--f-body,sans-serif)}
