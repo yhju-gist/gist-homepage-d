@@ -4323,14 +4323,14 @@ window.__gCover=gCover;
   (js.events||[]).filter(e=>e&&e.t).slice(0,6).forEach(e=>IDX.push({s:"main",lv:1,site:"대표 홈페이지 · 학사일정",t:String(e.t).slice(0,120),p:String(e.d||"")+"("+String(e.w||"")+") 학사일정",k:"학사일정 일정 "+e.t,u:"https://www.gist.ac.kr/kr/html/sub05/0501.html"}));
   (js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).forEach(x=>{if(!STORIES.some(z=>z.g===x.u))IDX.push({s:"main",lv:1,site:"대표 홈페이지 · GIST 소식",t:String(x.t).slice(0,140),p:String(x.d||"")+" · "+String(x.s||"").slice(0,120),k:"소식 뉴스 "+x.t+" "+(x.s||""),u:x.u});});
   if(typeof fuseCache!=="undefined")fuseCache.clear();
-  window.__LIVE={N,E,at:js.checked,ok:js.ok||{},S:(js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).map(x=>({t:String(x.t).slice(0,140),d:String(x.d||"").slice(0,11),u:x.u}))};
+  window.__LIVE={N,E,at:js.tried||js.checked,ok:js.ok||{},S:(js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).map(x=>({t:String(x.t).slice(0,140),d:String(x.d||"").slice(0,11),u:x.u}))};
   if(window.__LIVE.S.some(x=>!STORIES.some(z=>z.g===x.u||z.t===x.t))&&typeof renderToday==="function")renderToday();
   /* 관리자 모드에서 '자동 연결'을 끈 항목만 관리자 목록을 쓴다(기본은 켜짐) — 관리자가 다른 칸을 저장해도 공지·일정 자동 갱신은 멈추지 않음 */
   const LO=(SITE&&SITE.live)||{};
   if(!SITE_AT){if(N.length)SITE.notices=N.map(n=>({...n}));if(E.length)SITE.events=E.map(e=>({...e}));}   /* 아직 저장한 적 없으면 관리자 목록도 지금 자료로 */
   if(N.length&&LO.notices!==false){NOTICES.length=0;N.forEach(n=>NOTICES.push(n));}
   if(E.length&&LO.events!==false){EVENTS.length=0;E.forEach(e=>EVENTS.push(e));}
-  if(N.length||E.length){renderNotices();const p=$("#liveSt");if(p&&js.checked){p.textContent="현행 홈페이지 공지·학사일정에서 자동으로 가져옴 · "+st(js.checked)+" 확인";p.hidden=false;}}}
+  if(N.length||E.length){renderNotices();const p=$("#liveSt");if(p&&(js.tried||js.checked)){p.textContent="현행 홈페이지 공지·학사일정에서 자동으로 가져옴 · "+st(js.tried||js.checked)+" 확인";p.hidden=false;}}}
  loadLive();setInterval(loadLive,1800000);}
 
 /* 사람·업무 찾기: ① 현행 GIST 홈페이지 '조직/직원안내 › 직원검색'의 부서·내선·담당업무 전체(686건, 2026.11.11. 수집, 이름 없음 — 현행과 같음) ② 학과 홈페이지 교수진 안내의 교수 이름·연구실·연구실 내선(180명, 12개 학과·1개 대학원, 2026.11.11. 수집). 이메일·사진·휴대전화는 넣지 않음 */

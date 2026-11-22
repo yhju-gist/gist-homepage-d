@@ -98,6 +98,7 @@ def main():
             ok[k] = False; res[k] = old.get(k, []); print(k, "실패:", e)
     changed = any(res.get(k) != old.get(k) for k in ("notices", "events", "news"))
     res["checked"] = NOW.isoformat(timespec="minutes") if (changed or not old.get("checked")) else old.get("checked")
+    res["tried"] = NOW.isoformat(timespec="minutes")  # 마지막으로 가져와 본 때(바뀐 것이 없어도 갱신)
     res["ok"] = ok
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(res, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
