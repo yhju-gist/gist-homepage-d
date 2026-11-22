@@ -1862,6 +1862,12 @@ footer .fsns svg{width:18px;height:18px}
 .pinfo b{font-size:15px}
 .pinfo a{font-weight:800;color:var(--red-tx)}
 .prel{margin-top:48px}
+#nf{position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:90;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;max-width:min(680px,calc(100vw - 32px));background:var(--ink);color:#fff;border-radius:14px;padding:12px 12px 12px 18px;box-shadow:0 12px 32px rgba(0,0,0,.22);font-size:14.5px;line-height:1.5}
+#nf[hidden]{display:none}
+@media (max-width:760px){#nf{top:auto;bottom:104px;width:calc(100vw - 32px)}}
+#nf a{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center}
+#nf .nf-m{min-height:44px;border:0;background:none;color:#fff;font:inherit;font-weight:800;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0}
+#nf .nf-x{margin-left:auto;width:44px;height:44px;border:0;border-radius:10px;background:rgba(255,255,255,.12);color:#fff;font-size:20px;cursor:pointer}
 .pseq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
 .pseq a{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:12px;padding:16px 20px;min-height:44px;color:var(--ink)}
 .pseq a.nx{text-align:right;align-items:flex-end}
@@ -3461,6 +3467,11 @@ function route(){
   if(window.ScrollTrigger) setTimeout(()=>ScrollTrigger.refresh(),50);
 }
 addEventListener("hashchange",route);
+/* 없는 주소로 들어오면 알리고 첫 화면으로 (모든 화면 처리가 끝난 뒤 첫 화면만 보이면 없는 주소로 판단) */
+function nfCheck(){const n0=document.getElementById("nf");if(n0)n0.hidden=true;setTimeout(()=>{const h=LH()||"#home";if(h==="#en"){document.title="English | GIST";return;}const v=document.getElementById("v-home");if(h!=="#home"&&h.length>1&&v&&v.classList.contains("on")&&!document.getElementById(h.slice(1)))nfShow(h.slice(1));},320);}
+addEventListener("hashchange",nfCheck);setTimeout(nfCheck,600);
+function nfShow(h){try{const i=TRAIL.findIndex(x=>x.h==="#"+h);if(i>=0){TRAIL.splice(i,1);trailDraw();}}catch(_){}try{history.replaceState(null,"",location.pathname+location.search+"#home");}catch(_){}document.title="GIST 홈페이지 D안";let el=document.getElementById("nf");if(!el){el=document.createElement("div");el.id="nf";el.setAttribute("role","status");document.body.appendChild(el);}
+ el.innerHTML='<span>찾는 화면(<b>#'+esc(String(h).slice(0,40))+'</b>)이 없어 첫 화면으로 왔습니다.</span><a href="#search">통합검색으로 찾기</a><button type="button" class="nf-m">전체 메뉴 보기</button><button type="button" class="nf-x" aria-label="알림 닫기">×</button>';el.hidden=false;el.querySelector(".nf-x").onclick=()=>{el.hidden=true;};el.querySelector(".nf-m").onclick=()=>{el.hidden=true;typeof openSmap==="function"&&openSmap();};clearTimeout(window.__nft);window.__nft=setTimeout(()=>{el.hidden=true;},9000);}
 
 /* ---------- 홈 ---------- */
 function renderNeed(w){
@@ -5505,7 +5516,7 @@ function fundPos(k){for(let g=0;g<FUND_MENU.length;g++){const i=FUND_MENU[g][1].
 const FUND_IC=["landmark","megaphone","heart-handshake","award"];
 function fundKpi(){try{const F=FUND.fame||{},cl=F.clubs||[],nm=cl.reduce((a,c)=>a+(((F.data||{})[c[1]]||{}).m||[]).length,0),tot=+String((FUND.donors||{}).total||0).replace(/[^0-9]/g,""),ns=(FUND.sponsors||[]).length,np=Object.keys(FUND.pages||{}).length;const f=n=>Number(n).toLocaleString("ko-KR");
  return '<div class="kpi hubk"><a href="#fund-donors"><span class="eyebrow">기부자 명단</span><b class="num">'+f(tot)+'</b><span>건 · 현행 홈페이지 전체</span></a><a href="#fund-hall-of-fame"><span class="eyebrow">명예의 전당</span><b class="num">'+f(nm)+'</b><span>분 · 클럽 '+cl.length+'개</span></a><a href="#fund-sponsors"><span class="eyebrow">후원의 집</span><b class="num">'+f(ns)+'</b><span>곳</span></a><a href="#fund-how-to-give"><span class="eyebrow">안내 화면</span><b class="num">'+f(np)+'</b><span>개 · 2026.11.13. 확인</span></a></div>';}catch(_){return ""}}
-function renderFundHub(){$("#v-page").innerHTML=dHero("FUND","발전기금","기부 참여 방법부터 기부자 예우, 명예의 전당, 기부자 명단까지 한곳에서 봅니다.")+
+function renderFundHub(){document.title="발전기금 | GIST 홈페이지 D안";$("#v-page").innerHTML=dHero("FUND","발전기금","기부 참여 방법부터 기부자 예우, 명예의 전당, 기부자 명단까지 한곳에서 봅니다.")+
  '<div class="wrap ap" style="padding-block:36px 90px">'+fundKpi()+FUND_MENU.map((g,gi)=>'<h2 class="ipa-g">'+esc(g[0])+'</h2><div class="ap-cards">'+g[1].map(x=>'<a class="ap-c" href="'+(fundX(x[1])?x[1]:"#fund-"+x[1])+'"'+(fundX(x[1])?' target="_blank" rel="noopener noreferrer"':'')+'><i data-lucide="'+FUND_IC[gi]+'"></i><b>'+esc(x[0])+'</b><span>'+esc(g[0])+'</span><em>'+(fundX(x[1])?"바깥 화면 ↗":"보기")+'</em></a>').join("")+'</div>').join("")+
  '<div class="ipa-act"><a class="p-pill red" href="#apply-df-pledge">온라인 약정하기 <i data-lucide="arrow-right"></i></a><a class="p-pill" style="border:1px solid var(--line)" href="#fund-donors">기부자 명단 보기</a></div></div>';}
 function fundSponsors(){const q=FD.sq.trim();const L=FUND.sponsors.filter(r=>!q||r.join(" ").indexOf(q)>=0);
@@ -5542,7 +5553,7 @@ function ipaHero(title,lead,crumb){return '<div class="nxhero dh" lang="en"><div
 const IPA_IC=["building-2","handshake","plane-landing","plane-takeoff","megaphone","graduation-cap"];
 function ipaKpi(){try{const t=document.createElement("template");const rows=k=>{t.innerHTML=((IPA.pages[k]||{}).h||"");return [...t.content.querySelectorAll("tbody tr")]};const P=rows("partners"),nc=new Set(P.map(r=>(r.children[4]||{}).textContent||"").map(x=>x.trim()).filter(Boolean)).size,A=rows("alumni").length,np=Object.keys(IPA.pages||{}).length;
  return '<div class="kpi hubk"><a href="#ipa-partners"><span class="eyebrow">Partner institutions</span><b class="num">'+P.length+'</b><span>in '+nc+' countries</span></a><a href="#ipa-gip"><span class="eyebrow">Programs</span><b class="num">'+(IPA_MENU[2][1].length+IPA_MENU[3][1].length)+'</b><span>inbound and outbound</span></a><a href="#ipa-alumni"><span class="eyebrow">Alumni listed</span><b class="num">'+A+'</b><span>on the current site</span></a><a href="#ipa-notices"><span class="eyebrow">Pages</span><b class="num">'+np+'</b><span>checked 13 Nov 2026</span></a></div>';}catch(_){return ""}}
-function renderIpaHub(){const N=(IPA.pages.notices||{}).h||"";const li=(N.match(/<li>[\s\S]*?<\/li>/g)||[]).slice(0,5).join("");const C=IPA.pages.contact;
+function renderIpaHub(){document.title="International | GIST";const N=(IPA.pages.notices||{}).h||"";const li=(N.match(/<li>[\s\S]*?<\/li>/g)||[]).slice(0,5).join("");const C=IPA.pages.contact;
  $("#v-page").innerHTML=ipaHero("International","Exchange, global internship and partnership programs — Office of International and Public Affairs (IPA).")+
  '<div class="wrap ap" lang="en" style="padding-block:36px 90px">'+ipaKpi()+IPA_MENU.map((g,gi)=>'<h2 class="ipa-g">'+esc(g[0])+'</h2><div class="ap-cards">'+g[1].map(x=>'<a class="ap-c" href="'+(ipaX(x[1])?x[1]:"#ipa-"+x[1])+'"'+(ipaX(x[1])?' target="_blank" rel="noopener noreferrer"':'')+'><i data-lucide="'+IPA_IC[gi]+'"></i><b>'+esc(x[0])+'</b><span>'+(x[2].length?esc(x[2].map(y=>y[0]).join(" · ")):esc(g[0]))+'</span><em>'+(ipaX(x[1])?"Current site ↗":"Open")+'</em></a>').join("")+'</div>').join("")+
  '<div class="ipa-act"><a class="p-pill red" href="#apply-ipa-app">Apply or ask online <i data-lucide="arrow-right"></i></a>'+(C?'<a class="p-pill" style="border:1px solid var(--line)" href="#ipa-contact">Contact IPA</a>':'')+'</div>'+
