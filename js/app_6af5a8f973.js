@@ -1021,6 +1021,7 @@ window.__gCover=gCover;
   (js.events||[]).filter(e=>e&&e.t).slice(0,6).forEach(e=>IDX.push({s:"main",lv:1,site:"대표 홈페이지 · 학사일정",t:String(e.t).slice(0,120),p:String(e.d||"")+"("+String(e.w||"")+") 학사일정",k:"학사일정 일정 "+e.t,u:"https://www.gist.ac.kr/kr/html/sub05/0501.html"}));
   (js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).forEach(x=>{if(!STORIES.some(z=>z.g===x.u))IDX.push({s:"main",lv:1,site:"대표 홈페이지 · GIST 소식",t:String(x.t).slice(0,140),p:String(x.d||"")+" · "+String(x.s||"").slice(0,120),k:"소식 뉴스 "+x.t+" "+(x.s||""),u:x.u});});
   if(typeof fuseCache!=="undefined")fuseCache.clear();
+  try{const EL=(js.en_news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6),eh=document.getElementById("enl");if(eh&&EL.length){eh.innerHTML=EL.map(x=>'<li><a href="'+esc(x.u)+'" target="_blank" rel="noopener noreferrer"><time class="num">'+esc(String(x.d||"").slice(0,11))+'</time><b>'+esc(String(x.t).slice(0,180))+'</b></a></li>').join("");document.getElementById("en-news").hidden=false;}}catch(_){}
   window.__LIVE={N,E,at:js.tried||js.checked,ok:js.ok||{},S:(js.news||[]).filter(x=>x&&x.t&&okG(x.u)).slice(0,6).map(x=>({t:String(x.t).slice(0,140),d:String(x.d||"").slice(0,11),u:x.u}))};
   if(window.__LIVE.S.some(x=>!STORIES.some(z=>z.g===x.u||z.t===x.t))&&typeof renderToday==="function")renderToday();
   /* 관리자 모드에서 '자동 연결'을 끈 항목만 관리자 목록을 쓴다(기본은 켜짐) — 관리자가 다른 칸을 저장해도 공지·일정 자동 갱신은 멈추지 않음 */

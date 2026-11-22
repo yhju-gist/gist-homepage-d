@@ -84,19 +84,32 @@ def news():
     return out
 
 
+def en_news():
+    """영문 홈페이지 News(/en/html/sub06/060202.html) 최근 6건 — 국문 소식과 같은 게시판 틀"""
+    s = get("/en/html/sub06/060202.html"); out, seen = [], set()
+    for no, body in re.findall(r"<a href='\?mode=V&amp;no=(\d+)'>(.*?)</em>\s*</em>", s, re.S):
+        if no in seen: continue
+        t = re.search(r"<h2><span>(.*?)</span></h2>", body, re.S); d = re.search(r"class='bd_info'>(\d{4})-(\d{2})-(\d{2})", body)
+        if not (t and d): continue
+        seen.add(no)
+        out.append({"t": clean(t.group(1)), "d": f"{d.group(1)}.{d.group(2)}.{d.group(3)}.", "u": f"{BASE}/en/html/sub06/060202.html?mode=V&no={no}"})
+        if len(out) >= 6: break
+    return out
+
+
 def main():
     try: old = json.load(open(OUT, encoding="utf-8"))
     except Exception: old = {}
     res = {"$description": "현행 GIST 홈페이지 공개 게시판의 최근 목록(제목·날짜·주소). scripts/gist_fetch.py 가 1시간마다 갱신. 화면은 이 파일이 있으면 공지·학사일정을 이것으로 바꿔 보여 줌.",
-           "src": {"notices": BASE + "/kr/html/sub06/060101.html", "events": BASE + "/kr/html/sub05/0501.html", "news": BASE + "/kr/html/sub07/070103.html"}}
+           "src": {"notices": BASE + "/kr/html/sub06/060101.html", "events": BASE + "/kr/html/sub05/0501.html", "news": BASE + "/kr/html/sub07/070103.html", "en_news": BASE + "/en/html/sub06/060202.html"}}
     ok = {}
-    for k, f in (("notices", notices), ("events", events), ("news", news)):
+    for k, f in (("notices", notices), ("events", events), ("news", news), ("en_news", en_news)):
         try:
             v = f(); ok[k] = bool(v)
             res[k] = v if v else old.get(k, [])
         except Exception as e:
             ok[k] = False; res[k] = old.get(k, []); print(k, "실패:", e)
-    changed = any(res.get(k) != old.get(k) for k in ("notices", "events", "news"))
+    changed = any(res.get(k) != old.get(k) for k in ("notices", "events", "news", "en_news"))
     res["checked"] = NOW.isoformat(timespec="minutes") if (changed or not old.get("checked")) else old.get("checked")
     res["tried"] = NOW.isoformat(timespec="minutes")  # 마지막으로 가져와 본 때(바뀐 것이 없어도 갱신)
     res["ok"] = ok

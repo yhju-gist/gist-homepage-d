@@ -3,7 +3,8 @@
  "src": {
   "notices": "https://www.gist.ac.kr/kr/html/sub06/060101.html",
   "events": "https://www.gist.ac.kr/kr/html/sub05/0501.html",
-  "news": "https://www.gist.ac.kr/kr/html/sub07/070103.html"
+  "news": "https://www.gist.ac.kr/kr/html/sub07/070103.html",
+  "en_news": "https://www.gist.ac.kr/en/html/sub06/060202.html"
  },
  "notices": [
   {
@@ -114,11 +115,44 @@
    "u": "https://www.gist.ac.kr/kr/html/sub07/070103.html?mode=V&no=224715"
   }
  ],
- "checked": "2026-11-20T20:34+09:00",
- "tried": "2026-11-22T19:23+09:00",
+ "en_news": [
+  {
+   "t": "GIST won two awards, including the Best Paper Award, at an international conference in the field of human-computer interaction",
+   "d": "2026.11.13.",
+   "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224678"
+  },
+  {
+   "t": "GIST and Sungkyunkwan University develop ‘Patch-type injectable hydrogel’ for direct drug delivery to hearts damaged by myocardial infarction",
+   "d": "2026.11.10.",
+   "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224642"
+  },
+  {
+   "t": "“Ultra-precise reconstruction of light information using a single sensor” Joint research team from GIST, DGIST, and Kyungpook National University develops multidimensional spectral input and reconstruction technology",
+   "d": "2026.11.05.",
+   "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224592"
+  },
+  {
+   "t": "“Unlocking the practical use of quantum computers through materials and processes” GIST, Korea University, UC Berkeley, and others propose development path for key components of superconducting quantum computers",
+   "d": "2026.11.05.",
+   "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224591"
+  },
+  {
+   "t": "“Why does pain persist even after the initial nerve injury has healed?” GIST researchers identify a protein that fuels chronic pain",
+   "d": "2026.11.04.",
+   "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224578"
+  },
+  {
+   "t": "“Greater flexibility for solar power and batteries without overload” GIST develops technology to calculate power grid output adjustment capacity",
+   "d": "2026.11.04.",
+   "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224575"
+  }
+ ],
+ "checked": "2026-11-22T19:41+09:00",
+ "tried": "2026-11-22T19:41+09:00",
  "ok": {
   "notices": true,
   "events": true,
-  "news": true
+  "news": true,
+  "en_news": true
  }
 }
