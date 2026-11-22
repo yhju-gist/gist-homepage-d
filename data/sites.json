@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-22T21:20+09:00",
- "tried": "2026-11-22T22:23+09:00",
+ "checked": "2026-11-22T23:34+09:00",
+ "tried": "2026-11-22T23:34+09:00",
  "sites": [
   {
    "id": "ai",
@@ -902,6 +902,11 @@
      "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=524"
     },
     {
+     "t": "광주과학기술원 창업진흥센터 입주 기업…",
+     "d": "2026-11-21",
+     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=523"
+    },
+    {
      "t": "[교육 안내] 2026 광주특구 투자…",
      "d": "2026-11-13",
      "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0605&wr_id=1369"
@@ -915,11 +920,6 @@
      "t": "[창업진흥센터] 「실험실창업 법률 특…",
      "d": "2026-01-26",
      "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=516"
-    },
-    {
-     "t": "[한국엔젤투자협회] 2024-1st …",
-     "d": "2024-06-25",
-     "u": "https://gti.gist.ac.kr/bbs/board.php?bo_table=0605&wr_id=1364"
     }
    ],
    "latest": "2026-11-21",
