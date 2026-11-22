@@ -575,6 +575,8 @@ body.pres .rail>.rq{font-size:9px!important}
 .enl time{font-size:14px;color:var(--mute)}
 .enl b{font-size:17px;line-height:1.45;font-weight:700;word-break:normal;overflow-wrap:anywhere}
 .enl-all{margin-top:20px}.enl-all a{font-weight:700}
+/* 학과 화면(휴대폰): 큰 사진 머리에 학과 이름·영문 이름이 이미 있으므로 바로 아래 같은 이름 줄은 숨기고 소개 글부터 (11.22) */
+@media (max-width:760px){.dhd>div>.eyebrow,.dhd>div>.pg-t,.dhd>div>.den{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 @media (max-width:760px){.enl{grid-template-columns:1fr}.enl a{grid-template-columns:1fr;gap:4px;padding:14px 0}.enl b{font-size:16px}}
 @media (max-width:900px){#v-en .en-val,#v-en .en-cols{grid-template-columns:repeat(2,minmax(0,1fr))}#v-en .en-nums{grid-template-columns:1fr}}
 @media (max-width:520px){#v-en .en-val,#v-en .en-cols{grid-template-columns:1fr}}
