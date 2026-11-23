@@ -1,9 +1,9 @@
 {
- "checked": "2026-11-23T11:38+09:00",
+ "checked": "2026-11-23T21:19+09:00",
  "src": {
   "yt": {
    "ok": true,
-   "at": "2026-11-23T11:38+09:00",
+   "at": "2026-11-23T21:19+09:00",
    "n": 12
   },
   "ig": {
@@ -18,6 +18,22 @@
   }
  },
  "items": [
+  {
+   "p": "yt",
+   "id": "AgwCXwuc0K0",
+   "t": "GIST 가을 풍경 말해뭐해💛GIST 시네마 콘서트 어땠는지 라우럴! #shorts",
+   "u": "https://www.youtube.com/watch?v=AgwCXwuc0K0",
+   "img": "https://i.ytimg.com/vi/AgwCXwuc0K0/hqdefault.jpg",
+   "at": "2026-11-23T13:24:21+09:00"
+  },
+  {
+   "p": "yt",
+   "id": "SWsX8O8XWO8",
+   "t": "가을 밤하늘 아래 펼쳐진 선율, [2026 GIST 시네마 콘서트] 현장 스케치🎬",
+   "u": "https://www.youtube.com/watch?v=SWsX8O8XWO8",
+   "img": "https://i.ytimg.com/vi/SWsX8O8XWO8/hqdefault.jpg",
+   "at": "2026-11-23T13:17:16+09:00"
+  },
   {
    "p": "yt",
    "id": "vLTkx41YoWU",
@@ -97,22 +113,6 @@
    "u": "https://www.youtube.com/watch?v=UzUFgumTbck",
    "img": "https://i.ytimg.com/vi/UzUFgumTbck/hqdefault.jpg",
    "at": "2026-10-13T17:14:49+09:00"
-  },
-  {
-   "p": "yt",
-   "id": "cC0am_e2erQ",
-   "t": "\"함께할수록, 제 세상도 넓어졌어요\"ㅣ짙터뷰 EP.01 최정은 졸업생 #shorts",
-   "u": "https://www.youtube.com/watch?v=cC0am_e2erQ",
-   "img": "https://i.ytimg.com/vi/cC0am_e2erQ/hqdefault.jpg",
-   "at": "2026-10-02T11:35:36+09:00"
-  },
-  {
-   "p": "yt",
-   "id": "JELho8aJBfs",
-   "t": "[GGUN] 지스티안의 방학일기⛱️ | 다들 방학에 뭐 했어? 갓생러 지스티안의 하루 들여다보기!",
-   "u": "https://www.youtube.com/watch?v=JELho8aJBfs",
-   "img": "https://i.ytimg.com/vi/JELho8aJBfs/hqdefault.jpg",
-   "at": "2026-09-30T10:08:37+09:00"
   },
   {
    "p": "ig",
