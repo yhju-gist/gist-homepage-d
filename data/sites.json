@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-23T04:33+09:00",
- "tried": "2026-11-23T09:49+09:00",
+ "checked": "2026-11-23T17:58+09:00",
+ "tried": "2026-11-23T17:58+09:00",
  "sites": [
   {
    "id": "ai",
@@ -394,11 +394,6 @@
    "ok": true,
    "items": [
     {
-     "t": "2027 생명과학과 동계 연구인턴십 안내",
-     "d": "2026-11-06",
-     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000104385Mr1bR8h"
-    },
-    {
      "t": "[GIST 정현수 교수 공동연구팀] 신장 세뇨관 상피세포의 ‘후성유전적 노화 가속’ 확인",
      "d": "2026-10-08",
      "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000103557Lh5zF3w"
@@ -414,12 +409,17 @@
      "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000101309Nv0uV8g"
     },
     {
-     "t": "학과앨범 2026년 3회 OMICSTALK",
+     "t": "2027년 동계 연구 인턴십",
      "d": "",
-     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000512/view.do?nttId=B000000104815Lq7gD9e"
+     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000104385Mr1bR8h"
+    },
+    {
+     "t": "2027 생명과학과 동계 연구인턴십 안내 및 FAQ",
+     "d": "",
+     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000104385Mr1bR8h"
     }
    ],
-   "latest": "2026-11-06",
+   "latest": "2026-10-08",
    "found": 10
   },
   {
@@ -430,6 +430,11 @@
    "h": "https://bmse.gist.ac.kr/",
    "ok": true,
    "items": [
+    {
+     "t": "[생명의과학융합대학] 학술동아리 GISTomics 학술발표회(G-PREP) 참여 안내(2026.11.27.(금), 18:00)",
+     "d": "2026-11-23",
+     "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000105158Rv4nK3x"
+    },
     {
      "t": "[생명의과학융합대학] G-FIRST 연구체험 프로그램 신청 안내(~27.4.16.(금)까지)",
      "d": "2026-11-19",
@@ -449,14 +454,9 @@
      "t": "[생명의과학융합대학] G-FIRST 연구체험 프로그램 신청 안내(~26.4.17.(금)까지)",
      "d": "2026-02-10",
      "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000097131Es1jH4j"
-    },
-    {
-     "t": "[의생명공학과] 2026학년도 대학원 봄학기 2차 전형 오픈랩 신청안내",
-     "d": "2025-08-26",
-     "u": "https://bmse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000681/view.do?nttId=B000000093124Dn0uD6s"
     }
    ],
-   "latest": "2026-11-19",
+   "latest": "2026-11-23",
    "found": 8
   },
   {
@@ -823,6 +823,11 @@
    "ok": true,
    "items": [
     {
+     "t": "조직병리기술지원 및 임상병리기술지원 서비스 중단 안내",
+     "d": "2026-11-23",
+     "u": "https://larc.gist.ac.kr/06_board/board01.html?Item=free&mode=view&No=253"
+    },
+    {
      "t": "조직병리기술지원 이용 변경 안내",
      "d": "2026-09-01",
      "u": "https://larc.gist.ac.kr/06_board/board01.html?Item=free&mode=view&No=243"
@@ -841,14 +846,9 @@
      "t": "Cryosection 장비 운영 및 관리 개선 방안",
      "d": "2026-02-24",
      "u": "https://larc.gist.ac.kr/06_board/board01.html?Item=free&mode=view&No=229"
-    },
-    {
-     "t": "Slide Scanner 서비스 재개 안내",
-     "d": "2026-02-19",
-     "u": "https://larc.gist.ac.kr/06_board/board01.html?Item=free&mode=view&No=227"
     }
    ],
-   "latest": "2026-09-01",
+   "latest": "2026-11-23",
    "found": 9
   },
   {
