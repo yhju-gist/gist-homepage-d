@@ -9,6 +9,12 @@
  "notices": [
   {
    "k": "행사",
+   "t": "[상담센터] 2026년 정신건강특강(\"불안한 게 병인가요?\") 실시 안내",
+   "d": "11.24.",
+   "u": "https://www.gist.ac.kr/kr/html/sub06/060101.html?mode=V&no=224808"
+  },
+  {
+   "k": "행사",
    "t": "[중앙기기연구소-첨단분석센터] 2026년 11월 교육 프로그램 안내 (Colloquium & Go Day)",
    "d": "11.16.",
    "u": "https://www.gist.ac.kr/kr/html/sub06/060101.html?mode=V&no=224709"
@@ -36,12 +42,6 @@
    "t": "[창업혁신진흥원] 2026 카카오AI돛 × GIST 창업세미나 개최 안내 (11/23)",
    "d": "11.11.",
    "u": "https://www.gist.ac.kr/kr/html/sub06/060101.html?mode=V&no=224652"
-  },
-  {
-   "k": "안내",
-   "t": "[인권센터] 매월 11일은 GIST '상호존중의 날' 입니다.[Center for Human Rights] The 11th of Every Month is ‘Mutual Respect Day.’",
-   "d": "11.11.",
-   "u": "https://www.gist.ac.kr/kr/html/sub06/060101.html?mode=V&no=224644"
   }
  ],
  "events": [
@@ -147,8 +147,8 @@
    "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224575"
   }
  ],
- "checked": "2026-11-22T19:41+09:00",
- "tried": "2026-11-23T17:58+09:00",
+ "checked": "2026-11-24T14:58+09:00",
+ "tried": "2026-11-24T14:58+09:00",
  "ok": {
   "notices": true,
   "events": true,
