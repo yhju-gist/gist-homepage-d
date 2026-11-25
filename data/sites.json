@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-25T02:38+09:00",
- "tried": "2026-11-25T11:22+09:00",
+ "checked": "2026-11-25T21:47+09:00",
+ "tried": "2026-11-25T21:47+09:00",
  "sites": [
   {
    "id": "ai",
@@ -749,6 +749,11 @@
    "ok": true,
    "items": [
     {
+     "t": "GIST, 스위스와 ‘차세대 양자통신 기술’ 개발 맞손-헤럴드경제",
+     "d": "2026-11-25",
+     "u": "https://apri.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=1316"
+    },
+    {
      "t": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래-머니투데이",
      "d": "2026-11-02",
      "u": "https://apri.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=1315"
@@ -767,14 +772,9 @@
      "t": "GIST, 베른대와 양자광기술 MOU…IBS 3개 연구단 첫 공동 심포지엄-뉴스핌",
      "d": "2026-09-30",
      "u": "https://apri.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=1312"
-    },
-    {
-     "t": "[스페이스버드2] ⑫3100만 km 밖 고양이 영상, 비밀은 ‘레이저’-동아사이언스",
-     "d": "2026-07-28",
-     "u": "https://apri.gist.ac.kr/bbs/board.php?bo_table=0601&wr_id=1311"
     }
    ],
-   "latest": "2026-11-02",
+   "latest": "2026-11-25",
    "found": 18
   },
   {
