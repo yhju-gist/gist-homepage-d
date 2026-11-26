@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-25T21:47+09:00",
- "tried": "2026-11-26T07:28+09:00",
+ "checked": "2026-11-26T13:59+09:00",
+ "tried": "2026-11-26T13:59+09:00",
  "sites": [
   {
    "id": "ai",
@@ -103,6 +103,11 @@
    "ok": true,
    "items": [
     {
+     "t": "[특별강연] 반도체와 사이버 위협 동향 및 대응 방안(12/1, 16:30~)",
+     "d": "2026-11-26",
+     "u": "https://semi.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012227/B000000105628Ra8yR9m/view.do"
+    },
+    {
      "t": "2027년도 GIST 반도체공학과 동계인턴쉽 공고",
      "d": "2026-11-12",
      "u": "https://semi.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012227/B000000104718Uv7vK0x/view.do"
@@ -121,14 +126,9 @@
      "t": "[Seminar] 「AI시대 첨단 반도체패키징 기술 동향」 (2026.9.30.(수) 14:00~15:50)",
      "d": "2026-09-29",
      "u": "https://semi.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012227/B000000103317Il9wB6i/view.do"
-    },
-    {
-     "t": "[2026-가을학기] 반도체공학과 콜로퀴움 전체 일정 안내",
-     "d": "2026-08-27",
-     "u": "https://semi.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000012227/B000000102382Yd2xP3o/view.do"
     }
    ],
-   "latest": "2026-11-12",
+   "latest": "2026-11-26",
    "found": 6
   },
   {
@@ -283,8 +283,8 @@
    "ok": true,
    "items": [
     {
-     "t": "2027 상반기 박사학위논문심사일정 공고(11.13.기준)",
-     "d": "2026-11-13",
+     "t": "2027 상반기 박사학위논문심사일정 공고(11.26.기준)",
+     "d": "2026-11-26",
      "u": "https://mse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000300/B000000104242Ex9vM3d/view.do"
     },
     {
@@ -308,7 +308,7 @@
      "u": "https://mse.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000000300/B000000103761Us4aO0g/view.do"
     }
    ],
-   "latest": "2026-11-13",
+   "latest": "2026-11-26",
    "found": 22
   },
   {
@@ -394,6 +394,11 @@
    "ok": true,
    "items": [
     {
+     "t": "2027 생명과학과 동계 연구인턴십 안내 및 자주 묻는 질문",
+     "d": "2026-11-06",
+     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000104385Mr1bR8h"
+    },
+    {
      "t": "[GIST 정현수 교수 공동연구팀] 신장 세뇨관 상피세포의 ‘후성유전적 노화 가속’ 확인",
      "d": "2026-10-08",
      "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000103557Lh5zF3w"
@@ -412,15 +417,10 @@
      "t": "2027년 동계 연구 인턴십",
      "d": "",
      "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000104385Mr1bR8h"
-    },
-    {
-     "t": "2027 생명과학과 동계 연구인턴십 안내 및 FAQ",
-     "d": "",
-     "u": "https://life.gist.ac.kr/prog/bbsArticle/BBSMSTR_000000008106/view.do?nttId=B000000104385Mr1bR8h"
     }
    ],
-   "latest": "2026-10-08",
-   "found": 10
+   "latest": "2026-11-06",
+   "found": 11
   },
   {
    "id": "bmse",
