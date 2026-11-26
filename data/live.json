@@ -117,6 +117,11 @@
  ],
  "en_news": [
   {
+   "t": "\"Which material works best for an intraoral hearing aid?\" GIST identifies sound transmission characteristics of dental prosthetic materials",
+   "d": "2026.11.26.",
+   "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224846"
+  },
+  {
    "t": "GIST won two awards, including the Best Paper Award, at an international conference in the field of human-computer interaction",
    "d": "2026.11.13.",
    "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224678"
@@ -140,15 +145,10 @@
    "t": "“Why does pain persist even after the initial nerve injury has healed?” GIST researchers identify a protein that fuels chronic pain",
    "d": "2026.11.04.",
    "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224578"
-  },
-  {
-   "t": "“Greater flexibility for solar power and batteries without overload” GIST develops technology to calculate power grid output adjustment capacity",
-   "d": "2026.11.04.",
-   "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224575"
   }
  ],
- "checked": "2026-11-26T13:59+09:00",
- "tried": "2026-11-26T13:59+09:00",
+ "checked": "2026-11-27T00:08+09:00",
+ "tried": "2026-11-27T00:08+09:00",
  "ok": {
   "notices": true,
   "events": true,
