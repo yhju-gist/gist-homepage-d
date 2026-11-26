@@ -1,9 +1,9 @@
 {
- "checked": "2026-11-26T14:25+09:00",
+ "checked": "2026-11-27T00:44+09:00",
  "src": {
   "yt": {
    "ok": true,
-   "at": "2026-11-26T14:25+09:00",
+   "at": "2026-11-27T00:44+09:00",
    "n": 12
   },
   "ig": {
@@ -18,6 +18,14 @@
   }
  },
  "items": [
+  {
+   "p": "yt",
+   "id": "deg4WRZh4Ys",
+   "t": "아이디어에서 창업까지, GISTian의 도전｜GIST 창업진흥센터",
+   "u": "https://www.youtube.com/watch?v=deg4WRZh4Ys",
+   "img": "https://i.ytimg.com/vi/deg4WRZh4Ys/hqdefault.jpg",
+   "at": "2026-11-26T14:30:24+09:00"
+  },
   {
    "p": "yt",
    "id": "DhpA8po3yLI",
@@ -105,14 +113,6 @@
    "u": "https://www.youtube.com/watch?v=arUQ8rLUkSA",
    "img": "https://i.ytimg.com/vi/arUQ8rLUkSA/hqdefault.jpg",
    "at": "2026-10-21T11:08:17+09:00"
-  },
-  {
-   "p": "yt",
-   "id": "IYq4PgT6Klo",
-   "t": "[광주MBC 라디오칼럼] 다시 일어나는 힘, 회복탄력성",
-   "u": "https://www.youtube.com/watch?v=IYq4PgT6Klo",
-   "img": "https://i.ytimg.com/vi/IYq4PgT6Klo/hqdefault.jpg",
-   "at": "2026-10-16T11:44:57+09:00"
   },
   {
    "p": "ig",
