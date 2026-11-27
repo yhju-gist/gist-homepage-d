@@ -1,7 +1,7 @@
 {
  "$description": "학과·연구소·센터 홈페이지 최근 글(제목·날짜·주소). scripts/sites_fetch.py 가 gist.yml 작업으로 1시간마다 갱신.",
- "checked": "2026-11-26T13:59+09:00",
- "tried": "2026-11-27T08:49+09:00",
+ "checked": "2026-11-27T17:21+09:00",
+ "tried": "2026-11-27T17:21+09:00",
  "sites": [
   {
    "id": "ai",
@@ -137,7 +137,7 @@
    "g": "학과",
    "c": "AI대학",
    "h": "https://aix.gist.ac.kr/",
-   "ok": true,
+   "ok": false,
    "items": [
     {
      "t": "[AI정책전략대학원] 2027년 동계 인턴 모집 안내",
@@ -166,7 +166,7 @@
     }
    ],
    "latest": "2026-11-13",
-   "found": 10
+   "err": "URLError"
   },
   {
    "id": "physics",
@@ -176,6 +176,11 @@
    "h": "https://physics.gist.ac.kr/",
    "ok": true,
    "items": [
+    {
+     "t": "[Colloquium] 2026.12.2.(Wed) / Prof.Byoung-moo Ann (KRISS) / Exploring the Mesoscopic World Through Circuit Quantum Elec",
+     "d": "2026-11-27",
+     "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-49/"
+    },
     {
      "t": "[Colloquium] 2026.11.25.(Wed) / Prof.Daniel Kyungdeock Park (Yonsei Univ.) / Physics Meets AI: Quantum Computing and Gen",
      "d": "2026-11-19",
@@ -195,14 +200,9 @@
      "t": "[Colloquium] 2026.11.11.(Wed) / Prof.Youngwook Kim(DGIST) / Interlayer corrlations and remote moiré modulation in large-",
      "d": "2026-11-05",
      "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-46/"
-    },
-    {
-     "t": "[Colloquium] 2026.11.4.(Wed) / Prof.ChoongKi Sung(KAIST) / The role of magnetic mirrors in fusion research",
-     "d": "2026-10-28",
-     "u": "https://physics.gist.ac.kr/news-events/colloquium_seminar/colloquium-2024-10-2-wed-prof-song-jin-dongkist-quantum-enabling-technology-all-quantum-or-non-quantum-technologies-and-supply-chain-issues-to-realize-quantum-information-technology-2-2-2-2-2-2-2-2-45/"
     }
    ],
-   "latest": "2026-11-19",
+   "latest": "2026-11-27",
    "found": 10
   },
   {

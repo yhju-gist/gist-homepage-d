@@ -9,6 +9,12 @@
  "notices": [
   {
    "k": "행사",
+   "t": "[반도체공학과] 특별 초청 강연(반도체와 사이버 위협 동향 및 대응 방안) 개최 안내(2026.12.1.(화) 16:30~)",
+   "d": "11.27.",
+   "u": "https://www.gist.ac.kr/kr/html/sub06/060101.html?mode=V&no=224854"
+  },
+  {
+   "k": "행사",
    "t": "[연구처] 제3회 GIST-고려대 공동 심포지엄 개최 안내",
    "d": "11.26.",
    "u": "https://www.gist.ac.kr/kr/html/sub06/060101.html?mode=V&no=224835"
@@ -36,12 +42,6 @@
    "t": "[창업진흥센터] 신규 입주 기업 모집 공고",
    "d": "11.13.",
    "u": "https://www.gist.ac.kr/kr/html/sub06/060101.html?mode=V&no=224683"
-  },
-  {
-   "k": "모집",
-   "t": "(수정) CES 2027 글로벌 기술 연수 프로그램 참가자 모집",
-   "d": "11.12.",
-   "u": "https://www.gist.ac.kr/kr/html/sub06/060101.html?mode=V&no=224669"
   }
  ],
  "events": [
@@ -147,8 +147,8 @@
    "u": "https://www.gist.ac.kr/en/html/sub06/060202.html?mode=V&no=224578"
   }
  ],
- "checked": "2026-11-27T00:08+09:00",
- "tried": "2026-11-27T08:49+09:00",
+ "checked": "2026-11-27T17:21+09:00",
+ "tried": "2026-11-27T17:21+09:00",
  "ok": {
   "notices": true,
   "events": true,
